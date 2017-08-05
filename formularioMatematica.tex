@@ -1,0 +1,2409 @@
+\documentclass[8pt, a4paper, twocolumn]{extarticle}
+
+\usepackage{extsizes} % Smaller text
+\usepackage[italian]{babel} % Italian support
+\usepackage{amsmath,amsfonts,amssymb,mathtools,mathrsfs}
+\usepackage{bm} % Bold math
+\usepackage[latin1]{inputenc} % Accented letters
+\usepackage{fullpage}
+\usepackage[medium]{titlesec} % Smaller section's font
+\usepackage[pdftex,dvipsnames]{xcolor} % Colors for text
+\usepackage{array} % For better tables
+\usepackage{parskip} % To avoid indentation
+\usepackage{textcomp} % To have \textcelsius and other symbols
+\usepackage{multirow} % For nicer tables with split rows/columns
+\usepackage{multicol}
+\usepackage{cancel} % Cacelled equations and simplifications
+\usepackage{xargs} % Allows for multiple arguments commmands
+\usepackage{enumitem} % For more flexibility on lists\usepackage{extsizes} % Smaller text
+\usepackage[italian]{babel} % Italian support
+\usepackage{amsmath,amsfonts,amssymb,mathtools}
+\usepackage{bm} % Bold math
+\usepackage[latin1]{inputenc} % Accented letters
+\usepackage{fullpage}
+\usepackage[medium]{titlesec} % Smaller section's font
+\usepackage[pdftex,dvipsnames]{xcolor} % Colors for text
+\usepackage{array} % For better tables
+\usepackage{parskip} % To avoid indentation
+\usepackage{textcomp} % To have \textcelsius and other symbols
+\usepackage{multirow} % For nicer tables with split rows/columns
+\usepackage{multicol}
+\usepackage{cancel} % Cacelled equations and simplifications
+\usepackage{xargs} % Allows for multiple arguments commmands
+\usepackage{enumitem} % For more flexibility on lists
+\usepackage{siunitx}
+\usepackage{mathabx} % For better \land, \lor and \lnot
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks,
+	citecolor=black,
+	filecolor=black,
+	linkcolor=blue,
+	urlcolor=black
+}
+\usepackage[all]{hypcap} % To fix caption loading of hyperref
+
+\usepackage{tikz}
+\usetikzlibrary{arrows,decorations,calc,intersections}
+\usepackage{tkz-euclide}
+
+\setcounter{secnumdepth}{0} % sections are level 1
+\setcounter{tocdepth}{3}
+
+\DeclarePairedDelimiter\norm{\lVert}{\rVert} % ||v||
+\DeclarePairedDelimiter\abs{\lvert}{\rvert} % |v|
+
+\def\mathcolor#1#{\@mathcolor{#1}}
+\def\@mathcolor#1#2#3{%
+	\protect\leavevmode
+	\begingroup
+	\color#1{#2}#3%
+	\endgroup
+}
+
+\usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
+% Some useful TODO commands
+\newcommandx{\unsure}[2][1=]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
+\newcommandx{\change}[2][1=]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}}
+\newcommandx{\info}[2][1=]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,
+	bordercolor=OliveGreen,#1]{#2}}
+\newcommandx{\improvement}[2][1=]{\todo[linecolor=Plum,backgroundcolor=Plum!25,
+	bordercolor=Plum,#1]{#2}}
+\newcommandx{\thiswillnotshow}[2][1=]{\todo[disable,#1]{#2}}
+
+\setlength{\marginparwidth}{2cm} % For better TODO's display
+
+% For better visual in tables
+\renewcommand*{\arraystretch}{2.4}
+
+\newcommand{\divisor}{\rule{7.8cm}{0.4pt}}
+
+% For an older but clearer root. Still \oldsqrt is valid
+\usepackage{letltxmacro}
+\makeatletter
+\let\oldr@@t\r@@t
+\def\r@@t#1#2{%
+	\setbox0=\hbox{$\oldr@@t#1{#2\,}$}\dimen0=\ht0
+	\advance\dimen0-0.2\ht0
+	\setbox2=\hbox{\vrule height\ht0 depth -\dimen0}%
+	{\box0\lower0.4pt\box2}}
+\LetLtxMacro{\oldsqrt}{\sqrt}
+\renewcommand*{\sqrt}[2][\ ]{\oldsqrt[#1]{#2} }
+\makeatother
+
+\newcommand\markangle[7][red]{% [color] origin A B radius radiusmark mark
+	% fill red circle
+	\begin{scope}
+		\path[clip] (#2) -- (#3) -- (#4);
+		\fill[color=#1,fill opacity=0.5,draw=#1,name path=circle]
+		(#2) circle (#5);
+	\end{scope}
+	% middle calculation
+	\path[name path=line one] (#2) -- (#3);
+	\path[name path=line two] (#2) -- (#4);
+	\path[%
+	name intersections={of=line one and circle, by={inter one}},
+	name intersections={of=line two and circle, by={inter two}}
+	] (inter one) -- (inter two) coordinate[pos=.5] (middle);
+	% put mark
+	\node at ($(#2)!#6!(middle)$) {#7};
+}
+
+\begin{document}
+	
+\begin{center}
+	{\Huge \textbf{Formule di Matematica}}\\
+	{\large Davide Cossu}
+\end{center}
+Questo è un formulario con le formule di matematica fatte e con alcune spiegazioni teoriche.
+
+{
+	\hypersetup{linkcolor=black}
+	\tableofcontents
+}
+\newpage
+\textbf{Durante tutto il formulario, si userà il sistema internazionale di notazione, ovvero $.$ per 
+separare interi da decimali e $,$ per separare le migliaia se necessario.}
+\section{Simboli}
+Qui verrano chiariti i simboli che verranno utilizzati nel formulario. Molti di essi si troveranno
+principalmente nelle definizioni formali ma ritorneranno utili anche negli esercizi.
+
+\begin{tabular}{c | m{6cm}}
+	$\sum\limits_{i = l}^{n} f(i)$ & $f(l) + f(l+1) + \cdots + f(n)$\\
+	$\prod\limits_{i = l}^{n} f(i)$ & $f(l) \cdot f(l+1) \cdot\,\cdots\,\cdot f(n)$\\
+	$\forall$ & Per ogni\\
+	$\exists$ & Esiste\\
+	$\in$ & Appartiene\\
+	$\not\in$ & Non appartiene\\
+	$\cup$ & Unito\\
+	$\cap$ & Intersecato\\
+	$\mid$, $:$ & Tale che\\
+	$\Rightarrow$ & Si ha che\\
+	$\mapsto$ & Diventa\\
+	$\rightarrow$ & Ne segue che, tende\\
+	$\iff$ & Se e solo se
+\end{tabular}
+
+\section{Generale}\label{sec:gen}
+In questa sezione verranno trattati alcuni temi utili in tutto il formulario, come i prodotti notevoli
+o alcune prprietà dei radicali.\\
+Per gli esercizi si vada \hyperref[ex:generale]{qui}.
+
+\subsection{Prodotti notevoli}\label{subsec:gen:prodnot}
+I prodotti notevoli sono dei prodotti o delle fattorizzazioni sempre vere per qualunque numero. 
+Risultano essere molto utili quando si deve semplificare un'espressione.
+\begin{align*}
+a^2 - b^2 &= (a-b)(a+b)\\
+a^3 - b^3 &= (a-b)(a^2+ab+b^2)
+\end{align*}
+Questi hanno la seguente formula generale
+\begin{equation*}
+a^n - b^n = (a-b)(a^{n-1} - a^{n-2}b + a^{n-3}b^2 - \cdots - ab^{n-2} + b^{n-1})
+\end{equation*}
+\begin{align*}
+(a\pm b)^2 &= a^2 \pm 2ab + b^2 \\
+(a\pm b)^3 &= a^3 \pm 3a^2b + 3ab^2 \pm b^3
+\end{align*}
+Questi hanno la seguente formula generale, anche conosciuto come `Binomio di Newton'
+\begin{equation*}
+(a + b)^n = \sum\limits_{k = 0}^{n}\binom{n}{k}a^{n-k}b^k
+\end{equation*}
+
+\subsection{Radicali}
+I radicali sono delle espressioni spesso irrazionali che contengono almeno una radice. La radice è 
+anche pensabile come una potenza: $\sqrt[n]{x^m} = x^{\dfrac{m}{n}}$.
+
+\subsubsection{Addizione e Sottrazione}
+Due radicali si possono addizionare o sottrarre se e solo se \textbf{sono simili}
+\begin{equation*}
+m\cdot\sqrt[n]{a} \pm p\cdot\sqrt[n]{a} = (m\pm p)\cdot\sqrt[n]{a}
+\end{equation*}
+
+\subsubsection{Divisione e Moltiplicazione}
+Due radicali si possono moltiplicare o dividere se e solo se \textbf{hanno lo stesso indice}
+\begin{equation*}
+\sqrt[m]{a}\cdot\sqrt[m]{b} = \sqrt[m]{ab}\qquad\frac{\sqrt[m]{a}}{\sqrt[m]{b}} = \sqrt[m]{\frac{a}{b}}
+,\quad b \neq 0
+\end{equation*}
+
+\subsubsection{Razionalizzare un radicale}
+Per razionalizzare un radicale si intende eliminare il radicale dal denominatore di una frazione in
+quanto non è possibile dividere un numero per un irrazionale.
+\begin{align*}
+\frac{d}{c\cdot\sqrt{b}} & = \frac{d}{c\cdot\sqrt{b}}\cdot\frac{\sqrt{b}}{\sqrt{b}} = 
+\frac{d\cdot\sqrt{b}}{cb} \quad b > 0,\, c \neq 0 \\
+\frac{c}{a\pm\sqrt{b}} &= \frac{c}{a\pm\sqrt{b}}\cdot\frac{a\mp\sqrt{b}}{a\mp\sqrt{b}} = 
+\frac{c\cdot(a\pm\sqrt{b})}{a^2-b} \quad a\pm\sqrt{b} \neq 0 \\
+\frac{c}{\sqrt{a}\pm\sqrt{b}} &=
+\frac{c}{\sqrt{a}\pm\sqrt{b}}\cdot\frac{\sqrt{a}\mp\sqrt{b}}{\sqrt{a}\mp\sqrt{b}} =
+\frac{c(\sqrt{a}\mp\sqrt{b})}{a-b} \quad \sqrt{a}\pm\sqrt{b} \neq 0
+\end{align*}
+In generale per razionalizzare si deve moltiplicare per un fattore che annulli il radicale stesso, 
+generalmente quel fattore è il radicale o il suo reciproco.
+
+\subsubsection{Radicale di un radicale}
+Per risolvere o semplificare espressioni come $\sqrt{a\pm\sqrt{b}}$ si può usare questa formula
+\begin{equation*}
+\sqrt{a\pm\sqrt{b}} = \sqrt{\frac{a+\sqrt{a^2-b}}{2}}\pm\sqrt{\frac{a-\sqrt{a^2-b}}{2}}
+\end{equation*}
+
+\subsubsection{Disequazioni con radicali}
+\begin{align*}
+\sqrt{f(x)} > g(x) &\Leftrightarrow \left\{\begin{cases}
+f(x) \geq 0\\
+g(x) < 0
+\end{cases} \bigcup \begin{cases}
+g(x) \geq 0\\
+f(x) > g^2(x)
+\end{cases}\right\}\\
+\sqrt{f(x)} < g(x) &\Leftrightarrow \begin{cases}
+f(x) \geq 0\\
+g(x) > 0\\
+f(x) < g^2(x)
+\end{cases}\\
+\sqrt{f(x)} \lessgtr \sqrt{g(x)} &\Leftrightarrow \begin{cases}
+f(x) \geq 0\\
+g(x) \geq 0\\
+f(x) \lessgtr g(x)
+\end{cases}
+\end{align*}
+
+\subsection{Equazioni particolari}
+Ci sono infiniti tipi di equazioni, alcune però hanno delle soluzioni immediate, eccone alcune.
+
+\subsubsection{Equazioni binomie}
+Le equazioni binomie sono nella forma $x^n = a$. Le loro soluzioni sono le seguenti
+\begin{align*}
+x &= \pm\sqrt[n]{a} &\quad &\text{Se $n$ è pari e $a\geq0$}\\
+x &= \sqrt[n]{a} &\quad &\text{Se $n$ è dispari}
+\end{align*}
+
+\subsubsection{Equazioni trinomie e biquadratiche}
+Le equazioni trinomie sono nella forma $ax^{2n} + bx^n + c =0$. Se $n=2$ sono definite biquadratiche.\\
+Per risolverle si ponga $t = x^n$ e si risolva l'equazione di secondo grado che ne deriva
+\begin{equation*}
+at^2 + bt + c = 0
+\end{equation*}
+e poi si risolva $x^n = y_1$ e $x^n = y_2$.
+
+\subsubsection{Equazioni di secondo grado}
+Le equazioni di secondo grado sono tra le più diffuse. Presentano alcune caratteristiche.\\
+Sia $ax^2 + bx + c = 0$ la nostra equazione, allora $x_1$ e $x_2$ sono le sue soluzioni. Per trovarle
+si usi la seguente formula
+\begin{equation*}
+x_{1/2} = \frac{-b\pm\sqrt{b^2-4ac}}{2a}
+\end{equation*}
+Conoscendo le soluzioni si può semplificare l'equazione in questo modo
+\begin{equation*}
+ax^2+bx+c=a(x-x_1)(x-x_2)
+\end{equation*}
+Vige anche questa particolarità
+\begin{equation*}
+x_1+x_2 = -\frac{b}{a} \qquad x_1\cdot x_2 = \frac{c}{a}
+\end{equation*}
+
+\subsection{Ruffini}
+Il metodo di Ruffini permette di ridurre di grado qualsiasi equazione. Prima di usare questo metodo si
+dovrebbe però verificare che non sia possibile usare \hyperref[subsec:gen:prodnot]{prodotti notevoli}
+in quanto il processo richiede tempo.\\
+Per prima cosa si deve trovare uno \textbf{zero} dell'equazione, ovvero una soluzione. Essi sono
+da ricercarsi tra le seguenti frazioni
+\begin{equation*}
+\text{Zeri} = \frac{\text{Divisori termine noto}}{\text{Divisori $a$}}
+\end{equation*}
+Per dimostrare l'utilizzo di questa regola, prendiamo come esempio la seguente equazione
+\begin{equation}\label{eq:ruffini}
+2x^3 + 3x + 5 = 0
+\end{equation}
+Lo zero di quest'equazione è $\mathcolor{red}{-1}$, infatti $2\cdot(-1)^3 + 3\cdot(-1) + 5 = 0$. Il 
+seguente disegno chiarisce i passaggi da seguire per ridurre di grado un'equazione.
+\begin{center}
+	\begin{tikzpicture}
+		\draw (-0.5,0) -- (3.5,0);
+		\draw (0,2) -- (0,-0.5);
+		\draw (3,2) -- (3,-0.5);
+		\node[red] (z) at (-0.3,0.2) {$-1$};
+		\node (a) at (0.5,1.8) {$2$};
+		\node (b) at (1.5,1.8) {$0$};
+		\node (c) at (2.5,1.8) {$3$};
+		\node (r) at (3.3,1.8) {$+5$};
+		\node (b1) at (1.5,0.2) {$-2$};
+		\node (c1) at (2.5,0.2) {$2$};
+		\node (r1) at (3.3,0.2) {$-5$};
+		\node (a2) at (0.5,-0.2) {$2$};
+		\node (b2) at (1.5,-0.2) {$-2$};
+		\node (c2) at (2.5,-0.2) {$5$};
+		\node (r2) at (3.3,-0.2) {$0$};
+		\draw[-stealth, thick, cyan] (a) -- (a2);
+		\draw[-stealth, thick, red] (a2) -- (z);
+		\draw[-stealth, thick] (z) -- (b1);
+		\draw[-stealth, thick] (b) -- (b1)
+			node[pos=0.5, right]{$+$};
+		\node (coef) at (1.5,-0.7) {Coefficienti/Quoziente};
+		\node (rest) at (3.5,-0.7) {Resto};
+	\end{tikzpicture}
+\end{center}
+
+Il processo da seguire è il seguente:
+\begin{enumerate}
+	\item Moltiplicare il coefficiente del grado massimo per lo zero
+	\item Aggiungere al grado successivo il risultato
+	\item Continuare fino a che non si arriva al termine noto
+\end{enumerate}
+Così si otterranno i nuovi coefficienti dell'equazione. Nel nostro caso otteniamo
+\begin{equation}\label{eq:ruffini1}
+2x^2 -2x + 5
+\end{equation}
+però questo non basta in quanto le equazioni \eqref{eq:ruffini} e \eqref{eq:ruffini1} non sono 
+equivalenti. Per renderle equivalenti, si moltiplichi per $(x-x_0)$ dove $x_0$ è lo zero dell'equazione
+originale. Quindi ora abbiamo ottenuto che
+\begin{equation*}
+2x^3 + 3x + 5 = (2x^2 -2x + 5)(x+1)
+\end{equation*}
+E che quindi possiamo dire che $P_n(x) = P_{n-1}(x)\cdot(x-x_0)$ dove $P_n(x)$ è un polinomio di grado
+$n$ nella variabile $x$.
+
+% Reset the counter
+\setcounter{equation}{0}
+
+\subsection{Valori assoluti}
+Verranno qui elencate alcune caratteristiche dei valori assoluti.
+
+\subsubsection{Definizione}
+\begin{equation*}
+\left\lvert x\right\rvert \Leftrightarrow
+\begin{cases}
+x &\text{se } x \geq 0\\
+-x &\text{se } x < 0
+\end{cases}
+\end{equation*}
+
+\subsubsection{Proprietà}
+Dalla definizione ne derivano alcune proprietà
+\begin{alignat*}{2}
+\left\lvert x\right\rvert &= \left\lvert -x\right\rvert &\qquad 
+\left\lvert x^2\right\rvert&=\left\lvert x\right\rvert^2 = x^2\\
+\left\lvert a+b\right\rvert &\leq \left\lvert a\right\rvert+\left\lvert b\right\rvert & 
+\left\lvert a\cdot b\right\rvert&=\left\lvert a\right\rvert\cdot\left\lvert b\right\rvert
+\end{alignat*}
+
+\subsubsection{Funzioni e valori assoluti}
+Vengono ora riportati i sistemi risolutivi di funzioni con valori assoluti
+\begin{align*}
+\left\lvert f(x)\right\rvert \geq g(x) &\Leftrightarrow 
+\begin{cases}
+f(x) \leq -g(x)\\
+f(x) \geq g(x)
+\end{cases}\\
+\left\lvert f(x)\right\rvert \leq g(x) &\Leftrightarrow -g(x)\leq f(x) \leq g(x)
+\end{align*}
+
+\subsection{Geometria}
+Qui vengono elencate alcune formule particolari che riguardano la geometria euclidea.
+
+\subsubsection{Teoremi di Euclide}
+\begin{center}
+	\begin{tikzpicture}[scale=1.5]
+		\coordinate (A) at (0.5,1);
+		\coordinate (B) at (3,0);
+		\coordinate (C) at (0,0);
+		\coordinate (O) at (0.71,0.44);
+		
+		
+		\draw (A) -- (B) 
+			node[pos=0.5, above right]{$c$} -- (C) 
+			node[pos=0.5, below]{$a$}
+			node[pos=0.25, below, cyan]{$m$}
+			node[pos=0.9, below, teal]{$n$} -- cycle 
+			node[pos=0.3, above left]{$b$};
+		\draw (O) circle (0.43);
+		\draw[blue, dashed] (A) -- ++(0,-1)
+			node[pos=0.5, right]{$h$};
+		\draw[red, dashed] (O) -- ++(0,-0.44)
+			node[pos=0.5, right]{$r$};
+	\end{tikzpicture}
+\end{center}
+\begin{alignat*}{2}
+&\textbf{Primo teorema} &\qquad &
+\begin{cases*}
+\dfrac{\mathcolor{cyan}{m}}{c} = \dfrac{c}{a}\\
+\dfrac{\mathcolor{teal}{n}}{b} = \dfrac{b}{a}
+\end{cases*}\\
+&\textbf{Secondo teorema} &\qquad & 
+\frac{\mathcolor{cyan}{m}}{\mathcolor{blue}{h}} = \frac{\mathcolor{blue}{h}}{\mathcolor{teal}{n}}\\
+&\textbf{Proprietà} &\qquad &
+\begin{cases*}
+\mathcolor{blue}{h} = \dfrac{bc}{a}\\
+\mathcolor{red}{r} = \dfrac{b+c-a}{2}
+\end{cases*}
+\end{alignat*}
+
+\subsubsection{Formula di Erone}
+La formula di Erone permette di trovare l'area di un triangolo qualsiasi conoscendo il semi-perimetro.
+\begin{center}
+	\begin{tikzpicture}[scale=1.5]
+	\coordinate (A) at (0.5,1);
+	\coordinate (B) at (3,0);
+	\coordinate (C) at (0,0);
+	\coordinate (O) at (0.71,0.44);
+	
+	
+	\draw (A) -- (B) 
+	node[pos=0.5, above right]{$c$} -- (C) 
+	node[pos=0.5, below]{$a$} -- cycle 
+	node[pos=0.3, above left]{$b$};
+	\end{tikzpicture}
+\end{center}
+\begin{equation*}
+S = \sqrt{p(p-a)(p-b)(p-c)}
+\end{equation*}
+
+\section{Geometria analitica}\label{sec:geomanal}
+La geometria analitica è la geometria che si occupa di lavorare nel piano cartesiano ($xOy$).\\
+Per gli esercizi si vada \hyperref[ex:geomanal]{qui}.
+
+\subsection{Generale}
+Le formule qui riportate sono generali a tutto l'ambito della geometria analitica e non si riferiscono
+ad una figura particolare.\\
+Di seguito viene rappresentato il tipico piano cartesiano con i suoi quattro quadranti.
+\begin{center}
+	\begin{tikzpicture}
+		\tkzInit[xmin=-3,ymin=-3,xmax=3,ymax=3]
+		\tkzGrid
+		\tkzAxeXY
+		\filldraw[blue] (-1,2) circle (0.05)
+			node[above]{$P(x_p, y_p)$};
+	\end{tikzpicture}
+\end{center}
+D'ora in poi, si darà per scontata la convenzione di nominare le coordinate di un punto in base al nome
+del punto stesso. Ad esempio $P(x_P, y_P)$. Si noti anche che è possibile definire un punto attraverso
+un vettore bidimensionale. Ovvero
+\begin{equation*}
+P(x_P,y_P) = \begin{bmatrix}
+x_P\\y_P
+\end{bmatrix}
+\end{equation*}
+
+\subsubsection{Distanza tra due punti}
+\begin{equation*}
+\overline{AB} = \sqrt{(x_B-x_A)^2+(y_B-y_A)^2}
+\end{equation*}
+
+\subsubsection{Punto medio}
+\begin{equation*}
+M\left(\frac{x_A-x_B}{2}, \frac{y_A-y_B}{2}\right)
+\end{equation*}
+
+\subsubsection{Punto su un segmento in un rapporto $\dfrac{m}{n}$}
+Siano $m$ e $n$ due rapporti a cui sta un punto rispetto al segmento. Ovvero il punto $P(x_P, y_P)$
+divide il segmento in $n$ parti sulla proiezione della $x$, in $m$ parti su quella di $y$.
+\begin{equation*}
+P\left(\frac{nx_A+mx_B}{m+n},\frac{ny_A+my_B}{m+n}\right)
+\end{equation*}
+
+\subsubsection{Baricentro di un triangolo}
+\begin{equation*}
+G\left(\frac{x_A+x_B+x_C}{3},\frac{y_A+y_B+y_C}{3}\right)
+\end{equation*}
+
+\subsubsection{Area di un triangolo qualsiasi}
+\begin{equation*}
+\mathscr{A}(ABC) = \frac{1}{2}\left\lvert x_1y_2 + y_1x_3 + x_2y_3 -x_3y_2 -y_3x_1 -x_2y_1\right\rvert
+\end{equation*}
+Oppure si può risolvere questa versione
+\begin{equation*}
+\mathscr{A}(ABC) = \frac{1}{2}\left\lvert 
+\begin{matrix}
+x_1 & y_1 & 1\\
+x_2 & y_2 & 1\\
+x_3 & y_3 & 1
+\end{matrix}\right\rvert
+\end{equation*}
+usando la regola di Sarrus.
+
+\subsection{Rette}\label{subsec:geomanal:retta}
+\begin{center}
+	\begin{tikzpicture}
+		\tkzInit[xmin=0,ymin=0,xmax=3,ymax=3]
+		\tkzGrid
+		\tkzAxeXY
+		\draw[blue, thick, domain=0:3] plot(\x,1/pi*\x+1);
+		\node[blue] (l) at (1.5,-0.5){$y = \frac{1}{\pi}x+1$};
+		\node[blue] (l1) at (1.5,-1){$-\frac{x}{\pi} + y - 1 = 0$};
+	\end{tikzpicture}
+\end{center}
+Le rette sono definite da un'equazione che ha due forme equivalenti:
+\begin{equation}\label{eq:retta1}
+y = mx + q\\
+\end{equation}
+\begin{equation}\label{eq:retta2}
+ax + by + c = 0
+\end{equation}
+La forma \eqref{eq:retta1} è chiamata \emph{esplicita}, la forma \eqref{eq:retta2} è chiamata 
+\emph{implicita}. Da queste due forme possiamo evincere che
+\begin{equation*}
+m = -\frac{a}{b} \qquad q = -\frac{c}{b}
+\end{equation*}
+% Reset the counter
+\setcounter{equation}{0}
+
+\subsubsection{Retta passante per due punti $P_1(x_1,y_1)$ e $P_2(x_2,y_2)$}
+\begin{equation*}
+\frac{y-y_1}{y_2-y_1}=\frac{x-x_1}{x_2-x_1} \qquad x_1\neq x_2 \land y_1\neq y_2
+\end{equation*}
+
+\subsubsection{Condizione di parallelismo}
+Perché due rette siano parallele, \textbf{il loro coefficiente angolare deve essere uguale}, ovvero
+\begin{equation*}
+r_1 \| r_2 \iff m_1=m_2
+\end{equation*}
+
+\subsubsection{Condizione di perpendicolarità}
+Perché due rette siano perpendicolari, \textbf{il prodotto dei coefficienti angolari deve essere $-1$},
+ovvero
+\begin{equation*}
+r_1 \perp r_2 \iff m_1m_2 = -1
+\end{equation*}
+
+\subsubsection{Retta parallela ad una data e passante per un punto $P(x_P,y_P)$}
+\begin{equation*}
+y-y_P = m(x-x_P)
+\end{equation*}
+
+\subsubsection{Retta perpendicolare ad una data e passante per un punto $P(x_P,y_P)$}
+\begin{equation*}
+y - y_P = -\frac{1}{m} (x - x_P)
+\end{equation*}
+
+\subsubsection{Distanza $d$ tra un punto $P(x_P,y_P)$ e una retta}
+\begin{equation*}
+d = \frac{\lvert ax_P + by_P +c\rvert}{\sqrt{a^2+b^2}}
+\end{equation*}
+
+\subsubsection{Coefficiente angolare $m$ di una retta passante per due punti $P_1(x_1,y_1)$ e 
+$P_2(x_2,y_2)$}
+\begin{equation*}
+m=\frac{y_2-y_1}{x_2-x_1}
+\end{equation*}
+
+\subsection{Fasci di Rette}\label{subsec:geomanal:fasciorette}
+Un fascio di rette è una combinazione lineare di tutte le rette generabili modificando un solo 
+parametro di una quantità costante.
+
+\subsubsection{Fascio di rette a due parametri}
+Sceglti appropriati $\alpha$ e $\beta$ si possono generare tutte le rette possibili utilizzando questa
+forma
+\begin{equation*}
+\alpha(ax + by + c) + \beta(a_1x + b_1y + c_1) = 0
+\end{equation*}
+\begin{equation*}
+(\alpha a + \beta a_1)x + (\alpha b + \beta b_1)y + \alpha c + \beta c_1 = 0
+\end{equation*}
+
+\subsubsection{Fascio di rette ad un parametro}
+Questa forma esclude una sola retta, per $k = 0$.
+\begin{equation*}
+ax + by + c + k(a_1x + b_1y + c_1) = 0
+\end{equation*}
+Si noti che $k = \frac{\beta}{\alpha}$
+
+\subsubsection{$k$ avendo una retta del fascio, la retta esclusa e un punto su $a_1x + b_1y + c = 0$}
+\begin{center}
+	\begin{tikzpicture}
+		\draw[teal, dashed] (0,-0.15) -- (3,-0.15)
+			node[pos=0, above left]{Esclusa: $a_1x + b_1y + c = 0$};
+		\draw[brown] (0,-3) -- (2,1)
+			node[pos=0, below]{$r: ax + by + c = 0$};
+		\draw[red] (2.5,-3) -- (1,1)
+			node[pos = 0.5, left]{$k = ?$};
+		\filldraw[blue] (2,-1.65) circle(0.05)
+			node[right]{$Q(x_Q, y_Q)$};
+	\end{tikzpicture}
+\end{center}
+\begin{equation*}
+\mathcolor{red}{k} = -\frac{
+	\mathcolor{brown}{a}\mathcolor{blue}{x_Q} + \mathcolor{brown}{b}\mathcolor{blue}{y_Q} +
+	\mathcolor{brown}{c}
+}{
+	\mathcolor{teal}{a_1}\mathcolor{blue}{x_Q} + \mathcolor{teal}{b_1}\mathcolor{blue}{y_Q} +
+	\mathcolor{teal}{c_1}
+}
+\end{equation*}
+
+\subsubsection{Retta di un fascio con coefficiente angolare $m$ passante per un punto $P(x_P,y_P)$}
+\begin{equation*}
+y-y_P = m(x-x_P)
+\end{equation*}
+
+\subsection{Circonferenza}\label{subsec:geomana:circ}
+La circonferenza è una conica i cui punti sono tutti equidistanti dal centro $C$.
+\begin{center}
+	\begin{tikzpicture}
+		\draw (0,0) circle (1);
+		\draw[blue] (0,0) circle (0.05)
+			node[below]{$C(x_C, y_C)$};
+		\draw[red] (0,0) -- (1,0)
+			node[pos=0.5,above]{$r$};
+	\end{tikzpicture}
+\end{center}
+
+Anche le equazioni delle circonferenze hanno 2 forme
+\begin{equation*}
+\mathscr{C}:\,(x-\mathcolor{blue}{x_C})^2 + (y-\mathcolor{blue}{y_C})^2 = \mathcolor{red}{r}^2
+\end{equation*}
+\begin{equation*}
+\mathscr{C}:\,x^2+y^2+ax+by+c =0
+\end{equation*}
+Da queste due formule derivano le coordinate del centro
+\begin{equation*}
+C\left(-\frac{a}{2},-\frac{b}{2}\right)
+\end{equation*}
+e la misura del raggio
+\begin{equation*}
+\mathcolor{red}{r} = \sqrt{\mathcolor{blue}{x_C}^2+\mathcolor{blue}{y_C}^2-c} = 
+\sqrt{\frac{a^2}{4}+\frac{b^2}{4}-c}
+\end{equation*}
+
+\subsubsection{Tangente in $P(x_P,y_P)$}
+\begin{equation*}
+x\cdot x_P+y\cdot y_P+a\frac{x+x_P}{2}+b\frac{y+y_P}{2}+c = 0
+\end{equation*}
+
+\subsubsection{Area del cerchio}
+\begin{equation*}
+\mathscr{A}(\mathscr{C}) = \pi\mathcolor{red}{r}^2
+\end{equation*}
+
+\subsubsection{Lunghezza della circonferenza}
+\begin{equation*}
+C = 2\pi\mathcolor{red}{r}
+\end{equation*}
+
+\subsubsection{Lunghezza dell'arco}
+\begin{equation*}
+l = \mathcolor{red}{r}\alpha
+\end{equation*}
+Si noti che $\alpha$ è in radianti.
+
+\subsubsection{Area del settore}
+\begin{equation*}
+\mathscr{A}(\mathscr{S}) = \frac{1}{2}\mathcolor{red}{r}^2\alpha
+\end{equation*}
+Si noti che $\alpha$ è in radianti.
+
+\subsection{Fasci di circonferenze}\label{subsec:geomanal:fasciocirc}
+Un fascio di circonferenze è una combinazione lineare di utte le circonferenze generabili modificando
+un parametro di una certa quantità costante.
+
+\subsubsection{Fascio di circonferenze ad un parametro}
+Scelti appropriati $\alpha$ e $\beta$ si possono generare tute le circonferenze possibili utilizzando 
+questa forma
+\begin{equation*}
+\alpha(x^2+y^2+a_1x+b_1y+c_1) + \beta(x^2+y^2+a_2x+b_2y+c_2) = 0
+\end{equation*}
+\begin{equation*}
+(\alpha+\beta)x^2+(\alpha+\beta)y^2+(\alpha a_1+\beta a_2)x+(\alpha b_1+\beta b_2)y+
+\alpha c_1+\beta c_2 = 0
+\end{equation*}
+
+\subsubsection{Fascio di circonferenze a due parametri}
+Questa forma esclude una circonferenza per $k=0$.
+\begin{equation*}
+x^2+y^2+ax+by+c+k(x^2+y^2+a_1x+b_1y+c_1) = 0
+\end{equation*}
+Si noti che $k=\frac{\alpha}{\beta}$
+
+\subsection{Parabola}\label{subsec:geomanal:parabola}
+\begin{center}
+	\begin{tikzpicture}
+		\tkzInit[xmin=-2,ymin=-2,xmax=4,ymax=4]
+		\tkzGrid
+		\tkzAxeXY
+
+		\draw[red,domain=-2:2] plot(\x, \x*\x);
+		\draw[blue,domain=-2:2] plot(\x*\x,\x);
+	\end{tikzpicture}
+\end{center}
+Una parabola può essere descritta con l'asse focale parallelo all'asse $x$ o all'asse $y$.
+\begin{equation*}
+\mathcolor{red}{\mathscr{P}}:\,y=ax^2+bx+c
+\end{equation*}
+\begin{equation*}
+\mathcolor{blue}{\mathscr{P}}:\,x=ay^2+by+c
+\end{equation*}
+La direttrice di una parabola è quella che ne da l'inclinazione ed è perpendicolare all'asse di
+simmetria.\\
+Il vertice di una parabola è il punto più vicino alla direttrice.\\
+Il fuoco è il punto la cui distanza da qualsiasi punto della parabola è pari a quella della proiezione
+sulla direttrice del punto stesso.
+
+\subsubsection{Elementi di una parabola con asse focale parallelo a $x$}
+\begin{center}
+	\begin{tabular}{c | c}
+		\textbf{Vertice} & $\left(-\dfrac{b}{2a}, -\dfrac{\Delta}{4a}\right)$\\\hline
+		\textbf{Fuoco} & $\left(-\dfrac{b}{2a},\dfrac{1-\Delta}{4a}\right)$\\\hline
+		\textbf{Direttrice} & $y=-\dfrac{1+\Delta}{4a}$\\\hline
+		\textbf{Asse di simmetria} & $x=-\dfrac{b}{2a}$\\\hline
+		\textbf{Tangente in un punto} & $\dfrac{y+y_0}{2}=axx_0+b\dfrac{x+x_0}{2}+c$
+	\end{tabular}
+\end{center}
+
+\subsubsection{Elementi di una parabola con asse focale parallelo a $y$}
+\begin{center}
+	\begin{tabular}{c | c}
+		\textbf{Vertice} & $\left(-\dfrac{\Delta}{4a},-\dfrac{b}{2a}\right)$\\\hline
+		\textbf{Fuoco} & $\left(\dfrac{1-\Delta}{4a},-\dfrac{b}{2a}\right)$\\\hline
+		\textbf{Direttrice} & $x=-\dfrac{1+\Delta}{4a}$\\\hline
+		\textbf{Asse di simmetria} & $y=-\dfrac{b}{2a}$\\\hline
+		\textbf{Tangente in un punto} & $\dfrac{x+x_0}{2}=ayy_0+b\dfrac{y+y	_0}{2}+c$
+	\end{tabular}
+\end{center}
+
+\subsubsection{Parabole di vertice $V(x_V,y_V)$}
+\begin{equation*}
+y-y_V=a(x-x_V)^2
+\end{equation*}
+
+\subsubsection{Area di un segmento parabolico}
+\begin{center}
+	\begin{tikzpicture}
+		\tkzInit[xmin=-1.5,ymin=-1,xmax=2.5,ymax=6]
+		\tkzGrid
+		\tkzAxeXY
+		
+		\filldraw[red, domain=-1.5:2.5, fill opacity=0.3](-0.9,0.75)--plot(\x, \x*\x)--(1.6,2.65)--
+		cycle;
+		\draw[thick, domain=-2:2.5] plot(\x, {\x/1.3+3.3/2.3});
+		\draw[thick, domain=-1.1:2.5] plot(\x, {\x/1.3-0.15});
+		\draw[dashed] (-0.9,0.75) -- (-0.3,-0.4);
+		\filldraw (-0.9,0.75) circle (0.05)
+			node[above]{$A$};
+		\filldraw (1.6,2.65) circle (0.05)
+			node[above]{$B$};
+		\filldraw (-0.3,-0.4) circle (0.05)
+			node[below]{$H$};
+	\end{tikzpicture}
+\end{center}
+\begin{equation*}
+\mathscr{A}(\mathscr{F}) = \frac{2}{3}\overline{AB}\cdot\overline{AH}
+\end{equation*}
+E ovviamente l'area esterna alla curva sarebbe
+\begin{equation*}
+\mathscr{A}(\mathscr{F}') = \frac{1}{3}\overline{AB}\cdot\overline{AH}
+\end{equation*}
+
+\subsubsection{Formule di sdoppiamento}
+Le formule di sdoppiamento servono per determinare le tangenti in un punto $P(x_0,y_0)$.\\
+Se $d\|y$
+\begin{equation*}
+\frac{y+y_0}{2}=axx_0+b\frac{x+x_0}{2}+c
+\end{equation*}
+Se $d\|x$
+\begin{equation*}
+\frac{x+x_0}{2}=ayy_0+b\frac{y+y_0}{2}+c
+\end{equation*}
+
+\subsubsection{Coefficiente angolare della tangente}
+\begin{equation*}
+m = \frac{1}{2ay_0+b} = 2ax_0+b
+\end{equation*}
+
+\subsection{Ellisse}\label{subsec:geomanal:ellisse}
+\begin{center}
+	\begin{tikzpicture}
+		\tkzInit[xmin=-2,ymin=-1,xmax=2,ymax=1]
+		\tkzGrid
+		\tkzAxeXY
+	
+		\draw[red] ellipse (2 and 1);
+		\filldraw (-1,0) circle (0.05)
+			node[below]{$F_1$};
+		\filldraw (1,0) circle (0.05)
+			node[below]{$F_2$};
+	\end{tikzpicture}
+\end{center}
+Un'ellissi ha due assi, uno maggiore uno minore. Loro semi-lunghezze (quindi i semi-assi) si 
+denominano $a$ (che contiene i fuochi) e $b$.\\
+I fuochi sono i due punti tali che preso un punto $P\in\mathscr{E}$, 
+$\overline{PF_1}+\overline{PF_2} = 2a$.
+\begin{equation*}
+\mathscr{E}:\,\frac{x^2}{a^2}+\frac{y^2}{b^2}=1
+\end{equation*}
+Tra i semi-assi vige la seguente proprietà
+\begin{equation*}
+a^2-c^2=b^2
+\end{equation*}
+e quindi
+\begin{equation*}
+c = \begin{cases}
+a^2-b^2,\, &\text{se } a > b\\
+b^2-a^2,\, &\text{se } a < b
+\end{cases}
+\end{equation*}
+
+\subsubsection{Eccentricità}
+L'eccentricità è lo schiacciamento dell'ellisse sull'asse maggiore. È un valore compreso tra $0$ e 
+$1$.\\
+Se $a>b$
+\begin{equation*}
+e = \frac{c}{a} = \frac{\sqrt{a^2-b^2}}{a}=\sqrt{1-\frac{b^2}{a^2}}
+\end{equation*}
+Se $b>a$
+\begin{equation*}
+e = \frac{c}{b} = \sqrt{1-\frac{a^2}{b^2}}
+\end{equation*}
+
+\subsubsection{Area dell'ellisse}
+\begin{equation*}
+\mathscr{A}(\mathscr{E}) = ab\pi
+\end{equation*}
+
+\subsubsection{Tangenti all'ellisse}
+Per trovare la tangente all'esllise abbiamo due modi:
+\begin{equation*}
+\frac{xx_0}{a^2}+\frac{yy_0}{b^2}=1
+\end{equation*}
+oppure fare il sistema tra la retta generica per $P$ e fare in modo che il discriminante si annulli:
+\begin{align*}
+\begin{dcases}
+\frac{x^2}{a^2}+\frac{y^2}{b^2}=1\\
+y-y_0=m(x-x_0)
+\end{dcases}\rightarrow\\ \frac{\Delta}{4}=a^4m^2q^2-a^2(q^2-b^2)(b^2+a^2m^2) = 0
+\end{align*}
+Il vantaggio di questo secondo metodo è che può anche trovare le rette secanti ed esterne all'ellisse
+(rispettivamente con $\dfrac{\Delta}{4}>0$ e $\dfrac{\Delta}{4}<0$). È sicuramente più laborioso e
+difficile da ricordare.
+
+\subsection{Iperbole}
+\begin{center}
+	\begin{tikzpicture}
+		\tkzInit[xmin=-2,ymin=-2,xmax=2,ymax=2]
+		\tkzGrid
+		\tkzAxeXY
+	
+		\draw[domain=-2:2] plot ({0.5*cosh(\x)}, {0.5*sinh(\x)});
+		\draw[domain=-2:2] plot ({-0.5*cosh(\x)}, {-0.5*sinh(\x)});
+	\end{tikzpicture}
+\end{center}
+
+L'iperbole può essere descritta sia anlaliticamente sia in modo parametrico con le funzioni $\cosh$ e
+$\sinh$.\\
+I fuochi sono i due punti tali che per un punto $P\in\mathscr{I}$, 
+$\lvert \overline{PF_1}-\overline{PF_1}\rvert=2a$.\\
+L'equazione dell'iperbole con i fuochi su $x$ è
+\begin{equation*}
+\mathscr{I}:\,\frac{x^2}{a^2}-\frac{y^2}{b^2}=1
+\end{equation*}
+Quella con i fuochi su $y$ è
+\begin{equation*}
+\mathscr{I}:\,\frac{x^2}{a^2}-\frac{y^2}{b^2}=-1
+\end{equation*}
+
+Tra i parametri $a$ e $b$ vige che $a < c$ e $c^2 = a^2+b^2$.
+
+\subsubsection{Asintoti}
+Gli asintoti sono le rette che l'iperbole tende a raggiungere senza mai toccare
+\begin{equation*}
+y=\pm\frac{b}{a}x
+\end{equation*}
+
+\subsubsection{Eccentricità}
+L'eccentricità dell'iperbole è il rapporto
+\begin{equation*}
+e=\frac{c}{a}=\sqrt{1+\frac{b^2}{a^2}}
+\end{equation*}
+se l'iperbole ha i fuochi su $x$,
+\begin{equation*}
+e = \frac{c}{b}=\sqrt{1+\frac{a^2}{b^2}}
+\end{equation*}
+altrimenti. Si noti anche che $e > 1$ per ogni iperbole.
+
+\subsubsection{Iperbole equilatera}
+Se $a=b$, l'iperbole si definisce equilatera e le equazioni diventano 
+\begin{equation*}
+x^2-y^2=a^2
+\end{equation*}
+se $F\in x$,
+\begin{equation*}
+y^2-x^2=a^2
+\end{equation*}
+se $F\in y$.\\
+Questo comporta che $c = a\sqrt{2}$ e che $e=\sqrt{2}$.\\\\
+Può anche essere descritta l'iperbole in base agli asintoti e in tal caso diventa
+\begin{equation*}
+xy=k
+\end{equation*}
+
+\subsubsection{Formule di sdoppiamento}
+Vengono ora riportate le formule di sdoppiamento che cambiano in base all'equazione dell'iperbole
+\begin{center}
+	\begin{tabular}{c|c}
+		Equazione & Tangente\\\hline
+		$\dfrac{x^2}{a^2}-\dfrac{y^2}{b^2}=1$ & $\dfrac{xx_0}{a^2}-\dfrac{yy_0}{b^2}=1$\\\hline
+		$\dfrac{x^2}{a^2}-\dfrac{y^2}{b^2}=-1$ & $\dfrac{xx_0}{a^2}-\dfrac{yy_0}{b^2}=-1$\\\hline
+		$x^2-y^2=a^2$ & $xx_0-yy_0=a^2$\\\hline
+		$x^2-y^2=-a^2$ & $xx_0-yy_0=-a^2$\\\hline
+		$xy=k$ & $\dfrac{xy_0+x_0y}{2}-k=0$
+	\end{tabular}
+\end{center}
+
+\subsubsection{Iperbole equilatera traslata}
+Si trova molto spesso una versione traslata di un'iperbole. Questa è la sua generale forma
+\begin{equation*}
+y=\frac{ax+b}{cx+d}
+\end{equation*}
+E gli asintoti sono
+\begin{equation*}
+x=-\frac{d}{c}\qquad y=\frac{a}{c}
+\end{equation*}
+con il centro di simmetria
+\begin{equation*}
+O\left(-\frac{d}{c},\frac{a}{c}\right)
+\end{equation*}
+
+\section{Goniometria}
+La gonioetria si incentra tutta sulla \emph{circonferenza goniometrica} che non è altro che una
+circonferenza di centro $O(0;0)$ e di raggio $r=1$.\\
+Per convenzione, gli angoli vengono definiti a partire dall'asse $x$ e si definiscono positivi quando
+proseguono in senso antiorario. Si noti che $2\pi = \ang{360}$.
+\begin{center}
+	\begin{tikzpicture}		
+		\tkzInit[xmax=2,ymax=2,xmin=-2,ymin=-2]
+		\tkzGrid
+		\tkzAxeXY
+		
+		\coordinate (A) at (1,0);
+		\coordinate (O) at (0,0);
+		\coordinate (P) at (0.866,0.5);
+		\markangle[blue]{O}{P}{A}{0.5}{1.5}{$\alpha$}
+		\draw[dashed, blue] (O) -- (P);	
+		\filldraw (0.866,0.5) circle (0.03)
+			node[blue, above right]{$P(\cos\alpha, \sin\alpha)$};
+		\draw (0,0) circle (1);
+	\end{tikzpicture}
+\end{center}
+Già nella figura identifichiamo le due funzioni fondamentali della goniometria: $\cos$ e $\sin$. Esse,
+numericamente, rappresentano rispettivamente l'ascissa e l'ordinata del punto $P$ al variare di 
+$\alpha$.\\
+Seno e coseno non sono le uniche funzioni goniometriche, esistono infatti anche
+\begin{align*}
+\tan\alpha &= \frac{\sin\alpha}{\cos\alpha}\\
+\cot\alpha &= \frac{1}{\tan\alpha}\\
+\sec\alpha &= \frac{1}{\cos\alpha}\\
+\csc\alpha &= \frac{1}{\sin\alpha}
+\end{align*}
+Da notare che spesso $\csc$ si trova anche scritto nella forma più estesa $\mathrm{cosec}$.\\
+$\sin$ e $\cos$ rappresentano anche in un triangolo rettangolo
+\begin{gather*}
+	\cos\alpha = \frac{\text{Lunghezza cateto adiacente}}{\text{Lunghezza ipotenusa}}\\
+	\sin\alpha = \frac{\text{Lunghezza cateto opposto}}{\text{Lunghezza ipotenusa}}
+\end{gather*}
+
+\subsection{Angoli particolari}
+Seno e coseno sono funzioni periodiche, ovvero che il loro valore sta all'interno di un insieme e si
+ripete con un certo periodo.\\
+Gli angoli particolari principali sono
+\begin{alignat*}{2}
+\sin\frac{\pi}{6} &= \frac{1}{2} &\qquad \cos\frac{\pi}{6} &= \frac{\sqrt{3}}{2}\\
+\sin\frac{\pi}{4} &= \frac{\sqrt{2}}{2} & \cos\frac{\pi}{4} &= \frac{\sqrt{2}}{2}\\
+\sin\frac{\pi}{3} &= \frac{\sqrt{3}}{2} & \cos\frac{\pi}{3} &= \frac{1}{2}
+\end{alignat*}
+Come si può notare ricordarli è piuttosto semplice: $\dfrac{\pi}{3}$ e $\dfrac{\pi}{6}$ sono gli 
+angoli di un triangolo equilatero, $\dfrac{\pi}{4}$ è la diagonale di un quadrato.
+
+\subsection{Relazione fondamentale}
+La relazione fondamentale è quella che permetterà di trovare molte delle formule successive. Essa è
+\begin{equation*}
+\cos^2\alpha + \sin^2\alpha = 1
+\end{equation*}
+
+\subsection{Grafico delle funzioni}
+\subsubsection{$\cos\alpha$}
+\begin{center}
+	\begin{tikzpicture}
+		\tkzInit[xmin=-3.5,ymin=-1.5,xmax=3.5,ymax=1.5]
+		\tkzGrid
+		\tkzAxeXY
+		\draw[red, thick, domain=-3.5:3.5, samples=500] plot({\x}, {cos(\x r)});
+	\end{tikzpicture}
+\end{center}
+\subsubsection{$\sin\alpha$}
+\begin{center}
+	\begin{tikzpicture}
+	\tkzInit[xmin=-3.5,ymin=-1.5,xmax=3.5,ymax=1.5]
+	\tkzGrid
+	\tkzAxeXY
+	\draw[red, thick, domain=-3.5:3.5, samples=500] plot({\x}, {sin(\x r)});
+	\end{tikzpicture}
+\end{center}
+\subsubsection{$\tan\alpha$}
+\begin{center}
+	\begin{tikzpicture}
+	\tkzInit[xmin=-2,ymin=-2.5,xmax=2,ymax=2.5]
+	\tkzGrid
+	\tkzAxeXY
+	\draw[red, thick, domain=-1.2:1.2, samples=500] plot({\x}, {tan(\x r)});
+	\end{tikzpicture}
+\end{center}
+
+\subsection{Funzioni inverse}
+Ovviamente se da un angolo possiamo ottenere un numero, possiamo fare anche il contrario. Per indicare
+le funzioni inverse abbiamo due possibilità
+\begin{enumerate}
+	\item Scrivere $f^{-1}(x)$
+	\item Dare un nuovo nome alla funzione
+\end{enumerate}
+
+Nelle calcolatrici è molto più comune trovare $\sin^{-1}$ e gli altri però non sono precisi e quindi
+sarebbe da preferire $\arcsin$ o $\mathrm{asin}$ per brevità. Il motivo è che se
+\begin{equation*}
+f:\;A\mapsto B,\,f^{-1}:\;B\mapsto A
+\end{equation*}
+però per le funzioni goniometriche questo non accade infatti
+\begin{equation*}
+\sin x:\;\mathbb{R}\mapsto{[{-1},{+1}]} \qquad \cos c:\;\mathbb{R}\mapsto{[{-1},{1}]}
+\end{equation*}
+quando però
+\begin{equation*}
+\arcsin x:\;{[{-1},{1}]}\mapsto{[{-\frac{\pi}{2}},{\frac{\pi}{2}}]} \quad 
+\arccos:\;{[{-1},{1}]}\mapsto{[0,{\pi}]}
+\end{equation*}
+I grafici sono i seguenti
+\subsubsection{$\arccos x$}
+\begin{center}
+	\begin{tikzpicture}
+	\tkzInit[xmin=-2,ymin=-0.5,xmax=2,ymax=3]
+	\tkzGrid
+	\tkzAxeXY
+	\draw[red, thick, domain=-1:1, samples=500] plot({\x}, {rad(acos(\x))});
+	\end{tikzpicture}
+\end{center}
+\subsubsection{$\arcsin x$}
+\begin{center}
+	\begin{tikzpicture}
+	\tkzInit[xmin=-2,ymin=-2,xmax=2,ymax=2]
+	\tkzGrid
+	\tkzAxeXY
+	\draw[red, thick, domain=-1:1, samples=500] plot({\x}, {rad(asin(\x))});
+	\end{tikzpicture}
+\end{center}
+
+\subsection{Formule goniometriche}
+Le formule goniometriche permettono di pasare da una funzione ad un'altra. Una delle caratteristiche 
+più importanti è l'esistenza dei così denominati \textbf{angoli associati}. Essi sono angoli 
+particolari che assumono valori facili da scambiare e ricordare. Essi sono
+\begin{alignat*}{2}
+\cos(\pi\pm x) & = -\cos x &\qquad \cos(-x) &= \cos x\\
+\sin(\pi\pm x) &= \mp\sin x & \sin(-x) &= -\sin x\\
+\tan(\pi\pm x) &= \pm\tan x & \tan(-x) &= -\tan x
+\end{alignat*}
+In associazione a questi che sono i più comuni, sono anche presenti i seguenti
+\begin{alignat*}{2}
+\cos\left(\frac{\pi}{2}\pm x\right) &= \mp\sin x &\qquad \cos\left(\frac{3}{2}\pi\pm x\right) = 
+\pm\sin x\\
+\sin\left(\frac{\pi}{2}\pm x\right) &= \pm\cos x &\qquad \sin\left(\frac{3}{2}\pi\pm x\right) = 
+-\cos x\\
+\tan\left(\frac{\pi}{2}\pm x\right) &= \mp\cot x &\qquad \tan\left(\frac{3}{2}\pi\pm x\right) = 
+\mp\cot x\\
+\end{alignat*}
+Si presti molta attenzione ai segni in quanto è molto facile confondersi.
+
+\subsubsection{Addizione e sottrazione}
+\begin{align*}
+\cos(\gamma\pm\theta) &= \cos\gamma\cos\theta\mp\sin\gamma\sin\theta\\
+\sin(\gamma\pm\theta) &= \sin\gamma\cos\theta\pm\cos\gamma\sin\theta\\
+\tan(\gamma\pm\theta) &= \frac{\tan\gamma\pm\tan\theta}{1\mp\tan\gamma\tan\theta}
+\end{align*}
+
+\subsubsection{Duplicazione}
+\improvement{Cercare come fare delle linee al posto delle graffe}
+\begin{alignat*}{2}
+\sin2x & =2\sin x\cos x &\qquad \cos2x &= \begin{cases}
+\cos^2x - \sin^2x\\
+1-2\sin^2x\\
+2\cos^2x-1
+\end{cases}\\
+\tan2x &= \frac{2\tan x}{1-\tan^2x} & \cot2 &= \frac{\cot^2-1}{2\cot x}
+\end{alignat*}
+
+\subsubsection{Bisezione}
+\begin{alignat*}{2}
+\sin\frac{x}{2}&=\pm\sqrt{\frac{1-\cos x}{2}} &\qquad \cos\frac{x}{2}&=\pm\sqrt{\frac{1+\cos x}{2}}\\
+\tan\frac{x}{2}&=\begin{dcases}
+\frac{\sin x}{1+\cos x}\\
+\frac{1-\cos x}{\sin x}
+\end{dcases} & \cot\frac{x}{2} &= \begin{dcases}
+\frac{1+\cos x}{\sin x}\\
+\frac{\sin x}{1-\cos x}
+\end{dcases}
+\end{alignat*}
+Il segno nella prima riga è da seglersi $+$ se $\sin\frac{x}{2}\geq0\lor\cos\frac{x}{2}\geq0$, $-$
+altrimenti.
+
+\subsubsection{Parametriche}
+Per queste formule poniamo
+\begin{equation*}
+t = \tan\frac{x}{2}
+\end{equation*}
+per comodità.
+\begin{alignat*}{2}
+\sin x &= \frac{2t}{1+t^2} &\qquad \cos x &= \frac{1-t^2}{1+t^2}\\
+\tan x &= \frac{2t}{1-t^2} & \cot x &= \frac{1-t^2}{2t}
+\end{alignat*}
+
+\subsubsection{Prostaferesi}
+\begin{align*}
+\sin p + \sin q &= 2\sin\frac{p+q}{2}\cos\frac{p-q}{2}\\
+\sin p-\sin q &=2\cos\frac{p+q}{2}\sin\frac{p-q}{2}\\
+\cos p+\cos q&=2\cos\frac{p+q}{2}\cos\frac{p-q}{2}\\
+\cos p-\cos q&=-2\sin\frac{p+q}{q}\sin\frac{p-q}{2}
+\end{align*}
+
+\subsubsection{Werner}
+\begin{align*}
+\cos\gamma\cos\theta &= \frac{1}{2}[\cos(\gamma+\theta)+\cos(\gamma-\theta)]\\
+\cos\gamma\sin\theta &= \frac{1}{2}[\sin(\gamma+\theta)-\sin(\gamma-\theta)]\\
+\sin\gamma\sin\theta &= \frac{1}{2}[\cos(\gamma-\theta)-\cos(\gamma+\theta)]
+\end{align*}
+
+\subsection{Equazioni goniometriche}
+Si definisce un'equazione goniometrica una qualsiasi equazione che abbia almeno una funzione 
+goniometrica e che ha soluzioni solo per particolari angoli.
+\subsubsection{$\sin x = m$}
+\begin{equation*}
+x = \arcsin m + 2k\pi \lor  x = \arcsin m +2k\pi-\pi
+\end{equation*}
+
+\subsubsection{$\cos x = m$}
+\begin{equation*}
+x = \pm\arccos m + 2k\pi
+\end{equation*}
+
+\subsubsection{$\tan x = m$}
+\begin{equation*}
+x = \arctan x + k\pi
+\end{equation*}
+
+\subsubsection{Equazioni lineari}
+Le equazioni lineari vengono così definite perché sono simili alla forma di una retta esplicita.
+\begin{equation*}
+a\sin x + b\cos x + c = 0
+\end{equation*}
+La risoluzione di questa può essere semplice per $b = 0 \lor a = 0$ in quanto si ritorna alle forme 
+precedenti. Se invece $a\neq0 \land b\neq0$ si hanno due strade:
+\begin{enumerate}
+	\item metodo algebrico;
+	\item metodo grafico;
+\end{enumerate}
+Il metodo algebrico è molto lungo e generalmente sconsigliato. In generale si sfrutta la 
+parametrizzazione di $\sin$ e $\cos$ in $\tan \frac{x}{2}$.\\
+Il metodo grafico consiste nel porre
+\begin{equation*}
+\cos x = X\,\text{ e } \sin x = Y
+\end{equation*}
+e poi risolvere il seguente sistema
+\begin{equation*}
+\begin{cases}
+aY + bX + c = 0\\
+X^2 + Y^2 = 1
+\end{cases}
+\end{equation*}
+
+\subsubsection{Equazioni omogenee}
+Si dicono omogenee se tutti i suoi elementi sono dello stesso grado. Per risolvere queste equazioni
+in questa forma, abbiamo varie strade
+\begin{itemize}
+	\item Se \textbf{è presente il termine di grado $n$ in $\sin x$}, si divide tutto per 
+	$\cos^nx\neq0$ ottenendo un'equazione di grado $n$ in $\tan x$ equivalente alla data;
+	\item Se \textbf{è presente il termine di grado $n$ in $\cos x$}, si divide tutto per
+	$\sin^nx\neq0$ ottenendo un'equazione di grado $n$ in $\cot x$ equivalente alla data;
+	\item Se \textbf{nessuno dei precedenti è valido}, si raccolga a fattore comune;
+\end{itemize}
+
+\section{Esercizi}
+Questa sezione è dedicata ad alcuni esercizi con relativa risoluzione e spiegazione. Il suo scopo
+è quello di chiarire i concetti teorici con esempi pratici.
+
+\subsection{\hyperref[sec:gen]{Generale}}\label{ex:generale}
+
+\subsubsection{\hyperref[subsec:gen:prodnot]{Prodotti notevoli}}
+\paragraph{Esercizio 1}
+Si scompongano il seguenti polinomi usando i prodotti notevoli.
+\begin{equation}\label{eq:ex:prodnot1}
+18x^3 - 4 -8x + 9x^2
+\end{equation}
+\begin{equation}\label{eq:ex:prodnot2}
+a^2x^2 - a^2y^2 - b^2x^2 + b^2y^2
+\end{equation}
+% Reset the counter
+\setcounter{equation}{0}
+\divisor
+
+Per semplificare \eqref{eq:ex:prodnot1} innanzitutto riscriviamo il polinomio in modo decrescente
+\begin{equation*}
+18x^3 + 9x^2- 8x - 4
+\end{equation*}
+Ora possiamo notare che i primi due elementi sono semplificabili, così come anche i secondi due per 
+uno stesso fattore.
+\begin{equation*}
+\underbrace{18x^3 + 9x^2}_{9x^2(2x + 1)} \overbrace{- 8x - 4}^{-4(2x + 1)} = 
+(9x^2 - 4)(2x + 1)
+\end{equation*}
+Ora abbiamo solo un altro prodotto da semplificare. Ricordando che $a^2-b^2 = (a-b)(a+b)$ possiamo
+espandere la prima parentesi
+\begin{equation*}
+\boxed{(3x-2)(3x+2)(2x+1)}
+\end{equation*}
+Per semplificare \eqref{eq:ex:prodnot2} possiamo raccogliere i coefficienti di $x$ e $y$
+\begin{equation*}
+a^2x^2 - a^2y^2 - b^2x^2 + b^2y^2 = x^2(a^2-b^2) + y^2(b^2-a^2)
+\end{equation*}
+Ora però, se si guardano attentamente i coefficienti, si vede che sono semplicemente opposti di segno,
+quindi possiamo portare fuori il meno dal secondo e renderli uguali
+\begin{equation*}
+x^2(a^2-b^2) + y^2(b^2-a^2) = x^2(a^2-b^2) -y^2(a^2-b^2) = (x^2 - y^2)(a^2-b^2)
+\end{equation*}
+Ricordando che $a^2-b^2 = (a-b)(a+b)$ possiamo espandere e concludere
+\begin{equation*}
+(x^2 - y^2)(a^2-b^2) = \boxed{(x-y)(x+y)(a-b)(a+b)}
+\end{equation*}
+
+\subsection{\hyperref[sec:geomanal]{Geometria Analitica}}\label{ex:geomanal}
+\subsubsection{\hyperref[subsec:geomanal:retta]{Rette}}
+\paragraph{Esercizio 1}
+Dato il triangolo di vertici $A(-2,3)$, $B(-2,-1)$ e $C(3,4)$, determinare:
+\begin{enumerate}
+	\item le equazioni dei lati; \label{enum:ex:retta:1:1}
+	\item il perimetro e l'area del triangolo \label{enum:ex:retta:1:2}
+	\item detta $t$ la retta passante per $C$ e perpendicolare alla retta $BC$ e detto $D$ il punto
+	d'intersezione di $t$ con l'asse $x$, l'area del quadrilatero ACDB; \label{enum:ex:retta:1:3}
+	\item i punti della retta $y = 2x$ che hanno distanza uguale a $3$ dalla retta AB.
+	\label{enum:ex:retta:1:4}
+\end{enumerate}
+\divisor
+
+Come in ogni esercizio di geometria, partiamo dal disegno. Lo miglioreremo man mano che andiamo avanti.
+\begin{center}
+	\begin{tikzpicture}[scale=0.75]
+		\coordinate (A) at (-2,3);
+		\coordinate (B) at (-2,-1);
+		\coordinate (C) at (3,4);
+		
+		\tkzInit[xmin=-5,ymin=-5,xmax=5,ymax=5]
+		\tkzGrid
+		\tkzAxeXY
+		
+		% Triangle
+		\draw[red, thick] (A) -- (B) -- (C) -- cycle;
+		\filldraw (A) circle (0.05)
+			node[above left]{$A$};
+		\filldraw (B) circle (0.05)
+			node[below left]{$B$};
+		\filldraw (C) circle (0.05)
+			node[above right]{$C$};
+	\end{tikzpicture}
+\end{center}
+
+Per i primi due punti, questo è tutto quello che ci serve.\\
+\textbf{Per il punto \ref{enum:ex:retta:1:1}}, possiamo semplicemente usare la formula per la retta 
+passante per due punti. Per convenienza, denominiamo le rette in base ai vertici che attraversano.\\
+Per la retta $AB$ è immediato: si nota che hanno la stessa ascissa, quindi la retta passante per i due
+punti è solo $\boxed{AB: x = -2}$.\\\\
+Per $AC$:
+\begin{align*}
+\frac{y-y_1}{y_2-y_1} = \frac{x-x_1}{x_2-x_1} &\rightarrow
+\frac{y-3}{4-3} = \frac{x-(-2)}{3-(-2)} \rightarrow\\
+\frac{y-3}{1} = \frac{x+2}{5} &\rightarrow y = \frac{x+2}{5} + 3\\
+y = \frac{1}{5}x + \frac{2}{5} + \frac{15}{5} &\rightarrow \boxed{AC: y = \frac{1}{5}x + \frac{17}{5}}
+\end{align*}
+Infine per $BC$
+\begin{align*}
+\frac{y-y_1}{y_2-y_1} = \frac{x-x_1}{x_2-x_1} &\rightarrow
+\frac{y+1}{4+1} = \frac{x-(-2)}{3+2}\\
+\frac{y+1}{5} = \frac{x+2}{5} &\rightarrow \boxed{BC: y = x + 1}
+\end{align*}
+
+\textbf{Ci avviamo ora al punto \ref{enum:ex:retta:1:2}} e per l'area possiamo usare la matrice
+\begin{equation*}
+\mathscr{A}(ABC) = \frac{1}{2}\left\lvert 
+\begin{matrix}
+x_1 & y_1 & 1\\
+x_2 & y_2 & 1\\
+x_3 & y_3 & 1
+\end{matrix}\right\rvert
+\end{equation*}
+Che poi si semplifica usando Sarrus in
+\begin{equation*}
+\mathscr{A}(ABC) = \frac{1}{2}\left\lvert x_1y_2 + y_1x_3 + x_2y_3 -x_3y_2 -y_3x_1 -x_2y_1\right\rvert
+\end{equation*}
+E sostituendo otteniamo
+\begin{align*}
+\mathscr{A}(ABC) &= \frac{1}{2}\left\lvert -2\cdot1 + 3\cdot3 -2\cdot4 -3\cdot1 - 4\cdot(-2) +
+2\cdot3\right\rvert\\
+\mathscr{A}(ABC) &= \frac{1}{2}\left\lvert -2+9-8-3+8+6\right\rvert\\
+\Aboxed{\mathscr{A}(ABC) &= 10}
+\end{align*}
+Per trovare il perimetro, possiamo usare la distanza tra due punti e trovare tutte le lunghezze.\\
+$AB$ è immediato in quanto hanno la stessa ascissa. $\boxed{AB = 3 + 1 = 4}$.\\\\
+Per trovare $AC$
+\begin{align*}
+AC &= \sqrt{(x_C-x_A)^2+(y_C-y_A)^2} \rightarrow \\
+AB &= \sqrt{(3+2)^2 + (4-3)^2} = \sqrt{5^2+1^2} \\
+ &= \sqrt{25+1} = \boxed{\sqrt{26}}
+\end{align*}
+Per trovare $BC$
+\begin{align*}
+BC &= \sqrt{(x_C-x_B)^2+(y_C-y_B)^2} \rightarrow \\
+BC &= \sqrt{(3+2)^2+(4+1)^2} = \sqrt{5^2+5^2} =
+\sqrt{25+25} \\
+&= \sqrt{50} = \sqrt{5^2\cdot2} = \boxed{5\sqrt{2}}
+\end{align*}
+E ora non resta che sommare
+\begin{equation*}
+2p = AB + AC + BC = 4 + \sqrt{26} + 5\sqrt{2}
+\end{equation*}
+
+\textbf{Per il punto \ref{enum:ex:retta:1:3}} aggiorniamo il disegno
+\begin{center}
+	\begin{tikzpicture}[scale=0.75]
+	\coordinate (A) at (-2,3);
+	\coordinate (B) at (-2,-1);
+	\coordinate (C) at (3,4);
+	\coordinate (D) at (0,7);
+	
+	
+	%\draw[step=1,very thin,darkgray] (-5,-3) grid (5,8);
+	%\draw[thick,-stealth] (-5,0) -- (5,0)
+	%	node[pos=1,above]{$x$};
+	%\draw[thick,-stealth] (0,-3) -- (0,8)
+	%	node[pos=1,right]{$y$};
+	\tkzInit[xmax=5,ymax=8,xmin=-5,ymin=-3]
+	\tkzGrid
+	\tkzAxeXY
+	
+	\filldraw[red, fill opacity = 0.1](A) -- (B) -- (C) -- cycle;
+	\filldraw[blue, fill opacity = 0.3] (A) -- (B) -- (C) -- (D) -- cycle;
+	
+	% Triangle
+	\filldraw (A) circle (0.05)
+		node[above left]{$A$};
+	\filldraw (B) circle (0.05)
+		node[below left]{$B$};
+	\filldraw (C) circle (0.05)
+		node[above right]{$C$};
+	\filldraw (D) circle (0.05)
+		node[above right]{$D$};
+	
+	\draw[dashed, blue, thick] (5,2) -- (-1,8)
+		node[pos=0.25, above]{$t$};
+	\end{tikzpicture}
+\end{center}
+Noi dobbiamo calcolare l'area di $ABCD$. Abbiamo varie strade che possiamo seguire. Ne propongo una
+che può essere usata per praticamente ogni figura. Il tutto si basa su trovare l'area del rettangolo 
+che contiene la figura e togliere dei triangoli che possiamo individuare. Nel nostro caso
+
+\begin{center}
+	\begin{tikzpicture}[scale=0.75]
+	\coordinate (A) at (-2,3);
+	\coordinate (B) at (-2,-1);
+	\coordinate (C) at (3,4);
+	\coordinate (D) at (0,7);
+	
+	\tkzInit[xmin=-5,ymin=-3,xmax=5,ymax=8]
+	\tkzGrid
+	\tkzAxeXY
+	
+	%\filldraw[red, fill opacity = 0.1](A) -- (B) -- (C) -- cycle;
+	\filldraw[blue, fill opacity = 0.2] (A) -- (B) -- (C) -- (D) -- cycle;
+	\filldraw[magenta, fill opacity = 0.3] (B) -- (C) -- (3,-1) -- cycle;
+	\filldraw[orange, fill opacity = 0.3] (A) -- (D) -- (-2,7) -- cycle;
+	\filldraw[cyan, fill opacity = 0.3] (D) -- (C) -- (3,7) -- cycle;
+	
+	% Triangle
+	\filldraw (A) circle (0.05)
+		node[above left]{$A$};
+	\filldraw (B) circle (0.05)
+		node[below left]{$B$};
+	\filldraw (C) circle (0.05)
+		node[above right]{$C$};
+	\filldraw (D) circle (0.05)
+		node[above right]{$D$};
+	\filldraw (3,-1)  circle (0.05)
+		node[below right]{$X$};
+	\filldraw (-2,7)  circle (0.05)
+		node[above left]{$Y$};
+	\filldraw (3,7) circle (0.05)
+		node[above right]{$Z$};
+	
+	\draw[dashed, blue, thick] (5,2) -- (-1,8)
+		node[pos=0.25, above]{$t$};
+	\node[magenta] (F1) at (2,1){$F1$};
+	\node[red] (F2) at (-1.5,6.5){$F2$};
+	\node[blue] (F3) at (2,6){$F3$};
+	\end{tikzpicture}
+\end{center}
+
+vediamo che possiamo trovare l'area facendo
+\begin{equation*}
+\mathscr{A}(YZXB) - \mathscr{A}(F1) - \mathscr{A}(F2) - \mathscr{A}(F3)
+\end{equation*}
+o più semplicemente, sostituendo
+\begin{align*}
+\mathscr{A}(ABCD) &= BX\cdot BY - \overbrace{\frac{5^2}{2}}^{\mathscr{A}(\mathcolor{magenta}{F1})} - 
+\overbrace{\frac{2\cdot4}{2}}^{\mathscr{A}(\mathcolor{orange}{F2})} -
+\overbrace{\frac{3^2}{2}}^{\mathscr{A}(\mathcolor{blue}{F3})} \\
+&= 5\cdot8 - 12.5 - 4 -4.5 = 40 - 21 = 19
+\end{align*}
+
+Ora per \textbf{l'ultimo punto} possiamo semplificare il disegno e pulirlo un po'.
+\begin{center}
+	\begin{tikzpicture}[scale=0.75]
+	
+	\tkzInit[xmin=-5,ymin=-11,xmax=5,ymax=3]
+	\tkzGrid
+	\tkzAxeXY
+
+	\draw[red, thick] (-2,-11) -- (-2,3);
+	\draw[blue, thick] (-5,-10) -- (1.5,3)
+		node[pos=0.75, right]{$y = 2x$};
+	\filldraw (-5,-10) circle (0.05);
+	\filldraw (1,2) circle (0.05);
+	
+	\draw[dashed, orange, very thick] (1,2) -- ++(-3,0);
+	\draw[dashed, orange, very thick] (-5,-10) -- ++(3,0);
+	\end{tikzpicture}
+\end{center}
+
+Per prima cosa dobbiamo trasformare in forma esplicita la retta $x = -2$ per poter usare la formula
+della distanza Punto-Retta.
+\begin{equation*}
+r: x + 2 = 0
+\end{equation*}
+E ora possiamo scrivere la formula della distanza
+\begin{align*}
+d &= \frac{\left\lvert ax_P + by_P+c\right\rvert}{\sqrt{a^2+b^2}} \rightarrow
+3 = \frac{\left\lvert x + 2\right\rvert}{\sqrt{1^2}} \\
+3 &= \frac{\left\lvert x + 2\right\rvert}{\sqrt{1}} \rightarrow
+3\cdot1 = \left\lvert x + 2\right\rvert\\
+\pm3 &= x + 2 \rightarrow \begin{dcases}
+x + 5 = 0\\
+x - 1 = 0
+\end{dcases} \rightarrow
+\begin{dcases}
+x = -5\\
+x = 1
+\end{dcases}
+\end{align*}
+Abbiamo le ascisse di intersezione con la retta $y = 2x$. Ora possiamo sostituire e trovare $y$.
+\begin{equation*}
+\begin{dcases}
+y = -5\cdot2\\
+y = 1\cdot2
+\end{dcases} \rightarrow
+\boxed{\begin{dcases}
+P_1(-5,-10)\\
+P_2(1,2)
+\end{dcases}}
+\end{equation*}
+
+\subsubsection{\hyperref[subsec:geomanal:fasciorette]{Fasci di rette}}
+\paragraph{Esercizio 1}
+Dopo aver verificato che l'equazione
+\begin{equation*}
+(2k+1)x -4ky + 3 + 2k = 0 \qquad (k\in\mathbb{R})
+\end{equation*}
+rappresenta un fascio proprio di rette, determinare:
+\begin{enumerate}
+	\item il centro $C$ del fascio; \label{enum:ex:retta:2:1}
+	\item la retta $r_1$ del fascio perpendicolare alla bisettrice del $\ang{2}$ e $\ang{3}$ quadrante;
+	detto $H$ il loro punto di incontro, trovare poi l'area del triangolo $CHO$, essendo $O$ l'orgine
+	degli assi;\label{enum:ex:retta:2:2}
+	\item le rette del fascio che intersecano il segmento $OH$;\label{enum:ex:retta:2:3}
+	\item le bisettrici degli angoli formati dalle rette $CO$ e $CH$.\label{enum:ex:retta:2:4}
+\end{enumerate}
+\divisor
+
+Prima di avere il disegno, dobbiamo avere qualcosa da disegnare. Se disegnassimo l'intero fascio 
+sarebbe come colorare tutto il piano.\\
+\textbf{Per il punto \ref{enum:ex:retta:2:1}} dobbiamo mettere a sistema le due rette generatrici.
+Nella forma attuale, le due equazioni non sono facilmente riconoscibili, quindi raccogliamo $k$ così
+da isolare le due rette
+\begin{align*}
+(2k+1)x -4ky + 3 + 2k = 0 &\rightarrow 2kx+x-4ky+3+2k = 0 \rightarrow\\
+k\underbrace{(2x-4y+2)}_{\text{Generatrice 1}}&+\underbrace{x+3}_{\text{Generatrice 2}} = 0
+\end{align*}
+Avendo ora questa forma, possiamo evidentemente vedere che effettivamente si tratta di un fascio 
+proprio di rette.\\
+Come trovare il centro del fascio? Avendo le due generatrici, le mettiamo a sistema e troviamo la loro
+intersezione
+\begin{align*}
+\begin{dcases}
+2x-4y+2=0\\
+x=-3
+\end{dcases} &\rightarrow
+\begin{dcases}
+-x-4y+2=0\\
+x=-3
+\end{dcases} \rightarrow\\
+\begin{dcases}
+\cancel{-4}y = \cancelto{-1}{4}\\
+x=-3
+\end{dcases} &\rightarrow
+\boxed{\begin{dcases}
+y = -1\\
+x = -3
+\end{dcases}}
+\end{align*}
+
+\textbf{Per il punto \ref{enum:ex:retta:2:2}} facciamo il disegno
+\begin{center}
+	\begin{tikzpicture}
+		\coordinate (C) at (-3,-1);
+		\coordinate (H) at (-1,1);
+		
+		\tkzInit[xmin=-4,ymin=-2,xmax=3,ymax=3]
+		\tkzGrid
+		\tkzAxeXY
+		
+		\filldraw[orange, fill opacity = 0.3] (C) -- (H) -- (0,0) -- cycle;
+		
+		\draw[blue] (-3,3) -- (2,-2)
+			node[pos=0.25, left]{$y = -x$};
+		\draw[red] (-4,-2) -- (1,3)
+			node[pos=0.75, right]{$y = x+2$};
+			
+		\filldraw (C) circle (0.05)
+			node[below]{$C$};
+		\filldraw (H) circle (0.05)
+			node[above]{$H$};
+	\end{tikzpicture}
+\end{center}
+Ho già inserito le cose che ora andiamo a trovare.\\
+Innanzitutto sappiamo che la bisettrice del $\ang{2}$ e $\ang{3}$ quadrante è $y=-x$, quindi sappiamo
+che la $m$ della perpendicolare deve essere uguale a $1$. Sappiamo anche che fa parte del fascio 
+quindi passa per $C(-3,-1)$.
+\begin{equation*}
+y-y_0 = m(x-x_0) \rightarrow y+1 = x+3 \rightarrow \boxed{y = x+2}
+\end{equation*}
+E ora ci troviamo $H$, ovvero il punto di intersezione
+\begin{equation*}
+\begin{dcases}
+y = x+2\\
+y = -x
+\end{dcases} \rightarrow
+\begin{dcases}
+-x = x+2\\
+y = -x
+\end{dcases} \rightarrow
+\boxed{\begin{dcases}
+x = -1\\
+y = 1
+\end{dcases}}
+\end{equation*}
+Ora possiamo trovare l'area del triangolo
+\begin{align*}
+\mathscr{A}(CHO) &= \frac{1}{2}\left\lvert x_1y_2 + y_1x_3 + x_2y_3 -x_3y_2 -y_3x_1-x_2y_1\right\rvert
+\rightarrow\\
+\mathscr{A}(CHO) &= \frac{1}{2}\left\lvert x_1y_2 + \cancel{y_1x_3} + \cancel{x_2y_3} 
+-\cancel{x_3y_2} -\cancel{y_3x_1} -x_2y_1\right\rvert \rightarrow \\
+\mathscr{A}(CHO) &= \frac{1}{2}\left\lvert x_1y_2 -x_2y_1\right\rvert \rightarrow
+\mathscr{A}(CHO) = \frac{1}{2}\left\lvert -3 -1\right\rvert =\\
+\frac{1}{2}&\left\lvert-4\right\rvert \rightarrow \mathscr{A}(CHO) = \frac{1}{2}\cdot4 = \boxed{2}
+\end{align*}
+
+\textbf{Il punto \ref{enum:ex:retta:2:3}}, richiede di trovare i $k$ per cui una retta del fascio 
+passi in mezzo al segmento $OH$. La prima cosa da fare è quindi trovare i $k$ degli "estremi" $O$ e
+$H$.
+\begin{equation*}
+k_O = -\frac{a_1x_O+b_1y_O+c_1}{ax_O+by_O+c} \rightarrow k_O = -\frac{c_1}{c} = -\frac{3}{2}
+\end{equation*}
+\begin{equation*}
+k_H = -\frac{a_1x_H+b_1y_H+c_1}{ax_H+by_H+c} \rightarrow k_H = -\frac{-1+0+3}{-2-4+2} = \frac{1}{2}
+\end{equation*}
+
+Ora sapendo che la retta esclusa attraversa anch'essa il segmento (per dimostrarlo basta 
+semplicemente) disegnarla, deduciamo che ai lati della esclusa ci siano le rette per $k\to\pm\infty$,
+ovvero man mano che ci si avvicina alla retta esclusa più ci si avvicina all'infinito. Questo ci porta
+a trovare l'intervallo che è
+\begin{equation*}
+\boxed{k\leq-\frac{3}{2} \vee k\geq\frac{1}{2}}
+\end{equation*}
+
+Infine, il \textbf{punto \ref{enum:ex:retta:2:4}} richiede un po' di ragionamento. Una bisettrice è la
+retta passante per due punti equidistanti alle rette dell'angolo. Per prima cosa quindi, definiamo
+$P(x,y)$ un punto del piano in modo che sia $d_{P,CO} = d_{P,CH}$. Per prima cosa dunque dobbiamo 
+trovare le rette che passano per $CO$ e $CH$.
+\begin{align*}
+\frac{y-y_1}{y_2-y_1} &= \frac{x-x_1}{x_2-x_1} \rightarrow
+\frac{y+1}{1+1} = \frac{x+3}{-1+3} \rightarrow\\
+y+1 &= x+3 \rightarrow CO:\, x-y+2 = 0
+\end{align*}
+\begin{align*}
+\frac{y-y_1}{y_2-y_1} &= \frac{x-x_1}{x_2-x_1} \rightarrow
+\frac{y+1}{1}= \frac{x+3}{3} \rightarrow\\
+3y+3 &= x+3 \rightarrow CH:\, -x+3y=0
+\end{align*}
+E ora possiamo scrivere le formule per le distanze
+\begin{align*}
+\frac{\lvert x-y+2\rvert}{1} = \frac{\lvert -x+3y\rvert}{\sqrt{10}} &\rightarrow\\
+\sqrt{10}(\lvert x-y+2\rvert) = \lvert -x+3y\rvert &\rightarrow\\
+\sqrt{10}x-\sqrt{10}y+2\sqrt{10} = \pm(-x+3y) &\rightarrow\\
+\begin{cases}
+\sqrt{10}x-\sqrt{10}y+2\sqrt{10} = -x+3y\\
+\sqrt{10}x-\sqrt{10}y+2\sqrt{10} = x-3y
+\end{cases} &\rightarrow\\
+\begin{cases}
+x(\sqrt{10}+1)-y(\sqrt{10}+3) + 2\sqrt{10}\\
+x(\sqrt{10}-1)-y(\sqrt{10}-3) + 2\sqrt{10}
+\end{cases} &\rightarrow\\
+\boxed{x(\sqrt{10}\pm1)-y(\sqrt{10}\pm3)+2\sqrt{10}}
+\end{align*}
+
+\subsubsection{\hyperref[subsec:geomana:circ]{Circonferanza}}\label{ex:circ}
+\paragraph{Esercizio 1}
+Determinare l'equazione della circonferenza passante per $A(-2,2)$ e $B(4,-4)$ e avente il centro
+sulla retta $x+2y-8=0$, e le equazioni delle rette $t_1$ e $t_2$ passanti per $H(0,8)$ e tangenti 
+alla circonferenza. detta poi $t_1$ la tangente con coefficiente angolare positivo, determinare le 
+rette ad essa perpendicolari che formano con gli assi cartesiani un triangolo di area $\dfrac{54}{5}$.
+Determinare, inoltre, i punti di $t_1$ che hanno distanza uguale a $\sqrt{2}$ dalla retta $x+y-1=0$.
+\divisor
+
+Per prima cosa dobbiamo trovare l'equazione della circonferenza $\mathscr{C}$. Come fare? Sappiamo che
+$A$ e $B$ appartengono alla circonferenza e che il centro appartiene a $x+2y-8=0$. Mettiamo queste
+informazioni a sistema e risolviamo
+\begin{align*}
+&\begin{dcases}
+4+4-2a+2b+c=0\\
+16+16+4a-4b+c=0\\
+-\frac{a}{2}-b-8=0
+\end{dcases}\rightarrow\\
+&\begin{dcases}
+-8+2a-2b=c\\
+32+4a-4b-8+2a-2b=0\\
+-\frac{a}{2}-b-8=0
+\end{dcases}\rightarrow\\
+&\begin{dcases}
+-8+2a-2b=c\\
+\cancelto{4}{24}+\cancelto{1}{6}a-\cancelto{1}{6}b=0\\
+-\frac{a}{2}-b-8=0
+\end{dcases}\rightarrow
+\begin{dcases}
+-8+2a-2b=c\\
+4+a+\frac{a}{2}+8=0\\
+b=-\frac{a}{2}-8
+\end{dcases}\rightarrow\\
+&\begin{dcases}
+-8+2a-2b=c\\
+\frac{\cancel{3}}{\cancel{2}}a = -\cancelto{8}{12}\\
+b = -\frac{a}{2}-8
+\end{dcases}\rightarrow
+\begin{dcases}
+\cancel{-8}-16\cancel{+8}=c\\
+a = -8\\
+b = -\frac{8}{2}-8
+\end{dcases}\rightarrow\\
+&\begin{dcases}
+c = -16\\
+a = -8\\
+b = -4
+\end{dcases} \rightarrow \boxed{\mathscr{C}:\,x^2+y^2-8x-4y-16=0}
+\end{align*}
+Avendo ora l'equazione possiamo disegnarla.
+\begin{center}
+	\begin{tikzpicture}[scale=0.5]
+		\coordinate (C) at (4,2);
+		\coordinate (A) at (-2,2);
+		\coordinate (B) at (4,-4);
+		\coordinate (H) at (0,8);
+		\def\R{6};
+		
+		\tkzInit[xmin=-5,ymin=-5,xmax=11,ymax=9]
+		\tkzGrid
+		\tkzAxeXY
+		
+		\draw (C) circle(\R);
+		\draw[orange, thick] (-5,8) -- (11,8)
+			node[pos=0.25,above]{$t_2$};
+		\draw[red,thick] (-5,-4) -- (0.41,9)
+			node[pos=0.25,above left]{$t_1$};
+		
+		\filldraw (C) circle (0.1)
+			node[above]{$C(4,2)$};
+		\filldraw (A) circle (0.1)
+			node[above]{$A(-2,2)$};
+		\filldraw (B) circle (0.1)
+			node[above]{$B(4,-4)$};
+		\filldraw[magenta] (H) circle (0.1)
+			node[below right]{$H(0,8)$};
+	\end{tikzpicture}
+\end{center}
+Per trovare le due tangenti alla circonferenza che passano per $H$, ci troviamo il fascio di rette 
+che ha $H$ come centro
+\begin{equation*}
+y-y_0=m(x-x_0) \rightarrow y-mx-8=0
+\end{equation*}
+e sappiamo che le tangenti hanno il loro punto di tangenza che dista dal centro esattamente $r$, 
+quindi
+\begin{align*}
+\frac{\lvert ax_P + y_P + c_P\rvert}{\sqrt{a^2+b^2}} = d &\rightarrow
+\frac{\lvert-4m+2-8\rvert}{\sqrt{1^2+m^2}} = 6 \rightarrow\\
+\lvert-4m+2-8\rvert^2 &= (6\sqrt{1^2+m^2}) \rightarrow\\
+16m^2\cancel{+36}+48m&=\cancel{36} + 36m^2 \rightarrow\\
+\cancelto{-5}{-20}m^2+\cancelto{12}{48}m = 0 &\rightarrow 5m^2-12m =0 \\
+m_{1/2} = \frac{12\pm\sqrt{144+0}}{10} &\rightarrow \boxed{\begin{dcases}
+m_1 = \frac{12}{5}\\
+m_2 = 0
+\end{dcases}}
+\end{align*}
+e le tangenti sono
+\begin{equation*}
+\boxed{t_1:\,y = \frac{12}{5}x+8 \qquad t_2:\, y=8}
+\end{equation*}
+
+Ora dobbiamo trovare tutte le perpendicolari a $t_1$ che, con l'interesezione degli assi forma un
+triangolo di area $\dfrac{54}{5}$. Per farlo, intanto troviamo le perpendicolari.
+\begin{equation*}
+\mathscr{F_\perp}:\,y=-\frac{5}{12}x + q
+\end{equation*}
+E ora possiamo trovare le intersezioni con gli assi
+\begin{equation*}
+\begin{dcases}
+x = 0\\
+y = q
+\end{dcases}\qquad
+\begin{dcases}
+x = -\frac{12}{5}q\\
+y = 0
+\end{dcases}
+\end{equation*}
+
+E ora imponiamo che l'area del triangolo formato con gli assi sia uguale a $\dfrac{54}{5}$
+\begin{equation*}
+\frac{54}{5} = \frac{1}{2}\left\lvert q\cdot-\frac{12}{5}q\right\rvert \rightarrow
+\frac{54}{5} = \frac{6}{5}\lvert q^2\rvert \rightarrow 9 = q^2 \rightarrow q = \pm3
+\end{equation*}
+quindi le rette cercate sono
+\begin{equation*}
+\boxed{y = -\frac{5}{12}x\pm3}
+\end{equation*}
+
+Finalmente possiamo avviarci alla conclusione. Dobbiamo cercare i punti di $t_1$ che distano 
+$\sqrt{2}$ da $x+y-1$. Per prima cosa quindi, troviamo le rette che distano $\sqrt{2}$ dalla data
+\begin{align*}
+\frac{\lvert x+y-1\rvert}{\sqrt{2}} = \sqrt{2} \rightarrow \lvert x+y-1\rvert = 2 \rightarrow\\
+\begin{cases}
+x+y-1=2\\
+x+y-1=-2
+\end{cases} \rightarrow
+\begin{cases}
+x+y-3=0\\
+x+y+1=0
+\end{cases}
+\end{align*}
+e ora non resta che trovare le intersezioni con $t_1$
+\begin{equation*}
+\begin{dcases}
+x+y+1=0\\
+y=\frac{12}{5}x+8
+\end{dcases}\rightarrow
+\begin{dcases}
+x+\frac{12}{5}x+8+1=0\\
+y=\frac{12}{5}x+8
+\end{dcases}\rightarrow
+\boxed{\begin{dcases}
+x = -\frac{45}{17}\\
+y = \frac{76}{17}
+\end{dcases}}
+\end{equation*}
+\begin{equation*}
+\begin{dcases}
+x+y-3=0\\
+y=\frac{12}{5}x+8
+\end{dcases}\rightarrow
+\begin{dcases}
+x+\frac{12}{5}x+5=0\\
+y=\frac{12}{5}x+8
+\end{dcases}\rightarrow
+\boxed{\begin{dcases}
+x = -\frac{25}{17}\\
+y = \frac{76}{17}
+\end{dcases}}
+\end{equation*}
+
+\subsubsection{\hyperref[subsec:geomanal:fasciocirc]{Fasci di circonferenze}}
+\paragraph{Esecizio 1}
+Avendo il fascio
+\begin{equation*}
+x^2+y^2-2(k+1)x-2ky-4k+1=0
+\end{equation*}
+indicare con $\gamma_1$ quella il cui centro $C$ appartiene
+alla retta $3x-y+5=0$. Detti $E$ ed $F$ i punti di intersezione di $\gamma_1$ con l'asse $y$, trovare
+le equazioni delle tangenti a $\gamma_1$ in $E$ ed $F$; detto inoltre $T$ il loro punto di 
+intersezione, dopo aver dimostrato che il quadrilatero $CETF$ è un quadrato, calcolarne l'area. 
+Determinare inoltre l'equazione della circonfereza d centro $T$ e tangente esternamente a $\gamma_1$.
+\divisor
+
+Per prima cosa riordiniamo l'equazione per avere tutti i coefficienti
+\begin{align*}
+x^2+y^2-2(k+1)x-2ky-4k+1=0 \rightarrow\\
+x^2+y^2+x(-2k-2)+y(-2k)+4k+1=0
+\end{align*}
+avendo ora i coefficienti, possiamo imporre la condizione che il centro sia un punto della retta
+\begin{align*}
+&3\left(-\frac{a}{2}\right)-\left(-\frac{b}{2}\right)-5=0 \rightarrow
+3\frac{2k+2}{2}-k-5=0 \rightarrow\\ &6k+6-2k-10=0\rightarrow k=1
+\end{align*}
+e sostituire per ottenere
+\begin{equation*}
+\boxed{\gamma_1:\, x^2+y^2-4x-2y-3=0}
+\end{equation*}
+Prima di proseguire, disegnamo la circonferenza
+\begin{center}
+	\begin{tikzpicture}[scale=0.75]
+		\coordinate (C) at (2,1);
+		\coordinate (E) at (0,3);
+		\coordinate (F) at (0,-1);
+		\coordinate (T) at (-2,1);
+		\def\R{2.8284};
+		
+		\tkzInit[xmin=-5,ymin=-5,xmax=5,ymax=5]
+		\tkzGrid
+		\tkzAxeXY
+		
+		\draw (C) circle(\R);
+		\draw[thick, red, domain=-5:2] plot(\x,\x+3);
+		\draw[thick,red, domain=-5:4] plot(\x,-\x-1);
+		
+		\filldraw (C) circle (0.05)
+			node[below]{$C(2,1)$};
+		\filldraw[red] (E) circle (0.05)
+			node[left]{$E(0,3)$};
+		\filldraw[red] (F) circle (0.05)
+			node[left]{$F(0,-1)$};
+		\filldraw[blue] (T) circle (0.05)
+			node[left]{$T(-2,1)$};
+	\end{tikzpicture}
+\end{center}
+Sono già segnati i punti che ora andremo a trovare: $E$ e $F$ ovvero le intersezioni con $y$.
+\begin{equation*}
+y^2-2y-3=0\rightarrow
+y_{1/2} = \frac{2\pm\sqrt{4+12}}{2} = \frac{2\pm4}{2} \rightarrow \begin{cases}
+y_1 = 3\\
+y_2 = -1
+\end{cases}
+\end{equation*}
+Quindi i due punti sono
+\begin{equation*}
+\boxed{E(0,3)\qquad F(0,-1)}
+\end{equation*}
+
+Ora troviamo le tangenti in $E$ ed $F$.
+\begin{align*}
+&x\cdot x_P+y\cdot y_P+a\frac{x+x_P}{2}+b\frac{y+y_P}{2}+c = 0\rightarrow\\
+&t_E:\, x\cdot0+y\cdot3-4\frac{x+0}{2}-2\frac{y+3}{2}-3=0 \rightarrow\\
+&\boxed{-x+y-3=0 \rightarrow y = x+3}
+\end{align*}
+e
+\begin{align*}
+&x\cdot x_P+y\cdot y_P+a\frac{x+x_P}{2}+b\frac{y+y_P}{2}+c = 0\rightarrow\\
+&t_F:\, x\cdot0+y\cdot(-1)-4\frac{x+0}{2}-2\frac{y-1}{2}-3=0\rightarrow\\
+&\boxed{-x-y-1=0\rightarrow y=-x-1}
+\end{align*}
+E ora possiamo trovare il punto di intersezione
+\begin{align*}
+\begin{cases}
+y=x+3\\
+y=-x-1
+\end{cases}\rightarrow
+\begin{cases}
+-x-1=x+3\\
+y=-x-1
+\end{cases}\rightarrow
+\begin{cases}
+x = -2\\
+y=1
+\end{cases}
+\end{align*}
+Aggiorniamo ora il disegno per mettere in luce il quadrato $CETF$
+\begin{center}
+	\begin{tikzpicture}[scale=0.75]
+	\coordinate (C) at (2,1);
+	\coordinate (E) at (0,3);
+	\coordinate (F) at (0,-1);
+	\coordinate (T) at (-2,1);
+	\def\R{2.8284};
+	
+	\tkzInit[xmin=-5,ymin=-5,xmax=5,ymax=5]
+	\tkzGrid
+	\tkzAxeXY
+	
+	\filldraw[orange, fill opacity=0.3] (C) -- (E) -- (T) -- (F) -- cycle;
+		
+	\draw (C) circle(\R);
+	\draw[thick, red, domain=-5:2] plot(\x,\x+3);
+	\draw[thick,red, domain=-5:4] plot(\x,-\x-1);
+	
+	\filldraw (C) circle (0.05)
+	node[below]{$C(2,1)$};
+	\filldraw[red] (E) circle (0.05)
+	node[left]{$E(0,3)$};
+	\filldraw[red] (F) circle (0.05)
+	node[left]{$F(0,-1)$};
+	\filldraw[blue] (T) circle (0.05)
+	node[left]{$T(-2,1)$};
+	\end{tikzpicture}
+\end{center}
+
+Come possiamo dimostrare che è un quadrato? Proviamo a guardare gli angoli: l'angolo $C\widehat{F}T$
+e l'angolo $C\widehat{E}T$ sono sicuramente retti in quanto sono angoli formati da un raggio e una 
+tangente e per definizione stessa di tangente sono retti. Anche l'angolo $F\widehat{T}E$ è retto in
+quanto i coefficienti angolari delle tangenti sono reciprocamente opposti ($m_1m_2=-1$). Ora manca
+solo l'angolo $E\widehat{C}F$ da dimostrare. Possiamo semplicemente guardare il coefficiente angolare
+della retta che passa tra $F$ e $C$ e vedere che risulta pari a 
+\begin{equation*}
+m = \frac{y_2-y_1}{x_2-x_1} \rightarrow m= \frac{1+1}{2-0} = 1
+\end{equation*}
+che è esattamente uguale a quello di $t_E$ quindi le due rette sono parallele. Se $t_F$ incide su 
+$t_E$ con un angolo retto, deve per forza incidere con lo stesso angolo anche nelle sue parallele.\\
+Abbiamo dimostrato che ha quattro angoli retti, per dimostrare che è un quadrato basta vedere che due
+dei lati (che formano un angolo retto) sono uguali in quanto sono raggi. Quindi $CETF$ è un 
+quadrato.\\
+Per trovarne l'area basta elevare alla seconda la lunghezza del raggio
+\begin{equation*}
+r = \sqrt{x_C^2+y_C^2-c} \rightarrow r = \sqrt{8} = 2\sqrt{2}
+\end{equation*}
+E quindi l'area vale
+\begin{equation*}
+\mathscr{A}(CETF) = r^2 \rightarrow \mathscr{A}(CETF) = \sqrt{8}^2 = 8
+\end{equation*}
+
+Infine dobbiamo trovare la circonferenza con centro $T$ e tangente esternamente a $\gamma_1$. Per 
+farlo abbiamo molti modi, ecco il più semplice. Sappiamo già quanto deve valere il raggio perché 
+tocchi la circonferenza. Deve essere pari a $TC-r_{\gamma_1}$. Quindi
+\begin{equation*}
+r = TC-r_{\gamma_1} \rightarrow r = 4-2\sqrt{2}
+\end{equation*}
+
+Usando la formula per trovare il raggio possiamo scrivere
+\begin{equation*}
+r = \sqrt{\frac{a^2}{4}+\frac{b^2}{4}-c} \rightarrow 
+4-2\sqrt{2} = \sqrt{\frac{a^2}{4}+\frac{b^2}{4}-c}
+\end{equation*}
+Abbiamo 3 variaibli quindi dobbiamo trovare un modo per toglierne 2. $a$ e $b$ sono utilizzate anche 
+nella formula per trovare il centro della circonferenza. Si da il caso che noi abbiamo il centro!
+Quindi
+\begin{equation*}
+\begin{dcases}
+-\frac{a}{2} = -2\\
+-\frac{b}{2} = 1
+\end{dcases}\rightarrow
+\begin{dcases}
+a=4\\
+b=-2
+\end{dcases}
+\end{equation*}
+e ora possiamo trovare $c$
+\begin{align*}
+4-2\sqrt{2} = \sqrt{\frac{a^2}{4}+\frac{b^2}{4}-c} &\rightarrow 
+4-2\sqrt{2} = \sqrt{\frac{16}{4}+\frac{4}{4}-c} \rightarrow\\
+4-2\sqrt{2} = \sqrt{5-c} &\rightarrow
+24-16\sqrt{2} = 5-c \rightarrow\\
+c &= 16\sqrt{2}-19
+\end{align*}
+Quindi la nostra circonferenza sarà
+\begin{equation*}
+\boxed{\gamma:\, x^2+y^2+4x-2y+16\sqrt{2}-19=0}
+\end{equation*}
+
+\subsection{\hyperref[subsec:geomanal:parabola]{Parabola}}\label{ex:parabola}
+\paragraph{Esercizio 1}
+Nel piano $xOy$ determinare
+\begin{enumerate}
+	\item l'equazione della parabola $\mathscr{P}_1$ avente asse parallelo all'asse $y$ e passante per
+	$A(2,0)$, $B(6,0)$ e $C(0,6)$;\label{enum:ex:parabola:1:1}
+	\item l'area del triangolo $ACH$ essendo $H$ l'ulteriore punto di intersezione di $\mathscr{P}_1$
+	con la perpendicolare per $A$ alla retta $AC$;\label{enum:ex:parabola:1:2}
+	\item l'equazione della circonferenza circoscritta al triangolo $CAH$;\label{enum:ex:parabola:1:3}
+\end{enumerate}
+\divisor
+
+Per trovare l'equazione della parabola, possiamo sfruttare i 3 punti conosciuti e metterli a sistema
+\begin{align*}
+&\begin{cases}
+4a+2b+c=0\\
+36a+6b+c=0\\
+c=6
+\end{cases}\rightarrow
+\begin{dcases}
+a = \frac{-b-3}{2}\\
+\cancelto{18}{36}\frac{-b-3}{\cancel{2}}+6b+6=0\\
+c=6
+\end{dcases}\rightarrow\\
+&\begin{dcases}
+a = \frac{-b-3}{2}\\
+-18b-54_6b+6=0\\
+c=6
+\end{dcases}\rightarrow
+\begin{dcases}
+a = \frac{1}{2}\\
+b = -4\\
+c = 6
+\end{dcases} \rightarrow\\ &\boxed{\mathscr{P}_1:\,y=\frac{1}{2}x^2-4x+6}
+\end{align*}
+
+E per concludere il punto \ref{enum:ex:parabola:1:1} disegnamo il grafico
+\begin{center}
+	\begin{tikzpicture}[scale=0.75]
+		\coordinate (A) at (2,0);
+		\coordinate (B) at (6,0);
+		\coordinate (C) at (0,6);
+		\coordinate (H) at (20/3,14/9);
+		
+		%\filldraw[orange, fill opacity = 0.3] (A) -- (H) -- (C) -- cycle;
+		
+		\tkzInit[xmin=-1,ymin=-2,xmax=9,ymax=7]
+		\tkzGrid
+		\tkzAxeXY
+		
+		\draw[thick, domain=-0.25:8.25] plot(\x, {0.5*\x*\x-4*\x+6});
+		%\draw[red, domain=-0.3:2.7] plot(\x,{-3*\x+6});
+		%\draw[red, thick, domain=-1:9] plot(\x, {\x/3-2/3});
+		
+		\filldraw (A) circle (0.05)
+			node[below]{$A(2,0)$};
+		\filldraw (B) circle (0.05)
+			node[below]{$B(6,0)$};
+		\filldraw (C) circle (0.05)
+			node[below]{$C(0,6)$};
+		%\filldraw (H) circle (0.05)
+			%node[right]{$H(\dfrac{20}{3},\dfrac{14}{9})$};
+	\end{tikzpicture}
+\end{center}
+
+Il punto \ref{enum:ex:parabola:1:2} richiede qualche passaggio intermedio. Per prima cosa troviamo
+la retta passante per $AC$
+\begin{equation*}
+r_{AC}:\, \frac{y-y_1}{y_2-y_1} = \frac{x-x_1}{x_2-x_1} \rightarrow \frac{y}{6}=\frac{x-2}{-2}
+\rightarrow r_{AC}:\,y=-3x+6
+\end{equation*}
+
+E ora dobbiamo trovare la perpendicolare passante per $A$.
+\begin{equation*}
+r_{\perp AH}:\,y=-\frac{1}{m}x+q \rightarrow y=\frac{x}{3}+q\rightarrow 0=\frac{2}{3}+q \rightarrow
+r_{\perp AH}:\,y=\frac{x}{3}-\frac{2}{3}
+\end{equation*}
+
+E possiamo trovare $H$ facendo l'intersezione con la parabola $\mathscr{P}_1$
+\begin{align*}
+&\begin{dcases}
+y = \frac{1}{2}x^2-4x+6\\
+y=\frac{x}{3}-\frac{2}{3}
+\end{dcases}\rightarrow
+\begin{dcases}
+\frac{x}{3}-\frac{2}{3} = \frac{1}{2}x^2-4x+6\\
+y=\frac{x}{3}-\frac{2}{3}
+\end{dcases}\rightarrow\\
+&-\frac{1}{2}x^2+\frac{13}{3}x-\frac{20}{3}=0 \rightarrow 
+x_{1/2} = \frac{-\frac{13}{3}\pm\sqrt{\frac{169}{9}-4\cdot-\frac{1}{2}\cdot-\frac{20}{3}}}{-1} 
+\rightarrow\\ &-\frac{13}{3}\pm\frac{7}{3}\rightarrow\begin{dcases}
+x_1 = 2\\
+x_2 = \frac{20}{3}
+\end{dcases}
+\end{align*}
+Il primo risultato ce lo aspettavamo in quanto è il punto $A$ che fa parte sia della retta che della
+parabola.
+\begin{equation*}
+y = \frac{1}{2}x^2-4x+6 \, \text{con } x = \frac{20}{3} \rightarrow y = \frac{14}{9}
+\end{equation*}
+E quindi il nostro punto è
+\begin{equation*}
+H\left(\frac{20}{3},\frac{14}{9}\right)
+\end{equation*}
+Prima di proseguire, aggiorniamo il disegno
+\begin{center}
+	\begin{tikzpicture}[scale=0.75]
+	\coordinate (A) at (2,0);
+	\coordinate (B) at (6,0);
+	\coordinate (C) at (0,6);
+	\coordinate (H) at (20/3,14/9);
+	\coordinate (M) at (1,3);
+	\coordinate (N) at (13/3,7/9);
+	\coordinate (K) at (10/3,34/9);
+	
+	\tkzInit[xmin=-1,ymin=-2,xmax=9,ymax=7]
+	\tkzGrid
+	\tkzAxeXY
+	
+	\filldraw[orange, fill opacity = 0.3] (A) -- (H) -- (C) -- cycle;
+	
+	\draw[thick, domain=-0.25:8.25] plot(\x, {0.5*\x*\x-4*\x+6});
+	\draw[red, domain=-0.3:2.7] plot(\x,{-3*\x+6});
+	\draw[red, thick, domain=-1:9] plot(\x, {\x/3-2/3});
+	%\draw[blue, thick, domain=-1:9] plot(\x, {1/3*\x+8/3}); % M
+	%\draw[blue, thick, domain=2.25:5.25] plot(\x, {-3*\x+124/9}); % N
+	%\draw[blue, thick, domain=-0.5:5.5] plot(\x, {3/2*\x-11/9}); % K
+	
+	\filldraw (A) circle (0.05)
+	node[below]{$A(2,0)$};
+	\filldraw (B) circle (0.05)
+	node[below]{$B(6,0)$};
+	\filldraw (C) circle (0.05)
+	node[below]{$C(0,6)$};
+	\filldraw (H) circle (0.05)
+	node[right]{$H(\dfrac{20}{3},\dfrac{14}{9})$};
+	%\filldraw (M) circle (0.05)
+	%node[above]{$M$};
+	%\filldraw (K) circle (0.05)
+	%node[above]{$K$};
+	%\filldraw (N) circle (0.05)
+	%node[above]{$N$};
+	\end{tikzpicture}
+\end{center}
+L'area del triangolo è facilmente calcolabile con la formula
+\begin{equation*}
+\mathscr{A}(\mathscr{T}) = \frac{1}{2}\lvert
+x_1y_2+y_1x_3+x_2y_3
+-x_3y_2-y_3x_1-x_2y_1
+\rvert
+\end{equation*}
+e quindi sostituendo
+\begin{align*}
+\mathscr{A}(\mathscr{T}) &= \frac{1}{2}\lvert
+\cancel{x_1y_2}+y_1x_3+x_2y_3
+\cancel{-x_3y_2}\cancel{-y_3x_1}-x_2y_1
+\rvert \rightarrow\\
+\mathscr{A}(\mathscr{T}) &= \frac{1}{2}\lvert 6\frac{20}{3}+2\frac{14}{9}-2\cdot6\rvert  = 
+\frac{1}{2}\frac{280}{9} = \boxed{\frac{140}{9}}
+\end{align*}
+
+Il punto \ref{enum:ex:parabola:1:3} richiede qualche passaggio intermedio anch'esso. Per trovare la
+circonferenza circoscritta al triangolo, dobbiamo innanzitutto trovare il centro. In un triangolo 
+qualsiasi, il centro della circonferenza circoscritta è denominato \emph{circocentro} ed esso è il
+punto di intersezione degli assi dei lati. Quindi per prima cosa si trovino i punti medi dei lati
+utilizzando la formula
+\begin{equation*}
+\left(\frac{x_1+x_2}{2},\frac{y_1+y_2}{2}\right)
+\end{equation*}
+e otteniamo i seguenti risultati
+\begin{equation*}
+M(1,3) \qquad N\left(\frac{13}{3},\frac{7}{9}\right) \qquad K\left(\frac{10}{3},\frac{34}{9}\right)
+\end{equation*}
+
+Dobbiamo poi trovarci le rette dei lati per poi poter trovarne le perpendicolari. Avendo già fatto
+il processo, riporto solo i risultati
+\begin{align*}
+r_{AC}&:\,y=-3x+6\\
+r_{CH}&:\,y=-\frac{2}{3}x+6\\
+r_{AH}&:\,y=\frac{x}{3}-\frac{2}{3}
+\end{align*}
+Per trovare le perpendicolari abbiamo una formula molto comoda
+\begin{equation*}
+y = -\frac{1}{m}(x-x_0)+mx_0+q
+\end{equation*}
+Essendo anche qui solo una questione di calcoli, riporto solo i risultati
+\begin{align*}
+r_{\perp AC}&:\,y=\frac{1}{3}x+\frac{8}{3}\\
+r_{\perp CH}&:\,y=\frac{3}{2}x+\frac{65}{9}\\
+r_{\perp AH}&:\,y=-3x+\frac{124}{9}
+\end{align*}
+E ora possiamo disegnare
+\begin{center}
+	\begin{tikzpicture}[scale=0.75]
+	\coordinate (A) at (2,0);
+	\coordinate (B) at (6,0);
+	\coordinate (C) at (0,6);
+	\coordinate (H) at (20/3,14/9);
+	\coordinate (M) at (1,3);
+	\coordinate (N) at (13/3,7/9);
+	\coordinate (K) at (10/3,34/9);
+	
+	\def\R{4};
+	
+	\tkzInit[xmin=-1,ymin=-2,xmax=9,ymax=8]
+	\tkzGrid
+	\tkzAxeXY
+	
+	\filldraw[orange, fill opacity = 0.3] (A) -- (H) -- (C) -- cycle;
+	
+	\draw[thick, domain=-0.45:8.45] plot(\x, {0.5*\x*\x-4*\x+6});
+	\draw[red, domain=-0.65:2.7] plot(\x,{-3*\x+6});
+	\draw[red, thick, domain=-1:9] plot(\x, {\x/3-2/3});
+	\draw[blue, domain=-1:9] plot(\x, {1/3*\x+8/3}); % M
+	\draw[blue, domain=1.95:5.25] plot(\x, {-3*\x+124/9}); % N
+	\draw[blue, domain=-0.5:6.15] plot(\x, {3/2*\x-11/9}); % K
+	\draw[thick] (K) circle (\R);
+	
+	\filldraw (A) circle (0.05)
+	node[below]{$A(2,0)$};
+	\filldraw (B) circle (0.05)
+	node[below]{$B(6,0)$};
+	\filldraw (C) circle (0.05)
+	node[below]{$C(0,6)$};
+	\filldraw (H) circle (0.05)
+	node[right]{$H(\dfrac{20}{3},\dfrac{14}{9})$};
+	\filldraw (M) circle (0.05)
+	node[above]{$M$};
+	\filldraw (K) circle (0.05)
+	node[above]{$K$};
+	\filldraw (N) circle (0.05)
+	node[above]{$N$};
+	\end{tikzpicture}
+\end{center}
+Da questo disegno possiamo vedere che il punto di intersezione tra le tre rette è esattamente $K$.
+Quindi per definire la circonferenza, basta solo trovare il raggio che equivale alla distanza $CK=KH$.
+\begin{align*}
+r &= CK = \sqrt{(x_C-x_K)^2+(y_C-y_K)^2} \rightarrow \\
+r &= \sqrt{\left(0-\frac{10}{3}\right)^2+\left(6-\frac{34}{9}\right)^2} \rightarrow
+r = \sqrt{\frac{400}{9}+\frac{1600}{81}} = \\&\frac{20\sqrt{13}}{9}
+\end{align*}
+E quindi la circonferenza diventa
+\begin{equation*}
+\boxed{
+	\mathscr{C}:\,\left(x-\frac{10}{3}\right)^2+\left(y-\frac{34}{9}\right)^2=\frac{20\sqrt{13}}{9}
+}
+\end{equation*}
+
+\subsection{\hyperref[subsec:geomanal:ellisse]{Ellisse}}\label{ex:ellisse}
+\paragraph{Esercizio 1}
+Scritta l'equazione della parabola del tipo $x=ay^2+by+c$ avente il vertice $V$ sull'asse $x$ e 
+passante per i punti $(6,2)$ e $(16,3)$, determinare l'equazione dell'ellisse avente un vertice in
+$V$ e due altri vertici nei punti di intersezione della parabola con l'asse $y$. Determinare i punti
+$P_1$ e $P_2$ dell'ellisse che hanno distanza $\dfrac{\sqrt{39}}{2}$ da $V$.
+\divisor
+
+Trovare l'equazione della parabola è estremamente semplice, infatti basta mettere a sistema le 
+informazioni che si hanno.
+\begin{equation*}
+\begin{dcases}
+-\frac{b}{2a} = 0\\
+6=4a+2b+c\\
+16=9a+3b+c
+\end{dcases}\rightarrow
+\begin{cases}
+b = 0\\
+4a+c-6=0\\
+c=-9a+16
+\end{cases}\rightarrow
+\begin{cases}
+b=0\\a=2\\c=-2
+\end{cases}
+\end{equation*}
+Quindi la nostra parabola è $\boxed{\mathscr{P}:\,x=2y^2-2}$ e possiamo anche subito trovare il 
+vertice
+\begin{equation*}
+-\frac{b^2-4ac}{4} \rightarrow -\frac{-4\cdot2\cdot-2}{4} = -2 \rightarrow V(-2,0)
+\end{equation*}
+Disegnamo ora ciò che abbiamo
+\begin{center}
+	\begin{tikzpicture}
+		\coordinate (V) at (-2,0);
+		\coordinate (L1) at (0,1);
+		\coordinate (L2) at (0,-1);
+		
+		\tkzInit[xmin=-4,ymin=-3,xmax=4,ymax=3]
+		\tkzGrid
+		\tkzAxeXY
+		
+		\draw[thick, domain=-1.73:1.73] plot ({2*\x*\x-2},\x);
+		
+		\filldraw (V) circle (0.05)
+		node[below left]{$V(-2,0)$};
+		\filldraw (L1) circle (0.05)
+		node[above left]{$L_1(0,1)$};
+		\filldraw (L2) circle (0.05)
+		node[below left]{$L_2(0,-1)$};
+	\end{tikzpicture}
+\end{center}
+Troviamo subito gli altri due vertici dell'ellisse sostituendo $x=0$ nell'equazione della parabola
+\begin{equation*}
+y^2=1 \rightarrow y = \pm 1 \rightarrow L(0,\pm1)
+\end{equation*}
+E ora possiamo trovare l'ellisse sapendo che passa attraverso $V$ e $L_1$ (bastano solo questi due
+vertici in quanto è simmetrica).
+\begin{equation*}
+\begin{dcases}
+\frac{4}{a}=1\\
+\frac{1}{b}=1
+\end{dcases} \rightarrow
+\begin{cases}
+a=4\\
+b=1
+\end{cases} \rightarrow \boxed{\mathscr{E}:\,\frac{x^2}{16}+y^2=1}
+\end{equation*}
+Prima di disegnarla, osserviamo il punto successivo: ci chiede i punti dell'ellisse che si trovano ad
+una certa distanza da $V$. Abbiamo un paio di modi, uno di questi è immaginare una circonferenza di
+centro $V$ che abbia raggio pari alla distanza richiesta e vedere le intersezioni con l'ellisse.
+
+\begin{center}
+	\begin{tikzpicture}[scale=0.75]
+	\coordinate (V) at (-2,0);
+	\coordinate (L1) at (0,1);
+	\coordinate (L2) at (0,-1);
+	
+	\def\R{sqrt(39)/2};
+	
+	\tkzInit[xmin=-6,ymin=-4,xmax=4,ymax=4]
+	\tkzGrid
+	\tkzAxeXY
+	
+	\draw[domain=-1.73:1.73] plot ({2*\x*\x-2},\x);
+	\draw[thick] ellipse (2 and 1);
+	\draw[red] (V) circle (\R);
+	
+	\filldraw (V) circle (0.05)
+	node[below left]{$V(-2,0)$};
+	\filldraw (L1) circle (0.05)
+	node[above left]{$L_1(0,1)$};
+	\filldraw (L2) circle (0.05)
+	node[below left]{$L_2(0,-1)$};
+	\end{tikzpicture}
+\end{center}
+
+La nostra circonferenza è
+\begin{equation*}
+(x-x_0)^2+(y-y_0)^2=r \rightarrow \mathscr{C}:\,(x+2)^2 + y^2 = \left(\frac{\sqrt{39}}{2}\right)^2
+\end{equation*}
+
+Per trovare i punti di intersezione, mettiamo a sistema le due equazioni
+\begin{align*}
+&\begin{dcases}
+(x+2)^2+y^2=\frac{39}{4}\\
+x^2+4y^2=4
+\end{dcases}\rightarrow
+\begin{dcases}
+y^2 = \frac{-4x^2-16x-23}{4}\\
+x^2+4\cdot\frac{-4x^2-16x-23}{4}=4
+\end{dcases}\rightarrow\\
+&\begin{dcases}
+y^2 = \frac{-4x^2-16x-23}{4}\\
+\begin{dcases}
+x_1 = -\frac{19}{3}\\
+x_2 = 1
+\end{dcases}
+\end{dcases}\rightarrow
+\begin{dcases}
+\begin{dcases}
+y_1 = \pm\frac{5\sqrt{13}\imath}{6}\\
+y_2 = \pm\frac{\sqrt{3}}{2}
+\end{dcases}\\
+\begin{dcases}
+x_1 = -\frac{19}{3}\\
+x_2 = 1
+\end{dcases}
+\end{dcases}
+\end{align*}
+Da queste soluzioni, eliminiamo quelle che non appartengono ad $\mathbb{R}$ e quindi otteniamo
+i punti di intersezione
+\begin{equation*}
+\boxed{P_1\left(1,\frac{\sqrt{3}}{2}\right)\qquad P_2\left(1,-\frac{\sqrt{3}}{2}\right)}
+\end{equation*}
+
+
+\newpage
+Definizione di limiti
+\improvement{Migliorare la formattazione}
+\begin{align*}
+\lim\limits_{x\to x_0} f(x) &= 
+\begin{cases}
+l\;, & 
+\forall \varepsilon>0, \exists\delta>0\mid\forall x: 0<\vert x-x_0\vert < \delta \Rightarrow
+\vert f(x) - l\vert < \varepsilon\\
+\infty\;, 
+& \forall k>0, \exists\delta>0\mid\forall x: 0<\vert x-x_0\vert < \delta \Rightarrow
+f(x) >k\\
+-\infty\;, &
+\forall k>0, \exists\delta>0\mid\forall x: 0<\vert x-x_0\vert < \delta  \Rightarrow
+f(x)< k\\
+\end{cases}\\
+\lim\limits_{x\to\infty} f(x) &=
+\begin{cases}
+l\;, & 
+\forall \varepsilon>0, \exists h>0\mid\forall x: x>h \Rightarrow
+\vert f(x) - l\vert < \varepsilon\\
+\infty\;, 
+& \forall k>0, \exists h>0\mid\forall x: x>h \Rightarrow
+f(x) >k\\
+-\infty\;, &
+\forall k>0, \exists h>0\mid\forall x: x>h \Rightarrow
+f(x)< k\\
+\end{cases}\\
+\lim\limits_{x\to-\infty} f(x) &=
+\begin{cases}
+l\;, & 
+\forall \varepsilon>0, \exists h>0\mid\forall x: x<h \Rightarrow
+\vert f(x) - l\vert < \varepsilon\\
+\infty\;, 
+& \forall k>0, \exists h>0\mid\forall x: x<h \Rightarrow
+f(x) >k\\
+-\infty\;, &
+\forall k>0, \exists h>0\mid\forall x: x<h \Rightarrow
+f(x)< k\\
+\end{cases}
+\end{align*}
+
+% List of TODOs
+\newpage
+\listoftodos[Note]
+
+\end{document}
