@@ -110,6 +110,26 @@
 	\node at ($(#2)!#6!(middle)$) {#7};
 }
 
+\usepackage{graphicx}
+
+\makeatletter
+\DeclareFontFamily{U}{tipa}{}
+\DeclareFontShape{U}{tipa}{m}{n}{<->tipa10}{}
+\newcommand{\arc@char}{{\usefont{U}{tipa}{m}{n}\symbol{62}}}%
+
+\newcommand{\arc}[1]{\mathpalette\arc@arc{#1}}
+
+\newcommand{\arc@arc}[2]{%
+	\sbox0{$\m@th#1#2$}%
+	\vbox{
+		\hbox{\resizebox{\wd0}{\height}{\arc@char}}
+		\nointerlineskip
+		\box0
+	}%
+}
+\makeatother
+
+
 \begin{document}
 	
 \begin{center}
@@ -2609,11 +2629,53 @@ dividere. Per preferenza personale, dividiamo per $\cos^2 x$.
 &x = -\frac{\pi}{4}+k\pi\,\text{e } x = \frac{\pi}{3}+k\pi
 \end{align*}
 
+\paragraph{Esercizio 3}
+Nel settore circolare $AOB$ di raggio $r$, centro $O$ e angolo di apertura di $\ang{60}$ è inscritto
+il rettangolo $MNPQ$ avente il vertice $M$ sull'arco $\arc{AB}$, il vertice $N$ sul raggio $OB$ e il
+lato $PQ$ su $OA$. Determinare la posizione del vertice $M$ in modo che l'area di detto rettangolo
+valga $\dfrac{\sqrt{3}}{6}r^2$.
+\divisor
+
+Per prima cosa, facciamo il disegno
+\begin{center}
+	\begin{tikzpicture}[scale=2]
+		\coordinate (O) at (0,0);
+		\coordinate (A) at (1,0);
+		\coordinate (B) at (0.5,0.866);
+		\coordinate (P) at (0.24,0);
+		\coordinate (Q) at (0.923,0);
+		\coordinate (N) at (0.24,0.4);
+		\coordinate (M) at (0.923,0.4);
+		
+		\draw (A) -- (O) -- (B);
+		\draw (A) arc(0:60:1);
+		\markangle{O}{A}{B}{0.2}{2}{$\ang{60}$}
+		\filldraw[cyan, fill opacity = 0.3] (P) -- (Q) -- (M) -- (N) -- cycle;
+		\node (A1) at (A) [below right]{$A$};
+		\node (B1) at (B) [above]{$B$};
+		\node (P1) at (P) [below]{$P$};
+		\node (Q1) at (Q) [below]{$Q$};
+		\node (O1) at (O) [below left]{$O$};
+		\node (N1) at (N) [above left]{$N$};
+		\node (M1) at (M)[above right]{$M$};
+	\end{tikzpicture}
+\end{center}
+Da questo possiamo dire che l'area di un rettangolo qualsiasi è definita come
+$\text{base}\cdot\text{altezza}$, in questo caso come $\overline{PQ}\cdot\sin(\arc{AOM})r$ ($r$ è 
+inserito per avere il seno corretto qualunque sia il raggio). Sostituendo possiamo avere
+\begin{align*}
+&\frac{\sqrt{3}}{6}r^2 = \overline{PQ}\sin(\arc{AOM})r
+\intertext{da cui}
+&\sin(\arc{AOM}) = \frac{\sqrt{3}}{6\overline{PQ}}r
+\intertext{e quindi isolare}
+&\arc{AOM} = \arcsin\left(\frac{\sqrt{3}}{6\overline{PQ}}r\right)
+\end{align*}
+
 \subsection{\hyperref[sec:logaritmi]{Logaritmi}}\label{ex:logaritmi}
 \paragraph{Esercizio 1}
 Risolvi
 \begin{equation*}
-50\left(\frac{4}{25}\right)^x-133\left(\frac{2}{5}\right)+20=0
+50\left(\frac{4}{25}\right)^x-133\left(\frac{2}{5}\right)^x+20=0
 \end{equation*}
 \divisor
 
