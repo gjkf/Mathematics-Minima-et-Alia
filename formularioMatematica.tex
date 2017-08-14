@@ -1054,7 +1054,7 @@ f:\;A\mapsto B,\,f^{-1}:\;B\mapsto A
 \end{equation*}
 però per le funzioni goniometriche questo non accade infatti
 \begin{equation*}
-\sin x:\;\mathbb{R}\mapsto{[{-1},{+1}]} \qquad \cos c:\;\mathbb{R}\mapsto{[{-1},{1}]}
+\sin x:\;\mathbb{R}\mapsto{[{-1},{+1}]} \qquad \cos x:\;\mathbb{R}\mapsto{[{-1},{1}]}
 \end{equation*}
 quando però
 \begin{equation*}
@@ -2661,14 +2661,45 @@ Per prima cosa, facciamo il disegno
 	\end{tikzpicture}
 \end{center}
 Da questo possiamo dire che l'area di un rettangolo qualsiasi è definita come
-$\text{base}\cdot\text{altezza}$, in questo caso come $\overline{PQ}\cdot\sin(\arc{AOM})r$ ($r$ è 
-inserito per avere il seno corretto qualunque sia il raggio). Sostituendo possiamo avere
+$\text{base}\cdot\text{altezza}$, in questo caso come $\overline{PQ}\cdot\sin(\theta)r$ ($r$ è 
+inserito per avere il seno corretto qualunque sia il raggio, $\theta = \arc{AOM}$). Il problema ora 
+è trovare $\overline{PQ}$.\\
+Definiamo $y_M$ e $y_N$ le due ordinate dei rispettivi punti.
+\begin{equation*}
+y_N = \overline{ON}\sin(\ang{60}) = y_M = r\sin(\theta)
+\end{equation*} 
+Questo lo vediaom chiaramente dal disegno.\\
+$P$ si trova al piede di $N$, quindi la sua coordinata è
+\begin{equation*}
+\frac{y_N}{\tan(\ang{60})} = \frac{r\sin\theta}{\tan(\ang{60})}
+\end{equation*}
+Perché da $y_N = \overline{ON}\sin(\ang{60})$ abbiamo isolato $\overline{ON}$ e moltiplicato per il
+$\cos(\ang{60})$.\\
+Infine $Q$ si trova al $\cos\theta$. Con queste informazioni, possiamo scrivere che
 \begin{align*}
-&\frac{\sqrt{3}}{6}r^2 = \overline{PQ}\sin(\arc{AOM})r
-\intertext{da cui}
-&\sin(\arc{AOM}) = \frac{\sqrt{3}}{6\overline{PQ}}r
-\intertext{e quindi isolare}
-&\arc{AOM} = \arcsin\left(\frac{\sqrt{3}}{6\overline{PQ}}r\right)
+&\frac{\sqrt{3}}{6}r^2 = \left(r\cos\theta - \frac{r\sin\theta}{\tan(\ang{60})}\right)r\sin\theta\\
+\intertext{Raccogliendo e semplificando $r$, risolvendo $\tan(\ang{60})$}
+&\frac{1}{2\sqrt{3}} = \sin\theta\cos\theta -\frac{\sin^2\theta}{\sqrt{3}}\\
+\intertext{Sostituiamo $\cos\theta = \sqrt{1-\sin^2\theta}$}
+&\frac{1}{2\sqrt{3}} = \sin\theta\sqrt{1-\sin^2\theta}-\frac{\sin^2\theta}{\sqrt{3}}\\
+\intertext{Poniamo $\sin\theta = t$}
+&\frac{1}{2\sqrt{3}} = t\sqrt{1-t^2}-\frac{1}{\sqrt{3}}t^2\\
+\intertext{Moltiplichiamo per $2\sqrt{3}$}
+&1 = 2\sqrt{3}t\sqrt{1-t^2}-2t^2\\
+\intertext{Spostiamo $t^2$}
+&1+2t^2 = 2\sqrt{3}t\sqrt{1-t^2}\\
+\intertext{Eleviamo al quadrato}
+&1+4t^2+4t^4 = 12t^2-14t^4\\
+\intertext{Semplifichiamo}
+&-16t^4+8t^2-1=0\\
+\intertext{Poniamo $u = t^2$}
+&-16u^2-8u-1=0\\
+\intertext{Risolviamo per $u$}
+&u = \frac{1}{4}\\
+\intertext{Torniamo a sostituire $t^2=u$}
+&t = \sqrt{\frac{1}{4}} = \pm\frac{1}{2}\\
+\intertext{Verifichiamo che solo $\dfrac{1}{2}$ è soluzione e torniamo a sostituire $t = \sin\theta$}
+&\sin\theta = \frac{1}{2} \rightarrow \theta = \arcsin\left(\frac{1}{2}\right) = \boxed{\ang{30}}
 \end{align*}
 
 \subsection{\hyperref[sec:logaritmi]{Logaritmi}}\label{ex:logaritmi}
