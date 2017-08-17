@@ -2967,7 +2967,20 @@ rossa. Dato che ci viene detto \emph{almeno} una rossa, possono essere anche ent
 \end{equation*}
 
 \paragraph{Esercizio 2}
+Dimostrare
+\begin{equation*}
+\binom{n}{k+1} = \binom{n}{k}\frac{n-k}{k+1}
+\end{equation*}
+\divisor
 
+\begin{align*}
+\intertext{Partiamo sviluppando il lato sinistro}
+&\binom{n}{k+1} = \frac{n!}{(k+1)!(n-k-1)!} = \frac{n!}{k!(k+1)(n-k-1)!}
+\intertext{Se osserviamo attentamente notiamo che ci manca semplicemente un $n-k$ da aggiungere per
+ottenere il desiderato. Quindi possiamo moltiplicare per $n-k$ e ottenere}
+&\frac{n!}{k!(k+1)(n-k-1)!} = \binom{n}{k}\frac{n-k}{k+1}
+\intertext{Q.E.D.}
+\end{align*}
 
 \newpage
 Definizione di limiti

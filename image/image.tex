@@ -1,0 +1,64 @@
+\documentclass{article}
+
+\usepackage{tikz}
+\usepackage{tikz-qtree}
+\usepackage{fullpage}
+\usepackage[italian]{babel} % Italian support
+\usepackage[latin1]{inputenc} % Accented letters
+\usepackage{amsmath,amsfonts,amssymb,mathtools,mathrsfs}
+
+\begin{document}
+	\begin{center}
+		\begin{tikzpicture}[
+		every node/.style = {
+			shape=rectangle, rounded corners,
+			draw, align=center,
+			top color=white, bottom color=blue!20
+		}
+		]
+			\tikzset{frontier/.style={distance from root=220pt}} 
+			\Tree [.{L'ordine ha importanza?}
+				[.Sì
+					[.$k\overset{?}{=}n$
+						[.Sì
+							[.Permutazioni
+								[.{Tutti elementi \\distinti?}
+									[.Sì
+										{Permutazioni\\ Semplici}
+									]
+									[.No
+										{Permutazioni con \\Ripetizione}
+									]
+								]
+							]
+						]
+						[.No
+							[.Disposizioni
+								[.{Tutti elementi \\distinti?}
+									[.Sì
+										{Disposizioni \\Semplici}
+									]
+									[.No
+										{Disposizioni con \\Ripetizione}
+									]
+								]
+							]
+						]
+					]
+				]
+				[.No
+					[.Combinazioni
+						[.{Tutti elementi \\distinti?}
+							[.Sì
+								{Combinazioni \\Semplici}
+							]
+							[.No
+								{Combinazioni con \\Ripetizione}
+							]
+						]
+					]
+				]
+			]
+		\end{tikzpicture}
+	\end{center}
+\end{document}
