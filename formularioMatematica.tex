@@ -152,8 +152,8 @@ Qui verrano chiariti i simboli che verranno utilizzati nel formulario. Molti di 
 principalmente nelle definizioni formali ma ritorneranno utili anche negli esercizi.
 
 \begin{tabular}{c | m{6cm}}
-	$\sum\limits_{i = l}^{n} f(i)$ & $f(l) + f(l+1) + \cdots + f(n)$\\
-	$\prod\limits_{i = l}^{n} f(i)$ & $f(l) \cdot f(l+1) \cdot\,\cdots\,\cdot f(n)$\\
+	$\sum\limits_{i = l}^{n} f(i)$ & $f(l) + f(l+1) + \dotsb + f(n)$\\
+	$\prod\limits_{i = l}^{n} f(i)$ & $f(l) \cdot f(l+1) \dotsm f(n)$\\
 	$\forall$ & Per ogni\\
 	$\exists$ & Esiste\\
 	$\in$ & Appartiene\\
@@ -181,7 +181,7 @@ a^3 - b^3 &= (a-b)(a^2+ab+b^2)
 \end{align*}
 Questi hanno la seguente formula generale
 \begin{equation*}
-a^n - b^n = (a-b)(a^{n-1} - a^{n-2}b + a^{n-3}b^2 - \cdots - ab^{n-2} + b^{n-1})
+a^n - b^n = (a-b)(a^{n-1} - a^{n-2}b + a^{n-3}b^2 - \dotsb - ab^{n-2} + b^{n-1})
 \end{equation*}
 \begin{align*}
 (a\pm b)^2 &= a^2 \pm 2ab + b^2 \\
@@ -1467,7 +1467,7 @@ Il calcolo combinatorio descrive i diversi modi di disporre e organizzare un fin
 \subsection{Fattoriale}
 Un concetto fondamentale del calcolo combinatorio è quello di fattoriale. Esso è definito come
 \begin{equation*}
-n! = n\cdot (n-1) \cdot (n-2) \cdots 2\cdot1 = \prod\limits_{1}^{n}n
+n! = n\cdot (n-1) \cdot (n-2) \dotsm 2\cdot1 = \prod\limits_{1}^{n}n
 \end{equation*}
 
 \subsection{Disposizioni}
@@ -1476,12 +1476,12 @@ presenti. L'ordine è importante.
 
 \subsubsection{Semplici}
 \begin{equation*}
-\mathscr{D}_{n,k} = \frac{n!}{(n-k)!} = n(n-1)\cdots(n-k+1)
+D_{n,k} = \frac{n!}{(n-k)!} = n(n-1)\dotsm(n-k+1)
 \end{equation*}
 
 \subsubsection{Con ripetizione}
 \begin{equation*}
-\mathscr{D}'_{n,k} = n^k
+D'_{n,k} = n^k
 \end{equation*}
 
 \subsection{Permutazioni}
@@ -1489,12 +1489,12 @@ Due permutazioni si considerano distine se almeno un elemento è diverso.
 
 \subsubsection{Semplici}
 \begin{equation*}
-\mathscr{P}_n = \mathscr{D}_{n,n} = n!
+P_n = D_{n,n} = n!
 \end{equation*}
 
 \subsubsection{Con ripetizione}
 \begin{equation*}
-\mathscr{P}_n^{\alpha_1,\alpha_2,\dots,\alpha_n} = \frac{n!}{\alpha_1!\alpha_2!\cdots\alpha_n!}
+P_n^{\alpha_1,\alpha_2,\dotsc,\alpha_n} = \frac{n!}{\alpha_1!\alpha_2!\dotsm\alpha_n!}
 \end{equation*}
 dove $\alpha_n$ identifica il numero di ripetizioni per il relativo oggetto.
 
@@ -1504,12 +1504,12 @@ distinti due gruppi se almeno un elemento è diverso.
 
 \subsubsection{Semplici}
 \begin{equation*}
-\mathscr{C}_{n,k} = \frac{\mathscr{D}_{n,k}}{k!} = \binom{n}{k} = \frac{n!}{k!(n-k)!}
+C_{n,k} = \frac{\mathscr{D}_{n,k}}{k!} = \binom{n}{k} = \frac{n!}{k!(n-k)!}
 \end{equation*}
 
 \subsubsection{Con ripetizione}
 \begin{equation*}
-\mathscr{C}'_{n,k} = \binom{n+k+1}{k}
+C'_{n,k} = \binom{n+k+1}{k}
 \end{equation*}
 
 \subsubsection{Proprietà del coefficiente binomiale}
@@ -1543,6 +1543,103 @@ da cui deriva
 	\includegraphics[width=8cm]{image/tree}
 	\caption{Si risponda a ciascuna domanda per sapere che tipo di situazione il problema pone.}
 \end{figure}
+
+\section{Probabilità}\label{sec:prob}
+La probabilità è una funzione $p(U)$ che ritorna un valore compreso tra $0$ e $1$ che definisce la 
+probilità di un \emph{evento}.
+\begin{equation*}
+p:\,p(U) = \frac{\text{Casi favorevoli}}{\text{Casi possibili}}\mapsto {[{0},{1}]}
+\end{equation*}
+
+\subsection{Evento ed insieme universo}
+Per un qualsiasi caso di studio esiste un insieme \emph{Universo} definito $\mathbb{U}$ che contiene
+tutte le possibili uscite dell'oservazione. Ciascuna di queste uscite è definito \emph{evento}.
+Quindi
+\begin{equation*}
+\mathbb{E} \subseteq \mathbb{U}
+\end{equation*}
+e detto in altri termini, un evento è un insieme di possibilità. Ad esempio
+\begin{equation*}
+\mathbb{E} = \{2,4,5\}
+\end{equation*}
+può essere un evento nel lancio di un dado.\\
+$p(\mathbb{U}) = 1$ per qualsiasi tipo di osservazione. Quindi la probabilità che \textbf{non} avvenga
+un evento è $1-p(\mathbb{E})$
+
+\subsubsection{Eventi incompatibili}
+Due eventi si dicono incompatibili quando
+\begin{equation*}
+\mathbb{E}_1 \cap \mathbb{E}_2 = \emptyset
+\end{equation*}
+
+\subsubsection{Eventi indipendenti}
+Due eventi si dicono indipendenti quando
+\begin{equation*}
+p\left(\mathbb{E}_1\mid\mathbb{E}_2\right) = p(\mathbb{E}_1)
+\end{equation*}
+
+\subsection{Probabilità di eventi incompatibili}
+\begin{equation*}
+p(\mathbb{E}_1\cup\mathbb{E}_2) = p(\mathbb{E}_1) + p(\mathbb{E}_2)
+\end{equation*}
+
+\subsection{Probabilità di eventi compatibili}
+\begin{equation*}
+p(\mathbb{E}_1\cup\mathbb{E}_2) = p(\mathbb{E}_1)+p(\mathbb{E}_2)-p(\mathbb{E}_1\cap\mathbb{E}_2)
+\end{equation*}
+Si estenda questa formula in modo che si tolgano tutte le intersezioni fra eventi per non ripetere 
+risultati.
+
+\subsection{Probabilità condizionata}
+La probabilità condizionata indica la probabilità che si verifichi l'evento $\mathbb{E}_1$ 
+verificatosi $\mathbb{E}_2$.
+\begin{equation*}
+p\left(\mathbb{E}_1\mid\mathbb{E}_2\right) = 
+\frac{p\left(\mathbb{E}_1\cap\mathbb{E}_2\right)}{p(\mathbb{E}_2)}
+\end{equation*}
+
+\subsection{Probabilità composta}
+Indica la probabilità che si verifichi un evento intersezione di altri due.
+\begin{equation*}
+p\left(\mathbb{E}_1\cap\mathbb{E}_2\right) = p(\mathbb{E}_1)\cdot
+p\left(\mathbb{E}_1\mid\mathbb{E}_2\right)
+\end{equation*}
+
+Però se sono eventi indipendenti si semplifica in
+\begin{equation*}
+p\left(\mathbb{E}_1\cap\mathbb{E}_2\right) = p(\mathbb{E}_1)\cdot p(\mathbb{E}_2)
+\end{equation*}
+
+\subsubsection{Formule di Bayes}
+\subsubsection{Prima formula}
+Essendo $\mathbb{F}_1, \mathbb{F}_2,\dotsc,\mathbb{F}_n$ $n$ eventi incompatibili tali che
+\begin{equation*}
+\mathbb{U} = \mathbb{F}_1\cup\mathbb{F}_2\cup\dotsb\cup\mathbb{F}_n
+\end{equation*}
+si consideri un evento $\mathbb{E}$ tale che
+\begin{equation*}
+\mathbb{E} = \left(\mathbb{E}\cap\mathbb{F}_1\right)\cup\left(\mathbb{E}\cap\mathbb{F}_2\right)\cup
+\dots\cup\left(\mathbb{E}\cap\mathbb{F}_n\right)
+\end{equation*}
+si ha
+\begin{equation*}
+p(\mathbb{E}) = \sum\limits_{i=1}^{n}p\left(\mathbb{E}\cap\mathbb{F}_i\right) =
+\sum\limits_{i=1}^{n}\big(p\left(\mathbb{E}\mid\mathbb{F}_i\right)\cdot 
+p\left(\mathbb{F}i\right)\big)
+\end{equation*}
+
+\subsubsection{Seconda formula}
+Essendo $\mathbb{F}_1, \mathbb{F}_2,\dotsc,\mathbb{F}_n$ $n$ eventi incompatibili tali che
+\begin{equation*}
+\mathbb{U} = \mathbb{F}_1\cup\mathbb{F}_2\cup\dotsb\cup\mathbb{F}_n
+\end{equation*}
+sia $\mathbb{E}$ un evento tale che $p(\mathbb{E})>0$, per calcolare le probabilità condizionali si
+usi
+\begin{equation*}
+p\left(\mathbb{F}_i\mid\mathbb{E}\right) =
+\frac{p\left(\mathbb{E}\mid\mathbb{F_i}\right)\cdot p(\mathbb{F}_i)}
+{\sum\big(p\left(\mathbb{E}\mid\mathbb{F_i}\right)\cdot p(\mathbb{F}_i)\big)}
+\end{equation*}
 
 \section{Esercizi}
 Questa sezione è dedicata ad alcuni esercizi con relativa risoluzione e spiegazione. Il suo scopo
@@ -2981,6 +3078,91 @@ ottenere il desiderato. Quindi possiamo moltiplicare per $n-k$ e ottenere}
 &\frac{n!}{k!(k+1)(n-k-1)!} = \binom{n}{k}\frac{n-k}{k+1}
 \intertext{Q.E.D.}
 \end{align*}
+
+\subsection*{\hyperref[sec:prob]{Probabilità}}\label{ex:prob}
+\paragraph{Esercizio 1}
+Tre macchine utensili producono lo stesso tipo di pezzi. La prima ne produce $150$ al giorno con il 
+$2\%$ dei pezzi difettosi, la seconda ne produce $500$ con il $5\%$ di pezzi difettosi, la terza
+$50$ con nessun pezzo difettoso. Supponiamo ora di prendere un pezzo a caso della produzione di un 
+dato giorno, calcolare la probabilità che
+\begin{enumerate}
+	\item il pezzo sia stato prodotto dalla prima macchina
+	\item il pezzo sia stato prodotto dalla seconda macchina
+	\item il pezzo sia stato prodotto dalla terza macchina
+	\item il pezzo sia difettoso
+\end{enumerate}
+Supponendo che il pezzo sia difettoso, calcolare la probabilità che
+\begin{enumerate}
+	\item sia stato prodotto dalla prima macchina
+	\item sia stato prodotto dalla seconda macchina
+	\item sia stato prodotto dalla terza macchina
+\end{enumerate}
+\divisor
+
+Una cosa che ritorna estremamente utile nella risoluzione dei problemi di probabilità è il grafico ad
+albero per mostrare tutte le possibilità. Come questo
+
+\begin{center}
+	\begin{tikzpicture}
+		\tikzset{level 1/.style={level distance = 40pt}}
+		\tikzset{level 2/.style={level distance = 40pt}}
+		\Tree [.\node (Produzione) {Produzione};
+			[.\node (Prima) {Prima};
+				[.\node (Buono1) {Buono};
+					$\dfrac{147}{600}$
+				]
+				[.\node (Difettoso1) {Difettoso};
+					$\dfrac{3}{600}$
+				]
+			]
+			[.\node (Seconda) {Seconda};
+				[.\node (Buono2) {Buono};
+					$\dfrac{380}{600}$
+				]
+				[.\node (Difettoso2) {Difettoso};
+					$\dfrac{20}{600}$
+				]
+			]
+			[.\node (Terza) {Terza};
+				[.\node (Buono3) {Buono};
+					$\dfrac{50}{600}$
+				]
+				[.\node (Difettoso3) {Difettoso};
+					$0$
+				]
+			]
+		]
+		\node[above] at ($(Produzione) !.5! (Prima)$) {$\dfrac{150}{600}$};
+		\node[left] at ($(Produzione) !.6! (Seconda)$) {$\dfrac{400}{600}$};
+		\node[above] at ($(Produzione) !.5! (Terza)$) {$\dfrac{50}{600}$};
+		\node[left] at ($(Prima) !.5! (Buono1)$) {$\dfrac{2}{100}$};
+		\node[right] at ($(Prima) !.5! (Difettoso1)$) {$\dfrac{98}{100}$};
+		\node[left] at ($(Seconda) !.5! (Buono2)$) {$\dfrac{5}{100}$};
+		\node[right] at ($(Seconda) !.5! (Difettoso2)$) {$\dfrac{95}{100}$};
+		\node[left] at ($(Terza) !.5! (Buono3)$) {$0$};
+		\node[right] at ($(Terza) !.5! (Difettoso3)$) {$\dfrac{100}{100}$};
+	\end{tikzpicture}
+\end{center} 
+
+I risultati che si vedono sono semplicemente ricavati dal prodotto delle due probabilità
+secondo la formula $p\left(\mathbb{E}_1\cap\mathbb{E}_2\right) = p(\mathbb{E}_1)\cdot p(\mathbb{E}_2)$
+.\\\\
+In totale vi sono $23$ pezzi difettosi in un giorno (infatti se andiamo ad osservare i numeratori e 
+sommiamo i difettosi vediamo $3+20+0 = 23$). Quindi la probabilità che un pezzo sia difettoso è
+\begin{equation*}
+p(\text{Difettoso}) = \frac{23}{600} \approx \boxed{3.8\%}
+\end{equation*}
+
+Allora, la probabilita che sia difettoso e dalla prima macchina è
+\begin{equation*}
+p\left(\text{Prima}\mid\text{Difettoso}\right) = \frac{\frac{3}{600}}{\frac{23}{600}} 
+\approx\boxed{13\%}
+\end{equation*}
+e dalla seconda
+\begin{equation*}
+p\left(\text{Seconda}\mid\text{Difettoso}\right) = \frac{\frac{20}{600}}{\frac{23}{600}} 
+\approx\boxed{8.7\%}
+\end{equation*}
 
 \newpage
 Definizione di limiti
