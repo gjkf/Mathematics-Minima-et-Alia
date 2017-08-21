@@ -514,7 +514,7 @@ G\left(\frac{x_A+x_B+x_C}{3},\frac{y_A+y_B+y_C}{3}\right)
 Oppure si può risolvere questa versione
 \begin{equation*}
 \mathscr{A}(ABC) = \frac{1}{2}\left\lvert 
-\begin{matrix}
+\begin{matrix}[1]
 x_1 & y_1 & 1\\
 x_2 & y_2 & 1\\
 x_3 & y_3 & 1
@@ -1649,7 +1649,7 @@ p\left(\mathbb{F}_i\mid\mathbb{E}\right) =
 {\sum\big(p\left(\mathbb{E}\mid\mathbb{F_i}\right)\cdot p(\mathbb{F}_i)\big)}
 \end{equation*}
 
-\section{Affinità}
+\section{Affinità}\label{sec:aff}
 Si definisce un'affinità come una corrispondenza biunivoca tra due piani e tra punti dello stesso 
 piano che trasformi rette in rette conservando il parallelismo.\\
 Un'affinità generica denominata $T$ può essere espressa nei seguenti modi
@@ -1692,7 +1692,8 @@ T(U) \equiv U (\equiv U')
 \end{equation*}
 
 Essendo le affinità proprietà binuivoche, esiste anche la trasformazione inversa, generalmente 
-indicata con $T^{-1}$.
+indicata con $T^{-1}$.\\
+Per gli esercizi si vada \hyperref[ex:aff]{qui}.
 
 \subsection{Prodotto di trasformazioni}
 Se si hanno due trasformazioni $T$ e $T'$, il loro prodotto è descritto come $T\ast T'$ e si ottiene
@@ -3508,6 +3509,115 @@ e dalla seconda
 p\left(\text{Seconda}\mid\text{Difettoso}\right) = \frac{\frac{20}{600}}{\frac{23}{600}} 
 \approx\boxed{8.7\%}
 \end{equation*}
+
+\subsection*{\hyperref[sec:aff]{Affinità}}\label{ex:aff}
+\paragraph{Esercizio 1}
+Data l'affinità
+\begin{equation*}
+T:\,\begin{cases}
+x'=2x+y-1\\y'=x-y-2
+\end{cases}
+\end{equation*}
+determinare
+\begin{enumerate}
+	\item il punto unito $U$
+	\item i trasformati $O'$, $A'$ e $B'$ dei punti $O(0,0)$, $A(2,-1)$, $B(-3,4)$ e l'area del 
+	triangolo $A'O'B'$
+	\item la trasformazione inversa $T^{-1}$
+	\item le trasformate delle curve
+	\begin{equation*}
+	y=3x+4\qquad x-y+5=0\qquad y=x^2
+	\end{equation*}
+\end{enumerate}
+\divisor
+
+Trovare il punto unito di $T$ è semplice, basta solo porre $x'=x$ e $y'=y$.
+\begin{align*}
+\begin{cases}
+x=2x+y-1\\
+y=x-y-2
+\end{cases}
+\begin{cases}
+y = -x+1\\
+-x+1=x+x-4
+\end{cases}
+\begin{cases}
+y=\frac{1}{3}\\
+x=\frac{4}{3}
+\end{cases}\rightarrow U\left(\frac{1}{3},\frac{4}{3}\right)
+\end{align*}
+
+Trovare i trasformati è estremamente semplice: basta sostituire i valori di $x$ e $y$ dei punti
+all'interno dell'affinità
+\begin{equation*}
+\boxed{
+O':\,\begin{cases}
+x'=-1\\y'=-2
+\end{cases}\quad
+A':\,\begin{cases}
+x'=4-2=2\\
+y'=2+1-2=1
+\end{cases}\quad
+B':\,\begin{cases}
+x'=-3\\
+y'=-9
+\end{cases}
+}	
+\end{equation*}
+
+L'area del triangolo è facilmente trovabile usando la matrice
+
+\begin{equation*}
+\mathscr{A}(ABC) = \frac{1}{2}\left\lvert 
+\begin{matrix}[1]
+x_1 & y_1 & 1\\
+x_2 & y_2 & 1\\
+x_3 & y_3 & 1
+\end{matrix}\right\rvert
+\end{equation*}
+e risolvendola con Sarrus. Quindi inserendo i valori e risolvendo otteniamo
+\begin{align*}
+&\mathscr{A}(A'O'B') = \frac{1}{2}\left\lvert 
+-1+(-18)+6-(-3+9-4)\right\rvert = \\&\frac{1}{2}\left\lvert 
+-1-18+6+3-9+4\right\rvert = \\&\frac{1}{2}\left\lvert-15\right\rvert = \boxed{\frac{15}{2}}
+\end{align*}
+
+Trovare la trasformazione inversa richiede solo di risolvere il sistema in $x$ e $y$.
+\begin{equation*}
+\begin{cases}
+2x+y=x'+1\\
+x-y=y'+2
+\end{cases}
+\begin{cases}
+2y'+4+3y'=x'+1\\
+x='+2+y
+\end{cases}
+\boxed{\begin{dcases}
+y = \frac{x'}{3}+\frac{2}{3}y'-1\\
+x = \frac{x'}{3}+\frac{y'}{3}+1
+\end{dcases}}
+\end{equation*}
+
+
+Trovare le trasformate di un'equazione è relativamente semplice. Piuttosto tedioso per alcune formule
+ma non complicato. Quello che si fa è applicare la trasformazione inversa alla nostra equazione.
+Questo perché immaginiamo che ciò che abbiamo sia un risultato e noi dobbiamo trovare l'equazione
+che ha portato a quella data. Quindi torniamo indietro e dunque usiamo l'inversa.
+\begin{align*}
+&y=3x+4 \rightarrow\\
+&\frac{x'}{3}-\frac{2}{3}y'-1=3\left(\frac{x'}{3}+\frac{y'}{3}+1\right)+4 \rightarrow
+\frac{x'}{3}-\frac{2}{3}y'-1=x'+y'+7\rightarrow\\\Aboxed{&2x'+5y'+24=0}
+\end{align*}
+\begin{align*}
+&x-y+5=0\rightarrow\\
+&\cancel{\frac{x'}{3}}+\frac{y'}{3}+1-\cancel{\frac{x'}{3}}+\frac{2}{3}y'+1+5 \rightarrow
+\boxed{y'+5=0}
+\end{align*}
+\begin{align*}
+&y=x^2\rightarrow\\
+&0=-\frac{x'}{3}+\frac{2}{3}y'+1+\frac{x'}{9}+\frac{2}{9}xy+\frac{2}{9}x+\frac{y^2}{9}+\frac{2}{9}y+1
+\\ &\boxed{x^{'2}+2x'y'+y^{'2}+3x'+12y'+18=0}
+\end{align*}
 
 \newpage
 Definizione di limiti
