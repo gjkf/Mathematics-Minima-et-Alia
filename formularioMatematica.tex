@@ -45,7 +45,7 @@
 \usepackage[all]{hypcap} % To fix caption loading of hyperref
 
 \usepackage{tikz}
-\usetikzlibrary{arrows,decorations,calc,intersections}
+\usetikzlibrary{arrows,decorations,calc,intersections,matrix}
 \usepackage{tkz-euclide}
 \usepackage{tikz-qtree}
 
@@ -507,20 +507,55 @@ P\left(\frac{nx_A+mx_B}{m+n},\frac{ny_A+my_B}{m+n}\right)
 G\left(\frac{x_A+x_B+x_C}{3},\frac{y_A+y_B+y_C}{3}\right)
 \end{equation*}
 
-\subsubsection{Area di un triangolo qualsiasi}
+\subsubsection{Area di un poligono qualsiasi}]
 \begin{equation*}
-\mathscr{A}(ABC) = \frac{1}{2}\left\lvert x_1y_2 + y_1x_3 + x_2y_3 -x_3y_2 -y_3x_1 -x_2y_1\right\rvert
-\end{equation*}
-Oppure si può risolvere questa versione
-\begin{equation*}
-\mathscr{A}(ABC) = \frac{1}{2}\left\lvert 
+\mathscr{A}(P) = \frac{1}{2}\left\lvert 
 \begin{matrix}[1]
 x_1 & y_1 & 1\\
 x_2 & y_2 & 1\\
-x_3 & y_3 & 1
+x_3 & y_3 & 1\\
+\vdots & \vdots & 1
 \end{matrix}\right\rvert
 \end{equation*}
-usando la regola di Sarrus.
+usando la regola di Sarrus. Questa formula è anche chiamata la formula di Gauss per le aree di 
+poligoni.\\
+Il modo di calcolare il determinante (o valore) della matrice è il seguente (in definitiva andare
+in diagonale dall'alto per ogni elemento della prima colonna moltiplicando gli elementi e quando si
+cambia colonna si sommi. Andare poi dal basso sottraendo).\\
+Il determinante della matrice
+\begin{equation*}
+\begin{bmatrix}[1]
+a_{11} & a_{12} & a_{13}\\
+a_{21} & a_{22} & a_{23}\\
+a_{31} & a_{32} & a_{33}
+\end{bmatrix}
+\end{equation*}
+è dato dalla risoluzione come descritto di questo
+\begin{center}
+	\begin{tikzpicture}[baseline=(A.center), scale=0.5]
+	\tikzset{node style ge/.style={circle}}
+	\tikzset{bar/.style = {opacity=.3,line width=4 mm,line cap=round,color=#1}}
+	\tikzset{plus/.style = {above left,,opacity=1,circle,fill=#1!50}}
+	\tikzset{minus/.style = {below left,,opacity=1,circle,fill=#1!50}}
+	
+	\matrix (A) [matrix of math nodes, nodes = {node style ge},,column sep=0 mm] 
+	{ a_{11} & a_{12} & a_{13}\\
+		a_{21} & a_{22} & a_{23}\\
+		a_{31} & a_{32} & a_{33}\\
+		a_{11} & a_{12} & a_{13}\\
+		a_{21} & a_{22} & a_{13}\\
+	};
+	
+	\draw [bar=blue] (A-1-1.north west) node[plus=blue] {$+$} to (A-3-3.south east);
+	\draw [bar=blue] (A-2-1.north west) node[plus=blue] {$+$} to (A-4-3.south east);
+	\draw [bar=blue] (A-3-1.north west) node[plus=blue] {$+$} to (A-5-3.south east);
+	\draw [bar=red]  (A-3-1.south west) node[minus=red] {$-$} to (A-1-3.north east);
+	\draw [bar=red]  (A-4-1.south west) node[minus=red] {$-$} to (A-2-3.north east);
+	\draw [bar=red]  (A-5-1.south west) node[minus=red] {$-$} to (A-3-3.north east);
+	\end{tikzpicture}
+\end{center}
+che contiene una ripetizione di tutte le righe tranne l'ultima. Volendo si può "saltare" all'inizio
+per evitare di scrivere la ripetizione però in questo modo si è sicuri di non sbagliare.
 
 \subsection{Rette}\label{subsec:geomanal:retta}
 \begin{center}
@@ -3533,7 +3568,7 @@ determinare
 
 Trovare il punto unito di $T$ è semplice, basta solo porre $x'=x$ e $y'=y$.
 \begin{align*}
-\begin{cases}
+&\begin{cases}
 x=2x+y-1\\
 y=x-y-2
 \end{cases}
@@ -3544,7 +3579,7 @@ y = -x+1\\
 \begin{cases}
 y=\frac{1}{3}\\
 x=\frac{4}{3}
-\end{cases}\rightarrow U\left(\frac{1}{3},\frac{4}{3}\right)
+\end{cases}\rightarrow \\&U\left(\frac{1}{3},\frac{4}{3}\right)
 \end{align*}
 
 Trovare i trasformati è estremamente semplice: basta sostituire i valori di $x$ e $y$ dei punti
@@ -3553,11 +3588,11 @@ all'interno dell'affinità
 \boxed{
 O':\,\begin{cases}
 x'=-1\\y'=-2
-\end{cases}\quad
+\end{cases}
 A':\,\begin{cases}
 x'=4-2=2\\
 y'=2+1-2=1
-\end{cases}\quad
+\end{cases}
 B':\,\begin{cases}
 x'=-3\\
 y'=-9
@@ -3583,20 +3618,20 @@ e risolvendola con Sarrus. Quindi inserendo i valori e risolvendo otteniamo
 \end{align*}
 
 Trovare la trasformazione inversa richiede solo di risolvere il sistema in $x$ e $y$.
-\begin{equation*}
-\begin{cases}
+\begin{align*}
+&\begin{cases}
 2x+y=x'+1\\
 x-y=y'+2
 \end{cases}
 \begin{cases}
 2y'+4+3y'=x'+1\\
 x='+2+y
-\end{cases}
-\boxed{\begin{dcases}
+\end{cases}\\
+&\boxed{\begin{dcases}
 y = \frac{x'}{3}+\frac{2}{3}y'-1\\
 x = \frac{x'}{3}+\frac{y'}{3}+1
 \end{dcases}}
-\end{equation*}
+\end{align*}
 
 
 Trovare le trasformate di un'equazione è relativamente semplice. Piuttosto tedioso per alcune formule
@@ -3618,6 +3653,299 @@ che ha portato a quella data. Quindi torniamo indietro e dunque usiamo l'inversa
 &0=-\frac{x'}{3}+\frac{2}{3}y'+1+\frac{x'}{9}+\frac{2}{9}xy+\frac{2}{9}x+\frac{y^2}{9}+\frac{2}{9}y+1
 \\ &\boxed{x^{'2}+2x'y'+y^{'2}+3x'+12y'+18=0}
 \end{align*}
+
+\paragraph{Esercizio 2}
+Considera nel piano $xOy$ la famiglia di curve di equazione
+\begin{equation*}
+y=\frac{mx-8}{x-2m}
+\end{equation*}
+determinare:
+\begin{enumerate}
+	\item per quali valori di $m$ l'equazione rappresenta un'iperbole equilatera traslata e il luogo
+	di simmetria delle iperboli della famiglia \label{enum:ex:aff:2:1}
+	\item le iperboli $\Phi_1$ e $\Phi_2$ della famiglia che sono tangenti, nel loro punto di ascissa
+	nulla, alla retta con coefficiente angolare $\dfrac{1}{2}$. Sia $\Phi_1$ quella relativa al valore
+	$m>0$ \label{enum:ex:aff:2:2}
+	\item il luogo $\gamma$ dei centri delle circonferenze passanti per $O$ e tangenti al luogo
+	di simmetria delle iperboli \label{enum:ex:aff:2:3}
+	\item detta $\theta'$ la curva corrispondente di $\theta$ nella trasformazione
+	\label{enum:ex:aff:2:4}
+	\begin{equation*}
+	\begin{dcases}
+	x = \frac{\sqrt{2}}{2}x'-\frac{\sqrt{2}}{2}y'\\
+	y = \frac{\sqrt{2}}{2}x'+\frac{\sqrt{2}}{2}y'
+	\end{dcases}
+	\end{equation*}
+	determinare il punto $P$ di $\theta'$ nel primo quadrante in corrispondenza del quale è \\
+	\textbf{massima} l'area del quadrilatero $OVPM$ essendo $V$ il punto di $\theta'$ di ordinata
+	nulla e $M$ il punto di intersezione di $\theta'$ con i semiasse negativo delle ordinate.
+	Sia $\theta$ la circonferenza con raggio pari a $1$ che si trova nella parte positiva di $y$.
+\end{enumerate}
+\divisor
+
+Per il \hyperref[enum:ex:aff:2:1]{\textbf{punto uno}} dobbiamo vedere in che caso l'equazione non
+descrive più un'iperbole. Per fare questo proviamo a semplificare e vediamo che dividendo
+\begin{equation*}
+\frac{mx}{x} \quad \text{e} \quad \frac{8}{2m}
+\end{equation*}
+otteniamo
+\begin{equation*}
+m = \frac{8}{2m} \rightarrow m^2 = 4 \rightarrow \boxed{m=\pm2}
+\end{equation*}
+Quindi i valori che noi dobbiamo esculdere sono $m\neq\pm2$ in quanto annullano l'equazione che
+diventerebbe una retta passante per $y=\pm2$.\\
+Il luogo dei centri di simmetria è quella retta su cui giaciono tutti i centri. Un centro è il punto
+\begin{equation*}
+C\left(-\frac{d}{c},\frac{a}{c}\right)
+\end{equation*}
+ed inserendo i nostri valori otteniamo
+\begin{equation*}
+C(2m,m)
+\end{equation*}
+quindi il luogo è dato dall'equazione $\boxed{y=\dfrac{x}{2}}$. Dobbiamo però escludere i punti
+\begin{equation*}
+(4,2)\qquad(-4,-2)
+\end{equation*}
+in quanto abbiamo escluso $m=\pm2$.\\\\
+
+Per il \hyperref[enum:ex:aff:2:2]{punto due} possiamo trovare i punti che distano $0$ dal fascio di
+rette $y=\dfrac{1}{2}x+q$ e che appartengono alla nostra famiglia di iperboli che al tempo stesso
+hanno $x=0$ ma non otterremmo nulla di significativo.\\
+Perché? Guardiamo un attimo il disegno
+\begin{center}
+	\begin{tikzpicture}
+		\clip (-1,-1.5) rectangle (8,5.5); 
+		\tkzInit[xmin=0,ymin=-1,xmax=7,ymax=5]
+		\tkzGrid
+		\tkzAxeXY
+		\draw[red, thick, domain=-3:7, samples=500] plot({\x}, {(1.76*\x-8)/(\x-2*1.76)});
+		\draw[blue, thick, domain=-1:6] plot({\x},{\x/2+1.92});
+	\end{tikzpicture}
+\end{center}
+Notiamo che per due valori di $q$ e $m$ scelti appositamente il più vicino punto di intersezione tra 
+la retta e l'iperbole ha come ascissa un valore leggermente inferiore a $2$. Andando a disegnare altre
+iperboli e altre rette modificando i due parametri si andrà a notare che è impossibile che la retta
+$y=\dfrac{x}{2}+q$ per qualunque $q$ sia tangente all'iperbole $\Phi$ in modo che $x=0$.\\\\
+
+Per il \hyperref[enum:ex:aff:2:3]{punto tre} abbiamo un problema interessante. Abbiamo una 
+circonferenza che passa per $O(0,0)$ e il cui centro abbia distanza dalla retta pari al raggio.
+Scriviamo quindi il sistema
+\begin{align*}
+&\begin{dcases}
+c = 0\\
+\frac{\left\lvert -\frac{a}{4}+\frac{b}{2}+c\right\rvert}{\sqrt{a^2+b^2}}=
+\sqrt{\frac{a^2}{4}+\frac{b^2}{4}-c}
+\end{dcases}\rightarrow
+\frac{\left\rvert a-2b\right\rvert}{2\sqrt{5}}=\sqrt{\frac{a^2}{4}+\frac{b^2}{4}}
+\intertext{Semplifichiamo e otteniamo}
+&b = -2a
+\end{align*}
+Cosa ci dice questo? Proviamo a inserire le informazioni all'interno della coordinata del centro
+\begin{equation*}
+C\left(-\frac{a}{2},-\frac{b}{2}\right)\rightarrow C\left(-\frac{a}{2},a\right)
+\end{equation*}
+Da questo vediamo che $y=-2x$. Quindi il nostro luogo dei centri è
+\begin{equation*}
+\boxed{\gamma:\,y = -2x}
+\end{equation*}
+
+Avremmo potuto farlo in un altro modo? Con un po' di ragionamento, sì, senza dubbio. Sappiamo che
+le circonferenze devono passare per $O(0,0)$ e essere tangenti a $y=\dfrac{x}{2}$. Però anche questa
+retta passa per $O(0,0)$ in quanto ha $q=0$. Quindi il punto di tangenza è esattamente il centro degli
+assi. Se sappiamo questo e sappiamo che le circonferenze devono essere tangenti, significa che 
+sappiamo il raggio è perpendicolare alla retta. Quindi la retta passante per il centro e 
+perpendicolare a $y=\dfrac{x}{2}$ è proprio $y=-2x$.\\\
+
+Per il \hyperref[enum:ex:aff:2:4]{punto quattro} troviamo la circonferenza che ha il centro su quella
+retta e che abbia il raggio pari a $1$.
+\begin{align*}
+\intertext{L'equazione della generica circonferenza è }
+&x^2+y^2+ax-2ay=0
+\intertext{perché avendo visto prima la soluzione dell'equazione del luogo geometrico sappiamo che
+$b=-2a$. Scriviamo tutto in funzione di $a$ per comodità.
+Con questo chiarito, troviamo il valore di $a$ sapendo che il raggio è pari a $1$}
+&\sqrt{\frac{a^2}{4}+a^2} = 1 \rightarrow \frac{4}{5}a^2=1 \rightarrow a=\pm\frac{2\sqrt{5}}{5}
+\intertext{Per scegliere quale dei due è accettabile, disegnamoli}
+\end{align*}
+
+\begin{center}
+	\begin{tikzpicture}[scale=2]
+		\coordinate (C) at (1/4.46,-1/2.23);
+		\coordinate (C1) at (-1/4.46,1/2.23);
+		\tkzInit[xmin=-1,ymin=-1,xmax=1,ymax=1]
+		\tkzGrid
+		\tkzAxeXY
+		
+		\draw[red, thick] (C) circle (1/2);
+		\draw[blue, thick] (C1) circle (1/2);
+		\filldraw[red] (C) circle (0.025);
+		\filldraw[blue] (C1) circle (0.025);
+		\node[red, below] at (C) {$a=\dfrac{2\sqrt{5}}{5}$};
+		\node[blue, above] at (C1) {$a=-\dfrac{2\sqrt{5}}{5}$};
+	\end{tikzpicture}
+\end{center}
+Quindi tra queste due quella da scegliere è quella con $a < 0$. Scriviamola
+\begin{equation*}
+\theta:\,x^2+y^2-\frac{2\sqrt{5}}{5}x+\frac{4\sqrt{5}}{5}y=0
+\end{equation*}
+La trasformazione che dobbiamo applicare è
+\begin{equation*}
+\begin{dcases}
+x = \frac{\sqrt{2}}{2}x'-\frac{\sqrt{2}}{2}y'\\
+y = \frac{\sqrt{2}}{2}x'+\frac{\sqrt{2}}{2}y'
+\end{dcases}
+\end{equation*}
+che osservandola rappresenta una rotazione di $\alpha=\ang{45}$. Come mai? Beh, abbiamo la matrice dei
+coefficienti che è
+\begin{equation*}
+\begin{bmatrix}[2.5]
+\dfrac{\sqrt{2}}{2} & -\dfrac{\sqrt{2}}{2}\\
+\dfrac{\sqrt{2}}{2} & \dfrac{\sqrt{2}}{2}
+\end{bmatrix}
+\end{equation*}
+che messa accanto a quella della rotazione
+\begin{equation*}
+\begin{bmatrix}[1]
+\cos\theta & -\sin\theta\\
+\sin\theta & \cos\theta
+\end{bmatrix}
+\end{equation*}
+risultano estremamente simili con $\theta = \dfrac{\pi}{4}$. Tanto simili da coincidere. Quindi 
+sappiamo che abbiamo una rotazione di $\ang{45}$. Applichiamo la trasformazione inversa alla nostra
+equazione e otteniamo
+\begin{align*}
+&\left(\frac{\sqrt{2}}{2}x'-\frac{\sqrt{2}}{2}y'\right)^2+
+\left(\frac{\sqrt{2}}{2}x'+\frac{\sqrt{2}}{2}y'\right)^2+\\
+&-\frac{2\sqrt{5}}{5}\left(\frac{\sqrt{2}}{2}x'-\frac{\sqrt{2}}{2}y'\right)+
+\frac{4\sqrt{5}}{5}\left(\frac{\sqrt{2}}{2}x'+\frac{\sqrt{2}}{2}y'\right) = 0
+\intertext{Che semplificata tramite calcoli che non riporto perché eccessivamente lunghi}
+&\boxed{\theta':\,x'^2+y^2+\sqrt{\frac{2}{5}}x+3\sqrt{\frac{2}{5}}y = 0}
+\end{align*}
+Che disegnata è
+\begin{center}
+	\begin{tikzpicture}[scale=2]
+	\coordinate (C) at (-0.15,-0.46);
+	\coordinate (C1) at (-1/4.46,1/2.23);
+	
+	\tkzInit[xmin=-1,ymin=-1,xmax=1,ymax=1]
+	\tkzGrid
+	\tkzAxeXY
+	
+	\draw[red, thick] (C) circle (1/2);
+	\draw[blue, thick] (C1) circle (1/2);
+	\filldraw[red] (C) circle (0.025);
+	\filldraw[blue] (C1) circle (0.025);
+	\end{tikzpicture}
+\end{center}
+
+Disegnamo ora i punti che ci vengono forniti
+\begin{center}
+	\begin{tikzpicture}[scale=2]
+	\coordinate (C) at (-0.15,-0.46);
+	\coordinate (V) at (-0.33,0);
+	\coordinate (M) at (0,-0.9);
+	\coordinate (O) at (0,0);
+	\coordinate (P) at (-0.5,-0.8);
+	
+	\tkzInit[xmin=-1,ymin=-1,xmax=1,ymax=0.5]
+	\tkzGrid
+	\tkzAxeXY
+	
+	\draw[red, thick] (C) circle (1/2);
+	\node[above] at (V) {$V$};
+	\node[right] at (M) {$M$};
+	\node[left] at (P) {$P$};
+	\filldraw[orange, fill opacity = 0.3] (M) -- (P) -- (V) -- (O) -- cycle;
+	\filldraw[red] (C) circle (0.025);
+	\filldraw (V) circle (0.025);
+	\filldraw (M) circle (0.025);
+	\filldraw (O) circle (0.025);
+	\filldraw (P) circle (0.025);
+	\end{tikzpicture}
+\end{center}
+dove $P$ è un punto variabile. Per calcolare l'area massima di questo quadrilatero dobbiamo trovare
+dove deve essere $P$ perché sia massima. Ovviamente deve appartenere alla circonferenza, quindi
+deve essere il più lontano possibile da $V$ e $M$. Quindi il punto più distante è quello in cui
+la retta passante tra lui e il centro della circonferenza è perpendicolare alla retta passante
+tra i due punti. Disegnamo per far capire.
+
+\begin{center}
+	\begin{tikzpicture}[scale=2]
+	\coordinate (C) at (-0.15,-0.46);
+	\coordinate (V) at (-0.33,0);
+	\coordinate (M) at (0,-0.9);
+	\coordinate (O) at (0,0);
+	\coordinate (P) at (-0.6,-0.57);
+	
+	\tkzInit[xmin=-1,ymin=-1,xmax=1,ymax=0.5]
+	\tkzGrid
+	\tkzAxeXY
+	
+	\draw[red, thick] (C) circle (1/2);
+	\node[above] at (V) {$V$};
+	\node[right] at (M) {$M$};
+	\node[left] at (P) {$P$};
+	
+	\filldraw[orange, fill opacity = 0.3] (M) -- (P) -- (V) -- (O) -- cycle;
+	
+	\draw[dashed, shorten >=-1cm] (P) -- (C);
+	\draw[dashed] (V) -- (M);
+	
+	\filldraw[red] (C) circle (0.025);
+	\filldraw (V) circle (0.025);
+	\filldraw (M) circle (0.025);
+	\filldraw (O) circle (0.025);
+	\filldraw (P) circle (0.025);
+	\end{tikzpicture}
+\end{center}
+L'area del quadrilatero è sempre ricavabile con la matrice
+\begin{equation*}
+\begin{vmatrix}[1]
+x_1 & y_1 & 1\\
+x_2 & y_2 & 1\\
+x_3 & y_3 & 1\\
+x_4 & y_4 & 1
+\end{vmatrix}
+\end{equation*}
+usando la formula di Gauss. Prima troviamo i punti
+\begin{equation*}
+V:\, x^2+\sqrt{\frac{2}{5}}=0 \rightarrow x = -\sqrt{\frac{2}{5}} \rightarrow 
+V\left(-\sqrt{\frac{2}{5}},0\right)
+\end{equation*}
+\begin{equation*}
+M:\,y^2+3\sqrt{\frac{2}{5}}=0 \rightarrow y = -3\sqrt{\frac{2}{5}} \rightarrow 
+M\left(0,-3\sqrt{\frac{2}{5}}\right)
+\end{equation*}
+La retta passante tra i due punti risulta essere
+\begin{equation*}
+r_{VM}:\,y=-3x-3\sqrt{\frac{2}{5}}
+\end{equation*}
+La tangente per $P$ invece
+\begin{equation*}
+t_{PC}:\,y=\frac{x}{3}-\frac{4}{3}\sqrt{\frac{2}{5}}
+\end{equation*}
+Il punto $P$ si trova facendo l'intersezione tra la tangente e la circonferenza. Si trova quindi
+\begin{equation*}
+P\left(-2\sqrt{\frac{2}{5}},\frac{1}{15}(5x-4\sqrt{10})\right)
+\end{equation*}
+Quindi l'area massima si trova risolvendo il determinante di
+\begin{equation*}
+\begin{bmatrix}[2.5]
+0&0&1\\
+-\sqrt{\dfrac{2}{5}}&0&1\\
+0&-3\sqrt{\dfrac{2}{5}}&1\\
+-2\sqrt{\dfrac{2}{5}}&\dfrac{1}{15}(5x-4\sqrt{10}&1
+\end{bmatrix}
+\end{equation*}
+che risulta essere
+\begin{equation*}
+\frac{1}{2}\left\lvert-\sqrt{\frac{2}{5}}\cdot\left(-3\sqrt{\frac{2}{5}}\right) -
+\left(-2\sqrt{\frac{2}{5}}\cdot\left(-3\sqrt{\frac{2}{5}}\right)\right)\right\rvert
+\end{equation*}
+che semplificato risulta in
+\begin{equation*}
+\boxed{\mathscr{A}(VOMP) = \frac{3}{5}}
+\end{equation*}
 
 \newpage
 Definizione di limiti
