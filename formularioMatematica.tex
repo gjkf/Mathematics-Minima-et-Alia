@@ -16,7 +16,7 @@
 \usepackage{cancel} % Cacelled equations and simplifications
 \usepackage{xargs} % Allows for multiple arguments commmands
 \usepackage{enumitem} % For more flexibility on lists\usepackage{extsizes} % Smaller text
-\usepackage{amsmath,amsfonts,amssymb,mathtools}
+\usepackage{amsmath,amsfonts,amssymb,mathtools,amsthm}
 \usepackage{bm} % Bold math
 \usepackage[latin1]{inputenc} % Accented letters
 \usepackage{fullpage}
@@ -76,6 +76,9 @@
 
 % For better visual in tables
 \renewcommand*{\arraystretch}{2.4}
+% To center with m{}
+\usepackage{array}
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
 
 \newcommand{\divisor}{\rule{7.8cm}{0.4pt}}
 
@@ -110,8 +113,8 @@
 	\node at ($(#2)!#6!(middle)$) {#7};
 }
 
+% Arc over text
 \usepackage{graphicx}
-
 \makeatletter
 \DeclareFontFamily{U}{tipa}{}
 \DeclareFontShape{U}{tipa}{m}{n}{<->tipa10}{}
@@ -138,11 +141,23 @@
 	\array{*\c@MaxMatrixCols c}}
 \makeatother
 
+\everymath{\displaystyle}
+
+% Proof changes
+\renewcommand\qedsymbol{QED}
+%\renewenvironment{proof}[1][\proofname]{{\bfseries #1.}}{}
+
+\expandafter\let\expandafter\oldproof\csname\string\proof\endcsname
+\let\oldendproof\endproof
+\renewenvironment{proof}[1][\proofname]{%
+	\oldproof[\ttfamily \scshape \large #1]%
+}{\oldendproof}
+
 \begin{document}
 	
 \begin{center}
 	{\Huge \textbf{Formule di Matematica}}\\
-	{\large Davide Cossu}
+{\large Davide Cossu}
 \end{center}
 Questo è un formulario con le formule di matematica fatte e con alcune spiegazioni teoriche.
 
@@ -158,7 +173,7 @@ separare interi da decimali e $,$ per separare le migliaia se necessario.}
 Qui verrano chiariti i simboli che verranno utilizzati nel formulario. Molti di essi si troveranno
 principalmente nelle definizioni formali ma ritorneranno utili anche negli esercizi.
 
-\begin{tabular}{c | m{6cm}}
+\begin{tabular}{c | M{6cm}}
 	$\sum\limits_{i = l}^{n} f(i)$ & $f(l) + f(l+1) + \dotsb + f(n)$\\
 	$\prod\limits_{i = l}^{n} f(i)$ & $f(l) \cdot f(l+1) \dotsm f(n)$\\
 	$\forall$ & Per ogni\\
@@ -174,6 +189,8 @@ principalmente nelle definizioni formali ma ritorneranno utili anche negli eserc
 	$\iff$ & Se e solo se
 \end{tabular}
 
+\input{teoremi}
+
 \input{generale}
 \input{geomAnal}
 \input{goniom}
@@ -183,6 +200,8 @@ principalmente nelle definizioni formali ma ritorneranno utili anche negli eserc
 \input{aff}
 \input{complessi}
 \input{ex}
+
+%\include{dimostrazioni}
 
 \newpage
 Definizione di limiti
