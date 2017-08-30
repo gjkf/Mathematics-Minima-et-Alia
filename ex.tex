@@ -1926,7 +1926,7 @@ che semplificato risulta in
 \boxed{\mathscr{A}(VOMP) = \frac{3}{5}}
 \end{equation*}
 
-\subsection{\hyperref[sec:complex]{Numeri Complessi}}\label{ex:complex}
+\subsection*{\hyperref[sec:complex]{Numeri Complessi}}\label{ex:complex}
 \paragraph{Esercizio 1}
 Calcolare le radici quarte di $z=2+i2\sqrt{3}$
 \divisor
@@ -1943,11 +1943,48 @@ Calcoliamo $\rho$ e $\theta$
 \end{align*}
 Le radici quarte si ottengono sostituendo a $k$ i valori in ${0,1,2,3}$. Quindi otteniamo
 \begin{align*}
-w_1 &= \sqrt{2}\left(\cos\frac{\pi}{12}+i\sin\frac{\pi}{12}\right)\\
+\Aboxed{w_1 &= \sqrt{2}\left(\cos\frac{\pi}{12}+i\sin\frac{\pi}{12}\right)}\\
+\Aboxed{
 w_2 &= \sqrt{2}\left(\cos\frac{\frac{\pi}{3}+2\pi}{4}+i\sin\frac{\frac{\pi}{3}+2\pi}{4}\right) = 
-\sqrt{2}\left(\cos\frac{7}{12}\pi+i\sin\frac{7}{12}\pi\right)\\
+\sqrt{2}\left(\cos\frac{7}{12}\pi+i\sin\frac{7}{12}\pi\right)}\\
+\Aboxed{
 w_3 &= \sqrt{2}\left(\cos\frac{\frac{\pi}{3}+4\pi}{4}+i\sin\frac{\frac{\pi}{3}+4\pi}{4}\right) = 
-\sqrt{2}\left(\cos\frac{13}{12}\pi+i\sin\frac{13}{12}\pi\right)\\
+\sqrt{2}\left(\cos\frac{13}{12}\pi+i\sin\frac{13}{12}\pi\right)}\\
+\Aboxed{
 w_4 &= \sqrt{2}\left(\cos\frac{\frac{\pi}{3}+6\pi}{4}+i\sin\frac{\frac{\pi}{3}+6\pi}{4}\right) = 
-\sqrt{2}\left(\cos\frac{19}{12}\pi+i\sin\frac{19}{12}\pi\right)
+\sqrt{2}\left(\cos\frac{19}{12}\pi+i\sin\frac{19}{12}\pi\right)}
+\end{align*}
+
+\paragraph{Esercizio 2}
+Risolvere nel campo complesso
+\begin{equation*}
+z^2+(1-4i)z-3-3i = 0
+\end{equation*}
+\divisor
+
+Applichiamo la formula risolutiva delle equazioni di secondo grado che solitamente si usa per i reali
+\begin{equation*}
+z_{1/2} = \frac{1-4i+\sqrt{(1-4i)^2+12+12i}}{2} = \frac{1-4i+\sqrt{-3+4i}}{2}
+\end{equation*}
+avendo $\sqrt{-3+4i}$ ad indicare le radici del numero complesso $-3+4i$.\\
+Per determinarle poniamo
+\begin{align*}
+&\sqrt{-3+4i}=a+ib
+\intertext{con $a,b\in\mathbb{R}$. Eleviamo al quadrato}
+&-3+4i=a^2-b^2+2iab
+\intertext{e imponiamo che le due parti reali e immaginarie siano uguali}
+&\begin{cases}
+a^2-b^2=-3\\ab=2
+\end{cases}
+\intertext{Ricavando $b=\frac{2}{a}$ dalla seconda equazione e sostituendolo nella prima otteniamo
+un'equazione biquadratica}
+&a^4+3a^2-4=0\rightarrow a^2=-8\;\text{Non accettabile e }\; x^2=1 
+\intertext{da cui}
+&x_1=-1\quad\text{e}\quad x_2=1
+\intertext{Ricavando i corrispondendi valori di $b$ otteniamo le radici cercate}
+&1-2i\quad\text{e}\quad1+2i
+\intertext{Sostituendo quei valori nella prima formula}
+&z_1=\frac{1-4i+1+2i}{2}=1-i\quad\text{e}\quad z_2=\frac{1-4i-1-2i}{2}=-3i
+\intertext{Di conseguenza l'equazione ammette due soluzioni}
+\Aboxed{&z_1=1-i\quad\text{e}\quad z_2=-3i}
 \end{align*}
