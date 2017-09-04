@@ -1944,15 +1944,12 @@ Calcoliamo $\rho$ e $\theta$
 Le radici quarte si ottengono sostituendo a $k$ i valori in ${0,1,2,3}$. Quindi otteniamo
 \begin{align*}
 \Aboxed{w_1 &= \sqrt{2}\left(\cos\frac{\pi}{12}+i\sin\frac{\pi}{12}\right)}\\
-\Aboxed{
-w_2 &= \sqrt{2}\left(\cos\frac{\frac{\pi}{3}+2\pi}{4}+i\sin\frac{\frac{\pi}{3}+2\pi}{4}\right) = 
-\sqrt{2}\left(\cos\frac{7}{12}\pi+i\sin\frac{7}{12}\pi\right)}\\
-\Aboxed{
-w_3 &= \sqrt{2}\left(\cos\frac{\frac{\pi}{3}+4\pi}{4}+i\sin\frac{\frac{\pi}{3}+4\pi}{4}\right) = 
-\sqrt{2}\left(\cos\frac{13}{12}\pi+i\sin\frac{13}{12}\pi\right)}\\
-\Aboxed{
-w_4 &= \sqrt{2}\left(\cos\frac{\frac{\pi}{3}+6\pi}{4}+i\sin\frac{\frac{\pi}{3}+6\pi}{4}\right) = 
-\sqrt{2}\left(\cos\frac{19}{12}\pi+i\sin\frac{19}{12}\pi\right)}
+w_2 &= \sqrt{2}\left(\cos\frac{\frac{\pi}{3}+2\pi}{4}+i\sin\frac{\frac{\pi}{3}+2\pi}{4}\right) = \\
+\Aboxed{&\sqrt{2}\left(\cos\frac{7}{12}\pi+i\sin\frac{7}{12}\pi\right)}\\
+w_3 &= \sqrt{2}\left(\cos\frac{\frac{\pi}{3}+4\pi}{4}+i\sin\frac{\frac{\pi}{3}+4\pi}{4}\right) =\\ 
+\Aboxed{&\sqrt{2}\left(\cos\frac{13}{12}\pi+i\sin\frac{13}{12}\pi\right)}\\
+w_4 &= \sqrt{2}\left(\cos\frac{\frac{\pi}{3}+6\pi}{4}+i\sin\frac{\frac{\pi}{3}+6\pi}{4}\right) = \\
+\Aboxed{&\sqrt{2}\left(\cos\frac{19}{12}\pi+i\sin\frac{19}{12}\pi\right)}
 \end{align*}
 
 \paragraph{Esercizio 2}
@@ -1988,3 +1985,190 @@ un'equazione biquadratica}
 \intertext{Di conseguenza l'equazione ammette due soluzioni}
 \Aboxed{&z_1=1-i\quad\text{e}\quad z_2=-3i}
 \end{align*}
+
+\subsection*{\hyperref[sec:insiemi]{Insiemi numerici}}\label{ex:insiemi}
+\paragraph{Esercizio 1}
+Determinare l'estremo inferiore, superiore, gli eventuali punti di accumulazione del seguente insieme
+numerico
+\begin{equation*}
+A=\left\{x_k\in\mathbb{R}\mid x_k=\frac{1}{1-2^{-k}},\forall k\in\mathbb{N}_0\right\}
+\end{equation*}
+\divisor
+
+Come vedere se ha estremi? Beh, possiamo ad esempio provare a vedere il grafico di tale funzione
+\begin{center}
+	\begin{tikzpicture}
+		\clip (-3.5,-3.5) rectangle (6,3.5); 
+		\tkzInit[xmin=-3,ymin=-3,xmax=3,ymax=3]
+		\tkzGrid
+		\tkzAxeXY
+		\draw[red, thick, domain=-3:3, samples=500] plot({\x}, {1/(1-2^(-\x))});
+	\end{tikzpicture}
+\end{center}
+Da questo vediamo (e anche dalla formula) che descrive un'iperbole equilatera. Essendo l'iperbole una
+curva che può continuare all'infinito e $k\in\mathbb{N}_0$ quindi ci sono infiniti elementi che 
+proseguono in entrambi gli assi. Quindi non ci sono estremi né superiori né inferiori. O per scriverlo
+in simboli
+\begin{equation*}
+{]{-\infty},{\infty}[}
+\end{equation*}
+I punti di accumulazione sono relativamente facili da trovare dal grafico. Dobbiamo trovare un punto
+i cui intorni, qualunque essi siano, contengono almeno un elemento dell'insieme. Osservando il disegno
+vediamo che $0$ è un punto di accumulazione in quanto sia da destra che da sinistra, diminuendo sempre
+più la distanza, c'è sempre un elmento dell'insieme.
+
+\paragraph{Esercizio 2}
+Dato l'insieme di numeri reali $A=\{x\in\mathbb{R}: x= \arctan n, n\in\mathbb{N}\}$, quale delle
+seguenti affermazioni è vera?
+\begin{enumerate}
+	\item È limitato, ma non ammette massimo
+	\item È limitato e ammette sia massimo che minimo
+	\item Non ha punti di accumulazione
+	\item Tutte le precedenti sono false
+\end{enumerate}
+\divisor
+
+Come prima cosa, facciamo il grafico.
+\begin{center}
+	\begin{tikzpicture}
+	\tkzInit[xmin=-2,ymin=-2,xmax=2,ymax=2]
+	\tkzGrid
+	\tkzAxeXY
+	\draw[red, thick, domain=-2:2, samples=500] plot({\x}, {rad(atan(\x))});
+	\end{tikzpicture}
+\end{center}
+Come sappiamo, l'arcotangente tenderà ad avvicinarsi a $\pm\frac{\pi}{2}$ senza però effettivamente
+raggiungerlo. Quindi non ammette né un massimo e tantomeno un minimo in quanto per qualunque valore
+di $x$ ci sarà sempre un elemento corrispondente dell'insieme. Di conseguenza \textbf{sia il punto 1 
+e il punto 2 falso}.\\
+Punti di accomulazione ci sono? Guardiamo nuovamente il grafico. Quale punto permette di essere
+sicuri che sia da sinitra che da destra ci siano intorni sempre più vicini che contengono un punto
+dell'insieme. Vediamo che $0$ è un punto di questi (l'unico fra l'altro). Perché $0$ e non altro?
+Prendiamo un altro punto e vediamo che per quanto ci allontaniamo o sforziamo, non garantisce che 
+per	ogni punto ce ne sia uno relativo in $A$.
+
+\subsection*{\hyperref[sec:limiti]{Limiti}}\label{ex:limiti}
+\paragraph{Esercizio 1}
+Verificare che
+\begin{equation*}
+\lim\limits_{x\to3}\frac{x^2-5x+6}{x^2-9}=\frac{1}{6}
+\end{equation*}
+\divisor
+
+Consideriamo la disequazione
+\begin{align*}
+&\left\lvert\frac{x^2-5x+6}{x^2-9}-\frac{1}{6}<\varepsilon\right\rvert
+\intertext{che per $x\neq3$ si riduce in}
+&\left\lvert\frac{5x-15}{6(x+3)}\right\rvert<\varepsilon
+\intertext{Da questa successivamente si ottiene}
+&\begin{dcases}
+\frac{5x-15}{6(x+3)}<\varepsilon\\\frac{5x-15}{6(x+3)}>-\varepsilon
+\end{dcases}\rightarrow\\
+&\begin{dcases}
+\frac{(5-6\varepsilon)x-15-18\varepsilon}{x+3}<0\\
+\frac{(5-6\varepsilon)x-15+18\varepsilon}{x+3}>0
+\end{dcases}
+\intertext{Risolvendo per $0<\varepsilon<\frac{5}{6}$ si ha}
+&\begin{dcases}
+-3<x<3\frac{5+6\varepsilon}{5-6\varepsilon}\\
+x<-3;\,x>3\frac{5-6\varepsilon}{5+6\varepsilon}
+\end{dcases}
+\intertext{Che quindi diventa}
+&
+x\in{\left]3\frac{5-6\varepsilon}{5+6\varepsilon},3\frac{5+6\varepsilon}{5-6\varepsilon}\right[}-\{3\}
+\end{align*}
+Questo intervallo costituisce a tutti gli effetti un intorno di $3$, escluso $3$ stesso. Quindi il
+limite è verificato. (Per verificare sia un intorno, si sotituiscano a $\varepsilon$ valori sempre
+più vicini a $0$ (ad esempio $0.1$, $0.01$, \ldots) e si verifichi che si avvicinano sempre più ad
+un valore.\\
+La rappresentazione grafica di questo sistema è
+\begin{center}
+	\begin{tikzpicture}[yscale=0.75]
+		\coordinate (A) at (1,0);
+		\coordinate (B) at (3,0);
+		\coordinate (C) at (4,0);
+		
+		\coordinate (A1) at (1,-2);
+		\coordinate (A2) at (1,-1);
+		\coordinate (B1) at (3,-2);
+		\coordinate (C1) at (4,-1);
+		
+		\draw[thick, -stealth] (0,0) -- (5,0)
+			node[pos=1,below right]{$x$};
+		\draw[thick, cyan] (A1) -- (0,-2);
+		\draw[thick, cyan] (A2) -- (C1);
+		\draw[thick, cyan] (B1) -- ++(2,0);
+		\draw[dashed] (A) -- (A1);
+		\draw[dashed] (B) -- (B1);
+		\draw[dashed] (C) -- (C1);
+		
+		\draw[decorate, decoration={zigzag}] (A) -- (A1);
+		
+		\node[above] at (A){$-3$};
+		\node[above] at (B){$3\frac{5-6\varepsilon}{5+6\varepsilon}$};
+		\node[above right] at (C){$3\frac{5+6\varepsilon}{5-6\varepsilon}$};
+	\end{tikzpicture}
+\end{center}
+
+\paragraph{Esercizio 2}
+Verificare che
+\begin{equation*}
+\lim\limits_{x\to0}\ln\abs{x}=-\infty
+\end{equation*}
+\divisor
+
+Consideriamo per $x\neq0$ la disequazione
+\begin{equation*}
+\ln\abs{x}<M
+\end{equation*}
+Se essa risulterà soddisfatta in un intorno di $x_0=0$ per $M<0$, lo sarà certamente per $M\geq0$.\\
+Sia dunque $M<0$; si ha
+\begin{equation*}
+\abs{x}<e^M\quad\text{cioè}\quad-e^M<x<e^M
+\end{equation*}
+Pertanto il limite risulta verificato perché le soluzioni costituiscono un intorno privato dello $0$.
+L'asse $y$ è asintoto verticale in questo caso.
+
+\paragraph{Esercizio 3}
+Determinare il limite di
+\begin{equation*}
+f(x)=\frac{2}{1-x^3}
+\end{equation*}
+\divisor
+
+La funzione è definita in $\mathscr{D}_f=\mathbb{R}\setminus\{1\}$. Studiamo il segno per trovare
+i limiti sinistri e destri di $x_0=1$ (in quanto è escluso dal dominio).
+\begin{equation*}
+1-x^3>0\rightarrow x^3<1\rightarrow x<1
+\end{equation*}
+Quindi quando $x<1$ è positiva, negativa altrimenti.\\
+Poiché $\lim\limits_{x\to1}(1-x^3)=0$ si ha
+\begin{equation*}
+\boxed{\lim\limits_{x\to1^+}\frac{2}{1+x^3}=-\infty}\quad\text{e}\quad
+\boxed{\lim\limits{x\to1^-}\frac{2}{1-x^3}=+\infty}
+\end{equation*}
+
+\paragraph{Esercizio 4}
+Si deduca
+\begin{equation*}
+\lim\limits_{x\to+\infty}\arctan\ln x
+\end{equation*}
+\divisor
+
+Deducendo il limite e spezzandolo parte per parte
+\begin{align*}
+\lim\limits_{x\to+\infty}\ln x \to +\infty
+\intertext{Questo lo si scopre anche dal grafico se non ce lo si ricorda}
+\lim\limits_{x\to+\infty}\arctan+\infty\to\frac{\pi}{2}
+\end{align*}
+Questo lo si capisce dal grafico
+\begin{center}
+	\begin{tikzpicture}
+	\tkzInit[xmin=-2,ymin=-2,xmax=2,ymax=2]
+	\tkzGrid
+	\tkzAxeXY
+	\draw[red, thick, domain=-2:2, samples=500] plot({\x}, {rad(atan(\x))});
+	\end{tikzpicture}
+\end{center}
+La funzione è illimitata ma è contenuta all'interno di $\left]{-\frac{\pi}{2}},{\frac{\pi}{2}}\right[$
+quindi per una $x$ che cresce sempre di più, la funzione tende a $\frac{\pi}{2}$.

@@ -44,7 +44,7 @@
 \usepackage[all]{hypcap} % To fix caption loading of hyperref
 
 \usepackage{tikz}
-\usetikzlibrary{arrows,decorations,calc,intersections,matrix}
+\usetikzlibrary{arrows,decorations,calc,intersections,matrix,decorations.pathmorphing}
 \usepackage{tkz-euclide}
 \usepackage{tikz-qtree}
 
@@ -156,10 +156,11 @@
 \begin{document}
 	
 \begin{center}
-	{\Huge \textbf{Formule di Matematica}}\\
-{\large Davide Cossu}
+	{\Huge\textbf{Formulario di Matematica}}\\\vspace{0.2cm}
+	{\textbf{Davide Cossu} con l'aiuto di \textbf{Stefano D'Agaro}}
 \end{center}
-Questo è un formulario con le formule di matematica fatte e con alcune spiegazioni teoriche.
+Questo è un formulario con le formule di matematica fatte durante tutti e cinque gli anni di un liceo
+scientifico con alcune spiegazioni teoriche ed esercizi.
 
 {
 	\hypersetup{linkcolor=black}
@@ -199,51 +200,11 @@ principalmente nelle definizioni formali ma ritorneranno utili anche negli eserc
 \input{prob}
 \input{aff}
 \input{complessi}
+\input{insiemi}
+\input{limiti}
 \input{ex}
 
-%\include{dimostrazioni}
-
-\newpage
-Definizione di limiti
-\improvement{Migliorare la formattazione}
-\begin{align*}
-\lim\limits_{x\to x_0} f(x) &= 
-\begin{cases}
-l\;, & 
-\forall \varepsilon>0, \exists\delta>0\mid\forall x: 0<\vert x-x_0\vert < \delta \Rightarrow
-\vert f(x) - l\vert < \varepsilon\\
-\infty\;, 
-& \forall k>0, \exists\delta>0\mid\forall x: 0<\vert x-x_0\vert < \delta \Rightarrow
-f(x) >k\\
--\infty\;, &
-\forall k>0, \exists\delta>0\mid\forall x: 0<\vert x-x_0\vert < \delta  \Rightarrow
-f(x)< k\\
-\end{cases}\\
-\lim\limits_{x\to\infty} f(x) &=
-\begin{cases}
-l\;, & 
-\forall \varepsilon>0, \exists h>0\mid\forall x: x>h \Rightarrow
-\vert f(x) - l\vert < \varepsilon\\
-\infty\;, 
-& \forall k>0, \exists h>0\mid\forall x: x>h \Rightarrow
-f(x) >k\\
--\infty\;, &
-\forall k>0, \exists h>0\mid\forall x: x>h \Rightarrow
-f(x)< k\\
-\end{cases}\\
-\lim\limits_{x\to-\infty} f(x) &=
-\begin{cases}
-l\;, & 
-\forall \varepsilon>0, \exists h>0\mid\forall x: x<h \Rightarrow
-\vert f(x) - l\vert < \varepsilon\\
-\infty\;, 
-& \forall k>0, \exists h>0\mid\forall x: x<h \Rightarrow
-f(x) >k\\
--\infty\;, &
-\forall k>0, \exists h>0\mid\forall x: x<h \Rightarrow
-f(x)< k\\
-\end{cases}
-\end{align*}
+\include{dimostrazioni}
 
 % List of TODOs
 \newpage

@@ -1,0 +1,98 @@
+%!TEX ROOT=formularioMatematica.tex
+
+\section{Insiemi numerici}\label{sec:insiemi}
+Se durante la nostra carriera scolastica abbiamo sempre lavorato con $\mathbb{R}$ o al massimo in 
+$\mathbb{C}$, nulla vieta che noi creiamo nuovi insiemi numerici e li studiamo per trovarne alcune
+caratteristiche.\\
+Ogni insieme numerico possiede delle caratteristiche che noi possiamo studiare
+\begin{enumerate}
+	\item È limitato/illimitato
+	\item Possiede un $\max$ e un $\min$
+	\item Possiede \emph{maggioranti} o \emph{minoranti}
+	\item Possiede un $\sup$ o un $\inf$
+\end{enumerate}
+Per le seguenti definizioni ed esempi, prenderemo in considerazione
+\begin{equation*}
+A = \left\{\frac{1}{n}\mid n\in\mathbb{N}_0\right\}
+\end{equation*}
+
+\subsection{Condizioni di limitazione}
+La o le condizioni di limitazione indicani quale può essere un limite o i limiti di un insieme. In 
+insieme può essere illimitato (ovvero che per qualunque numero noi scegliamo, esisterà un punto
+sulla retta che lo rappresenta), limitato \emph{superiormente}, \emph{inferiormente} o entrambi
+contemporaneamente.\\
+In generale la condizione di limitazione (superiore ed inferiore per uno stesso valore) è
+\begin{equation*}
+\exists\,k>0\land k\in\mathbb{R}\mid \forall x \in A, \abs{x} \leq k
+\end{equation*}
+Generalizzando ancora per due valori diversi
+\begin{equation*}
+\exists\,k_1,k_2>0\land k_1,k_2\in\mathbb{R}\mid \forall x\in A, k_1\leq x \leq k_2
+\end{equation*}
+
+\subsection{Maggioranti e minoranti}
+Prendendo le condizioni di limitazione separatamente
+\begin{align*}
+\exists\,m\in\mathbb{R}\mid\forall x\in A x\geq m
+\intertext{e}
+\exists\,M\in\mathbb{R}\mid\forall x\in A x\leq M
+\end{align*}
+$m$ rappresenta un \textbf{minorante} di $A$ e $M$ rappresenta un \textbf{maggiorante} di $A$.
+
+\subsection{Massimi e minimi}
+Un numero si definisce \emph{massimo} se
+\begin{equation*}
+\exists\,L\in\mathbb{A}\mid\forall x\in A, L\geq x
+\end{equation*}
+quindi è il valore più alto che l'insieme contiene.\\
+Un numero si definisce \emph{minimo} se
+\begin{equation*}
+\exists\,l\in\mathbb{A}\mid\forall x\in A, l\leq x
+\end{equation*}
+quindi è il valore più basso che l'insieme contiene.
+
+\subsection{Intervalli}
+Un \emph{intervallo} può essere aperto (illimitato) o chiuso (limitato). La notazione più comune è la 
+seguente
+\begin{align*}
+\textbf{Limitato }&{[{1},{4}]}\coloneqq\{x\in\mathbb{R}\mid1\leq x \leq4\}\\
+\textbf{Illimitato }&{]{-\infty},{\pi}[}\coloneq\{x\in\mathbb{R}\mid-\infty<x<\pi\}
+\end{align*}
+Da notare che $\pm\infty$ è sempre escluso in quanto tecnicamente non appartiene a $\mathbb{R}$.\\
+Un \emph{intorno} non è altro che un intervallo che comprende un numero specifico. In simboli
+\begin{equation*}
+I(x_0)\coloneqq{]{x_0-\delta_1},{x_0+\delta_2}[} \qquad(\delta_1,\delta_2\in\mathbb{R})
+\end{equation*}
+Ovviamente si può definire un intorno che sia limitato con una distanza
+\begin{equation*}
+I_\varepsilon(x_0)\coloneqq{]{x_0-\varepsilon},{x_0+\varepsilon}[} 
+\end{equation*}
+Questo è completo e ovviamente possiamo anche fare intorni non completi (quindi solo da un lato). Essi 
+sono di conseguenza denominati sinistri o destri.
+
+\subsection{Punti isolati}
+Un punto isolato è un punto i cui intorni non contengono alcun elemento dell'insieme.
+\begin{equation*}
+x_0\in A, \exists\,I(x_0)\mid\forall x\in A\setminus\{x_0\}\not\supset I(x_0)
+\end{equation*}
+
+\subsection{Punti di accumulazione}
+Un punto di accumulazione è un punto in cui ogni suo intorno cade almeno un elemento distinto 
+dell'insieme.
+\begin{equation*}
+x_0,y\in A,\forall I(x_0), y\in I(x_0)
+\end{equation*}
+
+\subsection{Estremi}
+L'estremo superiore è quel valore che non viene mai superato. A seconda dei casi può essere il 
+\emph{più grande elemento dell'insieme} o il \emph{più piccolo dei maggioranti}.
+\begin{equation*}
+\forall x\in A\implies x\leq\Lambda\quad\text{e}\quad \forall\varepsilon\in\mathbb{R}_0^+,
+\exists\,x\in A\mid x>\Lambda-\varepsilon
+\end{equation*}
+L'estremo inferiore è quel valore che non non ha valori inferiori. A seconda dei casi può essere il
+\emph{più piccolo elemento dell'insieme} o il \emph{più grande dei minoranti}.
+\begin{equation*}
+\forall x\in A\implies x\geq\lambda\quad\text{e}\quad \forall\varepsilon\in\mathbb{R}_0^+,
+\exists\,x\in A\mid x<\lambda+\varepsilon
+\end{equation*}

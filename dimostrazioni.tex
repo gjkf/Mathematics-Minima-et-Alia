@@ -2,7 +2,7 @@
 \section{Dimostrazioni}
 Qui verranno inserite alcune dimostrazioni di teoremi o formule che vengono usate nel formulario.
 
-\begin{proof}[Teorema fondamentale dell'Algebra esteso]
+\begin{proof}[\protect\hyperlink{teor:tfa-ext}{Teorema fondamentale dell'Algebra esteso}]
 	Il polinomio $P(x)$ in virtù del teorema fondamentale dell'Algebra, ha in $\mathbb{C}$ almeno uno 
 	zero. Indicato con $\alpha_1$ tale zero, risulta:
 	\begin{equation*}
@@ -25,5 +25,172 @@ Qui verranno inserite alcune dimostrazioni di teoremi o formule che vengono usat
 	da cui
 	\begin{equation*}
 	P(x) = a_n(x-\alpha_1)(x-\alpha_2)\dotsm(x-\alpha_n)
+	\end{equation*}
+\end{proof}
+
+\begin{proof}
+	[\protect\hyperlink{teor:limiteInfinitoFunzRaz}{Limite di una funzione razionale}]
+	Se
+	\begin{equation*}
+	P(x)=a_nx^n+a_{n-1}x^{n-1}+\dotsb+a_0
+	\end{equation*}
+	è un polinomio di grado $n>0$, si può scrivere per $x\neq0$
+	\begin{equation*}
+	P(x) = x^n\left(a_n+\frac{a_{n-1}}{x}+\dotsb+\frac{a_0}{x^n}\right)
+	\end{equation*}
+	e quindi, poiché $\lim\limits_{x\to+\infty}\frac{1}{x^n}=0,\,\forall n\in\mathbb{N}_0$, risulta
+	\begin{equation*}
+	\lim\limits_{x\to\infty}x^n\left(a_n+\frac{a_{n-1}}{x}+\dotsb+\frac{a_0}{x^n}\right) = a_n
+	\end{equation*}
+	Si ha
+	\begin{align*}
+	\lim\limits_{x\to\infty}P(x)&=\lim\limits_{x\to\infty}=
+	\lim\limits_{x\to\infty}\left(a_nx^n+a_{n-1}x^{n-1}+\dotsb+a_0\right)=\\
+	&\lim\limits_{x\to\infty}\left(a_nx^n\right)
+	\end{align*}
+\end{proof}
+
+\begin{proof}[\protect\hyperlink{teor:uniLim}{Unicità del limite}]
+	Supponiamo per assurdo che la funzione $f$ per $x\to x_0$ ammetta due limiti distinti $l_1$ e 
+	$l_2$, cioè che si abbia
+	\begin{equation*}
+	\lim\limits_{x\to x_0}f(x)=l_1\quad\lim\limits_{x\to x_0}f(x)=l_2
+	\end{equation*}
+	In base alla definizione di limite, preso comunque un numero $\varepsilon>0$, è possibile 
+	determinare due numeri positivi $\delta_\varepsilon'$ e $\delta_\varepsilon''$ tali che, per ogni
+	$x\in\mathscr{D}_f$, verificante la condizione
+	\begin{align*}
+	0&<\abs{x-x_0}<\delta_\varepsilon' \quad\text{risulti}\quad \abs{f(x)-l_1}<\varepsilon\\
+	0&<\abs{x-x_0}<\delta_\varepsilon'' \quad\text{risulti}\quad\abs{f(x)-l_2}<\varepsilon\\
+	\end{align*}
+	Ora, sia $\delta_\varepsilon$ il minore tra i due numeri $\delta_\varepsilon',\delta_\varepsilon''$
+	per
+	\begin{equation*}
+	0<\abs{x-x_0}<\delta_\varepsilon
+	\end{equation*}
+	risulteranno verificate entrambe le disequazioni precedenti e potremo scrivere
+	\begin{equation*}
+	\abs{l_1-l_2}=\abs{l_1-f(x)+f(x)-l_2}\leq\abs{f(x)-l_1}+\abs{f(x)-l_2}<\varepsilon+\varepsilon=
+	\varepsilon2
+	\end{equation*}
+	Data l'arbitrarietà di $\varepsilon$, la condizione $\abs{l_1-l_2}<2\varepsilon$ implica che sia
+	$\abs{l_1-l_2}=0$ cioè $l_1=l_2$.
+\end{proof}
+
+\begin{proof}[\protect\hyperlink{teor:confLim}{Teorema del confronto}]
+	In base alla definizione di limite, preso comunque un numero $\varepsilon>0$, è possibile 
+	determinare due numeri positivi $\delta_\varepsilon'$ e $\delta_\varepsilon''$ tali che, per ogni
+	$x\in\mathscr{D}_f$, verificante la condizione
+	\begin{alignat*}{2}
+	0&<\abs{x-x_0}<\delta_\varepsilon' &\quad\text{risulti}\quad \abs{f(x)-l_1}<\varepsilon\\
+	0&<\abs{x-x_0}<\delta_\varepsilon'' &\text{risulti} \abs{f(x)-l_2}<\varepsilon\\
+	\end{alignat*}
+	Ora, sia $\delta_\varepsilon$ il minore tra i due numeri $\delta_\varepsilon',\delta_\varepsilon''$
+	per
+	\begin{equation*}
+	0<\abs{x-x_0}<\delta_\varepsilon
+	\end{equation*}
+	saranno verificate entrambe le disequazioni precedenti quindi
+	\begin{equation*}
+	l-\varepsilon<f(x)\leq g(x)\leq h(x)<l+\varepsilon
+	\end{equation*}
+	cioè
+	\begin{equation*}
+	\abs{g(x)-l}<\varepsilon
+	\end{equation*}
+\end{proof}
+
+\begin{proof}[\protect\hyperlink{teor:segno}{Teorema della permanenza del segno}]
+	Dimostriamo innanzitutto la prima parte del teorema.\\
+	Sia $\varepsilon=\frac{\abs{l}}{2}$; per la definizione di limite è possibile determinare in 
+	corrispondenza di tale $\varepsilon$, un numero $\delta_\varepsilon>0$ tale che se 
+	$x\in\mathscr{D}_f$
+	\begin{equation*}
+	0<\abs{x-x_0}<\delta_\varepsilon\quad\text{implichi}\quad
+	l-\frac{\abs{l}}{2}<f(x)<l+\frac{\abs{l}}{2}
+	\end{equation*}
+	Ne consegue la tesi non appena si osservi che
+	\begin{equation*}
+	\text{se}\, l<0\quad l+\frac{\abs{l}}{2}<0\quad\text{quindi}\quad f(x)<0
+	\end{equation*}
+	\begin{equation*}
+	\text{se}\, l>0\quad l-\frac{\abs{l}}{2}>0\quad\text{quindi}\quad f(x)>0
+	\end{equation*}
+	Dimostriamo ora la seconda parte.\\
+	Sia per esempio $f(x)>0$. Dalla definizione di limite è possibile determinare in 
+	corrispondenza di tale $\varepsilon$, un numero $\delta_\varepsilon>0$ tale che se 
+	$x\in\mathscr{D}_f$
+	\begin{equation*}
+	0<\abs{x-x_0}<\delta_\varepsilon\quad\text{implichi}\quad
+	l-\varepsilon<f(x)<l+\varepsilon
+	\end{equation*}
+	Supponiamo ora per assurdo che sia $l<0$, scegliendo $\varepsilon=-\frac{l}{2}>0$; si avrebbe
+	\begin{equation*}
+	f(x)<\frac{l}{2}<0
+	\end{equation*}
+	contro l'ipotesi che sia $f(x)>0$. Sarà dunque $l\geq0$
+\end{proof}
+
+\begin{proof}[\protect\hyperlink{teor:sommaLimiti}{Limite di una somma}]
+	Si ha intanto
+	\begin{equation*}
+	\abs{[f(x)+g(x)]}-(l_1+l_2)\leq\abs{f(x)-l_1}+\abs{g(x)-l)2}
+	\end{equation*}
+	e quindi, preso $\varepsilon>0$, se si vuol provare che il primo membro è più piccolo di 
+	$\varepsilon$, basta verificare che ciascuno dei due addendi a secondo membro è più piccolo di
+	$\frac{\varepsilon}{2}$.\\
+	Ma questo è evidente per le definizioni stesse di limiti. Il primo addendo sarà minore di 
+	$\frac{\varepsilon}{2}$ se
+	\begin{equation*}
+	0<\abs{x-x_0}<\delta_\varepsilon'
+	\end{equation*}
+	e il secondo se
+	\begin{equation*}
+	0<\abs{x-x_0}<\delta_\varepsilon''
+	\end{equation*}
+	ove i due numeri $\delta_\varepsilon'$ e $\delta_\varepsilon''$ possono essere diversi in quanto 
+	si riferiscono a funzioni diverse.\\
+	Detto allora $\delta_\varepsilon$ il minore dei due, scegliendo $x$ tale che
+	\begin{equation*}
+	0<\abs{x-x_0}<\delta_\varepsilon
+	\end{equation*}
+	si soddisfano entrambe le condizioni; quindi per valori di $x$ così scelti si avrà
+	\begin{equation*}
+	\abs{f(x)-l_1}<\frac{\varepsilon}{2}\quad\abs{g(x)-l_2}<\frac{\varepsilon}{2}
+	\end{equation*}
+	e di conseguenza
+	\begin{equation*}
+	\abs{[f(x)+g(x)]}-(l_1+l_2)<\varepsilon
+	\end{equation*}
+\end{proof}
+
+\begin{proof}[\protect\hyperlink{teor:prodottoLimiti}{Limite di un prodotto}]
+	Si ha
+	\begin{align*}
+	&\abs{f(x)\cdot g(x)-l_1\cdot l_2} = \\
+	&\abs{f(x)\cdot g(x)+l_1\cdot g(x)-l_1\cdot g(x)-l_1\cdot l_2 =}\\
+	&\abs{g(x)\cdot(f(x)-l_1)+l_1\cdot(g(x)-l_2)}\leq\\
+	&\abs{g(x)}\cdot\abs{f(x)-l_1}+\abs{l_1}\cdot
+	\abs{g(x)-l_2}
+	\end{align*}
+	Fissato allora $\varepsilon'$ in modo che sia $0<\varepsilon'<1$, esiste in corrispondenza di esso 
+	un numero positivo $\delta_{\varepsilon'}$ tale che, $\forall x\in I$ verificante la condizione
+	$0<\abs{x-x_0}<\delta_{\varepsilon'}$, risulti
+	\begin{equation*}
+	\abs{f(x)-1}<\varepsilon'\quad\abs{g(x)-l_2}<\varepsilon'\quad\abs{g(x)}<\abs{l_2}+\varepsilon'
+	\end{equation*}
+	Si ricava quindi
+	\begin{equation*}
+	\abs{f(x)\cdot g(x)-l_1\cdot l_2}<(\abs{l_2}+\varepsilon')\varepsilon'+\abs{l_2}\varepsilon'<
+	(\abs{l_2}+\abs{l_1}+1)\varepsilon'
+	\end{equation*}
+	poiché $\varepsilon'^2<\varepsilon'$, essendo $0<\varepsilon'<1$, se scegliamo $\varepsilon'$ non
+	solo positivo e minore di $1$ ma anche minore di
+	\begin{equation*}
+	\frac{\varepsilon}{\abs{l_1}+\abs{l_2}+1}
+	\end{equation*}
+	si ottiene, per $x$ appartenente ad un opportuno intorno di $x_0$
+	\begin{equation*}
+	\abs{f(x)\cdot g(x)-l_1\cdot l_2}<\varepsilon
 	\end{equation*}
 \end{proof}
