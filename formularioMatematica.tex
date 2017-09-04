@@ -153,6 +153,21 @@
 	\oldproof[\ttfamily \scshape \large #1]%
 }{\oldendproof}
 
+% Footers for date, vesion and copyright
+\usepackage[yyyymmdd]{datetime}
+\renewcommand{\dateseparator}{-}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead{} % clear all header fields
+\renewcommand{\headrulewidth}{0pt} % no line in header area
+\fancyfoot{} % clear all footer fields
+\fancyfoot[CE,CO]{\thepage}% page number in "outer" position of footer line
+\fancyfoot[RE,RO]{Copyright \copyright 2017--\the\year$\,$Cossu Davide
+} % other info in "inner" position of footer line
+\fancyfoot[LE,LO]{Version 1.0 \today
+}
+
 \begin{document}
 	
 \begin{center}
@@ -207,7 +222,7 @@ principalmente nelle definizioni formali ma ritorneranno utili anche negli eserc
 \include{dimostrazioni}
 
 % List of TODOs
-\newpage
-\listoftodos[Note]
+%\newpage
+%\listoftodos[Note]
 
 \end{document}
