@@ -152,7 +152,7 @@ Ad esempio
 	\begin{align*}
 	\lim\limits_{x\to x_0} f(x) &= l\\
 	\ArrowBetweenLines
-	\forall k>0, \exists\,\delta_M>0\mid\forall x: 0<\vert x-x_0\vert &< \delta_M \Rightarrow
+	\forall M>0, \exists\,\delta_M>0\mid\forall x: 0<\vert x-x_0\vert &< \delta_M \Rightarrow
 	f(x) > M
 	\end{align*}
 \end{definizioneLimiteInfinito1}
@@ -176,9 +176,9 @@ Ad esempio
 	\begin{align*}
 	\lim\limits_{x\to x_0} f(x) &= l\\
 	\ArrowBetweenLines
-	\forall k>0, \exists\,\delta_M>0\mid\forall x: 0<\vert x-x_0\vert &< \delta_M \Rightarrow
+	\forall M>0, \exists\,\delta_M>0\mid\forall x: 0<\vert x-x_0\vert &< \delta_M \Rightarrow
 	f(x) < M
-	\end{align*}
+		\end{align*}
 \end{definizioneLimiteInfinito2}
 
 \subsection{Definizione di limite finito di una funzione all'infinito}
@@ -330,9 +330,9 @@ un limite sinistro.
 	\end{equation*}
 	In simboli
 	\begin{align*}
-	\lim\limits_{x\to x_0} f(x) &= l\\
+	\lim\limits_{x\to x_0^+} f(x) &= l\\
 	\ArrowBetweenLines
-	\forall \varepsilon>0, \exists\,\delta_\varepsilon>0\mid\forall x: 0< x-x_0	&<\delta_\varepsilon 
+	\forall \varepsilon>0, \exists\,\delta_\varepsilon>0\mid\forall x: x_0< x &<x_0+\delta_\varepsilon 
 	\Rightarrow \vert f(x) - l\vert < \varepsilon
 	\end{align*}
 \end{definizioneLimiteFinitoDestro}
@@ -341,7 +341,7 @@ un limite sinistro.
 	$x_0$.\\
 	Si dice che
 	\begin{equation*}
-	\lim\limits_{x\to x_0^+}f(x) = l
+	\lim\limits_{x\to x_0^-}f(x) = l
 	\end{equation*}
 	se, fissato comunque un numero $\varepsilon>0$, è possibile determinare in corrispondenza di esso
 	un numero $\delta_\varepsilon>0$ tale che, per ogni $x\in I^-(x_0)$ verificante la condizione
@@ -354,12 +354,27 @@ un limite sinistro.
 	\end{equation*}
 	In simboli
 	\begin{align*}
-	\lim\limits_{x\to x_0} f(x) &= l\\
+	\lim\limits_{x\to x_0^-} f(x) &= l\\
 	\ArrowBetweenLines
-	\forall \varepsilon>0, \exists\,\delta_\varepsilon>0\mid\forall x: -\delta_\varepsilon< x-x_0&<0
+	\forall \varepsilon>0, \exists\,\delta_\varepsilon>0\mid\forall x: x_0-\delta_\varepsilon<x&<x_0
 	\Rightarrow \vert f(x) - l\vert < \varepsilon
 	\end{align*}
 \end{definizioneLimiteFinitoSinistro}
+
+\subsection{Definizione generale di limite}
+Fin'ora abbiamo elencato varie definizioni formali ma ce n'è una generale, che le comprenda tutte? 
+Certo che sì e anzi, è anche più facile da ricordare in quanto è una unica. Sapendo poi adattarla, si
+ricavano tute le altre.
+\begin{definizioneGeneraleLimite}
+	Siano $V(l)$ e $U(x_0)$ due intorni dei rispettivi parametri. Si ha allora che
+	\begin{align*}
+	\lim\limits_{x\to x_0} f(x) &= l\\
+	\ArrowBetweenLines
+	\forall V(l), \exists\,U(x_0)\mid\forall x\in U(x_0)&\setminus\{x_0\}\Rightarrow f(x)\in V(l)
+	\end{align*}
+\end{definizioneGeneraleLimite}
+Questo permette di imparare una sola formula che però, opportunamente adattata, permette di ricavare
+le definizioni formali di ogni limite.
 
 \subsection{Teroemi sui limiti}
 \begin{uniLim}\hypertarget{teor:uniLim}{}
@@ -516,26 +531,12 @@ Prendiamo ad esempio
 \begin{equation*}
 \lim\limits_{x\to4^-}\frac{1}{\log_2 x -2}
 \end{equation*}
-Per trovare questo limite, possiamo molto semplicemente immaginare il grafico del logaritmo in base $2$
-\begin{center}
-	\begin{tikzpicture}
-	\tkzInit[xmin=-1,ymin=-2.5,xmax=5,ymax=3]
-	\tkzGrid
-	\tkzAxeXY
-	\draw[red, thick, domain=0.1:5, samples=500] plot({\x}, {ln(\x)});
-	\end{tikzpicture}
-\end{center}
-e osservare il suo comportamento man mano che si avvicina da sinistra a $4$. Notiamo subito che tende
-a crescere e continuerà fino all'infinito. Quindi
+Per trovare questo limite, sostituiamo $x = 4$ nella funzione. Otteniamo
 \begin{equation*}
-\lim\limits_{x\to4^-}\log_2 x-2 = +\infty
+\lim\limits_{x\to4^-}\frac{1}{\log_2 2} \to \lim\limits_{x\to4^-}\frac{1}{1} = 1
 \end{equation*}
-Immaginiamo ora di sostituire $\log_2 x-2$ con $+\infty$ nella nostra funzione. Da notare che non 
-usiamo $=$ ma $\to$.
-\begin{equation*}
-\lim\limits_{x\to4^-}\frac{1}{\log_2 x -2}\to\lim\limits_{x\to4^-}\frac{1}{+\infty} = 0
-\end{equation*}
-Abbiamo quindi scoperto che il limite della nostra originali funzione è $0$.\\\\
+Abbiamo molto semplicemente trovato il limite sostituendo. Spesso però bisogna anche stare attenti 
+da che parte $x$ tende.\\[\baselineskip]
 Prendiamo un altra funzione
 \begin{equation*}
 \lim\limits_{x\to2^+}\sqrt{\log_2\frac{x+2}{x-2}}
