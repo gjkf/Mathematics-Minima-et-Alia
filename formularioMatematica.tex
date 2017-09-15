@@ -32,6 +32,7 @@
 \usepackage{enumitem} % For more flexibility on lists
 \usepackage{siunitx} % Adds the international system of measures and the \ang{degrees} command
 \usepackage{mathabx} % For better \land, \lor and \lnot
+\usepackage[labelformat=empty]{caption}
 
 \usepackage{hyperref} % Hyperlinks
 \hypersetup{
@@ -165,18 +166,37 @@
 \fancyfoot[CE,CO]{\thepage}% page number in "outer" position of footer line
 \fancyfoot[RE,RO]{Copyright \copyright 2017--\the\year$\,$Cossu Davide
 } % other info in "inner" position of footer line
-\fancyfoot[LE,LO]{Version 1.0 \today
+\fancyfoot[LE,LO]{Version 1.0.1 \today
 }
 
 \begin{document}
 	
-\begin{center}
-	{\Huge\textbf{Formulario di Matematica}}\\\vspace{0.2cm}
-	{\textbf{Davide Cossu} con l'aiuto di \textbf{Stefano D'Agaro}}
-\end{center}
-Questo è un formulario con le formule di matematica fatte durante tutti e cinque gli anni di un liceo
-scientifico con alcune spiegazioni teoriche ed esercizi.
+\onecolumn
+\begin{@twocolumnfalse}
+	\clearpage
+	\vspace*{\stretch{1.5}}
+	\begin{center}
+		\begin{figure*}[!h]
+			\centering
+			\includegraphics[scale=1.7]{colophon/octopus}
+			\caption{ }
+			\label{fig:octopus}
+		\end{figure*}
+		\begin{minipage}{.6\textwidth}				
+			\begin{center}
+				{\Huge\textbf{Formulario di Matematica}}\\\vspace{0.2cm}
+				{\textbf{Davide Cossu} con l'aiuto di \textbf{Stefano D'Agaro}}
+			\end{center}
+			\vspace{0.5cm}
+			Questo è un formulario con le formule di matematica fatte durante tutti e cinque gli anni 
+			di un liceo scientifico con alcune spiegazioni teoriche ed esercizi.
+		\end{minipage}
+	\end{center}
+	\vspace{\stretch{3}} % \vfill equivalent to \vspace{\fill}
+	\clearpage
+\end{@twocolumnfalse}
 
+\twocolumn
 {
 	\hypersetup{linkcolor=black}
 	\tableofcontents
