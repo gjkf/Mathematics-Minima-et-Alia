@@ -126,7 +126,7 @@ Ad esempio
 	\begin{align*}
 	\lim\limits_{x\to x_0} f(x) &= l\\
 	\ArrowBetweenLines
-	\forall \varepsilon>0, \exists\,\delta_\varepsilon>0\mid\forall x: 0<\vert x-x_0\vert 
+	\forall \varepsilon, \exists\,\delta_\varepsilon>0\mid\forall x: 0<\vert x-x_0\vert 
 	&<\delta_\varepsilon \Rightarrow \vert f(x) - l\vert < \varepsilon
 	\end{align*}
 \end{definizioneLimiteFinito}
@@ -152,7 +152,7 @@ Ad esempio
 	\begin{align*}
 	\lim\limits_{x\to x_0} f(x) &= l\\
 	\ArrowBetweenLines
-	\forall M>0, \exists\,\delta_M>0\mid\forall x: 0<\vert x-x_0\vert &< \delta_M \Rightarrow
+	\forall M>0, \exists\,\delta_M>0\mid\forall x: 0<\vert x-&x_0\vert < \delta_M \Rightarrow
 	f(x) > M
 	\end{align*}
 \end{definizioneLimiteInfinito1}
@@ -176,7 +176,7 @@ Ad esempio
 	\begin{align*}
 	\lim\limits_{x\to x_0} f(x) &= l\\
 	\ArrowBetweenLines
-	\forall M>0, \exists\,\delta_M>0\mid\forall x: 0<\vert x-x_0\vert &< \delta_M \Rightarrow
+	\forall M, \exists\,\delta_M>0\mid\forall x: 0<\vert x-x_0\vert &< \delta_M \Rightarrow
 	f(x) < M
 		\end{align*}
 \end{definizioneLimiteInfinito2}
@@ -199,7 +199,7 @@ Ad esempio
 	\begin{align*}
 	\lim\limits_{x\to x_0} f(x) &= l\\
 	\ArrowBetweenLines
-	\forall \varepsilon>0, \exists\,k_\varepsilon>0\mid\forall x: x>&k_\varepsilon \Rightarrow
+	\forall \varepsilon, \exists\,k_\varepsilon>0\mid\forall x: x>&k_\varepsilon \Rightarrow
 	\vert f(x) - l\vert < \varepsilon
 	\end{align*}
 \end{definizioneLimiteInfinitoFinito1}
@@ -220,7 +220,7 @@ Ad esempio
 	\begin{align*}
 	\lim\limits_{x\to x_0} f(x) &= l\\
 	\ArrowBetweenLines
-	\forall \varepsilon>0, \exists\,k_\varepsilon>0\mid\forall x: x<&k_\varepsilon \Rightarrow
+	\forall \varepsilon, \exists\,k_\varepsilon>0\mid\forall x: x<&k_\varepsilon \Rightarrow
 	\vert f(x) - l\vert < \varepsilon
 	\end{align*}
 \end{definizioneLimiteInfinitoFinito2}
@@ -261,7 +261,7 @@ Ad esempio
 	\begin{align*}
 	\lim\limits_{\substack{x\to+\infty\\ [x\to-\infty]}}f(x)&=+\infty\\
 	\ArrowBetweenLines
-	\forall k_M>0, \exists\,M>0\mid\forall x: x>&k_M[<k_M] \Rightarrow f(x) < M
+	\forall k_M, \exists\,M>0\mid\forall x: x>k_M&[<k_M] \Rightarrow f(x) < M
 	\end{align*}
 \end{definizioneLimiteInfinitoInfinito2}
 
@@ -332,7 +332,7 @@ un limite sinistro.
 	\begin{align*}
 	\lim\limits_{x\to x_0^+} f(x) &= l\\
 	\ArrowBetweenLines
-	\forall \varepsilon>0, \exists\,\delta_\varepsilon>0\mid\forall x: x_0< x &<x_0+\delta_\varepsilon 
+	\forall \varepsilon, \exists\,\delta_\varepsilon>0\mid\forall x: x_0< x <x_0+&\delta_\varepsilon 
 	\Rightarrow \vert f(x) - l\vert < \varepsilon
 	\end{align*}
 \end{definizioneLimiteFinitoDestro}
@@ -356,7 +356,7 @@ un limite sinistro.
 	\begin{align*}
 	\lim\limits_{x\to x_0^-} f(x) &= l\\
 	\ArrowBetweenLines
-	\forall \varepsilon>0, \exists\,\delta_\varepsilon>0\mid\forall x: x_0-\delta_\varepsilon<x&<x_0
+	\forall \varepsilon, \exists\,\delta_\varepsilon>0\mid\forall x: x_0-\delta_\varepsilon<x&<x_0
 	\Rightarrow \vert f(x) - l\vert < \varepsilon
 	\end{align*}
 \end{definizioneLimiteFinitoSinistro}
@@ -525,6 +525,8 @@ Quelle che vengono riquadrate di seguito sono le forme indeterminate nei vari ca
 		$0$ & $0$ & $\boxed{\frac{0}{0}}$
 	\end{tabular}
 \end{center}
+
+Per la risoluzione delle forme indeterminate, si utilizzino i limiti di una funzione razionale.
 
 \subsection{Consigli nella risoluzione di limiti deducibili}
 Prendiamo ad esempio
