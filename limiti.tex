@@ -265,40 +265,6 @@ Ad esempio
 	\end{align*}
 \end{definizioneLimiteInfinitoInfinito2}
 
-\subsection{Limite all'infinito di una funzione razionale}
-\hypertarget{teor:limiteInfinitoFunzRaz}{}
-\begin{limiteInfinitoFunzRaz}
-	Quando $x$ tende a $\pm\infty$, il limte di un polinomio coincide con il limite del suo monomio di
-	grado più alto.
-\end{limiteInfinitoFunzRaz}
-Ad esempio consideriamo
-\begin{equation*}
-\lim\limits_{x\to+\infty}(3x^3-5x^2+4x+1)
-\end{equation*}
-Poiché per $x\neq0$
-\begin{equation*}
-3x^3-5x^2+4x+1=x^3\left(3-\frac{5}{x}+\frac{4}{x^2}+\frac{1}{x^3}\right)
-\end{equation*}
-si ha
-\begin{equation*}
-\lim\limits_{x\to+\infty}\left(3-\frac{5}{x}+\frac{4}{x^2}+\frac{1}{x^3}\right) = 3
-\end{equation*}
-allora
-\begin{equation*}
-\lim\limits_{x\to+\infty}(3x^3-5x^2+4x+1)=\lim\limits_{x\to+\infty}(3x^3) = +\infty
-\end{equation*}
-Se invece abbiamo una frazione, abbiamo
-\begin{align*}
-&\lim\limits_{x\to\infty}\frac{a_nx^n+a_{n-1}x^{n-1}+\dotsb+a_0}{b_mx^m+b_{m-1}x^{m-1}+\dotsb+b_0}=
-\lim\limits_{x\to\infty}\frac{a_nx^n}{b_mx^m} = \\
-&\lim\limits_{x\to\infty}\left(\frac{a_n}{b_m}x^{n-m}\right) =
-\begin{dcases}
-\infty, &\text{se } n > m\\
-\frac{a_n}{b_n}, &\text{se } n = m\\
-0, &\text{se } n < m
-\end{dcases}
-\end{align*}
-
 \subsection{Limite sinistro e destro}
 Avere limite $l$ in un punto $x_0$ significa per una funzione essere regolare, ovvero assumere valori
 sempre più prossimi a $l$ tanto $x$ è prossimo a $x_0$.\\
@@ -527,6 +493,73 @@ Quelle che vengono riquadrate di seguito sono le forme indeterminate nei vari ca
 \end{center}
 
 Per la risoluzione delle forme indeterminate, si utilizzino i limiti di una funzione razionale.
+
+\subsection{Limite finito di una funzione razionale}
+\begin{limiteFinitoFunzRaz}
+	Quando $x$ tende a $x_0$, il limite di un polinomio coincide con il limite calcolato con 
+	sostituzione.
+\end{limiteFinitoFunzRaz}
+
+Prendiamo ad esempio
+\begin{equation*}
+\lim\limits_{x\to3^+}\frac{x^2-5x+6}{(x-3)^2}
+\end{equation*}
+Se provassimo a sostituire otterremmo
+\begin{equation*}
+\lim\limits_{x\to3^+}\frac{x^2-5x+6}{(x-3)^2} = \frac{0}{0}
+\end{equation*}
+che è una forma indeterminata. In questa situazione si usa \hyperref[ruffini]{Ruffini} per ridurlo di
+grado e ottenere
+\begin{equation*}
+\lim\limits_{x\to3^+}\frac{x^2-5x+6}{(x-3)^2} = 
+\lim\limits_{x\to3^+}\frac{\cancel{(x-3)}(x-2)}{\cancel{(x-3)}(x-2)}
+\end{equation*}
+e per i teoremi dei limiti
+\begin{equation*}
+\lim\limits_{x\to3^+}\frac{(x-2)}{(x-2)} = +\infty
+\end{equation*}
+In generale quindi
+\begin{equation*}
+\lim\limits_{x\to x_0}\frac{p(x)}{q(x)} \overset{\left[\frac{0}{0}\right]}{=} =
+\lim\limits_{x\to x_0}\frac{p_1(x)}{q_1(x)} = \dotsb = \begin{cases}
+\text{Ruffini se }\frac{0}{0}\\
+l
+\end{cases}
+\end{equation*}
+
+\subsection{Limite all'infinito di una funzione razionale}
+\hypertarget{teor:limiteInfinitoFunzRaz}{}
+\begin{limiteInfinitoFunzRaz}
+	Quando $x$ tende a $\pm\infty$, il limte di un polinomio coincide con il limite del suo monomio di
+	grado più alto.
+\end{limiteInfinitoFunzRaz}
+Ad esempio consideriamo
+\begin{equation*}
+\lim\limits_{x\to+\infty}(3x^3-5x^2+4x+1)
+\end{equation*}
+Poiché per $x\neq0$
+\begin{equation*}
+3x^3-5x^2+4x+1=x^3\left(3-\frac{5}{x}+\frac{4}{x^2}+\frac{1}{x^3}\right)
+\end{equation*}
+si ha
+\begin{equation*}
+\lim\limits_{x\to+\infty}\left(3-\frac{5}{x}+\frac{4}{x^2}+\frac{1}{x^3}\right) = 3
+\end{equation*}
+allora
+\begin{equation*}
+\lim\limits_{x\to+\infty}(3x^3-5x^2+4x+1)=\lim\limits_{x\to+\infty}(3x^3) = +\infty
+\end{equation*}
+Se invece abbiamo una frazione, abbiamo
+\begin{align*}
+&\lim\limits_{x\to\infty}\frac{a_nx^n+a_{n-1}x^{n-1}+\dotsb+a_0}{b_mx^m+b_{m-1}x^{m-1}+\dotsb+b_0}=
+\lim\limits_{x\to\infty}\frac{a_nx^n}{b_mx^m} = \\
+&\lim\limits_{x\to\infty}\left(\frac{a_n}{b_m}x^{n-m}\right) =
+\begin{dcases}
+\infty, &\text{se } n > m\\
+\frac{a_n}{b_n}, &\text{se } n = m\\
+0, &\text{se } n < m
+\end{dcases}
+\end{align*}
 
 \subsection{Consigli nella risoluzione di limiti deducibili}
 Prendiamo ad esempio

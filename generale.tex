@@ -182,6 +182,51 @@ $n$ nella variabile $x$.
 % Reset the counter
 \setcounter{equation}{0}
 
+\subsection{Regola di Cramer}
+La regola di Kramer permette di risolvere sistemi lineari a $n$-incognite. Generalmente non è molto
+comodo per grandi valori di $n$ in quanto diventa lungo da risolvere però per due o tre equazioni è
+molto comodo.\\ [\baselineskip]
+
+Ogni sistema può essere definito come
+\begin{equation*}
+Ax = c
+\end{equation*}
+dove $A$ è una matrice e $x$ e $c$ sono vettori. Le soluzioni $(x_1,\ldots,x_n)$ sono determinabili
+\begin{equation*}
+x_i = \frac{\det A_i}{\det A}
+\end{equation*}
+dove $A_i$ è la matrice costruita con la $i$-esima colonna di $A$ con il vettore $c$.\\
+Esempio a 2 equazioni
+\begin{equation*}
+\begin{cases}
+ax+by=\mathcolor{red}{e}\\cx+dy=\mathcolor{red}{f}
+\end{cases} \Leftrightarrow
+\begin{bmatrix}[1]
+a&b\\c&d
+\end{bmatrix}
+\begin{bmatrix}[1]
+x\\y
+\end{bmatrix}=
+\begin{bmatrix}[1]
+\mathcolor{red}{e}\\\mathcolor{red}{f}
+\end{bmatrix}
+\end{equation*}
+quindi
+\begin{align*}
+x = \frac{\begin{vmatrix}[1]
+	\mathcolor{red}{e}&b\\\mathcolor{red}{f}&d
+	\end{vmatrix}}{\begin{vmatrix}[1]
+	a&b\\c&d
+	\end{vmatrix}}= \frac{\mathcolor{red}{e}d-b\mathcolor{red}{f}}{ad-bc}
+\end{align*}
+\begin{align*}
+y = \frac{\begin{vmatrix}[1]
+	a&\mathcolor{red}{e}\\c&\mathcolor{red}{f}
+	\end{vmatrix}}{\begin{vmatrix}[1]
+	a&b\\c&d
+	\end{vmatrix}}= \frac{a\mathcolor{red}{f}-\mathcolor{red}{e}c}{ad-bc}
+\end{align*}
+
 \subsection{Valori assoluti}
 Verranno qui elencate alcune caratteristiche dei valori assoluti.
 
