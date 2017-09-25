@@ -492,7 +492,20 @@ Quelle che vengono riquadrate di seguito sono le forme indeterminate nei vari ca
 	\end{tabular}
 \end{center}
 
-Per la risoluzione delle forme indeterminate, si utilizzino i limiti di una funzione razionale.
+\subsubsection{Potenza}
+\begin{center}
+	\begin{tabular}{c|c|c}
+		$\boldsymbol{\lim f(x)}$ & $\boldsymbol{\lim g(x)}$ &
+		$\boldsymbol{\lim[f(x)]^{g(x)}}$\\\hline
+		$l$ & $\pm\infty$ & $\pm\infty$\\
+		$1$ & $\pm\infty$ & $\boxed{1^{\pm\infty}}$\\
+		$+\infty$ & $0$ & $\boxed{+\infty^0}$\\
+		$0$ & $0$ & $\boxed{0^0}$
+	\end{tabular}
+\end{center}
+
+Per la risoluzione delle forme indeterminate, si utilizzino i limiti di una funzione razionale o 
+limiti notevoli.
 
 \subsection{Limite finito di una funzione razionale}
 \begin{limiteFinitoFunzRaz}
@@ -561,6 +574,55 @@ Se invece abbiamo una frazione, abbiamo
 \end{dcases}
 \end{align*}
 
+\subsection{Limiti di funzioni irrazionali}
+Creiamo questa sottosezione per la particolarità che i limiti con radicali possono avere. Prendiamo ad
+esempio
+\begin{equation*}
+\lim\limits_{x\to-\infty}\left(\sqrt{4x^2+1}-x\right)
+\end{equation*}
+Notiamo subito che se proviamo a sostituire, otteniamo la forma indeterminata
+\begin{equation*}
+-\infty+\infty
+\end{equation*}
+Per risolvere questo tipo di limite, isoliamo il termine di grado massimo (quello che cresce più 
+velocemente). Quindi
+\begin{equation*}
+\lim\limits_{x\to+\infty}\left(\sqrt{4x^2+1}-x\right) = 
+\lim\limits_{x\to+\infty}\left(\sqrt{x^2\left(4+\frac{1}{x^2}\right)}-x\right)
+\end{equation*}
+Ora possiamo portare fuori $x^2$ dalla radice
+\begin{equation*}
+\lim\limits_{x\to+\infty}\left(\sqrt{x^2\left(4+\frac{1}{x^2}\right)}-x\right) =
+\lim\limits_{x\to+\infty}\left(\abs{x}\sqrt{4+\frac{1}{x^2}}-x\right)
+\end{equation*}
+Ora possiamo sostituire $\abs{x} = x$ perché siamo in un intorno di $+\infty$. Questo perché sono 
+numeri sicuramente $>0$ quindi il loro valore assoluto è esattamente lo stesso loro. (Se fossimo in un
+$I(-\infty)$ sostituiremmo $\abs{x} = -x$). Proseguendo nella risoluzione
+\begin{align*}
+&\lim\limits_{x\to+\infty}\left(\abs{x}\sqrt{4+\frac{1}{x^2}}-x\right)=
+\lim\limits_{x\to+\infty}\overbrace{x}^{\mathclap{\to+\infty}}
+\overbrace{\left(\sqrt{4+\frac{1}{x^2}}-x\right)}^{\mathclap{\to\sqrt{4+0}-1\to2-1\to1}}=\\
+&+\infty\cdot1 = \boxed{+\infty}
+\end{align*}
+In generale, quindi, si deve sempre isolare il termine che cresce più rapidamente utilizzando a proprio
+favore l'operatore $\lim$.
+
+\subsection{Limiti notevoli}
+Ci sono dei limiti particolari che è estremamente comodo conoscere a memoria. Principalmente sono 2
+\begin{equation*}
+\lim\limits_{x\to0}\frac{\sin x}{x}=1\qquad\lim\limits_{x\to+\infty}\left(1+\frac{1}{x}\right)^x=e
+\end{equation*}
+Da questi due se ne possono ricavare altri 8. Dal primo
+\begin{equation*}
+\lim\limits_{x\to0}\frac{\tan x}{x}=1\quad\lim\lim\limits_{x\to0}\frac{1-\cos x}{x^2}=\frac{1}{2}\quad
+\lim\limits_{x\to0}\frac{1-\cos x}{x}=0
+\end{equation*}
+Dal secondo
+\begin{equation*}
+\lim\limits_{x\to0}(1+x)^{\frac{1}{x}}=e\,\lim\limits_{x\to0}\frac{a^x-1}{x}=\ln a\,
+\lim\limits_{x\to0}\frac{\log_a(x+1)}{x}=\log_a e
+\end{equation*}
+
 \subsection{Consigli nella risoluzione di limiti deducibili}
 Prendiamo ad esempio
 \begin{equation*}
@@ -606,3 +668,5 @@ Quindi, con questo
 \begin{equation*}
 \lim\limits_{x\to2^+}\sqrt{\log_2\frac{x+2}{x-2}} = +\infty
 \end{equation*}
+In definitiva quindi il consiglio è di andare con molta calma e ricordarsi le possibilità che la
+funzione $\lim$ offre.

@@ -2193,3 +2193,99 @@ quoziente dei coefficienti
 \begin{equation*}
 \lim\limits_{x\to+\infty}\frac{3x^2-x+5}{4x^2-1} = \boxed{\frac{3}{4}}
 \end{equation*}
+
+\paragraph{Esercizio 6}
+Trovare
+\begin{equation*}
+\lim\limits_{x\to0}\frac{\tan x - \sin x}{x^3}
+\end{equation*}
+\divisor
+
+Quando affrontiamo esercizi di questo tipo, è sicuramente comodo provare a sostituire ma troviamo
+subito che
+\begin{equation*}
+\lim\limits_{x\to0}\frac{\tan x - \sin x}{x^3} = \frac{0}{0}
+\end{equation*}
+Quindi ora che fare? Possiamo ad esempio provare a portare quel limite ad uno dei limiti notevoli.
+Notiamo un $x^3$ sotto, quindi $x^3 = x\cdot x^2$. Tra i limiti notevoli che conosciamo, ce ne sono
+alcuni. Quindi questa può essere una strada giusta.
+\begin{align*}
+&\lim\limits_{x\to0}\frac{\tan x - \sin x}{x^3} =
+\lim\limits_{x\to0}\frac{\frac{\sin x}{\cos x} - \sin x}{x^3}=\\
+&\lim\limits_{x\to0}\frac{\frac{\sin x-\cos x\sin x}{\cos x}}{x^3}=
+\lim\limits_{x\to0}\frac{\tan x(1-\cos x)}{x^3}
+\end{align*}
+Arrivati a questo punto, possiamo notare due cose:
+\begin{enumerate}
+	\item Abbiamo $\lim\limits_{x\to0}\frac{\tan}{x}$
+	\item Abbiamo $\lim\limits_{x\to0}\frac{1-\cos x}{x^2}$
+\end{enumerate}
+Entrambi sono limiti notevoli di cui sappiamo il valore. Quindi
+\begin{equation*}
+\lim\limits_{x\to0}\frac{\tan x(1-\cos x)}{x^3} =
+\lim\limits_{x\to0}\frac{\tan x}{x}\cdot\frac{1-\cos x}{x^2}=1\cdot\frac{1}{2}=\boxed{\frac{1}{2}}
+\end{equation*}
+
+\paragraph{Esercizio 7}
+Risolvere
+\begin{equation*}
+\lim\limits_{x\to\frac{\pi}{4}}\frac{\sin x-\cos x}{x-\frac{\pi}{4}}
+\end{equation*}
+\divisor
+
+Se proviamo a sostituire, notiamo subito che
+\begin{equation*}
+\lim\limits_{x\to\frac{\pi}{4}}\frac{\sin x-\cos x}{x-\frac{\pi}{4}} = \frac{0}{0}
+\end{equation*}
+Ora potremmo provare a ricondurre il seno al coseno o viceversa ma presto scopriremmo che diventerebbe
+anche troppo lungo da risolvere. Quindi, dato che non abbiamo quella strada percorribile e non 
+possiamo immediatamente ricondurlo ad un limite noto, non resta che fare il cambio di variabile.
+\begin{align*}
+\intertext{Sia $t=x-\frac{\pi}{4}$}
+&\lim\limits_{t\to0}\frac{\sin\left(t+\frac{\pi}{4}\right)-\cos\left(t+\frac{\pi}{4}\right)}{t} =\\
+&\lim\limits_{t\to0}\frac{
+\frac{\sqrt{2}}{2}\sin t+\cancel{\frac{\sqrt{2}}{2}\cos t}-
+\cancel{\frac{\sqrt{2}}{2}\cos t}+\frac{\sqrt{2}}{2}\sin t}{t}
+=\\
+&\lim\limits_{t\to0}\frac{\sqrt{2}\sin t}{t}=\sqrt{2}\lim\limits_{t\to0}\frac{\sin t}{t}
+\intertext{Notiamo a questo punto un limite notevole}
+&\lim\limits_{x\to\frac{\pi}{4}}\frac{\sin x-\cos x}{x-\frac{\pi}{4}} = \boxed{\sqrt{2}}
+\end{align*}
+
+\paragraph{Esercizio 8}
+Risolvere
+\begin{equation*}
+\lim\limits_{x\to\infty}\left(\frac{x+5}{x}\right)^x
+\end{equation*}
+\divisor
+
+Abbiamo due modi per approcciare questo esercizio: o con un cambio di variabile o con trasformazioni
+algebriche. Generalmente è consigliabile questo secondo perché è più "leggero" sui calcoli e si 
+rischiano meno errori nel procedimento.\\
+Innanzitutto riscriviamolo in una forma simile ad un limite notevole
+\begin{equation*}
+\lim\limits_{x\to\infty}\left(\frac{x+5}{x}\right)^x = 
+\lim\limits_{x\to\infty}\left(1+\frac{5}{x}\right)^x
+\end{equation*}
+Ora noi abbiamo un limite che è quasi identico ad uno notevole. Il prerequisito perché funzioni però
+è che entrambi i termini che contengono $x$ "crescano" alla stessa velocità. Quindi per ottenere
+un $1$ nella frazione superiore, possiamo fare un piccolo trucchetto
+\begin{equation*}
+\lim\limits_{x\to\infty}\left(1+\frac{5}{x}\right)^x=
+\lim\limits_{x\to\infty}\left(1+\frac{1}{\frac{x}{5}}\right)^x
+\end{equation*}
+Ora però abbiamo una $x$ come potenza quando ci serve $\frac{x}{5}$. Nulla ci vieta di moltiplicare
+per $\frac{5}{5}$. Quindi
+\begin{equation*}
+\lim\limits_{x\to\infty}\left(1+\frac{1}{\frac{x}{5}}\right)^x=
+\lim\limits_{x\to\infty}\left(1+\frac{1}{\frac{x}{5}}\right)^{\frac{5}{5}\cdot x}
+\end{equation*}
+che per le proprietà delle potenze
+\begin{equation*}
+\lim\limits_{x\to\infty}\left(1+\frac{1}{\frac{x}{5}}\right)^{\frac{5}{5}\cdot x}=
+\lim\limits_{x\to\infty}\left[\left(1+\frac{1}{\frac{x}{5}}\right)^\frac{x}{5}\right]^5
+\end{equation*}
+Notiamo dentro le quadre un limite fondamentale quindi
+\begin{equation*}
+\lim\limits_{x\to\infty}\left[\left(1+\frac{1}{\frac{x}{5}}\right)^\frac{x}{5}\right]^5=\boxed{e^5}
+\end{equation*}
