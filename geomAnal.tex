@@ -80,7 +80,7 @@ a_{31} & a_{32} & a_{33}
 	\tikzset{minus/.style = {below left,,opacity=1,circle,fill=#1!50}}
 	
 	\matrix (A) [matrix of math nodes, nodes = {node style ge},,column sep=0 mm] 
-	{ a_{11} & a_{12} & a_{13}\\
+	{a_{11} & a_{12} & a_{13}\\
 		a_{21} & a_{22} & a_{23}\\
 		a_{31} & a_{32} & a_{33}\\
 		a_{11} & a_{12} & a_{13}\\
@@ -192,7 +192,7 @@ Si noti che $k = \frac{\beta}{\alpha}$
 		\draw[brown] (0,-3) -- (2,1)
 			node[pos=0, below]{$r: ax + by + c = 0$};
 		\draw[red] (2.5,-3) -- (1,1)
-			node[pos = 0.5, left]{$k = ?$};
+			node[pos = 0.5, left]{$k =?$};
 		\filldraw[blue] (2,-1.65) circle(0.05)
 			node[right]{$Q(x_Q, y_Q)$};
 	\end{tikzpicture}
@@ -297,8 +297,8 @@ Si noti che $k=\frac{\alpha}{\beta}$
 		\tkzGrid
 		\tkzAxeXY
 
-		\draw[red,domain=-2:2] plot(\x, \x*\x);
-		\draw[blue,domain=-2:2] plot(\x*\x,\x);
+		\draw[thick, red,domain=-2:2] plot(\x, \x*\x);
+		\draw[thick, blue,domain=-2:2] plot(\x*\x,\x);
 	\end{tikzpicture}
 \end{center}
 Una parabola può essere descritta con l'asse focale parallelo all'asse $x$ o all'asse $y$.
@@ -352,12 +352,12 @@ y-y_V=a(x-x_V)^2
 		cycle;
 		\draw[thick, domain=-2:2.5] plot(\x, {\x/1.3+3.3/2.3});
 		\draw[thick, domain=-1.1:2.5] plot(\x, {\x/1.3-0.15});
-		\draw[dashed] (-0.9,0.75) -- (-0.3,-0.4);
+		\draw[dashed] (-0.9,0.75) -- (-0.25,-0.35);
 		\filldraw (-0.9,0.75) circle (0.05)
 			node[above]{$A$};
 		\filldraw (1.6,2.65) circle (0.05)
 			node[above]{$B$};
-		\filldraw (-0.3,-0.4) circle (0.05)
+		\filldraw (-0.25,-0.35) circle (0.05)
 			node[below]{$H$};
 	\end{tikzpicture}
 \end{center}
@@ -392,7 +392,7 @@ m = \frac{1}{2ay_0+b} = 2ax_0+b
 		\tkzGrid
 		\tkzAxeXY
 	
-		\draw[red] ellipse (2 and 1);
+		\draw[thick, red] ellipse (2 and 1);
 		\filldraw (-1,0) circle (0.05)
 			node[above]{$F_1$};
 		\filldraw (1,0) circle (0.05)
@@ -458,8 +458,8 @@ difficile da ricordare.
 		\tkzGrid
 		\tkzAxeXY
 	
-		\draw[domain=-2:2] plot ({0.5*cosh(\x)}, {0.5*sinh(\x)});
-		\draw[domain=-2:2] plot ({-0.5*cosh(\x)}, {-0.5*sinh(\x)});
+		\draw[thick, red, domain=-2:2] plot ({0.5*cosh(\x)}, {0.5*sinh(\x)});
+		\draw[thick, red, domain=-2:2] plot ({-0.5*cosh(\x)}, {-0.5*sinh(\x)});
 	\end{tikzpicture}
 \end{center}
 

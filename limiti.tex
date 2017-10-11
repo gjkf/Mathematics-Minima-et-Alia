@@ -12,7 +12,7 @@ essendo
 La funzione non è definita per $x = 2$ però possiamo comunque trovare i valori della funzione per numeri
 che si avvicinano sempre più a $2$
 \begin{center}
-	\begin{tabular}{c|c}
+	\begin{tabular}{cc}
 		$\boldsymbol{x}$ & $\boldsymbol{f(x)}$\\\hline
 		$1$ & $6$\\
 		$1.5$ & $7$\\
@@ -27,7 +27,7 @@ che si avvicinano sempre più a $2$
 \end{center}
 Come notiamo dalla tabella, più i ci si avvicina a $2$ più i valori si avvicinano a $8$. A questo
 comportamento diamo il nome di \textbf{limite finito}.\\
-Possiamo quindi dire che er un numero $\varepsilon$ positivo
+Possiamo quindi dire che per un numero $\varepsilon$ positivo
 \begin{equation*}
 \left\lvert\frac{2x^2-8}{x-2}-8\right\rvert<\varepsilon
 \end{equation*}
@@ -59,7 +59,7 @@ essendo
 \end{equation*}
 Attribuiamo ora a $x$ valori sempre più vicini a $-1$
 \begin{center}
-	\begin{tabular}{c|c}
+	\begin{tabular}{cc}
 		$\boldsymbol{x}$ & $\boldsymbol{f(x)}$\\\hline
 		$-2$ & $1$\\
 		$-1.5$ & $4$\\
@@ -106,7 +106,7 @@ Ad esempio
 
 \subsection{Definizione di limite finito}
 \begin{definizioneLimiteFinito}
-	Sia $f$ una funzione definita in un intorno $I$ del punto $x_0$, esnza che sia necessariamente
+	Sia $f$ una funzione definita in un intorno $I$ del punto $x_0$, senza che sia necessariamente
 	definita in $x_0$.\\
 	Si dice che il numero $l$ è il \textbf{limite} della funzione $f$ nel punto $x_0$ e si scrive
 	\begin{equation*}
@@ -460,7 +460,7 @@ conoscenza del limite della loro operazione.\\
 Quelle che vengono riquadrate di seguito sono le forme indeterminate nei vari casi.
 \subsubsection{Somma}
 \begin{center}
-	\begin{tabular}{c|c|c}
+	\begin{tabular}{ccc}
 		$\boldsymbol{\lim f(x)}$ & $\boldsymbol{\lim g(x)}$ & $\boldsymbol{\lim[f(x)+g(x)]}$\\\hline
 		$l$ & $+\infty$ & $+\infty$\\
 		$l$ & $-\infty$ & $-\infty$\\
@@ -471,7 +471,7 @@ Quelle che vengono riquadrate di seguito sono le forme indeterminate nei vari ca
 
 \subsubsection{Prodotto}
 \begin{center}
-	\begin{tabular}{c|c|c}
+	\begin{tabular}{ccc}
 		$\boldsymbol{\lim f(x)}$ & $\boldsymbol{\lim g(x)}$ & $\boldsymbol{\lim[f(x)\cdot 
 			g(x)]}$\\\hline
 		$l\neq0$ & $\pm\infty$ & $\pm\infty$\\
@@ -482,7 +482,7 @@ Quelle che vengono riquadrate di seguito sono le forme indeterminate nei vari ca
 
 \subsubsection{Quoziente}
 \begin{center}
-	\begin{tabular}{c|c|c}
+	\begin{tabular}{ccc}
 		$\boldsymbol{\lim f(x)}$ & $\boldsymbol{\lim g(x)}$ &
 			$\boldsymbol{\lim\frac{f(x)}{g(x)}}$\\\hline
 		$l$ & $\pm\infty$ & $0$\\
@@ -494,7 +494,7 @@ Quelle che vengono riquadrate di seguito sono le forme indeterminate nei vari ca
 
 \subsubsection{Potenza}
 \begin{center}
-	\begin{tabular}{c|c|c}
+	\begin{tabular}{ccc}
 		$\boldsymbol{\lim f(x)}$ & $\boldsymbol{\lim g(x)}$ &
 		$\boldsymbol{\lim[f(x)]^{g(x)}}$\\\hline
 		$l$ & $\pm\infty$ & $\pm\infty$\\
@@ -622,6 +622,11 @@ Dal secondo
 \lim\limits_{x\to0}(1+x)^{\frac{1}{x}}=e\,\lim\limits_{x\to0}\frac{a^x-1}{x}=\ln a\,
 \lim\limits_{x\to0}\frac{\log_a(x+1)}{x}=\log_a e
 \end{equation*}
+Infine ne esiste un ultimo che è molto simile al primo ma non identico
+\begin{equation*}
+  \lim_{x \to \infty} \frac{\sin x}{x} = 0 
+\end{equation*}
+
 
 \subsection{Consigli nella risoluzione di limiti deducibili}
 Prendiamo ad esempio
