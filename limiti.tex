@@ -612,9 +612,9 @@ Ci sono dei limiti particolari che è estremamente comodo conoscere a memoria. Pr
 \begin{equation*}
 \lim\limits_{x\to0}\frac{\sin x}{x}=1\qquad\lim\limits_{x\to+\infty}\left(1+\frac{1}{x}\right)^x=e
 \end{equation*}
-Da questi due se ne possono ricavare altri 8. Dal primo
+Da questi due se ne possono ricavare altri 6. Dal primo
 \begin{equation*}
-\lim\limits_{x\to0}\frac{\tan x}{x}=1\quad\lim\lim\limits_{x\to0}\frac{1-\cos x}{x^2}=\frac{1}{2}\quad
+\lim\limits_{x\to0}\frac{\tan x}{x}=1\quad\lim\limits_{x\to0}\frac{1-\cos x}{x^2}=\frac{1}{2}\quad
 \lim\limits_{x\to0}\frac{1-\cos x}{x}=0
 \end{equation*}
 Dal secondo
@@ -675,3 +675,32 @@ Quindi, con questo
 \end{equation*}
 In definitiva quindi il consiglio è di andare con molta calma e ricordarsi le possibilità che la
 funzione $\lim$ offre.
+
+\subsection{Asintoti}
+Un asintoto è quella retta a cui la funzione tende sempre di più. Sia $f(x)$ la funzione in 
+questione, allora $G(f)$ è il suo grafico. Se $r$ è la retta che stiamo cercando, $P\in G(f)$,
+$PH$ è la distanza punto-retta. Si ha quindi
+\begin{equation*}
+  \lim_{x\to\infty}\overline{PH}=0 
+\end{equation*}
+Ci sono 3 tipi di asintoti: \emph{verticali},  \emph{orizzontali} e  \emph{obliqui}.
+
+\subsubsection{Verticali}
+\begin{equation*}
+  x=x_0\quad \lim_{x\to x_0^{\pm}}f(x)=\pm\infty
+\end{equation*}
+Una funzione può avere nessuno, 1 o infiniti asintoti verticali.
+
+\subsubsection{Orizzontali}
+\begin{equation*}
+  y=l\quad \lim_{x\to\pm\infty}f(x)=l
+\end{equation*}
+Perché ci siano asintoti orizzontali è necessario che negli intorni di $\pm\infty$ il dominio sia
+illimitato.
+
+\subsubsection{Obliqui}
+\begin{equation*}
+  y=mx+q\quad m =\lim_{x\to\pm\infty}\frac{f(x)}{x}\quad 
+  q=\lim_{x\to\pm\infty}\left( f(x)-mx \right) 
+\end{equation*}
+Per trovare gli asintoti obliqui prima si trovi $m$ e poi la si inserisca per trovare $q$.
