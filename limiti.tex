@@ -704,3 +704,35 @@ illimitato.
   q=\lim_{x\to\pm\infty}\left( f(x)-mx \right) 
 \end{equation*}
 Per trovare gli asintoti obliqui prima si trovi $m$ e poi la si inserisca per trovare $q$.
+
+\subsubsection{Generalizzazione}
+In generale, una funzione $\alpha(x)$ si può definire asintoto di una funzione $\beta(x)$ se
+\begin{equation*}
+  \lim_{x\to\infty}\left( \alpha(x) - \beta(x) \right) = 0
+\end{equation*}
+Quindi se la differenza tra le ordinate della funzione asintotica ($\alpha$) e della funzione 
+cercata ($\beta$) è $0$ per un intorno di $\infty$.\\ [\baselineskip]
+Inoltre si può anche dire che un asintoto obliquo sia il quoziente tra un polinomio $f(x)$ e un 
+altro $g(x)$. Da un quoziente di polinomi otteniamo un resto e un quoziente. Ovvero
+\begin{equation*}
+  y = \frac{f(x)}{g(x)}\quad f(x) = g(x)\cdot q(x)+r(x)
+\end{equation*}
+sistemando la seconda equazione otteniamo
+\begin{equation*}
+  \frac{f(x)}{g(x)}-q(x) = \frac{r}{g(x)}
+\end{equation*}
+questo ci viene molto utile specialmente dato che
+\begin{equation*}
+  \lim_{x\to\infty} \left[ \frac{f(x)}{g(x)}-q(x) \right] = \lim_{x\to\infty} \frac{r}{g(x)} = 0
+\end{equation*}
+In definitiva si segua
+\begin{itemize}
+  \item Eseguire la divisione fra polinomi
+  \item Ottenere il resto e il quoziente
+\end{itemize}
+Il quoziente che otterremo sarà la funzione asintotica quella data. Per trovare see l'asintoto
+è superiore o inferiore alla funzione, si trovi il segno di $\frac{r}{g(x)}$. Se è $>0$ anche il
+grafico della funzione è sopra l'asintoto, sotto altrimenti. \\ [\baselineskip]
+Da questo si ricava una cosa molto interessante ovvero che se $f(x)$ è di grado 3 e $g(x)$ è 
+di primo grado, otteniamo che il quoztiente viene di grado secondo, quindi l'asintoto non è
+una retta, ma è una parabola!
