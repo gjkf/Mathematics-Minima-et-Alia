@@ -1,0 +1,88 @@
+%!TEX ROOT=formularioMatematica.tex
+
+\section{Funzioni continue}\label{sec:funzCont}
+
+Una funzione $f$ si dice continua o in un punto ($x_0$) o in un intervallo ($I$). La continuità in
+un punto si ha se
+\begin{equation*}
+  \lim\limits_{x\to x_0}f(x) = f(x_0) 
+\end{equation*}
+La definizione formale quindi diventa
+\begin{equation*}
+  \forall\varepsilon>0,\exists\,\delta_\varepsilon>0\mid\forall x:\,\abs{x-x_0}<\delta_\varepsilon
+  \Rightarrow \abs{f(x)-f(x_0)}<\varepsilon
+\end{equation*}
+che, se confrontata con la definizione di limite manca di un $0<$ in quanto la funzione è continua,
+quindi $x_0\in\mathscr{C}(f)$.\\
+La continuità in un intervallo è una generalizzazione di quella di un punto, ovvero una funzione
+è continua in un intervallo se
+\begin{equation*}
+  \forall x_0\in I\,f\text{ è continua in }x_0\Rightarrow f\,\text{è continua in } I
+\end{equation*}
+
+\subsection{Proprietà delle funzioni continue}
+Nelle funzioni continue si mantengono i teoremi dei limiti. Ovvero siano $f$ e $g$ due funzioni.
+Se entrambe sono continue in $x_0$
+\begin{align*}
+  f\pm g\,&\text{è continua in }x_0\\
+  f\circ g\,&\text{è continua in }x_0\\
+  \frac{f}{g}\,&\text{è continua in }x_0\quad \big(g(x_0)\big)\neq0
+\end{align*}
+Da queste proprietà ricaviamo subito che qualsiasi funzione polinomiale è continua. Questo perché,
+sia $P(x)$ una funzione polinomiale del tipo $a_nx^n+\dotsb+a_0$. La funzione costante ($y=a$) è
+continua in quanto non dipende da alcuna variabile. Per $x^n$ possiamo pensarlo come $x\cdot
+x\underbrace{\cdot\dotsb\cdot}_{n-\text{volte}}x$. Considerato le precedenti relazioni ed essendo
+$y=x$ continua in quanto il suo dominio è tutto $\mathbb{R}$, il prodotto di funzioni
+continue è un'altra funzione continua. La somma di funzioni continue è un'altra funzione continua.
+Quindi \textbf{ogni funzione polinomiale è continua in ogni $x_0$}.
+
+\subsection{Punti di discontinuità}
+Una funzione può essere continua solo se
+\begin{equation*}
+  \lim\limits_{x\to x_0}f(x)=f(x_0) 
+\end{equation*}
+e questo limite esiste, la funzione è definita in $x_0$ e $l=f(x_0)$. Ovviamente ci sono casi in
+cui queste tre caratteristiche non si verificano. Ecco che si classificano quindi i punti di
+discontinuità, ovvero quei $x_0$ in cui la funzione pecca di queste particolarità.
+
+\subsubsection{Prima specie}
+Si ha quando
+\begin{equation*}
+  \lim\limits_{x\to x_0^-}f(x) \neq \lim\limits_{x\to x_0^+}f(x) 
+\end{equation*}
+Questa specie è anche definita "salto" in quanto visualmente si ha un salto della funzione. Ad
+esempio
+\begin{center}
+  \begin{tikzpicture}
+    \tkzInit[xmin=-2,ymin=-2,xmax=2,ymax=2]
+    \tkzGrid
+    \tkzAxeXY
+    
+    \draw[thick, red] plot[domain=-2:0] (\x, \x+1);
+    \draw[thick, red] plot[domain=0:2] (\x,\x-2);
+  \end{tikzpicture}
+\end{center}
+ha una discontinuità di prima specie in quanto ha un "salto" nella funzione e in $x_0=0$ la 
+funzione non è continua.
+
+\subsubsection{Seconda specie}
+La seconda specie si ha quando
+\begin{equation*}
+  \lim\limits_{x\to x_0^-}f(x) = \pm\infty \lor \lim\limits_{x\to x_0^+}f(x) = \pm\infty
+\end{equation*}
+Un tipico esempio può essere la funzione tangente o un'iperbole equilatera.
+
+\subsubsection{Terza specie}
+Avviene quando
+\begin{equation*}
+  \not\exists f(x_0) \lor \lim\limits_{x\to x_0} f(x) \neq f(x_0)
+\end{equation*}
+Questa specie viene anche definita "eliminabile" in quanto si può trovare una funzione 
+$\tilde{f}$ che contenga al suo interno anche un punto. Ad esempio
+\begin{equation*}
+  \tilde{f} =
+  \begin{cases}
+    x_0,\,& x = x_0\\
+    f(x),& x\neq x_0
+  \end{cases}
+\end{equation*}
