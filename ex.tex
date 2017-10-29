@@ -2290,3 +2290,42 @@ Notiamo dentro le quadre un limite fondamentale quindi
 \begin{equation*}
 \lim\limits_{x\to\infty}\left[\left(1+\frac{1}{\frac{x}{5}}\right)^\frac{x}{5}\right]^5=\boxed{e^5}
 \end{equation*}
+
+\subsection*{Funzioni continue}
+\label{ex:funzCont}
+
+\paragraph{Esercizio 1}
+Dimostrare che l'espressione $ax^3+bx^2+cx+d=0$ ammetta almeno una soluzione reale.
+\divisor
+
+Innanzitutto dall'equazione che abbiamo, dobbiamo tornare alla funzione
+\begin{equation*}
+  f(x) = ax^3+bx^2+cx+d
+\end{equation*}
+Con questo, per verificare abbia almeno una soluzione reale, possiamo tornare al teorema degli
+zeri. Per usarlo però dobbiamo dimostrare che la funzione è continua. Essendo una funzione
+polinomiale è sicuramente continua. Ora dobbiamo trovare un intorno $I$ adeguato. Dato che non
+abbiamo informazioni riguardo ai coefficienti per provare a trovare analiticamente gli zeri,
+l'unico intorno che possiamo usare è
+\begin{equation*}
+  I\equiv\mathbb{R}
+\end{equation*}
+Dato che però non abbiamo un limite inferiore o inferiore, essendo $\mathbb{R}$ illimitato, 
+usiamo la scrittura di limite a più o meno infinito. Quindi la relazione principale perché
+ci sia almeno uno zero
+\begin{equation*}
+  \left( \lim\limits_{x\to-\infty} ax^3+bx^2+cx+d \right)
+  \left( \lim\limits_{x\to+\infty} ax^3+bx^2+cx+d \right) \overset{?}{<} 0
+\end{equation*}
+In questo caso, perché sia negativo il prodotto, uno dei due (solo uno dei due) deve essere
+negativo. Essendo l'equazione di terzo grado, mantiene il segno di $ax^3$ che a sua volta dipende
+da $a$. Quindi possiamo distinguere 2 casi a seconda di $a$: $a<0$ e $a>0$.
+\begin{equation*}
+  \begin{cases}
+    -\infty(+\infty) < 0,&\, a>0\\
+    \infty(-\infty) < 0,&\, a<0
+  \end{cases}
+\end{equation*}
+In ogni caso quindi, sia che $a$ sia positivo che negativo il loro prodotto sarà negativo. Di
+conseguenza, per il teorema degli zeri, essendo $f(x)$ continua ed essendo il prodotto degli
+estremi negativo, esiste almeno uno $z\in\mathbb{R}\mid f(z)=0$.
