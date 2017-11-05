@@ -2329,3 +2329,27 @@ da $a$. Quindi possiamo distinguere 2 casi a seconda di $a$: $a<0$ e $a>0$.
 In ogni caso quindi, sia che $a$ sia positivo che negativo il loro prodotto sarà negativo. Di
 conseguenza, per il teorema degli zeri, essendo $f(x)$ continua ed essendo il prodotto degli
 estremi negativo, esiste almeno uno $z\in\mathbb{R}\mid f(z)=0$.
+
+\subsection{Successioni}
+\label{sub:successioni}
+
+\paragraph{Esercizio 1}
+Si trovi il valore di
+\begin{equation*}
+  \lim\limits_{n \to \infty} n^2\sin \frac{1}{n}
+\end{equation*}
+\divisor
+
+Questa è una successione e lo possiamo capire dal fatto che abbiam un $n$ come indice e 
+generalmente questo indica la natura della successione. Per calcolarlo, possiamo ricondurci ai
+limiti fondamentali che continuano a valere
+\begin{equation*}
+  \lim\limits_{n \to \infty} n^2\sin \frac{1}{n} = 
+  \lim\limits_{n \to \infty} n\cdot n\sin \frac{1}{n}\cdot \frac{\frac{1}{n}}{\frac{1}{n}} =
+  \lim\limits_{n \to \infty} n \frac{\sin \frac{1}{n}}{\frac{1}{n}}
+\end{equation*}
+ora riconosciamo il limite notevole quindi
+\begin{equation*}
+  \lim\limits_{n \to \infty} n \frac{\sin \frac{1}{n}}{\frac{1}{n}} =
+  \lim\limits_{n \to \infty} n\cdot1 = \infty\cdot1=\boxed{\infty}
+\end{equation*}

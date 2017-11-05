@@ -1,0 +1,162 @@
+%!TEX ROOT=formularioMatematica.tex
+
+\section{Successioni}\label{sec:successioni}
+Una successione è una particolare funzione definita in modo
+\begin{equation*}
+  f:\,\mathbb{N} \rightarrow \mathbb{R} 
+\end{equation*}
+ovvero
+\begin{equation*}
+  n \mapsto a_n=f(n)
+\end{equation*}
+Una successione quindi è una serie di numeri interi relazionati fra di loro. Ci sono generalmente 3
+modi per definire una successione:
+\begin{enumerate}
+  \item \textbf{Algebrica}
+    \begin{equation*}
+      a_n = 2n^2+1
+    \end{equation*}
+  \item \textbf{Ricorsiva} 
+    \begin{equation*}
+      \begin{cases}
+        a_0 &= 1\\ a_n &= 2a_{n-1}-1
+      \end{cases}
+    \end{equation*}
+  \item \textbf{Elencativa}
+    \begin{equation*}
+      a_n=\{1,3,5,7,\ldots\}
+    \end{equation*}
+\end{enumerate}
+Per andare a studiare una successione, calcoliamo il limite. Dato che per polimorfismo $\mathbb{N}$
+ha un solo punto di accumulazione che corrisponde a $+\infty$, il solo limite che possiamo calcolare
+è
+\begin{equation*}
+  \lim\limits_{n \to \infty} a_n
+\end{equation*}
+che può assumere 4 valori e a seconda del valore che ottiene, si definisce la successione in modo
+diverso.
+\begin{equation*}
+  \lim\limits_{n \to \infty} a_n=
+  \begin{cases}
+    l, &\text{la successione $\{a_n\}$ è convergente}\\
+    +\infty, &\text{la succcessone $\{a_n\}$ è divergente positivamente}\\
+    -\infty, &\text{la successione $\{a_n\}$ è divergente negativamente}\\
+    \not\exists, &\text{la successione $\{a_n\}$ è indeterminata}
+  \end{cases}
+\end{equation*}
+La definizione formale del limite quindi cambia leggermente definizione
+\begin{align*}
+  \lim\limits_{n \to \infty} a_n=l \Leftrightarrow \forall\varepsilon>0,\,\exists\bar{n}_\varepsilon
+  \mid\forall n>\bar{n}_\varepsilon \Rightarrow \abs{a_n-l}<\varepsilon
+\end{align*}
+
+\subsection{Teorema sulle successioni}
+\begin{successioniMonotone}
+  Se $a_n$ è crescente e limitata superiormente, allora ammette limite che coincide con l'estremo
+  superiore.
+\end{successioniMonotone}
+
+\subsection{Serie numeriche}
+Una serie numerica è una somma di una successione. Una somma infinita però. Quindi
+\begin{equation*}
+  \sum\limits^{\infty}_{i=1} a_i = a_1+a_2+a_3+\dotsb+a_n+\dotsb
+\end{equation*}
+Per studiare una serie, si studia il limite a ll'infinito ma facendolo così direttamente non è
+possibile, quindi si devono creare delle somme parziali. Ad esempio
+\begin{align*}
+  \text{Sia }a_1,a_2,\ldots,&a_n,\ldots\text{ una successione}\\
+  s_1 &= a_1\\
+  s_2 &= a_1+a_2\\
+  s_n &= \sum\limits^{n}_{i=1} a_i
+\end{align*}
+Se quindi $\{s_n\}$ è una successione di somme parziali,
+\begin{equation*}
+  \lim\limits_{n \to \infty} s_n = S
+\end{equation*}
+dove $s_n$ deve essere convergente e $S$ è la somma della serie. Generalizzando quindi
+\begin{equation*}
+  \sum\limits^{\infty}_{i=1} = \lim\limits_{n \to \infty} s_n = S
+\end{equation*}
+
+\subsubsection{Serie di Mengoli-Cauchy}
+Questa serie è forse la più celebre e può far capire come approcciarsi alle serie
+\begin{equation*}
+  \sum\limits^{\infty}_{i=1} \frac{1}{i(i+1)}
+\end{equation*}
+Per andare a risolvere questa serie bisogna riscrivere il parametro in quanto altrimenti
+il limite all'infinito avrebbe una forma indeterminata del tipo $\infty\cdot\infty$. Quindi 
+possiamo scrivere
+\begin{equation*}
+  \frac{1}{i(i+1)} = \frac{A(i+1)+Bi}{i(i+1)} = \frac{(A+B)i+A}{i(i+1)}
+\end{equation*}
+dove $A$ e $B$ rappresentano i coefficienti. Per la proprietà d'identità dei polinomi scriviamo
+\begin{equation*}
+  \begin{cases}
+    A+B=0\\A=1
+  \end{cases}
+  \begin{cases}
+    B=-1\\A=1
+  \end{cases}
+\end{equation*}
+Quindi
+\begin{equation*}
+  \frac{1}{i(i+1)} = \frac{1}{i}-\frac{1}{i+1}
+\end{equation*}
+Di conseguenza la nostra serie diventa
+\begin{equation*}
+  \sum\limits^{\infty}_{i=1} \left( \frac{1}{i}-\frac{1}{i+1} \right)
+\end{equation*}
+Ora quindi abbiamo riscritto la serie in modo che sia di facile verifica. Andando ora ad osservare
+le somme parziali
+\begin{align*}
+  \label{eq:}
+  s_1 &= 1-\frac{1}{2}=\frac{1}{2}\\
+  s_2 &= 1-\cancel{\frac{1}{2}}+\cancel{\frac{1}{2}}-\frac{1}{3}=\frac{2}{3}\\
+  s_3 &= 1-\cancel{\frac{1}{2}}+\cancel{\frac{1}{2}}-\cancel{\frac{1}{3}}+\cancel{\frac{1}{3}}
+  -\frac{1}{4}=\frac{3}{4}
+\end{align*}
+Notiamo che $1$ rimane sempre e che rimane anche il termine $-\frac{1}{i+1}$. Quindi la
+somma parziale generalizzata è
+\begin{equation*}
+  s_i=1-\frac{1}{i+1}
+\end{equation*}
+Il limite dunque diventa
+\begin{equation*}
+  \lim\limits_{i\to\infty}  \left(1-\frac{1}{i+1} \right) = 1
+\end{equation*}
+Di conseguenza
+\begin{equation*}
+  \sum\limits^{\infty}_{i=1} \frac{1}{i(i+1)} = 1
+\end{equation*}
+
+\subsubsection{Progressioni geometriche}
+Sia $a_1,a_2,\ldots,a_n,\ldots$ una progressione geometrica i cui elementi sono
+\begin{align*}
+  a_2&=q_a1\\
+  a_3&=q^2a_1\\
+  a_4&=q^3a_1\\
+  a_n&=q^{n-1}a_1
+\end{align*}
+Dove le somme parziali sono uguali a 
+\begin{equation*}
+  s_n = a_1 \frac{1-q^n}{1-q}
+\end{equation*}
+stando alle formule trattate nelle sezioni precedenti. Quindi la serie di una progressione
+geometrica è
+\begin{equation*}
+  \sum\limits^{\infty}_{i=1} x^{i-1}=\sum\limits^{\infty}_{i=0} x^i
+\end{equation*}
+e il limite della somma parziale
+\begin{equation*}
+  \lim\limits_{n \to \infty} a_1 \frac{1-q^n}{1-q}=
+  \frac{a_1}{1-q}\lim\limits_{n \to \infty} \left( 1-q^n \right)
+\end{equation*}
+che può assumere 3 valori a seconda della ragione ($q$) della progressione.
+\begin{equation*}
+  \frac{a_1}{1-q}\lim\limits_{n \to \infty} \left( 1-q^n \right) =
+  \begin{cases}
+    0, &\abs{q}<1\\
+    \pm\infty, &q>1\\
+    \not\exists, &q\leq-1
+  \end{cases}
+\end{equation*}
