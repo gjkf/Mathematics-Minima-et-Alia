@@ -89,7 +89,7 @@ Per i primi due punti, questo è tutto quello che ci serve.\\
 \textbf{Per il punto~\ref{enum:ex:retta:1:1}}, possiamo semplicemente usare la formula per la retta 
 passante per due punti. Per convenienza, denominiamo le rette in base ai vertici che attraversano.\\
 Per la retta $AB$ è immediato: si nota che hanno la stessa ascissa, quindi la retta passante per i due
-punti è solo $\boxed{AB: x = -2}$.\\\\
+punti è solo $\boxed{AB: x = -2}$.\\ [\baselineskip]
 Per $AC$:
 \begin{align*}
 \frac{y-y_1}{y_2-y_1} = \frac{x-x_1}{x_2-x_1} &\rightarrow
@@ -125,7 +125,7 @@ E sostituendo otteniamo
 \Aboxed{\mathscr{A}(ABC) &= 10}
 \end{align*}
 Per trovare il perimetro, possiamo usare la distanza tra due punti e trovare tutte le lunghezze.\\
-$AB$ è immediato in quanto hanno la stessa ascissa. $\boxed{AB = 3 + 1 = 4}$.\\\\
+$AB$ è immediato in quanto hanno la stessa ascissa. $\boxed{AB = 3 + 1 = 4}$.\\ [\baselineskip]
 Per trovare $AC$
 \begin{align*}
 AC &= \sqrt{(x_C-x_A)^2+(y_C-y_A)^2} \rightarrow \\
@@ -1411,7 +1411,7 @@ tutti gli elementi sono distinti, le possibilità sono le combinazioni semplici. 
 \begin{equation*}
 \boxed{\binom{26}{2}}
 \end{equation*}
-$26$ perché ci interessano solo le rosse, non tutto il mazzo.\\\\
+$26$ perché ci interessano solo le rosse, non tutto il mazzo.\\ [\baselineskip]
 Il prossimo punto chiede una carta rossa e una carta nera. Immaginiamo di avere quindi due spazi. Nel
 primo mettiamo una carta rossa (quindi $26$ possibilità), nel secondo una nera (sempre $26$). Quindi
 le totali possibilità si ottengono semplicemente moltiplicando
@@ -1507,7 +1507,7 @@ albero per mostrare tutte le possibilità. Come questo
 
 I risultati che si vedono sono semplicemente ricavati dal prodotto delle due probabilità
 secondo la formula $p\left(\mathbb{E}_1\cap\mathbb{E}_2\right) = p(\mathbb{E}_1)\cdot p(\mathbb{E}_2)$
-.\\\\
+.\\[\baselineskip]
 In totale vi sono $23$ pezzi difettosi in un giorno (infatti se andiamo ad osservare i numeratori e 
 sommiamo i difettosi vediamo $3+20+0 = 23$). Quindi la probabilità che un pezzo sia difettoso è
 \begin{equation*}
@@ -1686,7 +1686,7 @@ quindi il luogo è dato dall'equazione $\boxed{y=\dfrac{x}{2}}$. Dobbiamo però es
 \begin{equation*}
 (4,2)\qquad(-4,-2)
 \end{equation*}
-in quanto abbiamo escluso $m=\pm2$.\\\\
+in quanto abbiamo escluso $m=\pm2$.\\[\baselineskip]
 
 Per il \hyperref[enum:ex:aff:2:2]{punto due} possiamo trovare i punti che distano $0$ dal fascio di
 rette $y=\dfrac{1}{2}x+q$ e che appartengono alla nostra famiglia di iperboli che al tempo stesso
@@ -1705,7 +1705,7 @@ Perché? Guardiamo un attimo il disegno
 Notiamo che per due valori di $q$ e $m$ scelti appositamente il più vicino punto di intersezione tra 
 la retta e l'iperbole ha come ascissa un valore leggermente inferiore a $2$. Andando a disegnare altre
 iperboli e altre rette modificando i due parametri si andrà a notare che è impossibile che la retta
-$y=\dfrac{x}{2}+q$ per qualunque $q$ sia tangente all'iperbole $\Phi$ in modo che $x=0$.\\\\
+$y=\dfrac{x}{2}+q$ per qualunque $q$ sia tangente all'iperbole $\Phi$ in modo che $x=0$.\\[\baselineskip]
 
 Per il \hyperref[enum:ex:aff:2:3]{punto tre} abbiamo un problema interessante. Abbiamo una 
 circonferenza che passa per $O(0,0)$ e il cui centro abbia distanza dalla retta pari al raggio.
@@ -2330,7 +2330,7 @@ In ogni caso quindi, sia che $a$ sia positivo che negativo il loro prodotto sarà
 conseguenza, per il teorema degli zeri, essendo $f(x)$ continua ed essendo il prodotto degli
 estremi negativo, esiste almeno uno $z\in\mathbb{R}\mid f(z)=0$.
 
-\subsection{Successioni}
+\subsection*{Successioni}
 \label{sub:successioni}
 
 \paragraph{Esercizio 1}
@@ -2352,4 +2352,150 @@ ora riconosciamo il limite notevole quindi
 \begin{equation*}
   \lim\limits_{n \to \infty} n \frac{\sin \frac{1}{n}}{\frac{1}{n}} =
   \lim\limits_{n \to \infty} n\cdot1 = \infty\cdot1=\boxed{\infty}
+\end{equation*}
+
+\subsection*{Derivate}\label{sub:derivate}
+
+\paragraph{Esercizio 1}
+Si trovino le tangenti in $P(0,-1)$ alla parabola $y=x^2+1$.
+\divisor
+
+Volendo potremmo risolvere questo problema utilizzando un fascio di rette ma con le derivate,
+diventa estremamente più semplice.\\
+Sapendo che la derivata in un punto di una funzione, rappresenta il coefficiente angolare
+della tangente, ricordiamo che
+\begin{equation*}
+  t:\,y-f(x_0)=f'(x_0)(x-x_0)
+\end{equation*}
+Di conseguenza possiamo sostituire con la funzione che ci è data.
+\begin{equation*}
+  y-(x_0^2+1) = 2x_0(x-x_0)
+\end{equation*}
+$2x_0$ è la derivata della funzione $f(x)$, facilmente individuabile dalle derivate di funzioni
+elementari.\\
+La formula che abbiamo ottenuto trova la tangente in un punto generico. Noi dobbiamo farlo passare
+per il punto dato, quindi
+\begin{equation*}
+  -1-(x_0^2+1)=2x_0(0-x_0) \rightarrow -2 = -x_0^2 \rightarrow x_0 = \pm \sqrt{2}
+\end{equation*}
+Ora quindi non solo ci siamo trovati le tangenti, ma anche i punti di tangenza! Infatti $x_0$
+rappresenta l'ascissa dei punti di tangenza. Quindi, per concludere l'esercizio le tangenti
+sono
+\begin{equation*}
+  y - (2+1) = 2\cdot\pm\sqrt{2}(x\mp\sqrt{2}) \rightarrow y = \pm2\sqrt{2}(x\mp\sqrt{2})+3
+\end{equation*}
+che risolta in un'unica forma viene
+\begin{equation*}
+  \boxed{y = \pm2\sqrt{2}x-1}
+\end{equation*}
+
+\paragraph{Esercizio 2}
+Data la funzione
+\begin{equation*}
+  f(x) = \frac{x^2}{1-x}
+\end{equation*}
+determinare
+\begin{itemize}
+  \item L'insieme di definizione ed eventuali asintoti
+  \item I punti della funzione la cui tangente sia parallela all'asse $X$
+  \item I punti in cui il coefficiente angolare della tangente sia positivo
+\end{itemize}
+\divisor
+
+Per l'insieme di definizione è molto semplice, infatti basta trovare il dominio. Vediamo che il
+numeratore non ha problemi in quanto $\forall\,x\in\mathbb{R}$ esiste. Il denominatore invece
+deve essere diverso da $0$, quindi
+\begin{equation*}
+  1-x\neq0 \rightarrow x\neq1
+\end{equation*}
+quindi espresso in modo più chiaro
+\begin{equation*}
+  \mathcal{D} = \mathbb{R} \setminus \{1\}
+\end{equation*}
+Per gli asintoti analizziamoli tipo per tipo.\\
+\textbf{Verticali}: 
+\begin{equation*}
+  \lim\limits_{x\to x_0}\frac{x^2}{1-x} = \pm\infty
+\end{equation*}
+L'unico caso in cui può accadere questo è quando $1-x\to0$, quindi $1-x_0=0 \rightarrow x_0 = 1$.
+L'asintoto verticale è
+\begin{equation*}
+  \boxed{x = 1}
+\end{equation*}
+\textbf{Orizzontali}:
+\begin{equation*}
+  \lim\limits_{x\to\infty}\frac{x^2}{1-x} = 
+  \lim\limits_{x\to\infty}\frac{\cancel{x}(x)}{\cancel{x}\left(-1+\frac{1}{x}\right)} = 
+  \frac{\infty}{-1} = -\infty
+\end{equation*}
+Dato che per esistere il limite deve essere finito, non ci sono asintoti orizzontali.\\
+\textbf{Obliqui}:
+Prima troviamo il coefficiente angolare
+\begin{align*}
+  m&=\lim\limits_{x\to\infty}\frac{x^2}{1-x}\cdot \frac{1}{x} =
+  \lim\limits_{x\to\infty}\frac{x^2}{x-x^2}=\\
+  &\lim\limits_{x\to\infty}\frac{\cancel{x^2}}{\cancel{x^2}\left(\frac{1}{x}-1\right)}=
+  \lim\limits_{x\to\infty}\frac{1}{\frac{1}{x}-1}=\frac{1}{-1^{\pm}} = -1
+\end{align*}
+Ora possiamo trovare il punto d'incontro dell'ascissa
+\begin{align*}
+  q &= \lim\limits_{x\to\infty} \left(\frac{x^2}{1-x}+x\right)=
+  \lim\limits_{x\to\infty}\frac{\cancel{x^2}+x-\cancel{x^2}}{1-x}=\\
+  &\lim\limits_{x\to\infty}\frac{x}{1-x}=
+  \lim\limits_{x\to\infty}\frac{\cancel{x}}{\cancel{x}\left( \frac{1}{x}-1 \right)}=
+  \lim\limits_{x\to\infty}\frac{1}{-1+\frac{1}{x}} = -1
+\end{align*}
+Ora non resta che scrivere la retta
+\begin{equation*}
+  y = mx+q \rightarrow \boxed{y = -x-1}
+\end{equation*}
+E questo è il primo punto. Il secondo richiede la tangente parallela a $y=0$. Quindi perché sia
+parallela all'asse delle $X$ la derivata nel suo punto deve essere uguale a $0$
+\begin{align*}
+  &\Dif \frac{x^2}{1-x} = \frac{\Dif(1-x)x^2-(1-x)\Dif x^2}{(1-x)^2}=\\
+  &\frac{-x^2-(1-x)2x}{(1-x)^2}=
+  \frac{-x^2-(2x-2x^2)}{(1-x)^2} = \frac{-x^2+2x^-2x}{(1-x)^2}=\frac{x^2-2x}{(1-x)^2}
+\end{align*}
+Perché questa funzione venga uguale a $0$, il numeratore deve essere $0$, quindi
+\begin{equation*}
+  x^2-2x=0 \Leftrightarrow x=0\lor x=2 
+\end{equation*}
+Quindi i punti sono
+\begin{equation*}
+  \boxed{(0,0)\quad\text{e}\quad(2,-4)}
+\end{equation*}
+Il terzo punto chiede quando la tangente ha coefficiente angolare positivo. Quindi la derivata
+della funzione deve essere positiva.
+\begin{equation*}
+  \Dif \frac{x^2}{1-x}>0
+\end{equation*}
+Avendo già trovato la derivata, possiamo sostituirla ed evitare molti conti
+\begin{equation*}
+  \frac{x^2}{(1-x)^2}>0 \rightarrow x^2-2>0\land(1-x)^2
+\end{equation*}
+Disegnando i segni
+\begin{center}
+  \begin{tikzpicture}
+    \draw (-1,0) -- (3,0);
+    \draw (-1,-1) -- (3,-1);
+    \draw[cyan, decorate, decoration={zigzag}] (1,0.5) -- (1,-1.5);
+    \filldraw (0,0) circle (0.05)
+      node[above left]{$0$};
+    \filldraw (2,0) circle (0.05)
+      node[above left]{$2$};
+    \filldraw (1,-1) circle (0.05)
+      node[above left]{$1$};
+    \draw (0,0.2) -- (0,-1.2);
+    \draw (2,0.2) -- (2,-1.2);
+    \node at (-0.5,0.2){+};
+    \node at (0.5,0.2){-};
+    \node at (2.5,0.2){+};
+    \node at (-0.5,-0.8){+};
+    \node at (0.5,-0.8){+};
+    \node at (2.5,-0.8){+};
+  \end{tikzpicture}
+\end{center}
+Dato che a noi interessano i strettamente positivi, scriviamo
+\begin{equation*}
+  \boxed{{]{0},{2}[}}
 \end{equation*}

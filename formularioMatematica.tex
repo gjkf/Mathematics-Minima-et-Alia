@@ -8,7 +8,7 @@
 \usepackage{fullpage}
 \usepackage[medium]{titlesec} % Smaller section's font
 \usepackage[pdftex,dvipsnames]{xcolor} % Colors for text
-\usepackage{array} % For better tables
+\usepackage{xtab, booktabs, array} % For better tables
 \usepackage{parskip} % To avoid indentation
 \usepackage{textcomp} % To have \textcelsius and other symbols
 \usepackage{multirow} % For nicer tables with split rows/columns
@@ -68,8 +68,14 @@
 % To center with m{}
 \usepackage{array}
 \newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
-
 \newcommand{\divisor}{\rule{8.7cm}{0.4pt}}
+
+\newcommand*\dif{\mathop{}\!\mathrm{d}}
+\newcommand*\Dif{\mathop{}\!\mathrm{D}}
+
+\DeclareMathOperator{\arcsec}{arcsec}
+\DeclareMathOperator{\arccot}{arccot}
+\DeclareMathOperator{\arccsc}{arccsc}
 
 % For an older but clearer root. Still \oldsqrt is valid
 \usepackage{letltxmacro}
@@ -242,6 +248,7 @@ principalmente nelle definizioni formali ma ritorneranno utili anche negli eserc
 \input{limiti}
 \input{funzCont}
 \input{suc}
+\input{derivate}
 \input{ex}
 
 \include{dimostrazioni}
