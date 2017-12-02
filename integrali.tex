@@ -1,0 +1,62 @@
+%!TEX ROOT=formularioMatematica.tex
+
+\section{Integrali}
+\subsection{Integrali indefiniti}
+Sia $f$ una funzione continua in $[{a,b}]$. Allora $f'(x)$ è la sua derivata, $F(x)$ è una primitiva.
+Bisogna quindi definire una primitiva di una funzione
+\begin{primitiva}
+  Una funzione $F(x)$ si dice primitiva della funzione $f(x)$ continua in $[{a,b}]$ se
+  \begin{equation*}
+    F'(x) = f(x)
+  \end{equation*}
+\end{primitiva}
+Sia ad esempio $f(x) = \cos x$, $F(x)$ sarà allora quella funzione la cui derivata è $f(x)$. Quindi
+$F(x)=\sin x$. Ma è soltanto questa? No, infatti anche $\sin x +1$ o $\sin x -\frac{e}{4}$ o 
+qualsiasi altra funzione che abbia una costante. Così possiamo definire un insieme denominato
+\textbf{totalità delle primitive} che le raccoglie tutte. L'operatore che permette di trovare questo
+insieme è \textbf{l'integrale indefinito}
+\begin{equation*}
+  \int f(x)\,\dif x = \{F(x)+c\}
+\end{equation*}
+Scrivere $\dif x$ è necessario perché, come nella scrittura di Leibniz per le derivate, indica per
+quale lettera si deve integrare.
+
+\subsubsection{Proprietà dell'integrale indefinito}
+Per la definizione stessa di integrale si ha che
+\begin{equation*}
+  \Dif\int f(x)\,\dif x = f(x)
+\end{equation*}
+e
+\begin{equation*}
+  \int\Dif f(x)\,\dif x = f(x)+c
+\end{equation*}
+Se $f(x)$ è una funzione continua e $k$ una costante, si ha
+\begin{equation*}
+  \int kf(x)\,\dif x = k\int f(x)\,\dif x
+\end{equation*}
+Se si ha una una somma di funzioni $\sum f$,
+\begin{equation*}
+  \int\sum\limits^{n}_{i=1} f_i(x)\,\dif x = \sum\limits^{n}_{i=1} \int f_i(x)\,\dif x
+\end{equation*}
+
+\subsubsection{Integrali indefiniti immediati}
+Di seguito verrà riportata una tabella con i principali integrali indefiniti immediati e le 
+principali funzioni composte
+\tablefirsthead{\midrule}
+\tablehead{\midrule}
+\tablelasttail{\bottomrule}
+\renewcommand*{\arraystretch}{3.3}
+\begin{center}
+  \begin{xtabular}{M{4cm}|M{4cm}}
+    $\int {[f(x)]}^\alpha\,\dif x = \frac{{[f(x)]}^{\alpha+1}}{\alpha+1}+c$ & 
+      $\int\frac{f'(x)}{\sin^2 f(x)}\,\dif x = -\cot f(x) +c$\\ 
+    $\int \frac{f'(x)}{f(x)}\,\dif x = \ln\abs{f(x)}+c$ &
+      $\int f'(x)a^{f(x)}\,\dif x = a^{f(x)}\log_a e + c$\\ 
+    $\int f'(x)\sin f(x)\,\dif x = -\cos f(x)+c$ &
+      $\int f'(x)\cos f(x)\,\dif x = \sin f(x) + c$\\ 
+    $\int \frac{f'(x)}{\sqrt{1-{[f(x)]}^2}}\,\dif x = \arcsin f(x) + c$ &
+      $\int \frac{f'(x)}{\cos^2 f(x)}\,\dif x = \tan f(x) + c$\\ 
+    $\int \frac{f'(x)}{1+{[f(x)]}^2}\,\dif x = \arctan f(x) + c$ & \\ 
+  \end{xtabular}
+\end{center}
+\renewcommand*{\arraystretch}{2.4}
