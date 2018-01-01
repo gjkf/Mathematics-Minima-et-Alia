@@ -2,7 +2,7 @@
 
 \section{Integrali}
 \subsection{Integrali indefiniti}
-Sia $f$ una funzione continua in $[{a,b}]$. Allora $f'(x)$ � la sua derivata, $F(x)$ � una primitiva.
+Sia $f$ una funzione continua in $[{a,b}]$. Allora $f'(x)$ è la sua derivata, $F(x)$ è una primitiva.
 Bisogna quindi definire una primitiva di una funzione
 \begin{primitiva}
   Una funzione $F(x)$ si dice primitiva della funzione $f(x)$ continua in $[{a,b}]$ se
@@ -10,18 +10,82 @@ Bisogna quindi definire una primitiva di una funzione
     F'(x) = f(x)
   \end{equation*}
 \end{primitiva}
-Sia ad esempio $f(x) = \cos x$, $F(x)$ sar� allora quella funzione la cui derivata � $f(x)$. Quindi
-$F(x)=\sin x$. Ma � soltanto questa? No, infatti anche $\sin x +1$ o $\sin x -\frac{e}{4}$ o 
-qualsiasi altra funzione che abbia una costante. Cos� possiamo definire un insieme denominato
-\textbf{totalit� delle primitive} che le raccoglie tutte. L'operatore che permette di trovare questo
-insieme � \textbf{l'integrale indefinito}
+Sia ad esempio $f(x) = \cos x$, $F(x)$ sarà allora quella funzione la cui derivata è $f(x)$. Quindi
+$F(x)=\sin x$. Ma è soltanto questa? No, infatti anche $\sin x +1$ o $\sin x -\frac{e}{4}$ o 
+qualsiasi altra funzione che abbia una costante. Così possiamo definire un insieme denominato
+\textbf{totalità delle primitive} che le raccoglie tutte. L'operatore che permette di trovare questo
+insieme è \textbf{l'integrale indefinito}
 \begin{equation*}
   \int f(x)\,\dif x = \{F(x)+c\}
 \end{equation*}
-Scrivere $\dif x$ � necessario perch�, come nella scrittura di Leibniz per le derivate, indica per
+Scrivere $\dif x$ è necessario perché, come nella scrittura di Leibniz per le derivate, indica per
 quale lettera si deve integrare.
 
-\subsubsection{Propriet� dell'integrale indefinito}
+\subsubsection{Differenziale}
+Nella scrittura dell'integrale
+\begin{equation*}
+  \int f(x)\,\dif x
+\end{equation*}
+vediamo un termine $\dif x$ che non appartiene alla funzione. Quel termine prende il nome di 
+\textbf{differenziale}. Osserviamo il significato geometrico.\\
+Innanzitutto perché una funzione possieda differenziale, deve essere derivabile in $x_0$. Prendiamo
+ad esempio un grafico
+\begin{center}
+  \begin{tikzpicture}[spy using outlines={circle, magnification=2, connect spies}]
+    \tkzInit[xmin=-1,ymin=-1,xmax=4,ymax=4]
+    \tkzGrid
+    \tkzAxeXY
+    \draw[name path=t,domain=-1:4,blue,thick] plot(\x,\x);
+    \draw[name path=f,domain=0.1:4,red,thick,samples=500] plot(\x,{ln(\x)+1});
+    \fill[olive, name intersections={of=t and f, total=\t}]
+      \foreach \s in {1,...,\t}{(intersection-\s) coordinate (P) circle (2pt) node[below] {$P$}};
+    \coordinate (H) at (2,0.92);
+    \coordinate (Q) at (2,{ln(2)+1});
+    \draw[name path=q, domain=2:2,magenta,dashed,thick] (2,1) -- ++(0,1.1);
+    \fill[olive] (H) circle (2pt) node[below right]{$H$};
+    \fill[olive] (Q) circle (2pt) node[right]{$Q$};
+    \fill[olive, name intersections={of=t and q, total=\t}]
+      \foreach \s in {1,...,\t}{(intersection-\s) coordinate (L)circle(2pt) node[above left]{$L$}};
+    \draw[dashed, olive, thick] (P) -- (H);
+    \filldraw[orange,fill opacity = 0.3] (P) -- (H) -- (Q) -- cycle;
+
+    \coordinate (spypoint) at (6,1);
+    \spy [blue, size=2.5cm] on ($(Q)!0.5!(L)$) in node[fill=white] at (spypoint);
+  \end{tikzpicture}
+\end{center}
+Come vediamo dalla figura, possiamo definire un punto $P(x_0,f(x_0))$ appartenente a $f(x)$ e
+un altro punto $Q(x_0+\Delta x, f(x_0+\Delta x))$ appartenente sempre alla curva. $L$ invece si 
+trova nell'intersezione tra il prolungamento di $\overline{HQ}$ e la tangente in $x_0$ alla curva.
+$\overline{LH}$ viene definito il \textbf{differenziale} di $f$. Ma a quanto equivale? Se proviamo
+a trovare l'angolo che la tangente fa con l'asse delle $X$
+\begin{equation*}
+  \tan \alpha = \frac{\overline{LH}}{\overline{PH}} = \frac{\dif f}{\Delta x}
+\end{equation*}
+dove $\dif f$ è il nostro differenziale. Ma l'angolo della tangente è equivalente al coefficiente
+angolare, quindi alla derivata calcolata nel punto. Quindi
+\begin{equation*}
+  f'(x_0) = \frac{\dif f}{\Delta x}
+\end{equation*}
+da cui ne deriva che
+\begin{equation*}
+  \dif f = f'(x_0)\Delta x
+\end{equation*}
+Se ora immaginiamo di avvicinare il punto $Q$ sempre di più al punto $P$, come si farebbe per la
+derivata, si nota che $\overline{LQ}\to0$. Quindi $\dif f\approx\Delta f$.\\
+Prendiamo ora come esempio la funzione identica $f(x)=x$. Qual è il suo differeniziale?
+\begin{equation*}
+  \dif f(x) = \dif x
+\end{equation*}
+Quindi possiamo anche dire che
+\begin{equation*}
+  \dif x \approx \Delta x
+\end{equation*}
+Di conseguenza riscrivendo il differenziale
+\begin{equation*}
+  \dif f(x) = f'(x)\dif x
+\end{equation*}
+
+\subsubsection{Proprietà dell'integrale indefinito}
 Per la definizione stessa di integrale si ha che
 \begin{equation*}
   \Dif\int f(x)\,\dif x = f(x)
@@ -30,7 +94,7 @@ e
 \begin{equation*}
   \int\Dif f(x)\,\dif x = f(x)+c
 \end{equation*}
-Se $f(x)$ � una funzione continua e $k$ una costante, si ha
+Se $f(x)$ è una funzione continua e $k$ una costante, si ha
 \begin{equation*}
   \int kf(x)\,\dif x = k\int f(x)\,\dif x
 \end{equation*}
@@ -40,7 +104,7 @@ Se si ha una una somma di funzioni $\sum f$,
 \end{equation*}
 
 \subsubsection{Integrali indefiniti immediati}
-Di seguito verr� riportata una tabella con i principali integrali indefiniti immediati e le 
+Di seguito verrà riportata una tabella con i principali integrali indefiniti immediati e le 
 principali funzioni composte
 \tablefirsthead{\midrule}
 \tablehead{\midrule}
@@ -60,3 +124,153 @@ principali funzioni composte
   \end{xtabular}
 \end{center}
 \renewcommand*{\arraystretch}{2.4}
+
+\subsubsection{Integrazione di funzioni razionali fratte}
+Sia dato l'integrale
+\begin{equation*}
+  \int \frac{N(x)}{D(x)}\,\dif x
+\end{equation*}
+se \textbf{il grado del numeratore è maggiore o uguale al grado del denominatore}, si proceda ad
+eseguire la divisione con resto della frazione integranda. Così si potrà scrivere
+\begin{equation*}
+  \int \frac{N(x)}{D(x)}\,\dif x = \int Q(x)\,\dif x + \int \frac{R(x)}{D(x)}\,\dif x
+\end{equation*}
+A questo punto si distingueranno solo due casi in base al grado del denominatore. Si darà anche per
+scontato il termine
+\begin{equation*}
+  \int Q(x)\,\dif x
+\end{equation*}
+in quanto non ha importanza essendo immediato.
+\begin{description}
+  \item[Grado 1] In questo caso si ha un integrale nella forma
+    \begin{equation*}
+      \int \frac{c}{ax+b}\,\dif x = \frac{c}{a}\int \frac{a}{ax+b}\,\dif x
+    \end{equation*}
+    A questo punto diventa un integrale immediato.
+  \item[Grado 2] In questo caso si ha un integrale nella forma
+    \begin{equation*}
+      \int \frac{mx+n}{ax^2+bx+c}\,\dif x
+    \end{equation*}
+    In questa situazione si deve osservare il $\Delta$ dell'espressione di secondo grado al 
+    denominatore.
+    \begin{description}
+      \item[$\Delta > 0$] Si ha che si può scrivere 
+        \begin{equation*}
+          \int \frac{mx+n}{ax^2+bx+c}\,\dif x = \frac{1}{a} \int\frac{mx+n}{(x-x_1)(x-x_2)}\,\dif x
+        \end{equation*}
+        Si potranno ora trovare due numeri $A$ e $B$ tali che si possa scrivere infine
+        \begin{equation*}
+          \frac{1}{a} \left( \int \frac{A}{x-x_1}\,\dif x + \frac{B}{x-x_2}\,\dif x \right)
+        \end{equation*}
+      \item[$\Delta =0 $] Si ha che si può scrivere
+        \begin{equation*}
+          \int \frac{mx+n}{ax^2+bx+c}\,\dif x = \int \frac{mx+n}{a(x-x_0)^2}\,\dif x 
+        \end{equation*}
+        In questa situazione si divide l'integrale
+        \begin{equation*}
+          \int \frac{mx+n}{a(x-x_0)^2}\,\dif x = 
+          \frac{1}{a}\left( \int\frac{mx}{(x-x_0)^2}\,\dif x+\int\frac{n}{(x-x_0)^2}\,\dif x\right)
+        \end{equation*}
+        Il secondo integrale è immediato, il primo invece richiede di aggiungere e togliere un
+        numero $l$ tale che al numeratore si abbia la derivata del denominatore.
+      \item[$\Delta < 0$] Si deve fare in modo che il numeratore sia la derivata del denominatore,
+        così che si possa scrivere
+        \begin{equation*}
+          \int \frac{mx+n}{ax^2+bx+c}\,\dif x = \int \frac{hx+j}{ax^2+bx+c}\,\dif x + 
+          \int \frac{n}{ax^2+bx+c}\,\dif x
+        \end{equation*}
+        Il primo integrale ora è immediato. Per il secondo si ha che si può trovare un numero $l$ 
+        tale per cui si possa identificare un quadrato
+        \begin{equation*}
+          \int \frac{n}{ax^2+bx+c}\,\dif x = 
+          \int\frac{n}{\underbrace{ax^2+bx+l}_{(r+s)^2}-l+c}\,\dif x
+        \end{equation*}
+        Si può ora ricondurre il nuovo integrale ad un nuovo nella forma
+        \begin{equation*}
+          l\int \frac{n}{t^2+1}\,\dif x
+        \end{equation*}
+        dove $n$ è la derivata di $t$. Quindi diventa un integrale immediato.
+    \end{description}
+    In generale si ha che in linea di massima le soluzioni sono nelle seguenti forme
+    \begin{description}
+      \item[$\Delta > 0$] Soluzioni:
+        \begin{equation*}
+          \ln \blacksquare + \ln\nabla
+        \end{equation*}
+      \item[$\Delta = 0$] Soluzioni:
+        \begin{equation*}
+          \ln\blacksquare + \frac{\nabla}{x-x_0}
+        \end{equation*}
+      \item[$\Delta < 0$] Soluzioni:
+        \begin{equation*}
+          \ln\blacksquare + \arctan\nabla
+        \end{equation*}
+    \end{description}
+\end{description}
+
+\subsubsection{Integrazione per parti}
+Sia dato l'integrale
+\begin{equation*}
+  \int f(x)\cdot g(x)\,\dif x
+\end{equation*}
+Come risolverlo nel caso in cui $f(x)\neq g'(x)$? Entra qui in gioco l'integrazione per parti che
+deriva dalla moltiplicazione delle derivate. Infatti la formula finale è:
+\begin{equation*}
+  \int f(x) g(x)\,\dif x = f(x)G(x) - \int f'(x)G(x)\,\dif x
+\end{equation*}
+Alternativamente la si può vedere
+\begin{equation*}
+  \int f(x) g'(x)\,\dif x = f(x)g(x) - \int f'(x)g(x)\,\dif x
+\end{equation*}
+Per capire meglio, prendiamo un esempio:
+\begin{equation*}
+  \int \ln x\,\dif x
+\end{equation*}
+Come risolvere questo integrale? Non è riconducibile ad alcun integrale immediato e tantomeno è
+una funzione razionale fratta. Quindi? Possiamo immaginare la funzione integranda come
+\begin{equation*}
+  \ln x = 1\cdot\ln x
+\end{equation*}
+A questo punto proviamo a risolverlo utilizzando entrambe le forme della formula.
+\begin{align*}
+  &\int 1\cdot\ln x\,\dif x = \int x'\ln x\,\dif x =\\
+  &x\ln x - \int \frac{1}{x}x\,\dif x =
+  x\ln x-x+c = x(\ln x - 1)+c
+\end{align*}
+Questo è usando la seconda formula. La prima
+\begin{align*}
+  &\int \ln x\cdot 1\,\dif x = x\ln x - \int \frac{1}{x}x\,\dif x=\\
+  &x\ln x - x+c = x(\ln x-1)+c
+\end{align*}
+
+\subsubsection{Integrazione per sostituzione}
+Dato l'integrale
+\begin{equation*}
+  \int f(x)\,\dif x
+\end{equation*}
+può essere necessario sostituire la funzione con cun'altra per rendere più facile o possibile 
+l'integrazione. In generale quindi si avrà
+\begin{equation*}
+  \int f(x)\,\dif x = \int f(g(t))\,\dif g = \int f(g(t))g'(t)\,\dif t
+\end{equation*}
+Quindi per capire meglio partiamo da un esempio
+\begin{equation*}
+  \int \frac{1}{x+\sqrt{x}}\,\dif x
+\end{equation*}
+Poniamo $\sqrt{x}=t \rightarrow x = t^2$. Quindi abbiamo anche che il differenziale $\dif x$ 
+diventa $\dif x = 2t\dif t$. Quindi ora possiamo riscrivere
+\begin{equation*}
+  \int \frac{1}{x+\sqrt{x}}\,\dif x = \int \frac{1}{t^2+t}2t\,\dif t = 
+  \int\frac{2\cancel{t}}{\cancel{t}(t+1)}\,\dif t
+\end{equation*}
+A questo punto diventa un integrale immediato
+\begin{equation*}
+  2\int \frac{1}{t+1}\,\dif t = 2\ln\abs{t+1}+c
+\end{equation*}
+Torniamo a sostituire per ottenere
+\begin{equation*}
+  2\ln\abs{t+1}+c = 2\ln\abs{\sqrt{x}+1}+c
+\end{equation*}
+La grossa difficoltà con l'integrazione per sostituzione è la scelta della funzione sostituente.
+In generale se è necessario questo passaggio, la funzione sostitutiva viene indicata in quanto non
+ci sono modi chiari e semplici per identficarla.

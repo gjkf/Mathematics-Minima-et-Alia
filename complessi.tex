@@ -1,8 +1,8 @@
 %!TEX ROOT=formularioMatematica.tex
 
 \section{Numeri complessi}\label{sec:complex}
-Fino ad adesso abbiamo sempre lavorato con numeri appartenenti ad $\mathbb{R}$ al di pi˘. Ci sono perÚ
-alcune operazioni che non sono possibili da fare in questo insieme numerico. Una di queste Ë
+Fino ad adesso abbiamo sempre lavorato con numeri appartenenti ad $\mathbb{R}$ al di pi√π. Ci sono per√≤
+alcune operazioni che non sono possibili da fare in questo insieme numerico. Una di queste √®
 \begin{equation*}
 \sqrt{-r}\qquad\forall r\in\mathbb{R}^+
 \end{equation*}
@@ -10,11 +10,11 @@ oppure
 \begin{equation*}
 \log(n)\qquad \forall n\in\mathbb{R}^-
 \end{equation*}
-Per sopperire a questa mancanza, Ë stata introdotta l'unit‡ immaginaria $i$ che Ë definita come
+Per sopperire a questa mancanza, √® stata introdotta l'unit√† immaginaria $i$ che √® definita come
 \begin{equation*}
 i=\sqrt{-1}
 \end{equation*}
-Un numero complesso Ë un numero composto da una parte reale e una immaginaria. Esso puÚ essere scritto
+Un numero complesso √® un numero composto da una parte reale e una immaginaria. Esso pu√≤ essere scritto
 come
 \begin{equation*}
 z = \overbrace{a}^{\text{Reale}} + \overbrace{ib}^{\text{Immaginaria}}
@@ -23,23 +23,23 @@ Quindi
 \begin{equation*}
 \Re(z) = a \quad\text{e}\quad\Im(z)=ib
 \end{equation*}
-Questo non Ë l'unico modo di identificare un numero complesso. Pi˘ avanti vedremo anche gli altri.\\
-$\mathbb{C}$ Ë quindi definito come
+Questo non √® l'unico modo di identificare un numero complesso. Pi√π avanti vedremo anche gli altri.\\
+$\mathbb{C}$ √® quindi definito come
 \begin{equation*}
 \mathbb{C}=\left\{a+ib: a,b\in\mathbb{R}\right\}
 \end{equation*}
-Il numero complesso $\bar{z}$ Ë definito il \textit{coniugato} di $z$ quindi
+Il numero complesso $\bar{z}$ √® definito il \textit{coniugato} di $z$ quindi
 \begin{equation*}
 z=a+ib\qquad\text{e}\qquad\bar{z}=a-ib
 \end{equation*}
 Si noti che se si deve fare ricorso a \hyperref[ruffini]{Ruffini} si ricerchi lo zero anche in 
 $\mathbb{C}$.\\
-Per gli esercizi si vada \hyperref[ex:complex]{qui}.
+Per gli esercizi si vada a pagina~\pageref{ex:complex}.
 
 \subsection{Rappresentazione cartesiana}\label{subsec:complex:cart}
-Essendo questo numero composto da parte reale e immaginaria, il piano cartesiano non basta pi˘. Quindi 
-si Ë deciso di estenderlo a quello che viene comunemente denominato il piano di \textbf{Argrand-Gauss}.
-Esso Ë composto dall'asse delle ascisse come parte reale e quello delle ordinate come parte 
+Essendo questo numero composto da parte reale e immaginaria, il piano cartesiano non basta pi√π. Quindi 
+si √® deciso di estenderlo a quello che viene comunemente denominato il piano di \textbf{Argrand-Gauss}.
+Esso √® composto dall'asse delle ascisse come parte reale e quello delle ordinate come parte 
 immaginaria.
 
 \begin{center}
@@ -58,7 +58,7 @@ immaginaria.
 	\end{tikzpicture}
 \end{center}
 
-La distanza $\overline{OP}$ Ë detta \emph{modulo} del numero immaginario ed Ë descritto come
+La distanza $\overline{OP}$ √® detta \emph{modulo} del numero immaginario ed √® descritto come
 \begin{equation*}
 \rho=\norm{z} = \sqrt{a^2+b^2}
 \end{equation*}
@@ -68,7 +68,7 @@ La distanza $\overline{OP}$ Ë detta \emph{modulo} del numero immaginario ed Ë de
 La somma tra due numeri complessi richiede solo di sommare le parti simili fra di loro.
 \begin{align*}
 &z_1=a_1+i+b_1\qquad\text{e}\qquad z_2=a_2+i_b2
-\intertext{La loro somma Ë}
+\intertext{La loro somma √®}
 &z=z_1+z_2=a_1+a_2+i(b_1+b_2)
 \end{align*}
 Nella somma vige la seguente caratteristica
@@ -77,10 +77,10 @@ Nella somma vige la seguente caratteristica
 \end{equation*}
 
 \subsubsection{Differenza}
-La differenza Ë esattamente come la somma, ovvero si opera parte a parte.
+La differenza √® esattamente come la somma, ovvero si opera parte a parte.
 \begin{align*}
 &z_1=a_1+i+b_1\qquad\text{e}\qquad z_2=a_2+i_b2
-\intertext{La loro differenza Ë}
+\intertext{La loro differenza √®}
 &z=z_1-z_2=a_1-a_2+i(b_1-b_2)
 \end{align*}
 Nella somma e differenza vigono le seguenti caratteristiche
@@ -92,20 +92,20 @@ z+\overline{z}=2a\qquad\text{e}\qquad z-\overline{z}=2ib
 Il prodotto si effettua moltiplicando fra di loro parti simili.
 \begin{align*}
 &z_1=a_1+i+b_1\qquad\text{e}\qquad z_2=a_2+i_b2
-\intertext{Il loro prodotto Ë}
+\intertext{Il loro prodotto √®}
 &z=z_1\cdot z_2=a_1a_2-b_1b_2+i(b_1a_2+a_1b_2)
 \end{align*}	
 
 \subsubsection{Quoziente}
-Il quoziente Ë un'operazione particolare.
+Il quoziente √® un'operazione particolare.
 \begin{align*}
 &z_1=a_1+i+b_1\qquad\text{e}\qquad z_2=a_2+i_b2
-\intertext{Il loro quoziente Ë}
+\intertext{Il loro quoziente √®}
 &z=\frac{z_1}{z_2}=\frac{a_1a_2+b_1b_2}{a_2^2+b_2^2}+i\frac{b_1a_2-a_2b_2}{a_2^2+b_2^2}
 \end{align*}
 
 \subsection{Rappresentazione trigonometrica di un numero complesso}
-Un modo per definire un numero complesso Ë gi‡ stato chiarito. Ne esiste un altro perÚ che fa capo
+Un modo per definire un numero complesso √® gi√† stato chiarito. Ne esiste un altro per√≤ che fa capo
 alla rappresentazione polare del numero (tramite un altro sistema di assi che identifica un punto
 tramite l'angolo che compie un segmento dall'asse $x$).
 \begin{equation*}
@@ -117,18 +117,18 @@ dove $\theta$ rappresenta l'angolo indicato nella sottosezione
 \subsubsection{Prodotto}
 \begin{align*}
 &z_1=\rho_1(\cos\theta_1+i\sin\theta_1)\quad\text{e}\quad z_2=\rho_2(\cos\theta_2+i\sin\theta_2)
-\intertext{Il loro prodotto Ë}
+\intertext{Il loro prodotto √®}
 &z=z_1\cdot z_2=\rho_1\rho_2[\cos(\theta_1+\theta_2)_i\sin(\theta_1+\theta_2)]
 \end{align*}
 \subsubsection{Quoziente}
 \begin{align*}
 &z_1=\rho_1(\cos\theta_1+i\sin\theta_1)\quad\text{e}\quad z_2=\rho_2(\cos\theta_2+i\sin\theta_2)
-\intertext{Il loro quoziente Ë}
+\intertext{Il loro quoziente √®}
 &z=\frac{z_1}{z_2}=\frac{\rho_1}{\rho_2}[\cos(\theta_1-\theta_2)_i\sin(\theta_1-\theta_2)]
 \end{align*}
 
 \subsection{Elevazione a potenza}
-Messa successivamente alle altre operazioni perchÈ varia in base alla notazione scelta.
+Messa successivamente alle altre operazioni perch√© varia in base alla notazione scelta.
 \subsubsection{Algebrica}
 \begin{equation*}
 z^n = (a+ib)^n
@@ -141,11 +141,11 @@ z^n=\rho^n(\cos n\theta+i\sin n\theta)
 \subsection{Radici di un numero complesso}
 \begin{align*}
 &z = \rho(\cos\theta+i\sin\theta)
-\intertext{La radice $n$-esima Ë pari a}
+\intertext{La radice $n$-esima √® pari a}
 &\sqrt[n]{z}=\sqrt[n]{\rho}\left(\cos\frac{\theta+2k\pi}{n}+i\sin\frac{\theta+2k\pi}{n}\right)
 \end{align*}
-Una caratteristica interessante delle radici Ë la loro rappresentazione grafica. Infatti se si prendono
-le coordinate e si uniscono fra di loro si costruir‡ un poligono regolare con $n$ lati inscritto 
+Una caratteristica interessante delle radici √® la loro rappresentazione grafica. Infatti se si prendono
+le coordinate e si uniscono fra di loro si costruir√† un poligono regolare con $n$ lati inscritto 
 all'interno di una circonferenza di raggio $\rho$.\\
 Per calcolarle, sostituire $k$ con i numeri che vanno da $0$ a $n-1$.
 
@@ -165,17 +165,17 @@ Da questo deriva
 	P(x) = \sum\limits_{i=0}^{n} a_ix^i
 	\end{equation*}
 	a coefficienti $\mathbb{C}$ ha esattamente $n$ zeri in $\mathbb{C}$, con la convenzione di contare
-	$r$ volte uno zero di molteplicit‡ $r$.
+	$r$ volte uno zero di molteplicit√† $r$.
 \end{tfa-ext}
-Per molteplicit‡ si intende
+Per molteplicit√† si intende
 \begin{molteplic}
-	Se il polinomio $P(x)$ si puÚ scomporre nel prodotto
+	Se il polinomio $P(x)$ si pu√≤ scomporre nel prodotto
 	\begin{equation*}
 	P(x) = (x-\alpha)^rP_r(x)
 	\end{equation*}
-	dove il polinomio $P_r(x)$ Ë di grado $(n-r)$, si dice che $P(x)$ Ë divisibile per $(x-\alpha)^r$
-	e se $P_r(x)$ non Ë divisibile per $(x-\alpha)$, si dice che $\alpha$ Ë uno \textbf{zero di 
-	molteplicit‡} $r$ per $P(x)$.
+	dove il polinomio $P_r(x)$ √® di grado $(n-r)$, si dice che $P(x)$ √® divisibile per $(x-\alpha)^r$
+	e se $P_r(x)$ non √® divisibile per $(x-\alpha)$, si dice che $\alpha$ √® uno \textbf{zero di 
+	molteplicit√†} $r$ per $P(x)$.
 \end{molteplic}
 
 \subsection{Esponenziali complessi}
@@ -192,11 +192,11 @@ Quindi possiamo dire che
 \begin{equation*}
 e^{z} = \rho e^{i\theta}
 \end{equation*}
-Proprio da questa formula ne viene ricavata una delle pi˘ famose della storia della matematica
+Proprio da questa formula ne viene ricavata una delle pi√π famose della storia della matematica
 \begin{equation*}
 e^{i\pi}+1=0
 \end{equation*}
-che collega 5 unit‡ fondamentali della matematica.
+che collega 5 unit√† fondamentali della matematica.
 
 \subsection{Formule di Eulero}
 \begin{equation*}

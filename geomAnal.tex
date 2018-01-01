@@ -1,8 +1,8 @@
 %!TEX ROOT=formularioMatematica.tex
 
 \section{Geometria analitica}\label{sec:geomanal}
-La geometria analitica Ë la geometria che si occupa di lavorare nel piano cartesiano ($xOy$).\\
-Per gli esercizi si vada \hyperref[ex:geomanal]{qui}.
+La geometria analitica √® la geometria che si occupa di lavorare nel piano cartesiano ($xOy$).\\
+Per gli esercizi si vada a pagina~\pageref{ex:geomanal}.
 
 \subsection{Generale}
 Le formule qui riportate sono generali a tutto l'ambito della geometria analitica e non si riferiscono
@@ -17,8 +17,8 @@ Di seguito viene rappresentato il tipico piano cartesiano con i suoi quattro qua
 			node[above]{$P(x_p, y_p)$};
 	\end{tikzpicture}
 \end{center}
-D'ora in poi, si dar‡ per scontata la convenzione di nominare le coordinate di un punto in base al nome
-del punto stesso. Ad esempio $P(x_P, y_P)$. Si noti anche che Ë possibile definire un punto attraverso
+D'ora in poi, si dar√† per scontata la convenzione di nominare le coordinate di un punto in base al nome
+del punto stesso. Ad esempio $P(x_P, y_P)$. Si noti anche che √® possibile definire un punto attraverso
 un vettore bidimensionale. Ovvero
 \begin{equation*}
 P(x_P,y_P) = \begin{bmatrix}
@@ -58,9 +58,9 @@ x_3 & y_3 & 1\\
 \vdots & \vdots & 1
 \end{matrix}\right\rvert
 \end{equation*}
-usando la regola di Sarrus. Questa formula Ë anche chiamata la formula di Gauss per le aree di 
+usando la regola di Sarrus. Questa formula √® anche chiamata la formula di Gauss per le aree di 
 poligoni.\\
-Il modo di calcolare il determinante (o valore) della matrice Ë il seguente (in definitiva andare
+Il modo di calcolare il determinante (o valore) della matrice √® il seguente (in definitiva andare
 in diagonale dall'alto per ogni elemento della prima colonna moltiplicando gli elementi e quando si
 cambia colonna si sommi. Andare poi dal basso sottraendo).\\
 Il determinante della matrice
@@ -71,7 +71,7 @@ a_{21} & a_{22} & a_{23}\\
 a_{31} & a_{32} & a_{33}
 \end{bmatrix}
 \end{equation*}
-Ë dato dalla risoluzione come segue
+√® dato dalla risoluzione come segue
 \begin{center}
 	\begin{tikzpicture}[baseline=(A.center), scale=0.5]
 	\tikzset{node style ge/.style={circle}}
@@ -95,8 +95,8 @@ a_{31} & a_{32} & a_{33}
 	\draw [bar=red]  (A-5-1.south west) node[minus=red] {$-$} to (A-3-3.north east);
 	\end{tikzpicture}
 \end{center}
-che contiene una ripetizione di tutte le righe tranne l'ultima. Volendo si puÚ "saltare" all'inizio
-per evitare di scrivere la ripetizione perÚ in questo modo si Ë sicuri di non sbagliare.
+che contiene una ripetizione di tutte le righe tranne l'ultima. Volendo si pu√≤ "saltare" all'inizio
+per evitare di scrivere la ripetizione per√≤ in questo modo si √® sicuri di non sbagliare.
 
 \subsection{Rette}\label{subsec:geomanal:retta}
 \begin{center}
@@ -116,7 +116,7 @@ y = mx + q\\
 \begin{equation}\label{eq:retta2}
 ax + by + c = 0
 \end{equation}
-La forma \eqref{eq:retta1} Ë chiamata \emph{esplicita}, la forma \eqref{eq:retta2} Ë chiamata 
+La forma \eqref{eq:retta1} √® chiamata \emph{esplicita}, la forma \eqref{eq:retta2} √® chiamata 
 \emph{implicita}. Da queste due forme possiamo evincere che
 \begin{equation*}
 m = -\frac{a}{b} \qquad q = -\frac{c}{b}
@@ -130,13 +130,13 @@ m = -\frac{a}{b} \qquad q = -\frac{c}{b}
 \end{equation*}
 
 \subsubsection{Condizione di parallelismo}
-PerchÈ due rette siano parallele, \textbf{il loro coefficiente angolare deve essere uguale}, ovvero
+Perch√© due rette siano parallele, \textbf{il loro coefficiente angolare deve essere uguale}, ovvero
 \begin{equation*}
 r_1 \| r_2 \iff m_1=m_2
 \end{equation*}
 
-\subsubsection{Condizione di perpendicolarit‡}
-PerchÈ due rette siano perpendicolari, \textbf{il prodotto dei coefficienti angolari deve essere $-1$},
+\subsubsection{Condizione di perpendicolarit√†}
+Perch√© due rette siano perpendicolari, \textbf{il prodotto dei coefficienti angolari deve essere $-1$},
 ovvero
 \begin{equation*}
 r_1 \perp r_2 \iff m_1m_2 = -1
@@ -164,8 +164,8 @@ m=\frac{y_2-y_1}{x_2-x_1}
 \end{equation*}
 
 \subsection{Fasci di Rette}\label{subsec:geomanal:fasciorette}
-Un fascio di rette Ë una combinazione lineare di tutte le rette generabili modificando un solo 
-parametro di una quantit‡ costante.
+Un fascio di rette √® una combinazione lineare di tutte le rette generabili modificando un solo 
+parametro di una quantit√† costante.
 
 \subsubsection{Fascio di rette a due parametri}
 Sceglti appropriati $\alpha$ e $\beta$ si possono generare tutte le rette possibili utilizzando questa
@@ -213,7 +213,7 @@ y-y_P = m(x-x_P)
 \end{equation*}
 
 \subsection{Circonferenza}\label{subsec:geomana:circ}
-La circonferenza Ë una conica i cui punti sono tutti equidistanti dal centro $C$.
+La circonferenza √® una conica i cui punti sono tutti equidistanti dal centro $C$.
 \begin{center}
 	\begin{tikzpicture}
 		\draw (0,0) circle (1);
@@ -260,17 +260,17 @@ C = 2\pi\mathcolor{red}{r}
 \begin{equation*}
 l = \mathcolor{red}{r}\alpha
 \end{equation*}
-Si noti che $\alpha$ Ë in radianti.
+Si noti che $\alpha$ √® in radianti.
 
 \subsubsection{Area del settore}
 \begin{equation*}
 \mathscr{A}(\mathscr{S}) = \frac{1}{2}\mathcolor{red}{r}^2\alpha
 \end{equation*}
-Si noti che $\alpha$ Ë in radianti.
+Si noti che $\alpha$ √® in radianti.
 
 \subsection{Fasci di circonferenze}\label{subsec:geomanal:fasciocirc}
-Un fascio di circonferenze Ë una combinazione lineare di utte le circonferenze generabili modificando
-un parametro di una certa quantit‡ costante.
+Un fascio di circonferenze √® una combinazione lineare di utte le circonferenze generabili modificando
+un parametro di una certa quantit√† costante.
 
 \subsubsection{Fascio di circonferenze ad un parametro}
 Scelti appropriati $\alpha$ e $\beta$ si possono generare tute le circonferenze possibili utilizzando 
@@ -301,17 +301,17 @@ Si noti che $k=\frac{\alpha}{\beta}$
 		\draw[thick, blue,domain=-2:2] plot(\x*\x,\x);
 	\end{tikzpicture}
 \end{center}
-Una parabola puÚ essere descritta con l'asse focale parallelo all'asse $x$ o all'asse $y$.
+Una parabola pu√≤ essere descritta con l'asse focale parallelo all'asse $x$ o all'asse $y$.
 \begin{equation*}
 \mathcolor{red}{\mathscr{P}}:\,y=ax^2+bx+c
 \end{equation*}
 \begin{equation*}
 \mathcolor{blue}{\mathscr{P}}:\,x=ay^2+by+c
 \end{equation*}
-La direttrice di una parabola Ë quella che ne da l'inclinazione ed Ë perpendicolare all'asse di
+La direttrice di una parabola √® quella che ne da l'inclinazione ed √® perpendicolare all'asse di
 simmetria.\\
-Il vertice di una parabola Ë il punto pi˘ vicino alla direttrice.\\
-Il fuoco Ë il punto la cui distanza da qualsiasi punto della parabola Ë pari a quella della proiezione
+Il vertice di una parabola √® il punto pi√π vicino alla direttrice.\\
+Il fuoco √® il punto la cui distanza da qualsiasi punto della parabola √® pari a quella della proiezione
 sulla direttrice del punto stesso.
 
 \subsubsection{Elementi di una parabola con asse focale parallelo a $x$}
@@ -406,7 +406,7 @@ $\overline{PF_1}+\overline{PF_2} = 2a$.
 \begin{equation*}
 \mathscr{E}:\,\frac{x^2}{a^2}+\frac{y^2}{b^2}=1
 \end{equation*}
-Tra i semi-assi vige la seguente propriet‡
+Tra i semi-assi vige la seguente propriet√†
 \begin{equation*}
 a^2-c^2=b^2
 \end{equation*}
@@ -418,8 +418,8 @@ b^2-a^2,\, &\text{se } a < b
 \end{cases}
 \end{equation*}
 
-\subsubsection{Eccentricit‡}
-L'eccentricit‡ Ë lo schiacciamento dell'ellisse sull'asse maggiore. » un valore compreso tra $0$ e 
+\subsubsection{Eccentricit√†}
+L'eccentricit√† √® lo schiacciamento dell'ellisse sull'asse maggiore. √à un valore compreso tra $0$ e 
 $1$.\\
 Se $a>b$
 \begin{equation*}
@@ -447,8 +447,8 @@ oppure fare il sistema tra la retta generica per $P$ e fare in modo che il discr
 y-y_0=m(x-x_0)
 \end{dcases}\rightarrow\\ \frac{\Delta}{4}=a^4m^2q^2-a^2(q^2-b^2)(b^2+a^2m^2) = 0
 \end{align*}
-Il vantaggio di questo secondo metodo Ë che puÚ anche trovare le rette secanti ed esterne all'ellisse
-(rispettivamente con $\dfrac{\Delta}{4}>0$ e $\dfrac{\Delta}{4}<0$). » sicuramente pi˘ laborioso e
+Il vantaggio di questo secondo metodo √® che pu√≤ anche trovare le rette secanti ed esterne all'ellisse
+(rispettivamente con $\dfrac{\Delta}{4}>0$ e $\dfrac{\Delta}{4}<0$). √à sicuramente pi√π laborioso e
 difficile da ricordare.
 
 \subsection{Iperbole}
@@ -463,15 +463,15 @@ difficile da ricordare.
 	\end{tikzpicture}
 \end{center}
 
-L'iperbole puÚ essere descritta sia anlaliticamente sia in modo parametrico con le funzioni $\cosh$ e
+L'iperbole pu√≤ essere descritta sia anlaliticamente sia in modo parametrico con le funzioni $\cosh$ e
 $\sinh$.\\
 I fuochi sono i due punti tali che per un punto $P\in\mathscr{I}$, 
 $\lvert \overline{PF_1}-\overline{PF_1}\rvert=2a$.\\
-L'equazione dell'iperbole con i fuochi su $x$ Ë
+L'equazione dell'iperbole con i fuochi su $x$ √®
 \begin{equation*}
 \mathscr{I}:\,\frac{x^2}{a^2}-\frac{y^2}{b^2}=1
 \end{equation*}
-Quella con i fuochi su $y$ Ë
+Quella con i fuochi su $y$ √®
 \begin{equation*}
 \mathscr{I}:\,\frac{x^2}{a^2}-\frac{y^2}{b^2}=-1
 \end{equation*}
@@ -484,8 +484,8 @@ Gli asintoti sono le rette che l'iperbole tende a raggiungere senza mai toccare
 y=\pm\frac{b}{a}x
 \end{equation*}
 
-	\subsubsection{Eccentricit‡}
-L'eccentricit‡ dell'iperbole Ë il rapporto
+	\subsubsection{Eccentricit√†}
+L'eccentricit√† dell'iperbole √® il rapporto
 \begin{equation*}
 e=\frac{c}{a}=\sqrt{1+\frac{b^2}{a^2}}
 \end{equation*}
@@ -506,7 +506,7 @@ y^2-x^2=a^2
 \end{equation*}
 se $F\in y$.\\
 Questo comporta che $c = a\sqrt{2}$ e che $e=\sqrt{2}$.\\\\
-PuÚ anche essere descritta l'iperbole in base agli asintoti e in tal caso diventa
+Pu√≤ anche essere descritta l'iperbole in base agli asintoti e in tal caso diventa
 \begin{equation*}
 xy=k
 \end{equation*}
@@ -525,7 +525,7 @@ Vengono ora riportate le formule di sdoppiamento che cambiano in base all'equazi
 \end{center}
 
 \subsubsection{Iperbole equilatera traslata}
-Si trova molto spesso una versione traslata di un'iperbole. Questa Ë la sua generale forma
+Si trova molto spesso una versione traslata di un'iperbole. Questa √® la sua generale forma
 \begin{equation*}
 y=\frac{ax+b}{cx+d}
 \end{equation*}

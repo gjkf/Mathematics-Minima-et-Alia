@@ -1,26 +1,26 @@
 %!TEX ROOT=formularioMatematica.tex
 
-\section{Probabilit‡}\label{sec:prob}
-La probabilit‡ Ë una funzione $p(U)$ che ritorna un valore compreso tra $0$ e $1$ che definisce la 
-probilit‡ di un \emph{evento}.
+\section{Probabilit√†}\label{sec:prob}
+La probabilit√† √® una funzione $p(U)$ che ritorna un valore compreso tra $0$ e $1$ che definisce la 
+probilit√† di un \emph{evento}.
 \begin{equation*}
 p:\,p(U) = \frac{\text{Casi favorevoli}}{\text{Casi possibili}}\mapsto {[{0},{1}]}
 \end{equation*}
 
 \subsection{Evento ed insieme universo}
 Per un qualsiasi caso di studio esiste un insieme \emph{Universo} definito $\mathbb{U}$ che contiene
-tutte le possibili uscite dell'oservazione. Ciascuna di queste uscite Ë definito \emph{evento}.
+tutte le possibili uscite dell'oservazione. Ciascuna di queste uscite √® definito \emph{evento}.
 Quindi
 \begin{equation*}
 \mathbb{E} \subseteq \mathbb{U}
 \end{equation*}
-e detto in altri termini, un evento Ë un insieme di possibilit‡. Ad esempio
+e detto in altri termini, un evento √® un insieme di possibilit√†. Ad esempio
 \begin{equation*}
 \mathbb{E} = \{2,4,5\}
 \end{equation*}
-puÚ essere un evento nel lancio di un dado.\\
-$p(\mathbb{U}) = 1$ per qualsiasi tipo di osservazione. Quindi la probabilit‡ che \textbf{non} avvenga
-un evento Ë $1-p(\mathbb{E})$
+pu√≤ essere un evento nel lancio di un dado.\\
+$p(\mathbb{U}) = 1$ per qualsiasi tipo di osservazione. Quindi la probabilit√† che \textbf{non} avvenga
+un evento √® $1-p(\mathbb{E})$
 
 \subsubsection{Eventi incompatibili}
 Due eventi si dicono incompatibili quando
@@ -34,34 +34,34 @@ Due eventi si dicono indipendenti quando
 p\left(\mathbb{E}_1\mid\mathbb{E}_2\right) = p(\mathbb{E}_1)
 \end{equation*}
 
-\subsection{Probabilit‡ di eventi incompatibili}
+\subsection{Probabilit√† di eventi incompatibili}
 \begin{equation*}
 p(\mathbb{E}_1\cup\mathbb{E}_2) = p(\mathbb{E}_1) + p(\mathbb{E}_2)
 \end{equation*}
 
-\subsection{Probabilit‡ di eventi compatibili}
+\subsection{Probabilit√† di eventi compatibili}
 \begin{equation*}
 p(\mathbb{E}_1\cup\mathbb{E}_2) = p(\mathbb{E}_1)+p(\mathbb{E}_2)-p(\mathbb{E}_1\cap\mathbb{E}_2)
 \end{equation*}
 Si estenda questa formula in modo che si tolgano tutte le intersezioni fra eventi per non ripetere 
 risultati.
 
-\subsection{Probabilit‡ condizionata}
-La probabilit‡ condizionata indica la probabilit‡ che si verifichi l'evento $\mathbb{E}_1$ 
+\subsection{Probabilit√† condizionata}
+La probabilit√† condizionata indica la probabilit√† che si verifichi l'evento $\mathbb{E}_1$ 
 verificatosi $\mathbb{E}_2$.
 \begin{equation*}
 p\left(\mathbb{E}_1\mid\mathbb{E}_2\right) = 
 \frac{p\left(\mathbb{E}_1\cap\mathbb{E}_2\right)}{p(\mathbb{E}_2)}
 \end{equation*}
 
-\subsection{Probabilit‡ composta}
-Indica la probabilit‡ che si verifichi un evento intersezione di altri due.
+\subsection{Probabilit√† composta}
+Indica la probabilit√† che si verifichi un evento intersezione di altri due.
 \begin{equation*}
 p\left(\mathbb{E}_1\cap\mathbb{E}_2\right) = p(\mathbb{E}_1)\cdot
 p\left(\mathbb{E}_1\mid\mathbb{E}_2\right)
 \end{equation*}
 
-PerÚ se sono eventi indipendenti si semplifica in
+Per√≤ se sono eventi indipendenti si semplifica in
 \begin{equation*}
 p\left(\mathbb{E}_1\cap\mathbb{E}_2\right) = p(\mathbb{E}_1)\cdot p(\mathbb{E}_2)
 \end{equation*}
@@ -89,7 +89,7 @@ Essendo $\mathbb{F}_1, \mathbb{F}_2,\dotsc,\mathbb{F}_n$ $n$ eventi incompatibil
 \begin{equation*}
 \mathbb{U} = \mathbb{F}_1\cup\mathbb{F}_2\cup\dotsb\cup\mathbb{F}_n
 \end{equation*}
-sia $\mathbb{E}$ un evento tale che $p(\mathbb{E})>0$, per calcolare le probabilit‡ condizionali si
+sia $\mathbb{E}$ un evento tale che $p(\mathbb{E})>0$, per calcolare le probabilit√† condizionali si
 usi
 \begin{equation*}
 p\left(\mathbb{F}_i\mid\mathbb{E}\right) =

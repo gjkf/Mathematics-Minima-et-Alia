@@ -1,7 +1,7 @@
 %!TEX ROOT=formularioMatematica.tex
 
 \section{Successioni}\label{sec:successioni}
-Una successione Ë una particolare funzione definita in modo
+Una successione √® una particolare funzione definita in modo
 \begin{equation*}
   f:\,\mathbb{N} \rightarrow \mathbb{R} 
 \end{equation*}
@@ -9,7 +9,7 @@ ovvero
 \begin{equation*}
   n \mapsto a_n=f(n)
 \end{equation*}
-Una successione quindi Ë una serie di numeri interi relazionati fra di loro. Ci sono generalmente 3
+Una successione quindi √® una serie di numeri interi relazionati fra di loro. Ci sono generalmente 3
 modi per definire una successione:
 \begin{enumerate}
   \item \textbf{Algebrica}
@@ -29,19 +29,19 @@ modi per definire una successione:
 \end{enumerate}
 Per andare a studiare una successione, calcoliamo il limite. Dato che per polimorfismo $\mathbb{N}$
 ha un solo punto di accumulazione che corrisponde a $+\infty$, il solo limite che possiamo calcolare
-Ë
+√®
 \begin{equation*}
   \lim\limits_{n \to \infty} a_n
 \end{equation*}
-che puÚ assumere 4 valori e a seconda del valore che ottiene, si definisce la successione in modo
+che pu√≤ assumere 4 valori e a seconda del valore che ottiene, si definisce la successione in modo
 diverso.
 \begin{equation*}
   \lim\limits_{n \to \infty} a_n=
   \begin{cases}
-    l, &\text{la successione $\{a_n\}$ Ë convergente}\\
-    +\infty, &\text{la succcessone $\{a_n\}$ Ë divergente positivamente}\\
-    -\infty, &\text{la successione $\{a_n\}$ Ë divergente negativamente}\\
-    \not\exists, &\text{la successione $\{a_n\}$ Ë indeterminata}
+    l, &\text{la successione $\{a_n\}$ √® convergente}\\
+    +\infty, &\text{la succcessone $\{a_n\}$ √® divergente positivamente}\\
+    -\infty, &\text{la successione $\{a_n\}$ √® divergente negativamente}\\
+    \not\exists, &\text{la successione $\{a_n\}$ √® indeterminata}
   \end{cases}
 \end{equation*}
 La definizione formale del limite quindi cambia leggermente definizione
@@ -52,16 +52,16 @@ La definizione formale del limite quindi cambia leggermente definizione
 
 \subsection{Teorema sulle successioni}
 \begin{successioniMonotone}
-  Se $a_n$ Ë crescente e limitata superiormente, allora ammette limite che coincide con l'estremo
+  Se $a_n$ √® crescente e limitata superiormente, allora ammette limite che coincide con l'estremo
   superiore.
 \end{successioniMonotone}
 
 \subsection{Serie numeriche}
-Una serie numerica Ë una somma di una successione. Una somma infinita perÚ. Quindi
+Una serie numerica √® una somma di una successione. Una somma infinita per√≤. Quindi
 \begin{equation*}
   \sum\limits^{\infty}_{i=1} a_i = a_1+a_2+a_3+\dotsb+a_n+\dotsb
 \end{equation*}
-Per studiare una serie, si studia il limite a ll'infinito ma facendolo cosÏ direttamente non Ë
+Per studiare una serie, si studia il limite a ll'infinito ma facendolo cos√¨ direttamente non √®
 possibile, quindi si devono creare delle somme parziali. Ad esempio
 \begin{align*}
   \text{Sia }a_1,a_2,\ldots,&a_n,\ldots\text{ una successione}\\
@@ -69,17 +69,17 @@ possibile, quindi si devono creare delle somme parziali. Ad esempio
   s_2 &= a_1+a_2\\
   s_n &= \sum\limits^{n}_{i=1} a_i
 \end{align*}
-Se quindi $\{s_n\}$ Ë una successione di somme parziali,
+Se quindi $\{s_n\}$ √® una successione di somme parziali,
 \begin{equation*}
   \lim\limits_{n \to \infty} s_n = S
 \end{equation*}
-dove $s_n$ deve essere convergente e $S$ Ë la somma della serie. Generalizzando quindi
+dove $s_n$ deve essere convergente e $S$ √® la somma della serie. Generalizzando quindi
 \begin{equation*}
   \sum\limits^{\infty}_{i=1} = \lim\limits_{n \to \infty} s_n = S
 \end{equation*}
 
 \subsubsection{Serie di Mengoli-Cauchy}
-Questa serie Ë forse la pi˘ celebre e puÚ far capire come approcciarsi alle serie
+Questa serie √® forse la pi√π celebre e pu√≤ far capire come approcciarsi alle serie
 \begin{equation*}
   \sum\limits^{\infty}_{i=1} \frac{1}{i(i+1)}
 \end{equation*}
@@ -89,7 +89,7 @@ possiamo scrivere
 \begin{equation*}
   \frac{1}{i(i+1)} = \frac{A(i+1)+Bi}{i(i+1)} = \frac{(A+B)i+A}{i(i+1)}
 \end{equation*}
-dove $A$ e $B$ rappresentano i coefficienti. Per la propriet‡ d'identit‡ dei polinomi scriviamo
+dove $A$ e $B$ rappresentano i coefficienti. Per la propriet√† d'identit√† dei polinomi scriviamo
 \begin{equation*}
   \begin{cases}
     A+B=0\\A=1
@@ -116,7 +116,7 @@ le somme parziali
   -\frac{1}{4}=\frac{3}{4}
 \end{align*}
 Notiamo che $1$ rimane sempre e che rimane anche il termine $-\frac{1}{i+1}$. Quindi la
-somma parziale generalizzata Ë
+somma parziale generalizzata √®
 \begin{equation*}
   s_i=1-\frac{1}{i+1}
 \end{equation*}
@@ -142,7 +142,7 @@ Dove le somme parziali sono uguali a
   s_n = a_1 \frac{1-q^n}{1-q}
 \end{equation*}
 stando alle formule trattate nelle sezioni precedenti. Quindi la serie di una progressione
-geometrica Ë
+geometrica √®
 \begin{equation*}
   \sum\limits^{\infty}_{i=1} x^{i-1}=\sum\limits^{\infty}_{i=0} x^i
 \end{equation*}
@@ -151,7 +151,7 @@ e il limite della somma parziale
   \lim\limits_{n \to \infty} a_1 \frac{1-q^n}{1-q}=
   \frac{a_1}{1-q}\lim\limits_{n \to \infty} \left( 1-q^n \right)
 \end{equation*}
-che puÚ assumere 3 valori a seconda della ragione ($q$) della progressione.
+che pu√≤ assumere 3 valori a seconda della ragione ($q$) della progressione.
 \begin{equation*}
   \frac{a_1}{1-q}\lim\limits_{n \to \infty} \left( 1-q^n \right) =
   \begin{cases}

@@ -1,7 +1,7 @@
 %!TEX ROOT=formularioMatematica.tex
 
 \section{Goniometria}\label{sec:goniometria}
-La gonioetria si incentra tutta sulla \emph{circonferenza goniometrica} che non è altro che una
+La gonioetria si incentra tutta sulla \emph{circonferenza goniometrica} che non Ã¨ altro che una
 circonferenza di centro $O(0;0)$ e di raggio $r=1$.\\
 Per convenzione, gli angoli vengono definiti a partire dall'asse $x$ e si definiscono positivi quando
 proseguono in senso antiorario. Si noti che $2\pi = \ang{360}$.
@@ -21,7 +21,7 @@ proseguono in senso antiorario. Si noti che $2\pi = \ang{360}$.
 		\draw (0,0) circle (1);
 	\end{tikzpicture}
 \end{center}
-Già nella figura identifichiamo le due funzioni fondamentali della goniometria: $\cos$ e $\sin$. Esse,
+GiÃ  nella figura identifichiamo le due funzioni fondamentali della goniometria: $\cos$ e $\sin$. Esse,
 numericamente, rappresentano rispettivamente l'ascissa e l'ordinata del punto $P$ al variare di 
 $\alpha$.\\
 Seno e coseno non sono le uniche funzioni goniometriche, esistono infatti anche
@@ -31,13 +31,13 @@ Seno e coseno non sono le uniche funzioni goniometriche, esistono infatti anche
 \sec\alpha &= \frac{1}{\cos\alpha}\\
 \csc\alpha &= \frac{1}{\sin\alpha}
 \end{align*}
-Da notare che spesso $\csc$ si trova anche scritto nella forma più estesa $\mathrm{cosec}$.\\
+Da notare che spesso $\csc$ si trova anche scritto nella forma piÃ¹ estesa $\mathrm{cosec}$.\\
 $\sin$ e $\cos$ rappresentano anche in un triangolo rettangolo
 \begin{gather*}
 	\cos\alpha = \frac{\text{Lunghezza cateto adiacente}}{\text{Lunghezza ipotenusa}}\\
 	\sin\alpha = \frac{\text{Lunghezza cateto opposto}}{\text{Lunghezza ipotenusa}}
 \end{gather*}
-Per gli esercizi si vada \hyperref[ex:goniometria]{qui}.
+Per gli esercizi si vada a pagina~\pageref{ex:goniometria}.
 
 \subsection{Angoli particolari}
 Seno e coseno sono funzioni periodiche, ovvero che il loro valore sta all'interno di un insieme e si
@@ -48,11 +48,11 @@ Gli angoli particolari principali sono
 \sin\frac{\pi}{4} &= \frac{\sqrt{2}}{2} & \cos\frac{\pi}{4} &= \frac{\sqrt{2}}{2}\\
 \sin\frac{\pi}{3} &= \frac{\sqrt{3}}{2} & \cos\frac{\pi}{3} &= \frac{1}{2}
 \end{alignat*}
-Come si può notare ricordarli è piuttosto semplice: $\dfrac{\pi}{3}$ e $\dfrac{\pi}{6}$ sono gli 
-angoli di un triangolo equilatero, $\dfrac{\pi}{4}$ è la diagonale di un quadrato.
+Come si puÃ² notare ricordarli Ã¨ piuttosto semplice: $\dfrac{\pi}{3}$ e $\dfrac{\pi}{6}$ sono gli 
+angoli di un triangolo equilatero, $\dfrac{\pi}{4}$ Ã¨ la diagonale di un quadrato.
 
 \subsection{Relazione fondamentale}
-La relazione fondamentale è quella che permetterà di trovare molte delle formule successive. Essa è
+La relazione fondamentale Ã¨ quella che permetterÃ  di trovare molte delle formule successive. Essa Ã¨
 \begin{equation*}
 \cos^2\alpha + \sin^2\alpha = 1
 \end{equation*}
@@ -88,22 +88,22 @@ La relazione fondamentale è quella che permetterà di trovare molte delle formule
 
 \subsection{Funzioni inverse}
 Ovviamente se da un angolo possiamo ottenere un numero, possiamo fare anche il contrario. Per indicare
-le funzioni inverse abbiamo due possibilità
+le funzioni inverse abbiamo due possibilitÃ 
 \begin{enumerate}
 	\item Scrivere $f^{-1}(x)$
 	\item Dare un nuovo nome alla funzione
 \end{enumerate}
 
-Nelle calcolatrici è molto più comune trovare $\sin^{-1}$ e gli altri però non sono precisi e quindi
-sarebbe da preferire $\arcsin$ o $\mathrm{asin}$ per brevità. Il motivo è che se
+Nelle calcolatrici Ã¨ molto piÃ¹ comune trovare $\sin^{-1}$ e gli altri perÃ² non sono precisi e quindi
+sarebbe da preferire $\arcsin$ o $\mathrm{asin}$ per brevitÃ . Il motivo Ã¨ che se
 \begin{equation*}
 f:\;A\mapsto B,\,f^{-1}:\;B\mapsto A
 \end{equation*}
-però per le funzioni goniometriche questo non accade infatti
+perÃ² per le funzioni goniometriche questo non accade infatti
 \begin{equation*}
 \sin x:\;\mathbb{R}\mapsto{[{-1},{+1}]} \qquad \cos x:\;\mathbb{R}\mapsto{[{-1},{1}]}
 \end{equation*}
-quando però
+quando perÃ²
 \begin{equation*}
 \arcsin x:\;{[{-1},{1}]}\mapsto{[{-\frac{\pi}{2}},{\frac{\pi}{2}}]} \quad 
 \arccos:\;{[{-1},{1}]}\mapsto{[0,{\pi}]}
@@ -130,14 +130,14 @@ I grafici sono i seguenti
 
 \subsection{Formule goniometriche}
 Le formule goniometriche permettono di pasare da una funzione ad un'altra. Una delle caratteristiche 
-più importanti è l'esistenza dei così denominati \textbf{angoli associati}. Essi sono angoli 
+piÃ¹ importanti Ã¨ l'esistenza dei cosÃ¬ denominati \textbf{angoli associati}. Essi sono angoli 
 particolari che assumono valori facili da scambiare e ricordare. Essi sono
 \begin{alignat*}{2}
 \cos(\pi\pm x) & = -\cos x &\qquad \cos(-x) &= \cos x\\
 \sin(\pi\pm x) &= \mp\sin x & \sin(-x) &= -\sin x\\
 \tan(\pi\pm x) &= \pm\tan x & \tan(-x) &= -\tan x
 \end{alignat*}
-In associazione a questi che sono i più comuni, sono anche presenti i seguenti
+In associazione a questi che sono i piÃ¹ comuni, sono anche presenti i seguenti
 \begin{alignat*}{2}
 \cos\left(\frac{\pi}{2}\pm x\right) &= \mp\sin x &\qquad \cos\left(\frac{3}{2}\pi\pm x\right) = 
 \pm\sin x\\
@@ -146,7 +146,7 @@ In associazione a questi che sono i più comuni, sono anche presenti i seguenti
 \tan\left(\frac{\pi}{2}\pm x\right) &= \mp\cot x &\qquad \tan\left(\frac{3}{2}\pi\pm x\right) = 
 \mp\cot x\\
 \end{alignat*}
-Si presti molta attenzione ai segni in quanto è molto facile confondersi.
+Si presti molta attenzione ai segni in quanto Ã¨ molto facile confondersi.
 
 \subsubsection{Addizione e sottrazione}
 \begin{align*}
@@ -176,7 +176,7 @@ Si presti molta attenzione ai segni in quanto è molto facile confondersi.
 \frac{\sin x}{1-\cos x}
 \end{dcases}
 \end{alignat*}
-Il segno nella prima riga è da scegliersi $+$ se 
+Il segno nella prima riga Ã¨ da scegliersi $+$ se 
 $\sin\frac{x}{2}\geq0\lor\cos\frac{x}{2}\geq0$, $-$ altrimenti.
 
 \subsubsection{Parametriche}
@@ -184,7 +184,7 @@ Per queste formule poniamo
 \begin{equation*}
 t = \tan\frac{x}{2}
 \end{equation*}
-per comodità.
+per comoditÃ .
 \begin{alignat*}{2}
 \sin x &= \frac{2t}{1+t^2} &\qquad \cos x &= \frac{1-t^2}{1+t^2}\\
 \tan x &= \frac{2t}{1-t^2} & \cot x &= \frac{1-t^2}{2t}
@@ -224,17 +224,17 @@ x = \arctan x + k\pi
 \end{equation*}
 
 \subsubsection{Equazioni lineari}
-Le equazioni lineari vengono così definite perché sono simili alla forma di una retta esplicita.
+Le equazioni lineari vengono cosÃ¬ definite perchÃ© sono simili alla forma di una retta implicita.
 \begin{equation*}
 a\sin x + b\cos x + c = 0
 \end{equation*}
-La risoluzione di questa può essere semplice per $b = 0 \lor a = 0$ in quanto si ritorna alle forme 
+La risoluzione di questa puÃ² essere semplice per $b = 0 \lor a = 0$ in quanto si ritorna alle forme 
 precedenti. Se invece $a\neq0 \land b\neq0$ si hanno due strade:
 \begin{enumerate}
 	\item metodo algebrico;
 	\item metodo grafico;
 \end{enumerate}
-Il metodo algebrico è molto lungo e generalmente sconsigliato. In generale si sfrutta la 
+Il metodo algebrico Ã¨ molto lungo e generalmente sconsigliato. In generale si sfrutta la 
 parametrizzazione di $\sin$ e $\cos$ in $\tan \frac{x}{2}$.\\
 Il metodo grafico consiste nel porre
 \begin{equation*}
@@ -252,11 +252,11 @@ X^2 + Y^2 = 1
 Si dicono omogenee se tutti i suoi elementi sono dello stesso grado. Per risolvere queste equazioni
 in questa forma, abbiamo varie strade
 \begin{itemize}
-	\item Se \textbf{è presente il termine di grado $n$ in $\sin x$}, si divide tutto per 
+	\item Se \textbf{Ã¨ presente il termine di grado $n$ in $\sin x$}, si divide tutto per 
 	$\cos^nx\neq0$ ottenendo un'equazione di grado $n$ in $\tan x$ equivalente alla data;
-	\item Se \textbf{è presente il termine di grado $n$ in $\cos x$}, si divide tutto per
+	\item Se \textbf{Ã¨ presente il termine di grado $n$ in $\cos x$}, si divide tutto per
 	$\sin^nx\neq0$ ottenendo un'equazione di grado $n$ in $\cot x$ equivalente alla data;
-	\item Se \textbf{nessuno dei precedenti è valido}, si raccolga a fattore comune;
+	\item Se \textbf{nessuno dei precedenti Ã¨ valido}, si raccolga a fattore comune;
 \end{itemize}
 
 \subsection{Teoremi sui triangoli}

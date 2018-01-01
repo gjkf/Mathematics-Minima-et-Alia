@@ -3,7 +3,7 @@
 Qui verranno inserite alcune dimostrazioni di teoremi o formule che vengono usate nel formulario.
 
 \begin{proof}[\protect\hyperlink{teor:tfa-ext}{Teorema fondamentale dell'Algebra esteso}]
-	Il polinomio $P(x)$ in virt˘ del teorema fondamentale dell'Algebra, ha in $\mathbb{C}$ almeno uno 
+	Il polinomio $P(x)$ in virt√π del teorema fondamentale dell'Algebra, ha in $\mathbb{C}$ almeno uno 
 	zero. Indicato con $\alpha_1$ tale zero, risulta:
 	\begin{equation*}
 	P(x) = (x-\alpha_1)P_1(x)
@@ -21,7 +21,7 @@ Qui verranno inserite alcune dimostrazioni di teoremi o formule che vengono usat
 	&(x-\alpha_1)(x-\alpha_2)\dotsm(x-\alpha_n)c
 	\end{align*}
 	essendo l'ultimo termine di grado zero pari ad una costante $c$.\\
-	PoichÈ la costante $c$ Ë il coefficiente del termine di grado massimo $x^n$, ne segue che $c=a_n$
+	Poich√© la costante $c$ √® il coefficiente del termine di grado massimo $x^n$, ne segue che $c=a_n$
 	da cui
 	\begin{equation*}
 	P(x) = a_n(x-\alpha_1)(x-\alpha_2)\dotsm(x-\alpha_n)
@@ -34,11 +34,11 @@ Qui verranno inserite alcune dimostrazioni di teoremi o formule che vengono usat
 	\begin{equation*}
 	P(x)=a_nx^n+a_{n-1}x^{n-1}+\dotsb+a_0
 	\end{equation*}
-	Ë un polinomio di grado $n>0$, si puÚ scrivere per $x\neq0$
+	√® un polinomio di grado $n>0$, si pu√≤ scrivere per $x\neq0$
 	\begin{equation*}
 	P(x) = x^n\left(a_n+\frac{a_{n-1}}{x}+\dotsb+\frac{a_0}{x^n}\right)
 	\end{equation*}
-	e quindi, poichÈ $\lim\limits_{x\to+\infty}\frac{1}{x^n}=0,\,\forall n\in\mathbb{N}_0$, risulta
+	e quindi, poich√© $\lim\limits_{x\to+\infty}\frac{1}{x^n}=0,\,\forall n\in\mathbb{N}_0$, risulta
 	\begin{equation*}
 	\lim\limits_{x\to\infty}x^n\left(a_n+\frac{a_{n-1}}{x}+\dotsb+\frac{a_0}{x^n}\right) = a_n
 	\end{equation*}
@@ -50,13 +50,13 @@ Qui verranno inserite alcune dimostrazioni di teoremi o formule che vengono usat
 	\end{align*}
 \end{proof}
 
-\begin{proof}[\protect\hyperlink{teor:uniLim}{Unicit‡ del limite}]
+\begin{proof}[\protect\hyperlink{teor:uniLim}{Unicit√† del limite}]
 	Supponiamo per assurdo che la funzione $f$ per $x\to x_0$ ammetta due limiti distinti $l_1$ e 
-	$l_2$, cioË che si abbia
+	$l_2$, cio√® che si abbia
 	\begin{equation*}
 	\lim\limits_{x\to x_0}f(x)=l_1\quad\lim\limits_{x\to x_0}f(x)=l_2
 	\end{equation*}
-	In base alla definizione di limite, preso comunque un numero $\varepsilon>0$, Ë possibile 
+	In base alla definizione di limite, preso comunque un numero $\varepsilon>0$, √® possibile 
 	determinare due numeri positivi $\delta_\varepsilon'$ e $\delta_\varepsilon''$ tali che, per ogni
 	$x\in\mathscr{D}_f$, verificante la condizione
 	\begin{align*}
@@ -73,12 +73,12 @@ Qui verranno inserite alcune dimostrazioni di teoremi o formule che vengono usat
 	\abs{l_1-l_2}=\abs{l_1-f(x)+f(x)-l_2}\leq\abs{f(x)-l_1}+\abs{f(x)-l_2}<\varepsilon+\varepsilon=
 	\varepsilon2
 	\end{equation*}
-	Data l'arbitrariet‡ di $\varepsilon$, la condizione $\abs{l_1-l_2}<2\varepsilon$ implica che sia
-	$\abs{l_1-l_2}=0$ cioË $l_1=l_2$.
+	Data l'arbitrariet√† di $\varepsilon$, la condizione $\abs{l_1-l_2}<2\varepsilon$ implica che sia
+	$\abs{l_1-l_2}=0$ cio√® $l_1=l_2$.
 \end{proof}
 
 \begin{proof}[\protect\hyperlink{teor:confLim}{Teorema del confronto}]
-	In base alla definizione di limite, preso comunque un numero $\varepsilon>0$, Ë possibile 
+	In base alla definizione di limite, preso comunque un numero $\varepsilon>0$, √® possibile 
 	determinare due numeri positivi $\delta_\varepsilon'$ e $\delta_\varepsilon''$ tali che, per ogni
 	$x\in\mathscr{D}_f$, verificante la condizione
 	\begin{alignat*}{2}
@@ -94,7 +94,7 @@ Qui verranno inserite alcune dimostrazioni di teoremi o formule che vengono usat
 	\begin{equation*}
 	l-\varepsilon<f(x)\leq g(x)\leq h(x)<l+\varepsilon
 	\end{equation*}
-	cioË
+	cio√®
 	\begin{equation*}
 	\abs{g(x)-l}<\varepsilon
 	\end{equation*}
@@ -102,7 +102,7 @@ Qui verranno inserite alcune dimostrazioni di teoremi o formule che vengono usat
 
 \begin{proof}[\protect\hyperlink{teor:segno}{Teorema della permanenza del segno}]
 	Dimostriamo innanzitutto la prima parte del teorema.\\
-	Sia $\varepsilon=\frac{\abs{l}}{2}$; per la definizione di limite Ë possibile determinare in 
+	Sia $\varepsilon=\frac{\abs{l}}{2}$; per la definizione di limite √® possibile determinare in 
 	corrispondenza di tale $\varepsilon$, un numero $\delta_\varepsilon>0$ tale che se 
 	$x\in\mathscr{D}_f$
 	\begin{equation*}
@@ -117,7 +117,7 @@ Qui verranno inserite alcune dimostrazioni di teoremi o formule che vengono usat
 	\text{se}\, l>0\quad l-\frac{\abs{l}}{2}>0\quad\text{quindi}\quad f(x)>0
 	\end{equation*}
 	Dimostriamo ora la seconda parte.\\
-	Sia per esempio $f(x)>0$. Dalla definizione di limite Ë possibile determinare in 
+	Sia per esempio $f(x)>0$. Dalla definizione di limite √® possibile determinare in 
 	corrispondenza di tale $\varepsilon$, un numero $\delta_\varepsilon>0$ tale che se 
 	$x\in\mathscr{D}_f$
 	\begin{equation*}
@@ -128,7 +128,7 @@ Qui verranno inserite alcune dimostrazioni di teoremi o formule che vengono usat
 	\begin{equation*}
 	f(x)<\frac{l}{2}<0
 	\end{equation*}
-	contro l'ipotesi che sia $f(x)>0$. Sar‡ dunque $l\geq0$
+	contro l'ipotesi che sia $f(x)>0$. Sar√† dunque $l\geq0$
 \end{proof}
 
 \begin{proof}[\protect\hyperlink{teor:sommaLimiti}{Limite di una somma}]
@@ -136,10 +136,10 @@ Qui verranno inserite alcune dimostrazioni di teoremi o formule che vengono usat
 	\begin{equation*}
 	\abs{[f(x)+g(x)]}-(l_1+l_2)\leq\abs{f(x)-l_1}+\abs{g(x)-l)2}
 	\end{equation*}
-	e quindi, preso $\varepsilon>0$, se si vuol provare che il primo membro Ë pi˘ piccolo di 
-	$\varepsilon$, basta verificare che ciascuno dei due addendi a secondo membro Ë pi˘ piccolo di
+	e quindi, preso $\varepsilon>0$, se si vuol provare che il primo membro √® pi√π piccolo di 
+	$\varepsilon$, basta verificare che ciascuno dei due addendi a secondo membro √® pi√π piccolo di
 	$\frac{\varepsilon}{2}$.\\
-	Ma questo Ë evidente per le definizioni stesse di limiti. Il primo addendo sar‡ minore di 
+	Ma questo √® evidente per le definizioni stesse di limiti. Il primo addendo sar√† minore di 
 	$\frac{\varepsilon}{2}$ se
 	\begin{equation*}
 	0<\abs{x-x_0}<\delta_\varepsilon'
@@ -154,7 +154,7 @@ Qui verranno inserite alcune dimostrazioni di teoremi o formule che vengono usat
 	\begin{equation*}
 	0<\abs{x-x_0}<\delta_\varepsilon
 	\end{equation*}
-	si soddisfano entrambe le condizioni; quindi per valori di $x$ cosÏ scelti si avr‡
+	si soddisfano entrambe le condizioni; quindi per valori di $x$ cos√¨ scelti si avr√†
 	\begin{equation*}
 	\abs{f(x)-l_1}<\frac{\varepsilon}{2}\quad\abs{g(x)-l_2}<\frac{\varepsilon}{2}
 	\end{equation*}
@@ -184,7 +184,7 @@ Qui verranno inserite alcune dimostrazioni di teoremi o formule che vengono usat
 	\abs{f(x)\cdot g(x)-l_1\cdot l_2}<(\abs{l_2}+\varepsilon')\varepsilon'+\abs{l_2}\varepsilon'<
 	(\abs{l_2}+\abs{l_1}+1)\varepsilon'
 	\end{equation*}
-	poichÈ $\varepsilon'^2<\varepsilon'$, essendo $0<\varepsilon'<1$, se scegliamo $\varepsilon'$ non
+	poich√© $\varepsilon'^2<\varepsilon'$, essendo $0<\varepsilon'<1$, se scegliamo $\varepsilon'$ non
 	solo positivo e minore di $1$ ma anche minore di
 	\begin{equation*}
 	\frac{\varepsilon}{\abs{l_1}+\abs{l_2}+1}

@@ -4,7 +4,7 @@
 \usepackage[italian]{babel} % Italian support
 \usepackage{amsmath,amsfonts,amssymb,mathtools,mathrsfs,amsthm}
 \usepackage{bm} % Bold math
-\usepackage[latin1]{inputenc} % Accented letters
+\usepackage[utf8]{inputenc} % Accented letters
 \usepackage{fullpage}
 \usepackage[medium]{titlesec} % Smaller section's font
 \usepackage[pdftex,dvipsnames]{xcolor} % Colors for text
@@ -33,7 +33,7 @@
 \usepackage[all]{hypcap} % To fix caption loading of hyperref
 
 \usepackage{tikz}
-\usetikzlibrary{arrows,decorations,calc,intersections,matrix,decorations.pathmorphing}
+\usetikzlibrary{arrows,decorations,calc,intersections,matrix,decorations.pathmorphing,spy}
 \usepackage{tkz-euclide}
 \usepackage{tikz-qtree}
 
@@ -72,6 +72,7 @@
 
 \newcommand*\dif{\mathop{}\!\mathrm{d}}
 \newcommand*\Dif{\mathop{}\!\mathrm{D}}
+\newcommand*{\der}[2]{\frac{\dif #1}{\dif #2}}
 
 \DeclareMathOperator{\arcsec}{arcsec}
 \DeclareMathOperator{\arccot}{arccot}
@@ -137,6 +138,7 @@
 \makeatother
 
 \everymath{\displaystyle}
+\newcommand\ddfrac[2]{\frac{\displaystyle #1}{\displaystyle #2}}
 
 % Proof changes
 \renewcommand\qedsymbol{QED}
@@ -175,19 +177,19 @@
                         \captionsetup{justification=centering}
 			\includegraphics[scale=1.7]{colophon/octopus}
 			\caption{
-                          \textit{`Mi piace ["..."] la libertà della matematica. Se studi fisica 
+                          \textit{`Mi piace ["..."] la libertÃ  della matematica. Se studi fisica 
                             o chimica devi descrivere il mondo reale. Ma in matematica puoi 
                             costruire le tue strutture. Puoi camminare in mondi creati 
                             dall'immaginazione delle persone. Non sei legato al 
-			    mondo reale. È come essere Dio in un certo senso. Puoi creare mondi, 
+			    mondo reale. Ãˆ come essere Dio in un certo senso. Puoi creare mondi, 
                             e studiarli. Credo sia per una combinazione della bellezza, 
-                            dell'immaginazione e della libertà. 
+                            dell'immaginazione e della libertÃ . 
 			'}\\- Aner Shalev\\ [\baselineskip]
-                          \textit{`La matematica, ahinoi, si presta ai colpi bassi. C'Ã¨ un 
-                           «terrorismo matematico», che consiste nello spaventare l'avversario 
+                          \textit{`La matematica, ahinoi, si presta ai colpi bassi. C'ÃƒÂ¨ un 
+                           Â«terrorismo matematicoÂ», che consiste nello spaventare l'avversario 
                           sparandogli contro raffiche di equazioni, derivate, integrali, logaritmi,
                           matrici, teoremi e corollari.'}\\- Sergio Ricossa\\ [\baselineskip]
-                          \textit{`Più scrivi, più sbagli.'}\\- Paolo Mainardis}
+                          \textit{`PiÃ¹ scrivi, piÃ¹ sbagli.'}\\- Paolo Mainardis}
 			\label{fig:octopus}
 		\end{figure*}
 		\vspace{1cm}
@@ -197,7 +199,7 @@
 				{\textbf{Davide Cossu}}
 			\end{center}
 			\vspace{0.5cm}
-			Questo è un formulario con le formule di matematica fatte durante tutti e cinque gli anni 
+			Questo Ã¨ un formulario con le formule di matematica fatte durante tutti e cinque gli anni 
 			di un liceo scientifico con alcune spiegazioni teoriche ed esercizi.
 		\end{minipage}
 	\end{center}
@@ -212,7 +214,7 @@
 }
 
 \newpage
-\textbf{Durante tutto il formulario, si userà il sistema internazionale di notazione, ovvero $.$ per 
+\textbf{Durante tutto il formulario, si userÃ  il sistema internazionale di notazione, ovvero $.$ per 
 separare interi da decimali e $,$ per separare le migliaia se necessario.}
 \section{Simboli}
 Qui verrano chiariti i simboli che verranno utilizzati nel formulario. Molti di essi si troveranno
