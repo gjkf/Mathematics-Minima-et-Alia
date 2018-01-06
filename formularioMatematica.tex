@@ -33,9 +33,27 @@
 \usepackage[all]{hypcap} % To fix caption loading of hyperref
 
 \usepackage{tikz}
+\usepackage{pgfplots}
 \usetikzlibrary{arrows,decorations,calc,intersections,matrix,decorations.pathmorphing,spy}
 \usepackage{tkz-euclide}
 \usepackage{tikz-qtree}
+
+% axis style, ticks, etc
+\pgfplotsset{every axis/.append style={
+              axis x line=middle,    % put the x axis in the middle
+              axis y line=middle,    % put the y axis in the middle
+              axis line style={<->}, % arrows on the axis
+              xlabel={$x$},          % default put x on x-axis
+              ylabel={$y$},          % default put y on y-axis
+              axis equal,            % 1:1 ratio
+              grid=both,             % coordinate grid
+              grid style={line width=.1pt, draw=gray!10},
+              major grid style={line width=.2pt,draw=gray!50},
+              ticks=both,            % ticks for integers
+              minor tick num=5,      % number of subticks
+            }
+}
+\tikzset{>=stealth}
 
 \setcounter{secnumdepth}{0} % sections are level 1
 \setcounter{tocdepth}{3}
