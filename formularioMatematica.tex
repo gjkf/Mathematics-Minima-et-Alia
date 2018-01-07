@@ -34,6 +34,7 @@
 
 \usepackage{tikz}
 \usepackage{pgfplots}
+\pgfplotsset{compat=1.11}
 \usetikzlibrary{arrows,decorations,calc,intersections,matrix,decorations.pathmorphing,spy}
 \usepackage{tkz-euclide}
 \usepackage{tikz-qtree}
@@ -51,6 +52,9 @@
               major grid style={line width=.2pt,draw=gray!50},
               ticks=both,            % ticks for integers
               minor tick num=5,      % number of subticks
+              ticklabel style={font=\small,fill=white},
+              xlabel style={at={(ticklabel* cs:1)},anchor=north west},
+              ylabel style={at={(ticklabel* cs:1)},anchor=south west},
             }
 }
 \tikzset{>=stealth}
@@ -108,6 +112,7 @@
 \LetLtxMacro{\oldsqrt}{\sqrt}
 \renewcommand*{\sqrt}[2][\ ]{\oldsqrt[#1]{#2} }
 \makeatother
+
 
 \newcommand\markangle[7][red]{% [color] origin A B radius radiusmark mark
 	% fill red circle
@@ -185,6 +190,28 @@
 
 \begin{document}
 	
+\newcommand{\LabelText}{}
+\NewDocumentCommand{\LabelPoint}{o o m m g}{
+  \def\plotcmd{\addplot [#1] coordinates{(#3,#4)} node [#2]}
+    \IfNoValueTF{#5}{
+        \renewcommand{\LabelText}{ {$(#3,#4)$}} % Label with given coordinates
+    }{
+        \renewcommand{\LabelText}{ {#5}} % Use given label
+    }
+
+  \expandafter\plotcmd\LabelText;
+
+    %\pgfsyssoftpath@flushcurrentpath % -- Syntax error
+    %\pgfusepath{fill}                % -- no effect
+}
+
+\NewDocumentCommand{\LabelPointX}{o o m m g}{
+  \IfNoValueTF{#5}{
+    \addplot [#1] coordinates{(#3,#4)} node [#2] {$(#3,#4)$};
+  }{
+    \addplot [#1] coordinates{(#3,#4)} node [#2] {#5};
+  }
+}
 \onecolumn
 \begin{@twocolumnfalse}
 	\clearpage
