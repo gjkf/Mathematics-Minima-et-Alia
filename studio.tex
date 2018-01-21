@@ -1,0 +1,105 @@
+%!TEX ROOT=formularioMatematica.tex
+
+\section{Studio di funzione}
+Lo studio di funzione è una tecnica per ricavare il grafico di una funzione che viene fornita. Questo
+si basa su edi teoremi fondamentali e su tutte le conoscenze pregresse.
+
+\subsection{Teoremi fondamentali del calcolo differenziale}
+I teoremi fondamentali sono 3. Ciascuno di essi prende una parte più generale del precedente.
+\subsubsection{Teorema di Rolle}
+\begin{rolle}\hypertarget{teor:rolle}{}
+  Sia $f$ una funzione definita e continua in $[a,b]$ e derivabile in $]a,b[$ e inoltre si abbia
+  $f(a) = f(b)$. Allora
+  \begin{equation*}
+    \exists\,x_0\in{]a,b[}\suchthat f'(x_0)=0
+  \end{equation*}
+\end{rolle}
+
+\subsubsection{Teorema di Lagrange}
+\begin{lagrangeDef}\hypertarget{teor:lagrange}{}
+  Sia $f$ una funzione definita e continua in $[a,b]$ e derivabile in $]a,b[$. Allora
+  \begin{equation*}
+    \exists\,x_0\in]a,b[\suchthat f'(x_0) = \frac{f(b)-f(a)}{b-a}
+  \end{equation*}
+\end{lagrangeDef}
+Il teorema di Lagrange contiene al suo interno anche due lemmi (o corollari)
+
+\begin{lagrangeLemma1}\hypertarget{teor:lagrange:1}{}
+  Sia $f$ una funzione definita e continua in $I=[a,b]$ e derivabile in $\dot{I}=]a,b[$ e tale che
+  \begin{equation*}
+    \forall x\in\dot{I} \Rightarrow f'(x)>0
+  \end{equation*}
+  allora $f$ è \textbf{crescente} in $I$ e tale che
+  \begin{equation*}
+    \forall x\in\dot{I} \Rightarrow f'(x)<0
+  \end{equation*}
+  allora $f$ è \textbf{decrescente} in $I$.
+\end{lagrangeLemma1}
+
+\begin{lagrangeLemma2}\hypertarget{teor:lagrange:2}{}
+  Sia $f$ una funzione definita e continua in $I=[a,b]$ con derivata nulla in $\dot{I}=]a,b[$, 
+  allora
+  \begin{equation*}
+    f(x) = k
+  \end{equation*}
+\end{lagrangeLemma2}
+
+\subsection{Teoremi sulle derivate seconde}
+Il teorema di Lagrange e il suo primo lemma associa la monotonia al segno della derivata prima.
+Ci sono però dei teoremi che associano la derivata seconda alla concavità.
+\begin{derivataSeconda1}\hypertarget{teor:derSec:1}
+  Sia $x_0\in]a,b[$ e $f$ derivabile nello stesso intorno $n$-volte. Se in $x_0$ si ha
+  \begin{equation*}
+    f'(x_0)=f''(x_0)=\dotsb=f^{(n-1)}(x_0)=0\land f^{(n)}(x_0)\neq0
+  \end{equation*}
+  si hanno i seguenti casi
+  \begin{description}
+    \item[$n$ pari] se
+      \begin{description}
+        \item[$f^{(n)}(x_0)>0$] $x_0$ è un minimo relativo
+        \item[$f^{(n)}(x_0)<0$] $x_0$ è un massimo relativo
+      \end{description}
+    \item[$n$ dispari] in $x_0$ è presente un flesso a tangente orizzontale
+  \end{description}
+\end{derivataSeconda1}
+\begin{derivataSeconda2}\hypertarget{teor:derSec:2}
+  Sia $f$ una funzione tale che $\exists\,f''(x)$
+  \begin{description}
+    \item[Se $f''(x_0)>0$] ha concavità verso l'alto
+    \item[Se $f''(x_0)<0$] ha concavità verso il basso
+    \item[Se $f''(x_0)=0$ e $f'''(x_0)\neq0$] in $x_0$ ha un flesso
+  \end{description}
+\end{derivataSeconda2}
+
+\subsection{Esempio}
+Avendo ora tutte le cose necessarie per farlo, definiamo i passaggi per studiare una funzione
+\begin{enumerate}
+  \item Dominio
+  \item Intersezione con gli assi
+  \item Simmetria
+  \item Periodicità
+  \item Segno
+  \item Asintoti
+  \item Continuità e derivabilità
+  \item Massimi e minimi
+  \item Concavità e flessi
+\end{enumerate}
+Per chiarire il tutto, prendiamo ad esempio la seguente funzione
+\begin{equation*}
+  f(x) = \frac{x+2}{x^2-x}
+\end{equation*}
+Per prima cosa quindi troviamo il dominio
+\begin{equation*}
+  x^2-x\neq0 \rightarrow x(x-1)\neq 0
+\end{equation*}
+quindi
+\begin{equation*}
+  \mathcal{D} = \mathbb{R} \setminus \{0,1\}
+\end{equation*}
+\begin{center}
+  \begin{tikzpicture}
+    \coordinate (O) at (0,0);
+    \coordinate (A) at (1,0);
+    \domainplot{O}{A}{{0,1}}
+  \end{tikzpicture}
+\end{center}

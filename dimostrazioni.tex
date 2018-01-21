@@ -3,29 +3,29 @@
 Qui verranno inserite alcune dimostrazioni di teoremi o formule che vengono usate nel formulario.
 
 \begin{proof}[\protect\hyperlink{teor:tfa-ext}{Teorema fondamentale dell'Algebra esteso}]
-	Il polinomio $P(x)$ in virtù del teorema fondamentale dell'Algebra, ha in $\mathbb{C}$ almeno uno 
-	zero. Indicato con $\alpha_1$ tale zero, risulta:
-	\begin{equation*}
-	P(x) = (x-\alpha_1)P_1(x)
-	\end{equation*}
-	essendo il quoziente $P_1(x)$ un polinomio, a coefficienti in $\mathbb{C}$, di grado $(n-1)$.\\
-	Se $n-1>0$, allora, per il teorema fondamentale dell'Algebra, anche il polinomio $P_1(x)$ ha in
-	$\mathbb{C}$ almeno uno zero. Indicando tale zero con $\alpha_2$ avremo:
-	\begin{equation*}
-	P_1(x)=(x-\alpha_2)P_2(x)
-	\end{equation*}
-	essendo il quoziente $P_2(x)$ un polinomio, a coefficienti in $\mathbb{C}$, di grado $(n-2)$.\\
-	Risulta quindi:
-	\begin{align*}
-	P(x)&=\underbrace{(x-\alpha_1)(x-\alpha_2)\dotsm(x-\alpha_n)P_n(x)}_{n\text{ fattori}} = \\
-	&(x-\alpha_1)(x-\alpha_2)\dotsm(x-\alpha_n)c
-	\end{align*}
-	essendo l'ultimo termine di grado zero pari ad una costante $c$.\\
-	Poiché la costante $c$ è il coefficiente del termine di grado massimo $x^n$, ne segue che $c=a_n$
-	da cui
-	\begin{equation*}
-	P(x) = a_n(x-\alpha_1)(x-\alpha_2)\dotsm(x-\alpha_n)
-	\end{equation*}
+      Il polinomio $P(x)$ in virtù del teorema fondamentale dell'Algebra, ha in $\mathbb{C}$ almeno uno 
+      zero. Indicato con $\alpha_1$ tale zero, risulta:
+      \begin{equation*}
+      P(x) = (x-\alpha_1)P_1(x)
+      \end{equation*}
+      essendo il quoziente $P_1(x)$ un polinomio, a coefficienti in $\mathbb{C}$, di grado $(n-1)$.\\
+      Se $n-1>0$, allora, per il teorema fondamentale dell'Algebra, anche il polinomio $P_1(x)$ ha in
+      $\mathbb{C}$ almeno uno zero. Indicando tale zero con $\alpha_2$ avremo:
+      \begin{equation*}
+      P_1(x)=(x-\alpha_2)P_2(x)
+      \end{equation*}
+      essendo il quoziente $P_2(x)$ un polinomio, a coefficienti in $\mathbb{C}$, di grado $(n-2)$.\\
+      Risulta quindi:
+      \begin{align*}
+      P(x)&=\underbrace{(x-\alpha_1)(x-\alpha_2)\dotsm(x-\alpha_n)P_n(x)}_{n\text{ fattori}} = \\
+      &(x-\alpha_1)(x-\alpha_2)\dotsm(x-\alpha_n)c
+      \end{align*}
+      essendo l'ultimo termine di grado zero pari ad una costante $c$.\\
+      Poiché la costante $c$ è il coefficiente del termine di grado massimo $x^n$, ne segue che $c=a_n$
+      da cui
+      \begin{equation*}
+      P(x) = a_n(x-\alpha_1)(x-\alpha_2)\dotsm(x-\alpha_n)
+      \end{equation*}
 \end{proof}
 
 \begin{proof}
@@ -193,4 +193,179 @@ Qui verranno inserite alcune dimostrazioni di teoremi o formule che vengono usat
 	\begin{equation*}
 	\abs{f(x)\cdot g(x)-l_1\cdot l_2}<\varepsilon
 	\end{equation*}
+\end{proof}
+
+\begin{proof}[\protect\hyperlink{teor:rolle}{Teorema di Rolle}]
+  \textbf{Ipotesi}:
+  \begin{itemize}
+    \item $f$ definita e continua in $[a,b]$
+    \item $f$ derivabile in $]a,b[$
+    \item $f(a)=f(b)$
+  \end{itemize}
+  \textbf{Tesi}:
+  \begin{equation*}
+    \exists\,c\in{]a,b[}\suchthat f'(c)=0
+  \end{equation*}
+  \divisor
+
+  Per il teorema di Weistrass la $f$ ammette $\max$ e $\min$ assoluti.
+  \begin{equation*}
+    m = \min_{x\in{[a,b]}} f \quad M = \max_{x\in{[a,b]}}f
+  \end{equation*}
+  Si distinguono due casi
+   \begin{enumerate}
+     \item I punti di $\max$ e/o $\min$ coincidono con gli estremi
+       \begin{equation*}
+         m\leq f(x)\leq M
+       \end{equation*}
+       Visto che
+       \begin{equation*}
+         f(a) = f(b)
+       \end{equation*}
+       si ha che
+       \begin{equation*}
+         m = f(x)
+       \end{equation*}
+       Quindi
+       \begin{equation*}
+         f'(x) = 0\quad\forall x \in{[a,b]}
+       \end{equation*}
+     \item Almeno uno fra $\max$ e $\min$ sono interni all'intervallo ${[a,b]}$
+       \begin{equation*}
+         f(c) = M
+       \end{equation*}
+       Visto che in $c$, $\exists\,\max f$ e $f$ è derivabile,
+       \begin{equation*}
+         f'(c) = 0
+       \end{equation*}
+   \end{enumerate}
+\end{proof}
+
+\begin{proof}[\protect\hyperlink{teor:lagrange}{Teorema di Lagrange}]
+  \textbf{Ipotesi}:
+  \begin{itemize}
+    \item $f$ definita e continua in $[a,b]$
+    \item $f$ derivabile in $]a,b[$
+  \end{itemize}
+  \textbf{Tesi}:
+  \begin{equation*}
+    \exists\,x\in[a,b]\suchthat f'(x) = \frac{f(b)-f(a)}{b-a}
+  \end{equation*}
+  \divisor
+
+  Sia $\phi(x) = f(x)-kx$ per una costante $k$ in modo che abbia le stesse caratteristiche di $f$,
+  ovvero è continua ($f(x)$ è continua per ipotesi, $kx$ è continua perché polinomiale) e 
+  derivablie ($\phi'(x) = f'(x)-k$).\\
+  Per ricondursi a Rolle
+  \begin{equation*}
+    \phi(a) = \phi(b)
+  \end{equation*}
+  quindi
+  \begin{align*}
+    f(a)-ak &= f(b)-kb\\
+    kb-ka &= f(b)-f(a)\\
+    k(b-a) &= f(b)-f(a)\\
+    k &= \frac{f(b)-f(a)}{b-a}
+  \end{align*}
+  Dato che il Teorema di Rolle ci dice
+  \begin{equation*}
+    \exists\,x_0\in[a,b]\suchthat f'(x)=0
+  \end{equation*}
+  si ha che
+  \begin{equation*}
+    \phi'(x) = f'(x)-\frac{f(b)-f(a)}{b-a} = 0
+  \end{equation*}
+  da cui si deriva che
+  \begin{equation*}
+    f'(x) = \frac{f(b)-f(a)}{b-a}
+  \end{equation*}
+\end{proof}
+
+\begin{proof}
+  [\protect\hyperlink{teor:lagrange:1}{Monotonia $\leftrightarrow$ Crescenza/Decrescenza}]
+  \textbf{Ipotesi}:
+  \begin{itemize}
+    \item $f$ definita e continua in $[a,b]$
+    \item $f$ derivabile in $]a,b[$
+  \end{itemize}
+  \textbf{Tesi}:
+  \begin{itemize}
+    \item Se $f'(x) > 0$, allora la funzione è crescente
+    \item Se $f'(x) < 0$, allora la funzione è decrescente
+  \end{itemize}
+  \divisor
+
+  Preso un intorno $I=[a,b]$ possiamo prendere un altro intorno $[x_1,x_2]\in I$. Per il teorema
+  di Lagrange,
+  \begin{equation*}
+    \exists\,c\in]x_1,x_2[\suchthat \frac{f(x_2)-f(x_1)}{x_2-x_1}=f'(c)
+  \end{equation*}
+  Si distinguono i due casi
+  \begin{description}
+    \item[$f'(c)>0$] allora $x_2-x_1>0 \implies f(x_2)-f(x_1)>0 \implies\,\text{crescente}$ 
+    \item[$f'(c)<0$] allora $x_2-x_1<0 \implies f(x_2)-f(x_1)<0\implies\,\text{decrescente}$
+  \end{description}
+\end{proof}
+
+\begin{proof}
+  [\protect\hyperlink{teor:lagrange:2}{Costanza}]
+  \textbf{Ipotesi}: 
+  \begin{itemize}
+    \item $f$ definita e continua in $[a,b]$
+    \item $f$ con derivata nulla in $]a,b[$
+  \end{itemize}
+  \textbf{Tesi}:
+  \begin{equation*}
+    f(x) = k
+  \end{equation*}
+  \divisor
+
+  Si prenda un intorno $]x_1,x_2[\in I$, allora per il teorema di Lagrange
+  \begin{equation*}
+    \exists\,c\in]x_1,x_2[\suchthat \frac{f(x_2)-f(x_1)}{x_2-x_1}=f'(c)=0
+  \end{equation*}
+  per ipotesi. Quindi si ha che
+  \begin{equation*}
+    f(x_2) - f(x_1) = 0 \implies f(x_2) = f(x_1)
+  \end{equation*}
+\end{proof}
+
+\begin{proof}
+  [\protect\hyperlink{teor:derSec:2}{Concavità con derivata seconda}]
+  \textbf{Ipotesi}:
+  \begin{itemize}
+    \item $f$ sia continua e derivabile in $]a,b[$
+    \item Esiste $f''(x)$
+  \end{itemize}
+  \textbf{Tesi}:
+  \begin{description}
+    \item[Se $f''(x_0)>0$] ha concavità verso l'alto
+    \item[Se $f''(x_0)<0$] ha concavità verso il basso
+    \item[Se $f''(x_0)=0$ e $f'''(x_0)\neq0$] in $x_0$ ha un flesso
+  \end{description}
+  \divisor
+
+  Dimostriamo il primo punto, gli altri due si fanno in modo analogo. Avendo concavità verso l'alto
+  significa che
+  \begin{equation*}
+    \exists\,I(x_0)\suchthat\,\forall x\in I(x_0) \Rightarrow f(x)-t(x)\geq0
+  \end{equation*}
+  Definiamo ora $\varphi(x) = f(x)-t(x)$, ovvero
+  \begin{equation*}
+    \varphi(x) = f(x)-t(x) = f(x)-f(x_0)-f'(x_0)(x-x_0)
+  \end{equation*} 
+  Andando a calcolare le prime derivate vediamo che
+  \begin{equation*}
+    \varphi'(x) = f'(x)-f'(x_0)\quad\varphi''(x)=f''(x)
+  \end{equation*}
+  Ponendo ora $\varphi(x_0) = 0$, vediamo che
+  \begin{equation*}
+    \varphi'(x_0)=0\quad\varphi''(x_0)=f''(x_0)>0
+  \end{equation*}
+  Dato che $\varphi'(x_0)=0$, significa che $x_0$ è un punto di minimo, di massimo o di flesso a
+  tangente orizzontale per $\varphi$. Dato che la derivata seconda è positiva, significa che è
+  un punto di minimo, perciò
+  \begin{equation*}
+    \exists\,I(x_0)\suchthat\varphi(x)\geq\varphi(x_0)\geq0 \Rightarrow f(x)-t(x)\geq 0
+  \end{equation*}
 \end{proof}

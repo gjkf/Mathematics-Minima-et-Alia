@@ -303,14 +303,14 @@ Si noti che $k=\frac{\alpha}{\beta}$
 
 \subsection{Parabola}\label{subsec:geomanal:parabola}
 \begin{center}
-	\begin{tikzpicture}
-		\tkzInit[xmin=-2,ymin=-2,xmax=4,ymax=4]
-		\tkzGrid
-		\tkzAxeXY
-
-		\draw[thick, red,domain=-2:2] plot(\x, \x*\x);
-		\draw[thick, blue,domain=-2:2] plot(\x*\x,\x);
-	\end{tikzpicture}
+  \begin{tikzpicture}
+    \begin{axis}[xmin=-2,ymin=-2,xmax=4,ymax=4]
+      \coordinate (O) at (0,0);
+      \node[fill=white,circle,inner sep=0pt] (O-label) at ($(O)+(-135:10pt)$) {$O$};
+      \addplot[red,thick,samples=1000] {x^2};
+      \addplot[blue,thick,samples=1000] (x*x,x);
+    \end{axis}
+  \end{tikzpicture}
 \end{center}
 Una parabola può essere descritta con l'asse focale parallelo all'asse $x$ o all'asse $y$.
 \begin{equation*}
@@ -349,28 +349,177 @@ sulla direttrice del punto stesso.
 
 \subsubsection{Parabole di vertice $V(x_V,y_V)$}
 \begin{equation*}
-y-y_V=a(x-x_V)^2
+  y-y_V=a(x-x_V)^2
 \end{equation*}
 
 \subsubsection{Area di un segmento parabolico}
 \begin{center}
-	\begin{tikzpicture}
-		\tkzInit[xmin=-1.5,ymin=-1,xmax=2.5,ymax=6]
-		\tkzGrid
-		\tkzAxeXY
-		
-		\filldraw[red, domain=-1.5:2.5, fill opacity=0.3](-0.9,0.75)--plot(\x, \x*\x)--(1.6,2.65)--
-		cycle;
-		\draw[thick, domain=-2:2.5] plot(\x, {\x/1.3+3.3/2.3});
-		\draw[thick, domain=-1.1:2.5] plot(\x, {\x/1.3-0.15});
-		\draw[dashed] (-0.9,0.75) -- (-0.25,-0.35);
-		\filldraw (-0.9,0.75) circle (0.05)
-			node[above]{$A$};
-		\filldraw (1.6,2.65) circle (0.05)
-			node[above]{$B$};
-		\filldraw (-0.25,-0.35) circle (0.05)
-			node[below]{$H$};
-	\end{tikzpicture}
+  \begin{tikzpicture}
+    \begin{axis}[
+        xmin=-1.5,
+        ymin=-1,
+        xmax=2.5,
+        ymax=6,
+        % to be able to draw the orange filling on another layer
+        set layers,
+    ]
+
+        % draw the function and the "intersection lines"
+        % (please note that I have changed the number of samples and added
+        %  the option `smooth' to avoid some numerical instabilities for `f')
+        \addplot [name path=f,red,thick,samples=49,smooth] {x^2};
+        \addplot [name path=l1,thick] {1/3*x+1.5};
+        \addplot [name path=l2,thick] {1/3*x};
+        \addplot [name path=p1,thick,green] {-3*x-2.1};
+        \addplot [name path=p2,thick,green] {-3*x+6.2};
+
+        % find the intersection points of the black and green lines
+        \path [
+            name intersections={
+                of=l1 and p1,
+                by={A},
+            },
+        ];
+        \path [
+            name intersections={
+                of=l1 and p2,
+                by={B},
+            },
+        ];
+        \path [
+            name intersections={
+                of=l2 and p2,
+                by={C},
+            },
+        ];
+        \path [
+            name intersections={
+                of=l2 and p1,
+                by={H},
+            },
+        ];
+
+        % create coordinate at origin
+        \coordinate (O) at (0,0);
+
+        % create invisible clip paths which are needed for the orange filling
+        \path [name path=clippath1] (A) -- (H) -- (C) -- cycle;
+        \path [name path=clippath2] (O) -- (C) -- (B) -- cycle;
+
+        % draw the intersection points
+        \pgfmathsetlengthmacro{\Radius}{2pt}
+        \fill
+            (A) circle (\Radius)
+            (B) circle (\Radius)
+            (C) circle (\Radius)
+            (H) circle (\Radius)
+        ;
+
+        % label the intersection points
+        \node [coordinate,label=below right:$O$] at (O) {};
+        \node [coordinate,label=above right:$A$] at (A) {};
+        \node [coordinate,label=above right:$B$] at (B) {};
+        \node [coordinate,label=below right:$C$] at (C) {};
+        \node [coordinate,label=below left:$H$] at (H) {};
+
+        % fill the area between the intersection points on a lower layer
+        % so the red function line doesn't have to be plotted twice
+        \begin{pgfonlayer}{axis ticks}
+            % left half
+            \fill [
+                orange,
+                fill opacity=0.5,
+                % (this is the TikZ equivalent to PGFPlots `fill between')
+                intersection segments={
+                    of=f and clippath1,
+                    % (here we can draw -- in general -- an arbitrary path
+                    %  between the path elements of intersection points.
+                    %  Of course here we want to find the path that surrounds
+                    %  the area that we want to fill.)
+                    sequence={R1[reverse] -- L2},
+                },
+            ];
+            % right half
+            \fill [
+                orange,
+                fill opacity=0.5,
+                intersection segments={
+                    of=f and clippath2,
+                    sequence={R{-2} -- L{-2}[reverse]},
+                },
+            ];
+        \end{pgfonlayer}
+
+        % draw the blue filling
+        \addplot [
+            fill=none,
+        ] fill between [
+            of=f and l1,
+            split,
+            every segment no 1/.style={
+                fill=blue,
+                fill opacity=0.5,
+            },
+        ];
+
+%        % ---------------------------------------------------------------------
+%        % for debugging purpose only
+%        % ---------------------------------------------------------------------
+%        % To find the right `sequence' you can play with the elements.
+%        % Just start with one single element like `R1' to see what happens and
+%        % then replace them until you found the right ones and connect them in
+%        % the right order.
+%        \draw [
+%            blue,
+%            very thin,
+%            |->,
+%            intersection segments={
+%                of=f and clippath1,
+%                sequence={
+%                    % Because we know that the "green/black" line is needed
+%                    % from the start to the first intersection point, for sure
+%                    % we need `R1'.
+%                    % And we also know that we need for the "red" line the part
+%                    % from the first (not real) intersection point above (left)
+%                    % of point A (crossing of the green and red line) to the
+%                    % second intersection point (at point O)
+%                    % (There is still some magic left why there is this "not
+%                    %  real" intersection point ...)
+%                    R1[reverse] -- L2
+%%                    % so the reverse path is also fine, which can be done by
+%%                    % reversing the "pathes" ...
+%%                    R1 -- L2[reverse]
+%%                    % ... or the elements of the pathes which offers another
+%%                    % two possibilities to do this
+%%                    L2 -- R1[reverse]
+%%                    L2[reverse] -- R1
+%%                    % Another possibility to avoid the `[reverse] you could
+%%                    % simply reverse the path directly `clippath1' from
+%%                    %     (A) -- (H) -- (C) -- cycle
+%%                    % to
+%%                    %     (C) -- (H) -- (A) -- cycle
+%%                    % in the (above) definition of that path.
+%%                    % Can you imagine how the right elements and sequence is then?
+%%                    % (One tip: It is not as simple as `L2 -- R1')
+%                },
+%            },
+%        ];
+%        \draw [
+%            blue,
+%            very thin,
+%            |->,
+%            intersection segments={
+%                of=f and clippath2,
+%                sequence={
+%%                    % try to find the right elements and orders here yourself
+%                    R{-1}
+%                },
+%            },
+%        ];
+%        % ---------------------------------------------------------------------
+
+    \end{axis}
+  \end{tikzpicture}
 \end{center}
 \begin{equation*}
 \mathscr{A}(\mathscr{F}) = \frac{2}{3}\overline{AB}\cdot\overline{AH}
