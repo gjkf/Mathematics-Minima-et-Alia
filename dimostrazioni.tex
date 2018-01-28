@@ -331,6 +331,51 @@ Qui verranno inserite alcune dimostrazioni di teoremi o formule che vengono usat
 \end{proof}
 
 \begin{proof}
+  [\protect\hyperlink{teor:der:Sec:1}{Massimi e minimi e flessi con derivata seconda}]
+  \textbf{Ipotesi}:
+  \begin{itemize}
+    \item $f$ sia continua e derivabile almeno 3 volte
+  \end{itemize}
+  \textbf{Tesi}:
+  \begin{equation*}
+    f'(x_0)=f''(x_0)=\dotsb=f^{(n-1)}(x_0)=0\land f^{(n)}(x_0)\neq0
+  \end{equation*}
+  \begin{enumerate}
+    \item Se $n$ pari è un massimo o un minimo a seconda del segno
+    \item Se $n$ dispari è un flesso a tangente orizzontale
+  \end{enumerate}
+  \divisor
+
+  Dimostriamo il punto 1). Se $f''(x)$ è continua in $x_0$ allora
+  \begin{equation*}
+    \lim\limits_{x\to x_0} f''(x) = f''(x_0)[>0]
+  \end{equation*}
+  Per il teorema della permanenza del segno
+  \begin{equation*}
+    \exists\,I(x_0)\suchthat f''(x)>0
+  \end{equation*}
+  Possiamo riscrivere
+  \begin{equation*}
+    f''(x) = \Dif[f'(x)]
+  \end{equation*}
+  Dato che sappiamo che $f''(x)$ è maggiore di zero, significa che $f'(x)$ è crescente nell'intorno
+  per il primo Lemma del teorema di Lagrange. Se $f'(x_0) = 0$ come da ipotesi significa che questa
+  funzione interseca l'asse delle $x$. Essendo crescente significa che il segno è
+  \begin{center}
+    \begin{tikzpicture}
+      \drawSign{\x}{-1}{1}{0.25}{}
+    \end{tikzpicture}
+  \end{center}
+  e che quindi la funzione $f(x)$ di cui è derivata è prima decrescente e poi crescente in modo
+  da avere una tangente orizzontale a $x_0$. Ciò significa che in $x_0$ c'è un minimo relativo. Per
+  il massimo, si dimostra in modo analogo.\\ [\baselineskip]
+  Dimostriamo il punto 2). Se $f''(x_0)=0\land f'''(x_0)>0$ si ha che 
+  $\Dif[f'(x_0)]=0\land\Dif[f''(x_0)]>0$. Da ciò si deduce che in $x_0$, $f'(x)$ ha un punto di
+  minimo relativo. Dato che $f'$ è sempre positivo, significa che $f$ è crescente e in $x_0$ ha
+  una tangente orizzontale. Quindi il punto $x_0$ è un punto di flesso per $f$.
+\end{proof}
+
+\begin{proof}
   [\protect\hyperlink{teor:derSec:2}{Concavità con derivata seconda}]
   \textbf{Ipotesi}:
   \begin{itemize}

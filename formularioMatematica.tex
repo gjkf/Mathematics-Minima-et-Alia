@@ -19,6 +19,7 @@
 \usepackage{siunitx} % Adds the international system of measures and the \ang{degrees} command
 \usepackage{mathabx} % For better \land, \lor and \lnot
 \usepackage[labelformat=empty]{caption}
+\usepackage{etoolbox}
 
 \usepackage[showframe=false, top=1cm, bottom=1.5cm, left=1.5cm, right=1.5cm]{geometry}
 
@@ -145,12 +146,61 @@
 \newcommand\domainplot[3]{ % start end list \domainplot{0}{2}{0,1}
   \draw[shorten <= -1cm,shorten >= -1cm] (#1) -- (#2);
   \foreach \x in #3{
-    %\path let \p1 = (#2) in node at (\x|-52,\y1) {};
     \coordinate (A) at (#1);
     \coordinate (B) at (\x,0);
     \filldraw[fill=white,draw=black] (A-|B) circle(2pt)
       node[below]{\x};
   }
+}
+
+\newcommand{\mysign}[1]{
+  \pgfmathtruncatemacro\tmpsign{sign(#1)}
+    \ifnum\tmpsign<0
+      -
+    \else
+      \ifnum\tmpsign>0
+      +
+      \else
+      \relax
+    \fi
+  \fi
+}
+
+\newcommand{\mytick}[1]{
+  \pgfmathtruncatemacro\tmpsign{sign(#1)}
+  \ifnum\tmpsign<0
+    \relax
+  \else
+    \ifnum\tmpsign>0
+      \relax
+    \else
+      $|$
+    \fi
+  \fi
+}
+
+\newcommand{\drawSign}[6][]{% f(x) xmin xmax delta exclpoints
+  \begin{scope}[#1,declare function={Test(\x) = #2;}]
+    \draw [->, thick] (#3,0) -- (#4,0)node[right] {$x$};
+    \pgfmathsetmacro{\NextI}{#3+#5}
+    \foreach \i in {#3,\NextI,...,#4}{
+      \node at (\i,{0.35*sign(max(min(Test(\i),1),-1))}) {$\mysign{Test(\i)}$};
+      \pgfmathtruncatemacro\signum{sign(Test(\i))}
+      \ifnum\signum=0
+        \filldraw[black] (\i,0) circle(2pt);
+        %\node[circle,fill,maximum size=2pt] at (\i,0){};
+        \node[below] at (\i,-0.2){$\i$};
+      \fi
+    }
+  \ifx&#6&%
+  \else  
+    % Excluded points
+    \foreach \x in #6{
+      \filldraw[fill=white,draw=black] (\x,0) circle(2pt);
+      \node[below] at (\x,-0.2) {$\x$};
+    }
+  \fi
+  \end{scope}
 }
 
 % Arc over text

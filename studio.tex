@@ -86,7 +86,7 @@ Avendo ora tutte le cose necessarie per farlo, definiamo i passaggi per studiare
 \end{enumerate}
 Per chiarire il tutto, prendiamo ad esempio la seguente funzione
 \begin{equation*}
-  f(x) = \frac{x+2}{x^2-x}
+  f(x) = \frac{x^2-5x+4}{x-5}
 \end{equation*}
 Per prima cosa quindi troviamo il dominio
 \begin{equation*}
@@ -98,8 +98,142 @@ quindi
 \end{equation*}
 \begin{center}
   \begin{tikzpicture}
-    \coordinate (O) at (0,0);
-    \coordinate (A) at (1,0);
-    \domainplot{O}{A}{{0,1}}
+    \coordinate (O) at (4,0);
+    \coordinate (A) at (6,0);
+    \domainplot{O}{A}{{5}}
+    %\drawSign{(\x^2-5*\x+4)/(\x-5+0.001)}{-2}{7}{0.25}{5}
+  \end{tikzpicture}
+\end{center}
+Trovato il dominio, troviamo le intersezioni con gli assi
+\begin{equation*}
+  \begin{cases}
+    y=0\\
+    y = \frac{x^2-5x+4}{x-5}
+  \end{cases}
+  \begin{cases}
+    y = 0\\
+    x-5x+4=0
+  \end{cases}
+  \begin{cases}
+    x_{1/2} =
+    \begin{cases}
+      x_1 = 4\\ x_2=1
+    \end{cases}
+  \end{cases}
+\end{equation*}
+Quindi i due punti di intersezione con $x$ sono
+\begin{equation*}
+  A(4,0)\quad B(1,0)
+\end{equation*}
+Ora con $y$
+\begin{equation*}
+  \begin{cases}
+    x=0\\
+    y=-\frac{4}{5}
+  \end{cases}
+\end{equation*}
+e quindi il punto è immediato
+\begin{equation*}
+  C \left( -\frac{4}{5},0 \right)
+\end{equation*}
+Prima di andare a disegnare queste informazioni, troviamone altre due che miglioreranno enormemente
+il disegno. La prima sono gli asintoti.\\
+Troviamo gli eventuali asintoti verticali. Dato che $5\notin\mathcal{D}$,
+\begin{equation*}
+  \lim\limits_{x\to5^-} \frac{x^2-5x+4}{x-5} = \frac{4}{0^-} = -\infty
+\end{equation*}
+e
+\begin{equation*}
+  \lim\limits_{x\to5^+} \frac{x^2-5x+4}{x-5} = \frac{4}{0^+}= +\infty
+\end{equation*}
+Sappiamo quindi che $x=5$ è \textbf{asintoto verticale}.\\
+Andiamo alla ricerca di un asintoto orizzontale (anche se vedendo la funzione possiamo subito
+vedere che non è presente in quanto il grado del numeratore è maggiore di quello del denominatore)
+\begin{equation*}
+  \lim\limits_{x\to\infty} \frac{x^2-5x+4}{x-5} = 
+  \lim\limits_{x\to\infty} 
+  \frac{x^2\left(-\frac{5}{x}+\frac{4}{x^2}\right)}{x\left(1-\frac{5}{x}\right)}=
+  \infty
+\end{equation*}
+Quindi non ci sono asintoti orizzontali e dobbiamo andare a cercarne di obliqui quindi
+\begin{equation*}
+  q = \lim\limits_{x\to\infty} \frac{x^2-5x+4}{x-5}\cdot \frac{1}{x} =
+  \lim\limits_{x\to\infty} \frac{x^2-5x+4}{x^2-5x} = 1
+\end{equation*}
+\begin{align*}
+  m &= \lim\limits_{x\to\infty} \left[\frac{x^2-5x+4}{x-5}-x\right]=
+  \lim\limits_{x\to\infty} \frac{x^2-5x+4-5x^2+5x}{x-5}=\\
+  &\lim\limits_{x\to\infty} \frac{4}{x-5}=0
+\end{align*}
+Questo significa che $y=x$ è \textbf{asintoto obliquo}.\\
+Prima di disegnare, verifichiamo che i conti siano corretti andando a calcolare il segno della 
+funzione
+\begin{center}
+  \begin{tikzpicture}
+     \drawSign{(\x^2-5*\x+4)/(\x-5+0.001)}{-1}{7}{0.25}{5}
+  \end{tikzpicture}
+\end{center}
+Vediamo che effettivamente le informazioni degli asintoti e quella del segno combaciano. Prima
+di $5$ la funzione tende a $-\infty$ quindi è negativa, poi diventa positiva. Vediamo anche che
+$1$ e $4$ sono punti d'intersezione e quindi che il segno cambia. Disegnamo ciò che sappiamo
+\begin{center}
+  \begin{tikzpicture}
+    \begin{axis}[xmin=-3,ymin=-5,xmax=10,ymax=20]
+      \coordinate (O) at (0,0);
+      \node[fill=white,circle,inner sep=0pt] (O-label) at ($(O)+(-135:10pt)$) {$O$};
+      \addplot[green,domain=-5:18] {x};
+      \addplot[red,thick,samples=51,unbounded coords=jump,domain=-5:-2.5] {(x^2-5*x+4)/(x-5)};
+      \addplot[red,thick,samples=51,unbounded coords=jump,domain=5.1:5.4] {(x^2-5*x+4)/(x-5)};
+      \addplot[red,thick,samples=51,unbounded coords=jump,domain=15:17.7] {(x^2-5*x+4)/(x-5)};
+      \addplot[red,thick,samples=51,unbounded coords=jump,domain=4.5:4.9] {(x^2-5*x+4)/(x-5)};
+      \addplot+[blue,mark=none] coordinates {(5,-5) (5,20)};
+      \LabelPoint[mark=*,mark size=1.5][above]{4}{0}{$A$}
+      \LabelPoint[mark=*,mark size=1.5][above]{1}{0}{$B$}
+      \LabelPoint[mark=*,mark size=1.5][below right]{0}{-4/5}{$C$}
+    \end{axis}
+  \end{tikzpicture}
+\end{center}
+Questo rapido grafico contiene le informazioni che abbiamo già trovato, i due asintoti e il segno.
+Sono anche riporati i punti di intersezione precedentemente trovati.\\
+A questo punto vediamo che la funzione è continua in quanto è polinomiale. Andiamo a vedere se
+è derivabile e qual è la sua derivata prima.
+\begin{align*}
+  f'(x) &= \frac{\Dif(x^2-5x+4)(x-5)-(x^2-5x+4)\Dif(x-5)}{(x-5)^2} =\\
+        &= \frac{(2x-5)(x-5)-(x^2-5x+4)}{(x-5)^2} = \frac{x^2-10x+21}{(x-5)^2}
+\end{align*}
+Trovata la derivata, studiando il segno si vede che
+\begin{center}
+  \begin{tikzpicture}
+    \drawSign[scale=0.75]{(\x^2-10*\x+21)/(\x+5.001)^2}{0}{10}{0.25}{}
+  \end{tikzpicture}
+\end{center}
+Questo significa che in $x=3$ e in $x=7$ cambia segno. La funzione da crescente diventa decrescente
+e viceversa. Questo significa che se la derivata calcolata in quel punto è pari a $0$, sono
+un punto di minimo e uno di massimo.
+\begin{align*}
+  f'(3) &= \frac{9-30+21}{(3-5)^2} = 0\\
+  f'(7) &= \frac{49-70+21}{(7-5)^2} = 0
+\end{align*}
+E quindi in $3$ e $7$ si hanno rispettivamente un punto di massimo e uno di minimo. Calcoliamone il
+valore della $y$ e completiamo lo studio
+\begin{equation*}
+  m \left( 3,1 \right)\quad M \left( 7,9 \right)
+\end{equation*}
+Quindi il disegno ora completo è
+\begin{center}
+  \begin{tikzpicture}
+    \begin{axis}[xmin=-3,ymin=-5,xmax=10,ymax=20]
+      \coordinate (O) at (0,0);
+      \node[fill=white,circle,inner sep=0pt] (O-label) at ($(O)+(-135:10pt)$) {$O$};
+      \addplot[green,domain=-5:18] {x};
+      \addplot[red,thick,samples=51,unbounded coords=jump,domain=-5:4.90] {(x^2-5*x+4)/(x-5)};
+      \addplot[red,thick,samples=51,unbounded coords=jump,domain=5.10:18] {(x^2-5*x+4)/(x-5)};
+      \addplot+[blue,mark=none] coordinates {(5,-5) (5,20)};
+      \LabelPoint[mark=*,mark size=1.5][above]{4}{0}{$A$}
+      \LabelPoint[mark=*,mark size=1.5][above]{1}{0}{$B$}
+      \LabelPoint[mark=*,mark size=1.5][below right]{0}{-4/5}{$C$}
+      \LabelPoint[mark=*,mark size=1.5][above]{3}{1}{$m$}
+      \LabelPoint[mark=*,mark size=1.5][below left]{7}{9}{$M$}
+    \end{axis}
   \end{tikzpicture}
 \end{center}
