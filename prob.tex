@@ -4,7 +4,7 @@
 La probabilità è una funzione $p(U)$ che ritorna un valore compreso tra $0$ e $1$ che definisce la 
 probilità di un \emph{evento}.
 \begin{equation*}
-p:\,p(U) = \frac{\text{Casi favorevoli}}{\text{Casi possibili}}\mapsto {[{0},{1}]}
+  p:\,p(U) = \frac{\text{Casi favorevoli}}{\text{Casi possibili}}\mapsto {[{0},{1}]}
 \end{equation*}
 
 \subsection{Evento ed insieme universo}
@@ -12,11 +12,11 @@ Per un qualsiasi caso di studio esiste un insieme \emph{Universo} definito $\mat
 tutte le possibili uscite dell'oservazione. Ciascuna di queste uscite è definito \emph{evento}.
 Quindi
 \begin{equation*}
-\mathbb{E} \subseteq \mathbb{U}
+  \mathbb{E} \subseteq \mathbb{U}
 \end{equation*}
 e detto in altri termini, un evento è un insieme di possibilità. Ad esempio
 \begin{equation*}
-\mathbb{E} = \{2,4,5\}
+  \mathbb{E} = \{2,4,5\}
 \end{equation*}
 può essere un evento nel lancio di un dado.\\
 $p(\mathbb{U}) = 1$ per qualsiasi tipo di osservazione. Quindi la probabilità che \textbf{non} avvenga
@@ -25,23 +25,23 @@ un evento è $1-p(\mathbb{E})$
 \subsubsection{Eventi incompatibili}
 Due eventi si dicono incompatibili quando
 \begin{equation*}
-\mathbb{E}_1 \cap \mathbb{E}_2 = \emptyset
+  \mathbb{E}_1 \cap \mathbb{E}_2 = \emptyset
 \end{equation*}
 
 \subsubsection{Eventi indipendenti}
 Due eventi si dicono indipendenti quando
 \begin{equation*}
-p\left(\mathbb{E}_1\mid\mathbb{E}_2\right) = p(\mathbb{E}_1)
+  p\left(\mathbb{E}_1\mid\mathbb{E}_2\right) = p(\mathbb{E}_1)
 \end{equation*}
 
 \subsection{Probabilità di eventi incompatibili}
 \begin{equation*}
-p(\mathbb{E}_1\cup\mathbb{E}_2) = p(\mathbb{E}_1) + p(\mathbb{E}_2)
+  p(\mathbb{E}_1\cup\mathbb{E}_2) = p(\mathbb{E}_1) + p(\mathbb{E}_2)
 \end{equation*}
 
 \subsection{Probabilità di eventi compatibili}
 \begin{equation*}
-p(\mathbb{E}_1\cup\mathbb{E}_2) = p(\mathbb{E}_1)+p(\mathbb{E}_2)-p(\mathbb{E}_1\cap\mathbb{E}_2)
+  p(\mathbb{E}_1\cup\mathbb{E}_2) = p(\mathbb{E}_1)+p(\mathbb{E}_2)-p(\mathbb{E}_1\cap\mathbb{E}_2)
 \end{equation*}
 Si estenda questa formula in modo che si tolgano tutte le intersezioni fra eventi per non ripetere 
 risultati.
@@ -50,49 +50,49 @@ risultati.
 La probabilità condizionata indica la probabilità che si verifichi l'evento $\mathbb{E}_1$ 
 verificatosi $\mathbb{E}_2$.
 \begin{equation*}
-p\left(\mathbb{E}_1\mid\mathbb{E}_2\right) = 
-\frac{p\left(\mathbb{E}_1\cap\mathbb{E}_2\right)}{p(\mathbb{E}_2)}
+  p\left(\mathbb{E}_1\mid\mathbb{E}_2\right) = 
+  \frac{p\left(\mathbb{E}_1\cap\mathbb{E}_2\right)}{p(\mathbb{E}_2)}
 \end{equation*}
 
 \subsection{Probabilità composta}
 Indica la probabilità che si verifichi un evento intersezione di altri due.
 \begin{equation*}
-p\left(\mathbb{E}_1\cap\mathbb{E}_2\right) = p(\mathbb{E}_1)\cdot
-p\left(\mathbb{E}_1\mid\mathbb{E}_2\right)
+  p\left(\mathbb{E}_1\cap\mathbb{E}_2\right) = p(\mathbb{E}_1)\cdot
+  p\left(\mathbb{E}_1\mid\mathbb{E}_2\right)
 \end{equation*}
 
 Però se sono eventi indipendenti si semplifica in
 \begin{equation*}
-p\left(\mathbb{E}_1\cap\mathbb{E}_2\right) = p(\mathbb{E}_1)\cdot p(\mathbb{E}_2)
+  p\left(\mathbb{E}_1\cap\mathbb{E}_2\right) = p(\mathbb{E}_1)\cdot p(\mathbb{E}_2)
 \end{equation*}
 
 \subsubsection{Formule di Bayes}
 \subsubsection{Prima formula}
 Essendo $\mathbb{F}_1, \mathbb{F}_2,\dotsc,\mathbb{F}_n$ $n$ eventi incompatibili tali che
 \begin{equation*}
-\mathbb{U} = \mathbb{F}_1\cup\mathbb{F}_2\cup\dotsb\cup\mathbb{F}_n
+  \mathbb{U} = \mathbb{F}_1\cup\mathbb{F}_2\cup\dotsb\cup\mathbb{F}_n
 \end{equation*}
 si consideri un evento $\mathbb{E}$ tale che
 \begin{equation*}
-\mathbb{E} = \left(\mathbb{E}\cap\mathbb{F}_1\right)\cup\left(\mathbb{E}\cap\mathbb{F}_2\right)\cup
-\dots\cup\left(\mathbb{E}\cap\mathbb{F}_n\right)
+  \mathbb{E} = \left(\mathbb{E}\cap\mathbb{F}_1\right)\cup\left(\mathbb{E}\cap\mathbb{F}_2\right)\cup
+  \dots\cup\left(\mathbb{E}\cap\mathbb{F}_n\right)
 \end{equation*}
 si ha
 \begin{equation*}
-p(\mathbb{E}) = \sum\limits_{i=1}^{n}p\left(\mathbb{E}\cap\mathbb{F}_i\right) =
-\sum\limits_{i=1}^{n}\big(p\left(\mathbb{E}\mid\mathbb{F}_i\right)\cdot 
-p\left(\mathbb{F}i\right)\big)
+  p(\mathbb{E}) = \sum\limits_{i=1}^{n}p\left(\mathbb{E}\cap\mathbb{F}_i\right) =
+  \sum\limits_{i=1}^{n}\big(p\left(\mathbb{E}\mid\mathbb{F}_i\right)\cdot 
+  p\left(\mathbb{F}i\right)\big)
 \end{equation*}
 
 \subsubsection{Seconda formula}
 Essendo $\mathbb{F}_1, \mathbb{F}_2,\dotsc,\mathbb{F}_n$ $n$ eventi incompatibili tali che
 \begin{equation*}
-\mathbb{U} = \mathbb{F}_1\cup\mathbb{F}_2\cup\dotsb\cup\mathbb{F}_n
+  \mathbb{U} = \mathbb{F}_1\cup\mathbb{F}_2\cup\dotsb\cup\mathbb{F}_n
 \end{equation*}
 sia $\mathbb{E}$ un evento tale che $p(\mathbb{E})>0$, per calcolare le probabilità condizionali si
 usi
 \begin{equation*}
-p\left(\mathbb{F}_i\mid\mathbb{E}\right) =
-\frac{p\left(\mathbb{E}\mid\mathbb{F}_i\right)\cdot p(\mathbb{F}_i)}
-{\sum\big(p\left(\mathbb{E}\mid\mathbb{F}_i\right)\cdot p(\mathbb{F}_i)\big)}
+  p\left(\mathbb{F}_i\mid\mathbb{E}\right) =
+  \frac{p\left(\mathbb{E}\mid\mathbb{F}_i\right)\cdot p(\mathbb{F}_i)}
+  {\sum\big(p\left(\mathbb{E}\mid\mathbb{F}_i\right)\cdot p(\mathbb{F}_i)\big)}
 \end{equation*}

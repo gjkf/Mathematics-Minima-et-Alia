@@ -3,91 +3,91 @@
 \section{Limiti}\label{sec:limiti}
 Per introdurre il concetto di limite, prendiamo ad esempio la funzione
 \begin{equation*}
-f:\,\mathscr{D}_f\mapsto\mathbb{R}\mid x\mapsto\frac{2x^2-8}{x-2}
+  f:\,\mathscr{D}_f\mapsto\mathbb{R}\mid x\mapsto\frac{2x^2-8}{x-2}
 \end{equation*}
 essendo
 \begin{equation*}
-\mathscr{D}_f=\mathbb{R}-\{2\}
+  \mathscr{D}_f=\mathbb{R}-\{2\}
 \end{equation*}
 La funzione non è definita per $x = 2$ però possiamo comunque trovare i valori della funzione per numeri
 che si avvicinano sempre più a $2$
 \begin{center}
-	\begin{tabular}{cc}
-		$\boldsymbol{x}$ & $\boldsymbol{f(x)}$\\\hline
-		$1$ & $6$\\
-		$1.5$ & $7$\\
-		$1.9$ & $7.8$\\
-		$1.9991$ & $7.9982$\\
-		$\ldots$ & $\ldots$\\
-		$2.0001$ & $8.002$\\
-		$2.1$ & $8.2$\\
-		$2.5$ & $9$\\
-		$3$ & $10$ 
-	\end{tabular}
+  \begin{tabular}{cc}
+    $\boldsymbol{x}$ & $\boldsymbol{f(x)}$\\\hline
+    $1$ & $6$\\
+    $1.5$ & $7$\\
+    $1.9$ & $7.8$\\
+    $1.9991$ & $7.9982$\\
+    $\ldots$ & $\ldots$\\
+    $2.0001$ & $8.002$\\
+    $2.1$ & $8.2$\\
+    $2.5$ & $9$\\
+    $3$ & $10$ 
+  \end{tabular}
 \end{center}
 Come notiamo dalla tabella, più i ci si avvicina a $2$ più i valori si avvicinano a $8$. A questo
 comportamento diamo il nome di \textbf{limite finito}.\\
 Possiamo quindi dire che per un numero $\varepsilon$ positivo
 \begin{equation*}
-\left\lvert\frac{2x^2-8}{x-2}-8\right\rvert<\varepsilon
+  \left\lvert\frac{2x^2-8}{x-2}-8\right\rvert<\varepsilon
 \end{equation*}
 Questa disequazione ammette come soluzioni un intervalo opportuno di centro $x=2$. Tenuto conto che
 \begin{align*}
-&2x^2-8=2(x-2)(x+2)
-\intertext{riducendo}
-&\abs{2x-4}<\varepsilon\quad x \neq 2
-\intertext{ovvero}
-&-\varepsilon<2x-4<\varepsilon\quad x \neq 2
-\intertext{ossia}
-&2-\frac{\varepsilon}{2}<x<2+\frac{\varepsilon}{2}\quad x \neq 2
-\intertext{Questo vuol dire che se}
-&x\in{\left]{2-\frac{\varepsilon}{2}},{2+\frac{\varepsilon}{2}}\right[}\quad x \neq 2
-\intertext{i corrispondenti valori di $f(x)$ distano da $8$ meno di $\varepsilon$}
+  &2x^2-8=2(x-2)(x+2)
+  \intertext{riducendo}
+  &\abs{2x-4}<\varepsilon\quad x \neq 2
+  \intertext{ovvero}
+  &-\varepsilon<2x-4<\varepsilon\quad x \neq 2
+  \intertext{ossia}
+  &2-\frac{\varepsilon}{2}<x<2+\frac{\varepsilon}{2}\quad x \neq 2
+  \intertext{Questo vuol dire che se}
+  &x\in{\left]{2-\frac{\varepsilon}{2}},{2+\frac{\varepsilon}{2}}\right[}\quad x \neq 2
+  \intertext{i corrispondenti valori di $f(x)$ distano da $8$ meno di $\varepsilon$}
 \end{align*}
 Scriveremo allora
 \begin{equation*}
-\lim\limits_{x\to2}\frac{2x^2-8}{x-2}=8
+  \lim\limits_{x\to2}\frac{2x^2-8}{x-2}=8
 \end{equation*}
 che si legge \emph{il limite per $x$ che tende a $2$ di $\frac{2x^2-8}{x-2}$ è uguale a $8$}.\\\\
 Consideriamo ora la funzione
 \begin{equation*}
-f:\,\mathscr{D}_f\mapsto\mathbb{R}\mid x\mapsto\frac{1}{(x+1)^2}
+  f:\,\mathscr{D}_f\mapsto\mathbb{R}\mid x\mapsto\frac{1}{(x+1)^2}
 \end{equation*}
 essendo
 \begin{equation*}
-\mathscr{D}_f = \mathbb{R}-\{-1\}
+  \mathscr{D}_f = \mathbb{R}-\{-1\}
 \end{equation*}
 Attribuiamo ora a $x$ valori sempre più vicini a $-1$
 \begin{center}
-	\begin{tabular}{cc}
-		$\boldsymbol{x}$ & $\boldsymbol{f(x)}$\\\hline
-		$-2$ & $1$\\
-		$-1.5$ & $4$\\
-		$-1.001$ & $1,000,000$\\
-		$\ldots$ & $\ldots$\\
-		$0$ & $1$\\
-		$-0.5$ & $4$\\
-		$-0.99995$ & $400,000,000$
-	\end{tabular}
+  \begin{tabular}{cc}
+    $\boldsymbol{x}$ & $\boldsymbol{f(x)}$\\\hline
+    $-2$ & $1$\\
+    $-1.5$ & $4$\\
+    $-1.001$ & $1,000,000$\\
+    $\ldots$ & $\ldots$\\
+    $0$ & $1$\\
+    $-0.5$ & $4$\\
+    $-0.99995$ & $400,000,000$
+  \end{tabular}
 \end{center}
 Notiamo che per valori che si avvicinano a $-1$ otteniamo sempre valori molto grandi. A questo 
 comportamento si da il nome di \textbf{limite a più infinito ($+\infty$)}.\\
 Quindi si può scrivere
 \begin{equation*}
-\lim\limits_{x\to-1}\frac{1}{(x+1)^2}=+\infty
+  \lim\limits_{x\to-1}\frac{1}{(x+1)^2}=+\infty
 \end{equation*}
 che sgnifica che comunque si prenda un numero $M$ la disuguaglianza
 \begin{equation*}
-\frac{1}{(x+1)^2}>M
+  \frac{1}{(x+1)^2}>M
 \end{equation*}
 è soddisfatta dai punti di un intorno di $-1$, escluso $-1$ stesso.\\
 Supposto che $x\neq-1$ l'equazione equivale a
 \begin{align*}
-&(x+1)^2<\frac{1}{M}
-\intertext{verificata per}
-&-\frac{1}{\sqrt{M}}<x+1<\frac{1}{\sqrt{M}}
-\intertext{cioè}
-&-1-\frac{1}{\sqrt{M}}<x<-1+\frac{1}{\sqrt{M}}\quad x\neq-1
+  &(x+1)^2<\frac{1}{M}
+  \intertext{verificata per}
+  &-\frac{1}{\sqrt{M}}<x+1<\frac{1}{\sqrt{M}}
+  \intertext{cioè}
+  &-1-\frac{1}{\sqrt{M}}<x<-1+\frac{1}{\sqrt{M}}\quad x\neq-1
 \end{align*}
 Tali valori effettivamente rappresentano un intorno di $-1$ escluso $-1$ stesso.\\
 Analogamente al limite che tende a $+\infty$, si può trovare il limite a $-\infty$.\\\\
@@ -95,174 +95,174 @@ Un problema simile a quelli precedenti è quello di un valore che dopo un po' si
 parole, un valore che tendendo ad $\infty$ tende ad un numero finito. Questi sono definiti \textbf{
 limiti finiti di una funzione all'infinito}. In simboli
 \begin{equation*}
-\lim\limits_{x\to+\infty}f(x)=l
+  \lim\limits_{x\to+\infty}f(x)=l
 \end{equation*}
 Possiamo ulteriormente estendere il concetto a \textbf{limiti infiniti di una funzione all'infinito}.
 Ad esempio
 \begin{equation*}
-\lim\limits_{x\to-\infty}f(x)=+\infty
+  \lim\limits_{x\to-\infty}f(x)=+\infty
 \end{equation*}
 
 
 \subsection{Definizione di limite finito}
 \begin{definizioneLimiteFinito}
-	Sia $f$ una funzione definita in un intorno $I$ del punto $x_0$, senza che sia necessariamente
-	definita in $x_0$.\\
-	Si dice che il numero $l$ è il \textbf{limite} della funzione $f$ nel punto $x_0$ e si scrive
-	\begin{equation*}
-	\lim\limits_{x\to x_0}f(x)=l
-	\end{equation*}
-	se, fissato comunque un numero $\varepsilon>0$, è possibile determinare in corrispondenza di esso 
-	un numero $\delta_\varepsilon>0$ tale che, per ogni $x$ appartenente a $I$ verificante la 
-	condizione
-	\begin{equation*}
-	0<\abs{x-x_0}<\delta_\varepsilon
-	\end{equation*}
-	risulti
-	\begin{equation*}
-	\abs{f(x)-l}<\varepsilon
-	\end{equation*}
-	In simboli
-	\begin{align*}
-	\lim\limits_{x\to x_0} f(x) &= l\\
-	\ArrowBetweenLines
-	\forall \varepsilon, \exists\,\delta_\varepsilon>0\mid\forall x: 0<\vert x-x_0\vert 
-	&<\delta_\varepsilon \Rightarrow \vert f(x) - l\vert < \varepsilon
-	\end{align*}
+  Sia $f$ una funzione definita in un intorno $I$ del punto $x_0$, senza che sia necessariamente
+  definita in $x_0$.\\
+  Si dice che il numero $l$ è il \textbf{limite} della funzione $f$ nel punto $x_0$ e si scrive
+  \begin{equation*}
+    \lim\limits_{x\to x_0}f(x)=l
+  \end{equation*}
+  se, fissato comunque un numero $\varepsilon>0$, è possibile determinare in corrispondenza di esso 
+  un numero $\delta_\varepsilon>0$ tale che, per ogni $x$ appartenente a $I$ verificante la 
+  condizione
+  \begin{equation*}
+    0<\abs{x-x_0}<\delta_\varepsilon
+  \end{equation*}
+  risulti
+  \begin{equation*}
+    \abs{f(x)-l}<\varepsilon
+  \end{equation*}
+  In simboli
+  \begin{align*}
+    \lim\limits_{x\to x_0} f(x) &= l\\
+    \ArrowBetweenLines
+    \forall \varepsilon, \exists\,\delta_\varepsilon>0\mid\forall x: 0<\vert x-x_0\vert 
+    &<\delta_\varepsilon \Rightarrow \vert f(x) - l\vert < \varepsilon
+  \end{align*}
 \end{definizioneLimiteFinito}
 
 \subsection{Definizione di limite infinito}
 \subsubsection{A $+\infty$}
 \begin{definizioneLimiteInfinito1}
-	Sia $f$ una funzione definita in un intorno $I$ di $x_0$, escluso al più il punto $x_0$. Si dice
-	che
-	\begin{equation*}
-	\lim\limits_{x\to x_0}f(x)=+\infty
-	\end{equation*}
-	se, fissato comunque un numero $M$, è possibile determinare in corrispondenza di esso un numero
-	$\delta_M>0$ tale che, per ogni $x$ di $I$ verificante la condizione
-	\begin{equation*}
-	0<\abs{x-x_0}<\delta_M
-	\end{equation*}
-	risulti
-	\begin{equation*}
-	f(x)>M
-	\end{equation*}
-	In simboli
-	\begin{align*}
-	\lim\limits_{x\to x_0} f(x) &= l\\
-	\ArrowBetweenLines
-	\forall M>0, \exists\,\delta_M>0\mid\forall x: 0<\vert x-&x_0\vert < \delta_M \Rightarrow
-	f(x) > M
-	\end{align*}
+  Sia $f$ una funzione definita in un intorno $I$ di $x_0$, escluso al più il punto $x_0$. Si dice
+  che
+  \begin{equation*}
+    \lim\limits_{x\to x_0}f(x)=+\infty
+  \end{equation*}
+  se, fissato comunque un numero $M$, è possibile determinare in corrispondenza di esso un numero
+  $\delta_M>0$ tale che, per ogni $x$ di $I$ verificante la condizione
+  \begin{equation*}
+    0<\abs{x-x_0}<\delta_M
+  \end{equation*}
+  risulti
+  \begin{equation*}
+    f(x)>M
+  \end{equation*}
+  In simboli
+  \begin{align*}
+    \lim\limits_{x\to x_0} f(x) &= l\\
+    \ArrowBetweenLines
+    \forall M>0, \exists\,\delta_M>0\mid\forall x: 0<\vert x-&x_0\vert < \delta_M \Rightarrow
+    f(x) > M
+  \end{align*}
 \end{definizioneLimiteInfinito1}
 \subsubsection{A $-\infty$}
 \begin{definizioneLimiteInfinito2}
-	Sia $f$ una funzione definita in un intorno $I$ di $x_0$, escluso al più il punto $x_0$. Si dice
-	che
-	\begin{equation*}
-	\lim\limits_{x\to x_0}f(x)=-\infty
-	\end{equation*}
-	se, fissato comunque un numero $M$, è possibile determinare in corrispondenza di esso un numero
-	$\delta_M>0$ tale che, per ogni $x$ di $I$ verificante la condizione
-	\begin{equation*}
-	0<\abs{x-x_0}<\delta_M
-	\end{equation*}
-	risulti
-	\begin{equation*}
-	f(x)<M
-	\end{equation*}
-	In simboli
-	\begin{align*}
-	\lim\limits_{x\to x_0} f(x) &= l\\
-	\ArrowBetweenLines
-	\forall M, \exists\,\delta_M>0\mid\forall x: 0<\vert x-x_0\vert &< \delta_M \Rightarrow
-	f(x) < M
-		\end{align*}
+  Sia $f$ una funzione definita in un intorno $I$ di $x_0$, escluso al più il punto $x_0$. Si dice
+  che
+  \begin{equation*}
+    \lim\limits_{x\to x_0}f(x)=-\infty
+  \end{equation*}
+  se, fissato comunque un numero $M$, è possibile determinare in corrispondenza di esso un numero
+  $\delta_M>0$ tale che, per ogni $x$ di $I$ verificante la condizione
+  \begin{equation*}
+    0<\abs{x-x_0}<\delta_M
+  \end{equation*}
+  risulti
+  \begin{equation*}
+    f(x)<M
+  \end{equation*}
+  In simboli
+  \begin{align*}
+    \lim\limits_{x\to x_0} f(x) &= l\\
+    \ArrowBetweenLines
+    \forall M, \exists\,\delta_M>0\mid\forall x: 0<\vert x-x_0\vert &< \delta_M \Rightarrow
+    f(x) < M
+  \end{align*}
 \end{definizioneLimiteInfinito2}
 
 \subsection{Definizione di limite finito di una funzione all'infinito}
 \subsubsection{Per $x\to+\infty$}
 \begin{definizioneLimiteInfinitoFinito1}
-	Sia $f$ una funzione definita in un insieme $\mathscr{D}_f$ illimitato superiormente.\\
-	Si dice che
-	\begin{equation*}
-	\lim\limits_{x\to+\infty}f(x)=l
-	\end{equation*}
-	se, fissato comunque un numero $\varepsilon>0$ è possibile determinare in corrispondenza di esso 
-	un numero $k_\varepsilon$ tale che, per ogni $x\in\mathscr{D}_f$ e maggiore di $k_\varepsilon$, 
-	risulti
-	\begin{equation*}
-	\abs{f(x)-l}<\varepsilon
-	\end{equation*}
-	In simboli
-	\begin{align*}
-	\lim\limits_{x\to x_0} f(x) &= l\\
-	\ArrowBetweenLines
-	\forall \varepsilon, \exists\,k_\varepsilon>0\mid\forall x: x>&k_\varepsilon \Rightarrow
-	\vert f(x) - l\vert < \varepsilon
-	\end{align*}
+  Sia $f$ una funzione definita in un insieme $\mathscr{D}_f$ illimitato superiormente.\\
+  Si dice che
+  \begin{equation*}
+    \lim\limits_{x\to+\infty}f(x)=l
+  \end{equation*}
+  se, fissato comunque un numero $\varepsilon>0$ è possibile determinare in corrispondenza di esso 
+  un numero $k_\varepsilon$ tale che, per ogni $x\in\mathscr{D}_f$ e maggiore di $k_\varepsilon$, 
+  risulti
+  \begin{equation*}
+    \abs{f(x)-l}<\varepsilon
+  \end{equation*}
+  In simboli
+  \begin{align*}
+    \lim\limits_{x\to x_0} f(x) &= l\\
+    \ArrowBetweenLines
+    \forall \varepsilon, \exists\,k_\varepsilon>0\mid\forall x: x>&k_\varepsilon \Rightarrow
+    \vert f(x) - l\vert < \varepsilon
+  \end{align*}
 \end{definizioneLimiteInfinitoFinito1}
 \subsubsection{Per $x\to-\infty$}
 \begin{definizioneLimiteInfinitoFinito2}
-	Sia $f$ una funzione definita in un insieme $\mathscr{D}_f$ illimitato superiormente.\\
-	Si dice che
-	\begin{equation*}
-	\lim\limits_{x\to-\infty}f(x)=l
-	\end{equation*}
-	se, fissato comunque un numero $\varepsilon>0$ è possibile determinare in corrispondenza di esso 
-	un numero $k_\varepsilon$ tale che, per ogni $x\in\mathscr{D}_f$ e minore di $k_\varepsilon$, 
-	risulti
-	\begin{equation*}
-	\abs{f(x)-l}<\varepsilon
-	\end{equation*}
-	In simboli
-	\begin{align*}
-	\lim\limits_{x\to x_0} f(x) &= l\\
-	\ArrowBetweenLines
-	\forall \varepsilon, \exists\,k_\varepsilon>0\mid\forall x: x<&k_\varepsilon \Rightarrow
-	\vert f(x) - l\vert < \varepsilon
-	\end{align*}
+  Sia $f$ una funzione definita in un insieme $\mathscr{D}_f$ illimitato superiormente.\\
+  Si dice che
+  \begin{equation*}
+    \lim\limits_{x\to-\infty}f(x)=l
+  \end{equation*}
+  se, fissato comunque un numero $\varepsilon>0$ è possibile determinare in corrispondenza di esso 
+  un numero $k_\varepsilon$ tale che, per ogni $x\in\mathscr{D}_f$ e minore di $k_\varepsilon$, 
+  risulti
+  \begin{equation*}
+    \abs{f(x)-l}<\varepsilon
+  \end{equation*}
+  In simboli
+  \begin{align*}
+    \lim\limits_{x\to x_0} f(x) &= l\\
+    \ArrowBetweenLines
+    \forall \varepsilon, \exists\,k_\varepsilon>0\mid\forall x: x<&k_\varepsilon \Rightarrow
+    \vert f(x) - l\vert < \varepsilon
+  \end{align*}
 \end{definizioneLimiteInfinitoFinito2}
 
 \subsection{Definizione di limte infinito di una funzione all'infinito}
 \subsubsection{A $+\infty$}
 \begin{definizioneLimiteInfinitoInfinito1}
-	Sia $f$ una funzione definita in un insieme $\mathscr{D}_f$ illimitato superiormente 
-	[inferiormente]. Si dice che
-	\begin{equation*}
-	\lim\limits_{\substack{x\to+\infty\\ [x\to-\infty]}}f(x)=+\infty
-	\end{equation*}
-	se, fissato comunque un numero $M$, è possibile determinare in corrispondenza di esso un numero 
-	$k_M$ tale che, per ogni $x\in\mathscr{D}_f$ che verifichi la condizione $x>k_M\,[x<k_M]$, risulti
-	\begin{equation*}
-	f(x)>M
-	\end{equation*}
-	In simboli
-	\begin{align*}
-	\lim\limits_{\substack{x\to+\infty\\ [x\to-\infty]}}f(x)&=+\infty\\
-	\ArrowBetweenLines
-	\forall k_M>0, \exists\,M>0\mid\forall x: x>&k_M[<k_M] \Rightarrow f(x) > M
-	\end{align*}
+  Sia $f$ una funzione definita in un insieme $\mathscr{D}_f$ illimitato superiormente 
+  [inferiormente]. Si dice che
+  \begin{equation*}
+    \lim\limits_{\substack{x\to+\infty\\ [x\to-\infty]}}f(x)=+\infty
+  \end{equation*}
+  se, fissato comunque un numero $M$, è possibile determinare in corrispondenza di esso un numero 
+  $k_M$ tale che, per ogni $x\in\mathscr{D}_f$ che verifichi la condizione $x>k_M\,[x<k_M]$, risulti
+  \begin{equation*}
+    f(x)>M
+  \end{equation*}
+  In simboli
+  \begin{align*}
+    \lim\limits_{\substack{x\to+\infty\\ [x\to-\infty]}}f(x)&=+\infty\\
+    \ArrowBetweenLines
+    \forall k_M>0, \exists\,M>0\mid\forall x: x>&k_M[<k_M] \Rightarrow f(x) > M
+  \end{align*}
 \end{definizioneLimiteInfinitoInfinito1}
 \subsubsection{A $-\infty$}
 \begin{definizioneLimiteInfinitoInfinito2}
-	Sia $f$ una funzione definita in un insieme $\mathscr{D}_f$ illimitato superiormente 
-	[inferiormente]. Si dice che
-	\begin{equation*}
-	\lim\limits_{\substack{x\to+\infty\\ [x\to-\infty]}} f(x)=-\infty
-	\end{equation*}
-	se, fissato comunque un numero $M$, è possibile determinare in corrispondenza di esso un numero 
-	$k_M$ tale che, per ogni $x\in\mathscr{D}_f$ che verifichi la condizione $x>k_M\,[x<k_M]$, risulti
-	\begin{equation*}
-	f(x)<M
-	\end{equation*}
-	In simboli
-	\begin{align*}
-	\lim\limits_{\substack{x\to+\infty\\ [x\to-\infty]}}f(x)&=+\infty\\
-	\ArrowBetweenLines
-	\forall k_M, \exists\,M>0\mid\forall x: x>k_M&[<k_M] \Rightarrow f(x) < M
-	\end{align*}
+  Sia $f$ una funzione definita in un insieme $\mathscr{D}_f$ illimitato superiormente 
+  [inferiormente]. Si dice che
+  \begin{equation*}
+    \lim\limits_{\substack{x\to+\infty\\ [x\to-\infty]}} f(x)=-\infty
+  \end{equation*}
+  se, fissato comunque un numero $M$, è possibile determinare in corrispondenza di esso un numero 
+  $k_M$ tale che, per ogni $x\in\mathscr{D}_f$ che verifichi la condizione $x>k_M\,[x<k_M]$, risulti
+  \begin{equation*}
+    f(x)<M
+  \end{equation*}
+  In simboli
+  \begin{align*}
+    \lim\limits_{\substack{x\to+\infty\\ [x\to-\infty]}}f(x)&=+\infty\\
+    \ArrowBetweenLines
+    \forall k_M, \exists\,M>0\mid\forall x: x>k_M&[<k_M] \Rightarrow f(x) < M
+  \end{align*}
 \end{definizioneLimiteInfinitoInfinito2}
 
 \subsection{Limite sinistro e destro}
@@ -271,60 +271,60 @@ sempre più prossimi a $l$ tanto $x$ è prossimo a $x_0$.\\
 Questa regolarità però può mancare in senso assoluto. Ciò avviene quando la funzione si stabilizza
 su due numeri diversi a seconda che ci si avvicini da destra o da sinistra.
 \begin{equation*}
-\lim\limits_{x\to x_0^+}f(x)
+  \lim\limits_{x\to x_0^+}f(x)
 \end{equation*}
 indica un limite destro,
 \begin{equation*}
-\lim\limits_{x\to x_0^-}f(x)
+  \lim\limits_{x\to x_0^-}f(x)
 \end{equation*}
 un limite sinistro.
 \begin{definizioneLimiteFinitoDestro}
-	Sia $f$ una funzione definita in un intorno destro $I^+(x_0)$ di $x_0$, privato al più del punto
-	$x_0$.\\
-	Si dice che
-	\begin{equation*}
-	\lim\limits_{x\to x_0^+}f(x) = l
-	\end{equation*}
-	se, fissato comunque un numero $\varepsilon>0$, è possibile determinare in corrispondenza di esso
-	un numero $\delta_\varepsilon>0$ tale che, per ogni $x\in I^+(x_0)$ verificante la condizione
-	\begin{equation*}
-	0<x-x_0<\delta_\varepsilon
-	\end{equation*}
-	risulti
-	\begin{equation*}
-	\abs{f(x)-l}<\varepsilon
-	\end{equation*}
-	In simboli
-	\begin{align*}
-	\lim\limits_{x\to x_0^+} f(x) &= l\\
-	\ArrowBetweenLines
-	\forall \varepsilon, \exists\,\delta_\varepsilon>0\mid\forall x: x_0< x <x_0+&\delta_\varepsilon 
-	\Rightarrow \vert f(x) - l\vert < \varepsilon
-	\end{align*}
+  Sia $f$ una funzione definita in un intorno destro $I^+(x_0)$ di $x_0$, privato al più del punto
+  $x_0$.\\
+  Si dice che
+  \begin{equation*}
+    \lim\limits_{x\to x_0^+}f(x) = l
+  \end{equation*}
+  se, fissato comunque un numero $\varepsilon>0$, è possibile determinare in corrispondenza di esso
+  un numero $\delta_\varepsilon>0$ tale che, per ogni $x\in I^+(x_0)$ verificante la condizione
+  \begin{equation*}
+    0<x-x_0<\delta_\varepsilon
+  \end{equation*}
+  risulti
+  \begin{equation*}
+    \abs{f(x)-l}<\varepsilon
+  \end{equation*}
+  In simboli
+  \begin{align*}
+    \lim\limits_{x\to x_0^+} f(x) &= l\\
+    \ArrowBetweenLines
+    \forall \varepsilon, \exists\,\delta_\varepsilon>0\mid\forall x: x_0< x <x_0+&\delta_\varepsilon 
+    \Rightarrow \vert f(x) - l\vert < \varepsilon
+  \end{align*}
 \end{definizioneLimiteFinitoDestro}
 \begin{definizioneLimiteFinitoSinistro}
-	Sia $f$ una funzione definita in un intorno sinistro $I^-(x_0)$ di $x_0$, privato al più del punto
-	$x_0$.\\
-	Si dice che
-	\begin{equation*}
-	\lim\limits_{x\to x_0^-}f(x) = l
-	\end{equation*}
-	se, fissato comunque un numero $\varepsilon>0$, è possibile determinare in corrispondenza di esso
-	un numero $\delta_\varepsilon>0$ tale che, per ogni $x\in I^-(x_0)$ verificante la condizione
-	\begin{equation*}
-	0<x-x_0<\delta_\varepsilon
-	\end{equation*}
-	risulti
-	\begin{equation*}
-	\abs{f(x)-l}<\varepsilon
-	\end{equation*}
-	In simboli
-	\begin{align*}
-	\lim\limits_{x\to x_0^-} f(x) &= l\\
-	\ArrowBetweenLines
-	\forall \varepsilon, \exists\,\delta_\varepsilon>0\mid\forall x: x_0-\delta_\varepsilon<x&<x_0
-	\Rightarrow \vert f(x) - l\vert < \varepsilon
-	\end{align*}
+  Sia $f$ una funzione definita in un intorno sinistro $I^-(x_0)$ di $x_0$, privato al più del punto
+  $x_0$.\\
+  Si dice che
+  \begin{equation*}
+    \lim\limits_{x\to x_0^-}f(x) = l
+  \end{equation*}
+  se, fissato comunque un numero $\varepsilon>0$, è possibile determinare in corrispondenza di esso
+  un numero $\delta_\varepsilon>0$ tale che, per ogni $x\in I^-(x_0)$ verificante la condizione
+  \begin{equation*}
+    0<x-x_0<\delta_\varepsilon
+  \end{equation*}
+  risulti
+  \begin{equation*}
+    \abs{f(x)-l}<\varepsilon
+  \end{equation*}
+  In simboli
+  \begin{align*}
+    \lim\limits_{x\to x_0^-} f(x) &= l\\
+    \ArrowBetweenLines
+    \forall \varepsilon, \exists\,\delta_\varepsilon>0\mid\forall x: x_0-\delta_\varepsilon<x&<x_0
+    \Rightarrow \vert f(x) - l\vert < \varepsilon
+  \end{align*}
 \end{definizioneLimiteFinitoSinistro}
 
 \subsection{Definizione generale di limite}
@@ -332,125 +332,125 @@ Fin'ora abbiamo elencato varie definizioni formali ma ce n'è una generale, che 
 Certo che sì e anzi, è anche più facile da ricordare in quanto è una unica. Sapendo poi adattarla, si
 ricavano tute le altre.
 \begin{definizioneGeneraleLimite}
-	Siano $V(l)$ e $U(x_0)$ due intorni dei rispettivi parametri. Si ha allora che
-	\begin{align*}
-	\lim\limits_{x\to x_0} f(x) &= l\\
-	\ArrowBetweenLines
-	\forall V(l), \exists\,U(x_0)\mid\forall x\in U(x_0)&\setminus\{x_0\}\Rightarrow f(x)\in V(l)
-	\end{align*}
+  Siano $V(l)$ e $U(x_0)$ due intorni dei rispettivi parametri. Si ha allora che
+  \begin{align*}
+    \lim\limits_{x\to x_0} f(x) &= l\\
+    \ArrowBetweenLines
+    \forall V(l), \exists\,U(x_0)\mid\forall x\in U(x_0)&\setminus\{x_0\}\Rightarrow f(x)\in V(l)
+  \end{align*}
 \end{definizioneGeneraleLimite}
 Questo permette di imparare una sola formula che però, opportunamente adattata, permette di ricavare
 le definizioni formali di ogni limite.
 
 \subsection{Teroemi sui limiti}
 \begin{uniLim}\hypertarget{teor:uniLim}{}
-	Se una funzione ammette limite per $x\to x_0$, tale limite è unico.
+  Se una funzione ammette limite per $x\to x_0$, tale limite è unico.
 \end{uniLim}
 \begin{confrontoLim}\hypertarget{teor:confLim}{}
-	Siano $f$, $g$ e $h$ tre funzioni definite in un intorno $I$ di $x_0$, escluso al più $x_0$, e tali
-	che per ogni $x\in I$ risulti
-	\begin{equation*}
-	f(x)\leq g(x)\leq h(x)
-	\end{equation*}
-	Se
-	\begin{equation*}
-	\lim\limits_{x\to x_0} f(x) = \lim\limits_{x\to x_0} h(x) = l
-	\end{equation*}
-	allora risulterà
-	\begin{equation*}
-	\lim\limits_{x\to x_0}g(x)=l
-	\end{equation*}
+  Siano $f$, $g$ e $h$ tre funzioni definite in un intorno $I$ di $x_0$, escluso al più $x_0$, e tali
+  che per ogni $x\in I$ risulti
+  \begin{equation*}
+    f(x)\leq g(x)\leq h(x)
+  \end{equation*}
+  Se
+  \begin{equation*}
+    \lim\limits_{x\to x_0} f(x) = \lim\limits_{x\to x_0} h(x) = l
+  \end{equation*}
+  allora risulterà
+  \begin{equation*}
+    \lim\limits_{x\to x_0}g(x)=l
+  \end{equation*}
 \end{confrontoLim}
 \begin{permanenzaSegno}\hypertarget{teor:segno}{}
-	Se
-	\begin{equation*}
-	\lim\limits_{x\to x_0}f(x)=l\neq0
-	\end{equation*}
-	esiste un intorno $I(x_0)$, privato al più del punto $x_0$, in cui la funzione assume lo stesso 
-	segno di $l$.\\
-	Viceversa, se esiste un intorno $I(x_0)$ di $x_0$ privato al più di $x_0$, in cui risulta $f(x)>0$
-	[$f(x)<0$], e se esiste $\lim\limits_{x\to x_0}f(x)=l$ si avrà
-	\begin{equation*}
-	l\geq0\quad[l\leq0]
-	\end{equation*}
+  Se
+  \begin{equation*}
+    \lim\limits_{x\to x_0}f(x)=l\neq0
+  \end{equation*}
+  esiste un intorno $I(x_0)$, privato al più del punto $x_0$, in cui la funzione assume lo stesso 
+  segno di $l$.\\
+  Viceversa, se esiste un intorno $I(x_0)$ di $x_0$ privato al più di $x_0$, in cui risulta $f(x)>0$
+  [$f(x)<0$], e se esiste $\lim\limits_{x\to x_0}f(x)=l$ si avrà
+  \begin{equation*}
+    l\geq0\quad[l\leq0]
+  \end{equation*}
 \end{permanenzaSegno}
 
 \subsection{Operazioni sui limiti}
 \subsubsection{Somma}
 \begin{sommaLimiti}\hypertarget{teor:sommaLimiti}{}
-	Il limite di una somma di funzioni è uguale alla somma dei limiti se questi sono finiti.
-	\begin{equation*}
-	\lim\limits_{x\to x_0}[f(x)+g(x)] = l_1+l_2
-	\end{equation*}
+  Il limite di una somma di funzioni è uguale alla somma dei limiti se questi sono finiti.
+  \begin{equation*}
+    \lim\limits_{x\to x_0}[f(x)+g(x)] = l_1+l_2
+  \end{equation*}
 \end{sommaLimiti}
 
 \subsubsection{Prodotto}
 \begin{prodottoLimiti}\hypertarget{teor:prodottoLimiti}{}
-	Il limite di un prodotto di funzioni è uguale al prodotto dei limiti delle funzioni se questi sono
-	finiti.
-	\begin{equation*}
-	\lim\limits_{x\to x_0}f(x)\cdot g(x)=l_1\cdot l_2
-	\end{equation*}
+  Il limite di un prodotto di funzioni è uguale al prodotto dei limiti delle funzioni se questi sono
+  finiti.
+  \begin{equation*}
+    \lim\limits_{x\to x_0}f(x)\cdot g(x)=l_1\cdot l_2
+  \end{equation*}
 \end{prodottoLimiti}
 Dal prodotto si possono ricavare anche i seguenti 2 teoremi
 \begin{prodottoLimiti1}
-	Se $f(x)$ è una funzione che ammette limite $l$ per $x$ che tende a $x_0$ e $k$ è un numero reale,
-	si ha
-	\begin{equation*}
-	\lim\limits_{x\to x_0}k\,f(x) = k\cdot l
-	\end{equation*}
+  Se $f(x)$ è una funzione che ammette limite $l$ per $x$ che tende a $x_0$ e $k$ è un numero reale,
+  si ha
+  \begin{equation*}
+    \lim\limits_{x\to x_0}k\,f(x) = k\cdot l
+  \end{equation*}
 \end{prodottoLimiti1}
 \begin{prodottoLimiti2}
-	Se $f(x)$ e $g(x)$ sono due funzioni che per $x$ che tende a $x_0$ hanno limiti $l_1$ e $l_2$, e
-	$\lambda$ e $\mu$ sono due numeri reali, si ha
-	\begin{equation*}
-	\lim\limits_{x\to x_0}[\lambda f(x)+\mu g(x)]=\lambda l_1+\mu l_2
-	\end{equation*}
+  Se $f(x)$ e $g(x)$ sono due funzioni che per $x$ che tende a $x_0$ hanno limiti $l_1$ e $l_2$, e
+  $\lambda$ e $\mu$ sono due numeri reali, si ha
+  \begin{equation*}
+    \lim\limits_{x\to x_0}[\lambda f(x)+\mu g(x)]=\lambda l_1+\mu l_2
+  \end{equation*}
 \end{prodottoLimiti2}
 
 \subsubsection{Quoziente}
 \begin{quozienteLimiti}
-	Se $f(x)$ e $g(x)$ sono due funzioni aventi rispettivamente i limiti $l_1$ e $l_2$ per $x$ che 
-	tende a $x_0$ e se $l_2\neq0$ si ha
-	\begin{equation*}
-	\lim\limits_{x\to x_0}\frac{f(x)}{g(x)}=\frac{l_1}{l_2}
-	\end{equation*}
+  Se $f(x)$ e $g(x)$ sono due funzioni aventi rispettivamente i limiti $l_1$ e $l_2$ per $x$ che 
+  tende a $x_0$ e se $l_2\neq0$ si ha
+  \begin{equation*}
+    \lim\limits_{x\to x_0}\frac{f(x)}{g(x)}=\frac{l_1}{l_2}
+  \end{equation*}
 \end{quozienteLimiti}
 
 \subsubsection{Potenza}
 \begin{potenzaLimiti}
-	Se $\lim\limits_{x\to x_0}f(x)=l$ e $a\in\mathbb{R}_0^+$
-	\begin{equation*}
-	\lim\limits_{x\to x_0}a^{f(x)} = a^l
-	\end{equation*}
+  Se $\lim\limits_{x\to x_0}f(x)=l$ e $a\in\mathbb{R}_0^+$
+  \begin{equation*}
+    \lim\limits_{x\to x_0}a^{f(x)} = a^l
+  \end{equation*}
 \end{potenzaLimiti}
 \begin{potenzaLimiti1}
-	Se $\lim\limits_{x\to x_0}f(x)=l>0$ e $a\in\mathbb{R}$
-	\begin{equation*}
-	\lim\limits_{x\to x_0}[f(x)]^a = l^a
-	\end{equation*}
+  Se $\lim\limits_{x\to x_0}f(x)=l>0$ e $a\in\mathbb{R}$
+  \begin{equation*}
+    \lim\limits_{x\to x_0}[f(x)]^a = l^a
+  \end{equation*}
 \end{potenzaLimiti1}
 \begin{potenzaLimiti2}
-	Se $\lim\limits_{x\to x_0}f(x)=l_1>0$ e $\lim\limits_{x\to x_0}g(x)=l_2$
-	\begin{equation*}
-	\lim\limits_{x\to x_0}[f(x)]^{g(x)} = l_1^{l_2}
-	\end{equation*}
+  Se $\lim\limits_{x\to x_0}f(x)=l_1>0$ e $\lim\limits_{x\to x_0}g(x)=l_2$
+  \begin{equation*}
+    \lim\limits_{x\to x_0}[f(x)]^{g(x)} = l_1^{l_2}
+  \end{equation*}
 \end{potenzaLimiti2}
 
 \subsubsection{Modulo}
 \begin{moduloLimiti}
-	Se $\lim\limits_{x\to x_0}=l$
-	\begin{equation*}
-	\lim\limits_{x\to x_0}\abs{f(x)}=\abs{l}
-	\end{equation*}
+  Se $\lim\limits_{x\to x_0}=l$
+  \begin{equation*}
+    \lim\limits_{x\to x_0}\abs{f(x)}=\abs{l}
+  \end{equation*}
 \end{moduloLimiti}
 
 \subsubsection{Logaritmo}
 \begin{logLimiti}
-	Se $\lim\limits_{x\to x_0}=l>0$ e $a\in\mathbb{R}_0^+\setminus\{1\}$
-	\begin{equation*}
-	\lim\limits_{x\to x_0}\log_af(x)=\log_al
-	\end{equation*}
+  Se $\lim\limits_{x\to x_0}=l>0$ e $a\in\mathbb{R}_0^+\setminus\{1\}$
+  \begin{equation*}
+    \lim\limits_{x\to x_0}\log_af(x)=\log_al
+  \end{equation*}
 \end{logLimiti}
 
 \subsection{Forme indeterminate}
@@ -460,48 +460,48 @@ conoscenza del limite della loro operazione.\\
 Quelle che vengono riquadrate di seguito sono le forme indeterminate nei vari casi.
 \subsubsection{Somma}
 \begin{center}
-	\begin{tabular}{ccc}
-		$\boldsymbol{\lim f(x)}$ & $\boldsymbol{\lim g(x)}$ & $\boldsymbol{\lim[f(x)+g(x)]}$\\\hline
-		$l$ & $+\infty$ & $+\infty$\\
-		$l$ & $-\infty$ & $-\infty$\\
-		$\pm\infty$ & $\pm\infty$ & $\pm\infty$\\
-		$\pm\infty$ & $\mp\infty$ & $\boxed{+\infty-\infty}$
-	\end{tabular}
+  \begin{tabular}{ccc}
+    $\boldsymbol{\lim f(x)}$ & $\boldsymbol{\lim g(x)}$ & $\boldsymbol{\lim[f(x)+g(x)]}$\\\hline
+    $l$ & $+\infty$ & $+\infty$\\
+    $l$ & $-\infty$ & $-\infty$\\
+    $\pm\infty$ & $\pm\infty$ & $\pm\infty$\\
+    $\pm\infty$ & $\mp\infty$ & $\boxed{+\infty-\infty}$
+  \end{tabular}
 \end{center}
 
 \subsubsection{Prodotto}
 \begin{center}
-	\begin{tabular}{ccc}
-		$\boldsymbol{\lim f(x)}$ & $\boldsymbol{\lim g(x)}$ & $\boldsymbol{\lim[f(x)\cdot 
-			g(x)]}$\\\hline
-		$l\neq0$ & $\pm\infty$ & $\pm\infty$\\
-		$\pm\infty$ & $\pm\infty$ & $\infty$\\
-		$0$ & $\pm\infty$ & $\boxed{0\cdot\infty}$
-	\end{tabular}
+  \begin{tabular}{ccc}
+    $\boldsymbol{\lim f(x)}$ & $\boldsymbol{\lim g(x)}$ & $\boldsymbol{\lim[f(x)\cdot 
+    g(x)]}$\\\hline
+    $l\neq0$ & $\pm\infty$ & $\pm\infty$\\
+    $\pm\infty$ & $\pm\infty$ & $\infty$\\
+    $0$ & $\pm\infty$ & $\boxed{0\cdot\infty}$
+  \end{tabular}
 \end{center}
 
 \subsubsection{Quoziente}
 \begin{center}
-	\begin{tabular}{ccc}
-		$\boldsymbol{\lim f(x)}$ & $\boldsymbol{\lim g(x)}$ &
-			$\boldsymbol{\lim\frac{f(x)}{g(x)}}$\\\hline
-		$l$ & $\pm\infty$ & $0$\\
-		$\pm\infty$ & $l\neq0$ & $\pm\infty$\\
-		$\pm\infty$ & $\pm\infty$ & $\boxed{\frac{\pm\infty}{\pm\infty}}$\\
-		$0$ & $0$ & $\boxed{\frac{0}{0}}$
-	\end{tabular}
+  \begin{tabular}{ccc}
+    $\boldsymbol{\lim f(x)}$ & $\boldsymbol{\lim g(x)}$ &
+    $\boldsymbol{\lim\frac{f(x)}{g(x)}}$\\\hline
+    $l$ & $\pm\infty$ & $0$\\
+    $\pm\infty$ & $l\neq0$ & $\pm\infty$\\
+    $\pm\infty$ & $\pm\infty$ & $\boxed{\frac{\pm\infty}{\pm\infty}}$\\
+    $0$ & $0$ & $\boxed{\frac{0}{0}}$
+  \end{tabular}
 \end{center}
 
 \subsubsection{Potenza}
 \begin{center}
-	\begin{tabular}{ccc}
-		$\boldsymbol{\lim f(x)}$ & $\boldsymbol{\lim g(x)}$ &
-		$\boldsymbol{\lim[f(x)]^{g(x)}}$\\\hline
-		$l$ & $\pm\infty$ & $\pm\infty$\\
-		$1$ & $\pm\infty$ & $\boxed{1^{\pm\infty}}$\\
-		$+\infty$ & $0$ & $\boxed{+\infty^0}$\\
-		$0$ & $0$ & $\boxed{0^0}$
-	\end{tabular}
+  \begin{tabular}{ccc}
+    $\boldsymbol{\lim f(x)}$ & $\boldsymbol{\lim g(x)}$ &
+    $\boldsymbol{\lim[f(x)]^{g(x)}}$\\\hline
+    $l$ & $\pm\infty$ & $\pm\infty$\\
+    $1$ & $\pm\infty$ & $\boxed{1^{\pm\infty}}$\\
+    $+\infty$ & $0$ & $\boxed{+\infty^0}$\\
+    $0$ & $0$ & $\boxed{0^0}$
+  \end{tabular}
 \end{center}
 
 Per la risoluzione delle forme indeterminate, si utilizzino i limiti di una funzione razionale o 
@@ -509,100 +509,100 @@ limiti notevoli.
 
 \subsection{Limite finito di una funzione razionale}
 \begin{limiteFinitoFunzRaz}
-	Quando $x$ tende a $x_0$, il limite di un polinomio coincide con il limite calcolato con 
-	sostituzione.
+  Quando $x$ tende a $x_0$, il limite di un polinomio coincide con il limite calcolato con 
+  sostituzione.
 \end{limiteFinitoFunzRaz}
 
 Prendiamo ad esempio
 \begin{equation*}
-\lim\limits_{x\to3^+}\frac{x^2-5x+6}{(x-3)^2}
+  \lim\limits_{x\to3^+}\frac{x^2-5x+6}{(x-3)^2}
 \end{equation*}
 Se provassimo a sostituire otterremmo
 \begin{equation*}
-\lim\limits_{x\to3^+}\frac{x^2-5x+6}{(x-3)^2} = \frac{0}{0}
+  \lim\limits_{x\to3^+}\frac{x^2-5x+6}{(x-3)^2} = \frac{0}{0}
 \end{equation*}
 che è una forma indeterminata. In questa situazione si usa \hyperref[ruffini]{Ruffini} per ridurlo di
 grado e ottenere
 \begin{equation*}
-\lim\limits_{x\to3^+}\frac{x^2-5x+6}{(x-3)^2} = 
-\lim\limits_{x\to3^+}\frac{\cancel{(x-3)}(x-2)}{\cancel{(x-3)}(x-2)}
+  \lim\limits_{x\to3^+}\frac{x^2-5x+6}{(x-3)^2} = 
+  \lim\limits_{x\to3^+}\frac{\cancel{(x-3)}(x-2)}{\cancel{(x-3)}(x-2)}
 \end{equation*}
 e per i teoremi dei limiti
 \begin{equation*}
-\lim\limits_{x\to3^+}\frac{(x-2)}{(x-2)} = +\infty
+  \lim\limits_{x\to3^+}\frac{(x-2)}{(x-2)} = +\infty
 \end{equation*}
 In generale quindi
 \begin{equation*}
-\lim\limits_{x\to x_0}\frac{p(x)}{q(x)} \overset{\left[\frac{0}{0}\right]}{=} =
-\lim\limits_{x\to x_0}\frac{p_1(x)}{q_1(x)} = \dotsb = \begin{cases}
-\text{Ruffini se }\frac{0}{0}\\
-l
-\end{cases}
+  \lim\limits_{x\to x_0}\frac{p(x)}{q(x)} \overset{\left[\frac{0}{0}\right]}{=} =
+  \lim\limits_{x\to x_0}\frac{p_1(x)}{q_1(x)} = \dotsb = \begin{cases}
+    \text{Ruffini se }\frac{0}{0}\\
+    l
+  \end{cases}
 \end{equation*}
 
 \subsection{Limite all'infinito di una funzione razionale}
 \hypertarget{teor:limiteInfinitoFunzRaz}{}
 \begin{limiteInfinitoFunzRaz}
-	Quando $x$ tende a $\pm\infty$, il limte di un polinomio coincide con il limite del suo monomio di
-	grado più alto.
+  Quando $x$ tende a $\pm\infty$, il limte di un polinomio coincide con il limite del suo monomio di
+  grado più alto.
 \end{limiteInfinitoFunzRaz}
 Ad esempio consideriamo
 \begin{equation*}
-\lim\limits_{x\to+\infty}(3x^3-5x^2+4x+1)
+  \lim\limits_{x\to+\infty}(3x^3-5x^2+4x+1)
 \end{equation*}
 Poiché per $x\neq0$
 \begin{equation*}
-3x^3-5x^2+4x+1=x^3\left(3-\frac{5}{x}+\frac{4}{x^2}+\frac{1}{x^3}\right)
+  3x^3-5x^2+4x+1=x^3\left(3-\frac{5}{x}+\frac{4}{x^2}+\frac{1}{x^3}\right)
 \end{equation*}
 si ha
 \begin{equation*}
-\lim\limits_{x\to+\infty}\left(3-\frac{5}{x}+\frac{4}{x^2}+\frac{1}{x^3}\right) = 3
+  \lim\limits_{x\to+\infty}\left(3-\frac{5}{x}+\frac{4}{x^2}+\frac{1}{x^3}\right) = 3
 \end{equation*}
 allora
 \begin{equation*}
-\lim\limits_{x\to+\infty}(3x^3-5x^2+4x+1)=\lim\limits_{x\to+\infty}(3x^3) = +\infty
+  \lim\limits_{x\to+\infty}(3x^3-5x^2+4x+1)=\lim\limits_{x\to+\infty}(3x^3) = +\infty
 \end{equation*}
 Se invece abbiamo una frazione, abbiamo
 \begin{align*}
-&\lim\limits_{x\to\infty}\frac{a_nx^n+a_{n-1}x^{n-1}+\dotsb+a_0}{b_mx^m+b_{m-1}x^{m-1}+\dotsb+b_0}=
-\lim\limits_{x\to\infty}\frac{a_nx^n}{b_mx^m} = \\
-&\lim\limits_{x\to\infty}\left(\frac{a_n}{b_m}x^{n-m}\right) =
-\begin{dcases}
-\infty, &\text{se } n > m\\
-\frac{a_n}{b_n}, &\text{se } n = m\\
-0, &\text{se } n < m
-\end{dcases}
+  &\lim\limits_{x\to\infty}\frac{a_nx^n+a_{n-1}x^{n-1}+\dotsb+a_0}{b_mx^m+b_{m-1}x^{m-1}+\dotsb+b_0}=
+  \lim\limits_{x\to\infty}\frac{a_nx^n}{b_mx^m} = \\
+  &\lim\limits_{x\to\infty}\left(\frac{a_n}{b_m}x^{n-m}\right) =
+  \begin{dcases}
+    \infty, &\text{se } n > m\\
+    \frac{a_n}{b_n}, &\text{se } n = m\\
+    0, &\text{se } n < m
+  \end{dcases}
 \end{align*}
 
 \subsection{Limiti di funzioni irrazionali}
 Creiamo questa sottosezione per la particolarità che i limiti con radicali possono avere. Prendiamo ad
 esempio
 \begin{equation*}
-\lim\limits_{x\to-\infty}\left(\sqrt{4x^2+1}-x\right)
+  \lim\limits_{x\to-\infty}\left(\sqrt{4x^2+1}-x\right)
 \end{equation*}
 Notiamo subito che se proviamo a sostituire, otteniamo la forma indeterminata
 \begin{equation*}
--\infty+\infty
+  -\infty+\infty
 \end{equation*}
 Per risolvere questo tipo di limite, isoliamo il termine di grado massimo (quello che cresce più 
 velocemente). Quindi
 \begin{equation*}
-\lim\limits_{x\to+\infty}\left(\sqrt{4x^2+1}-x\right) = 
-\lim\limits_{x\to+\infty}\left(\sqrt{x^2\left(4+\frac{1}{x^2}\right)}-x\right)
+  \lim\limits_{x\to+\infty}\left(\sqrt{4x^2+1}-x\right) = 
+  \lim\limits_{x\to+\infty}\left(\sqrt{x^2\left(4+\frac{1}{x^2}\right)}-x\right)
 \end{equation*}
 Ora possiamo portare fuori $x^2$ dalla radice
 \begin{equation*}
-\lim\limits_{x\to+\infty}\left(\sqrt{x^2\left(4+\frac{1}{x^2}\right)}-x\right) =
-\lim\limits_{x\to+\infty}\left(\abs{x}\sqrt{4+\frac{1}{x^2}}-x\right)
+  \lim\limits_{x\to+\infty}\left(\sqrt{x^2\left(4+\frac{1}{x^2}\right)}-x\right) =
+  \lim\limits_{x\to+\infty}\left(\abs{x}\sqrt{4+\frac{1}{x^2}}-x\right)
 \end{equation*}
 Ora possiamo sostituire $\abs{x} = x$ perché siamo in un intorno di $+\infty$. Questo perché sono 
 numeri sicuramente $>0$ quindi il loro valore assoluto è esattamente lo stesso loro. (Se fossimo in un
 $I(-\infty)$ sostituiremmo $\abs{x} = -x$). Proseguendo nella risoluzione
 \begin{align*}
-&\lim\limits_{x\to+\infty}\left(\abs{x}\sqrt{4+\frac{1}{x^2}}-x\right)=
-\lim\limits_{x\to+\infty}\overbrace{x}^{\mathclap{\to+\infty}}
-\overbrace{\left(\sqrt{4+\frac{1}{x^2}}-x\right)}^{\mathclap{\to\sqrt{4+0}-1\to2-1\to1}}=\\
-&+\infty\cdot1 = \boxed{+\infty}
+  &\lim\limits_{x\to+\infty}\left(\abs{x}\sqrt{4+\frac{1}{x^2}}-x\right)=
+  \lim\limits_{x\to+\infty}\overbrace{x}^{\mathclap{\to+\infty}}
+  \overbrace{\left(\sqrt{4+\frac{1}{x^2}}-x\right)}^{\mathclap{\to\sqrt{4+0}-1\to2-1\to1}}=\\
+  &+\infty\cdot1 = \boxed{+\infty}
 \end{align*}
 In generale, quindi, si deve sempre isolare il termine che cresce più rapidamente utilizzando a proprio
 favore l'operatore $\lim$.
@@ -610,17 +610,17 @@ favore l'operatore $\lim$.
 \subsection{Limiti notevoli}
 Ci sono dei limiti particolari che è estremamente comodo conoscere a memoria. Principalmente sono 2
 \begin{equation*}
-\lim\limits_{x\to0}\frac{\sin x}{x}=1\qquad\lim\limits_{x\to+\infty}\left(1+\frac{1}{x}\right)^x=e
+  \lim\limits_{x\to0}\frac{\sin x}{x}=1\qquad\lim\limits_{x\to+\infty}\left(1+\frac{1}{x}\right)^x=e
 \end{equation*}
 Da questi due se ne possono ricavare altri 6. Dal primo
 \begin{equation*}
-\lim\limits_{x\to0}\frac{\tan x}{x}=1\quad\lim\limits_{x\to0}\frac{1-\cos x}{x^2}=\frac{1}{2}\quad
-\lim\limits_{x\to0}\frac{1-\cos x}{x}=0
+  \lim\limits_{x\to0}\frac{\tan x}{x}=1\quad\lim\limits_{x\to0}\frac{1-\cos x}{x^2}=\frac{1}{2}\quad
+  \lim\limits_{x\to0}\frac{1-\cos x}{x}=0
 \end{equation*}
 Dal secondo
 \begin{equation*}
-\lim\limits_{x\to0}(1+x)^{\frac{1}{x}}=e\,\lim\limits_{x\to0}\frac{a^x-1}{x}=\ln a\,
-\lim\limits_{x\to0}\frac{\log_a(x+1)}{x}=\log_a e
+  \lim\limits_{x\to0}(1+x)^{\frac{1}{x}}=e\,\lim\limits_{x\to0}\frac{a^x-1}{x}=\ln a\,
+  \lim\limits_{x\to0}\frac{\log_a(x+1)}{x}=\log_a e
 \end{equation*}
 Infine ne esiste un ultimo che è molto simile al primo ma non identico
 \begin{equation*}
@@ -631,47 +631,47 @@ Infine ne esiste un ultimo che è molto simile al primo ma non identico
 \subsection{Consigli nella risoluzione di limiti deducibili}
 Prendiamo ad esempio
 \begin{equation*}
-\lim\limits_{x\to4^-}\frac{1}{\log_2 x -2}
+  \lim\limits_{x\to4^-}\frac{1}{\log_2 x -2}
 \end{equation*}
 Per trovare questo limite, sostituiamo $x = 4$ nella funzione. Otteniamo
 \begin{equation*}
-\lim\limits_{x\to4^-}\frac{1}{\log_2 2} \to \lim\limits_{x\to4^-}\frac{1}{1} = 1
+  \lim\limits_{x\to4^-}\frac{1}{\log_2 2} \to \lim\limits_{x\to4^-}\frac{1}{1} = 1
 \end{equation*}
 Abbiamo molto semplicemente trovato il limite sostituendo. Spesso però bisogna anche stare attenti 
 da che parte $x$ tende.\\[\baselineskip]
 Prendiamo un altra funzione
 \begin{equation*}
-\lim\limits_{x\to2^+}\sqrt{\log_2\frac{x+2}{x-2}}
+  \lim\limits_{x\to2^+}\sqrt{\log_2\frac{x+2}{x-2}}
 \end{equation*}
 Questa può far paura ma andando con calma, scopriamo che non è affatto difficile. Dobbiamo un po'
 lavorare come con i domini: dall'interno all'esterno. Con valori numerici, sostiuiamo ad $x$ il valore
 di $x_0$
 \begin{equation*}
-\lim\limits_{x\to2^+}x+2 \to 2^++2 \to 4^+
+  \lim\limits_{x\to2^+}x+2 \to 2^++2 \to 4^+
 \end{equation*}
 (Il segno qui non è obbligatorio da mantenere in quanto stiamo lavorando su $4$, se invece stessimo
 usando $0$, è determinante in quanto può cambiare il risultato).
 \begin{equation*}
-\lim\limits_{x\to2^+}x-2 \to 2^+-2 \to 0^+
+  \lim\limits_{x\to2^+}x-2 \to 2^+-2 \to 0^+
 \end{equation*}
 (Il segno invece qui è indispensabile, ora capiremo perché)
 \begin{equation*}
-\lim\limits_{x\to2^+}\frac{x+2}{x-2}\to\lim\limits_{x\to2^+}\frac{4^+}{0^+}\to+\infty
+  \lim\limits_{x\to2^+}\frac{x+2}{x-2}\to\lim\limits_{x\to2^+}\frac{4^+}{0^+}\to+\infty
 \end{equation*}
 Se avessimo avuto $0^-$ non ci saremmo più avvicinati da destra, ma da sinistra e quindi avremmo 
 ottenuto $-\infty$ in quanto il grafico di $\frac{1}{x}$ per $x\to 0^+$ tende all'infinito positivo,
 per $x\to0^-$ a quello negativo. Proseguendo
 \begin{equation*}
-\lim\limits_{x\to2^+}\log_2 +\infty \to +\infty
+  \lim\limits_{x\to2^+}\log_2 +\infty \to +\infty
 \end{equation*}
 Questo lo si può capire molto facilmente dal grafico (si veda sopra). Ecco perché conoscere i grafici
 generali delle funzioni più comuni è molto comodo.
 \begin{equation*}
-\lim\limits_{x\to2^+}\sqrt{+\infty}\to+\infty
+  \lim\limits_{x\to2^+}\sqrt{+\infty}\to+\infty
 \end{equation*}
 Quindi, con questo
 \begin{equation*}
-\lim\limits_{x\to2^+}\sqrt{\log_2\frac{x+2}{x-2}} = +\infty
+  \lim\limits_{x\to2^+}\sqrt{\log_2\frac{x+2}{x-2}} = +\infty
 \end{equation*}
 In definitiva quindi il consiglio è di andare con molta calma e ricordarsi le possibilità che la
 funzione $\lim$ offre.

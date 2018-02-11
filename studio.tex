@@ -170,70 +170,72 @@ Prima di disegnare, verifichiamo che i conti siano corretti andando a calcolare 
 funzione
 \begin{center}
   \begin{tikzpicture}
-     \drawSign{(\x^2-5*\x+4)/(\x-5+0.001)}{-1}{7}{0.25}{5}
-  \end{tikzpicture}
-\end{center}
-Vediamo che effettivamente le informazioni degli asintoti e quella del segno combaciano. Prima
-di $5$ la funzione tende a $-\infty$ quindi è negativa, poi diventa positiva. Vediamo anche che
-$1$ e $4$ sono punti d'intersezione e quindi che il segno cambia. Disegnamo ciò che sappiamo
-\begin{center}
-  \begin{tikzpicture}
-    \begin{axis}[xmin=-3,ymin=-5,xmax=10,ymax=20]
-      \coordinate (O) at (0,0);
-      \node[fill=white,circle,inner sep=0pt] (O-label) at ($(O)+(-135:10pt)$) {$O$};
-      \addplot[green,domain=-5:18] {x};
-      \addplot[red,thick,samples=51,unbounded coords=jump,domain=-5:-2.5] {(x^2-5*x+4)/(x-5)};
-      \addplot[red,thick,samples=51,unbounded coords=jump,domain=5.1:5.4] {(x^2-5*x+4)/(x-5)};
-      \addplot[red,thick,samples=51,unbounded coords=jump,domain=15:17.7] {(x^2-5*x+4)/(x-5)};
-      \addplot[red,thick,samples=51,unbounded coords=jump,domain=4.5:4.9] {(x^2-5*x+4)/(x-5)};
-      \addplot+[blue,mark=none] coordinates {(5,-5) (5,20)};
-      \LabelPoint[mark=*,mark size=1.5][above]{4}{0}{$A$}
-      \LabelPoint[mark=*,mark size=1.5][above]{1}{0}{$B$}
-      \LabelPoint[mark=*,mark size=1.5][below right]{0}{-4/5}{$C$}
-    \end{axis}
-  \end{tikzpicture}
-\end{center}
-Questo rapido grafico contiene le informazioni che abbiamo già trovato, i due asintoti e il segno.
-Sono anche riporati i punti di intersezione precedentemente trovati.\\
-A questo punto vediamo che la funzione è continua in quanto è polinomiale. Andiamo a vedere se
-è derivabile e qual è la sua derivata prima.
-\begin{align*}
-  f'(x) &= \frac{\Dif(x^2-5x+4)(x-5)-(x^2-5x+4)\Dif(x-5)}{(x-5)^2} =\\
-        &= \frac{(2x-5)(x-5)-(x^2-5x+4)}{(x-5)^2} = \frac{x^2-10x+21}{(x-5)^2}
-\end{align*}
-Trovata la derivata, studiando il segno si vede che
-\begin{center}
-  \begin{tikzpicture}
-    \drawSign[scale=0.75]{(\x^2-10*\x+21)/(\x+5.001)^2}{0}{10}{0.25}{}
-  \end{tikzpicture}
-\end{center}
-Questo significa che in $x=3$ e in $x=7$ cambia segno. La funzione da crescente diventa decrescente
-e viceversa. Questo significa che se la derivata calcolata in quel punto è pari a $0$, sono
-un punto di minimo e uno di massimo.
-\begin{align*}
-  f'(3) &= \frac{9-30+21}{(3-5)^2} = 0\\
-  f'(7) &= \frac{49-70+21}{(7-5)^2} = 0
-\end{align*}
-E quindi in $3$ e $7$ si hanno rispettivamente un punto di massimo e uno di minimo. Calcoliamone il
-valore della $y$ e completiamo lo studio
-\begin{equation*}
-  m \left( 3,1 \right)\quad M \left( 7,9 \right)
-\end{equation*}
-Quindi il disegno ora completo è
-\begin{center}
-  \begin{tikzpicture}
-    \begin{axis}[xmin=-3,ymin=-5,xmax=10,ymax=20]
-      \coordinate (O) at (0,0);
-      \node[fill=white,circle,inner sep=0pt] (O-label) at ($(O)+(-135:10pt)$) {$O$};
-      \addplot[green,domain=-5:18] {x};
-      \addplot[red,thick,samples=51,unbounded coords=jump,domain=-5:4.90] {(x^2-5*x+4)/(x-5)};
-      \addplot[red,thick,samples=51,unbounded coords=jump,domain=5.10:18] {(x^2-5*x+4)/(x-5)};
-      \addplot+[blue,mark=none] coordinates {(5,-5) (5,20)};
-      \LabelPoint[mark=*,mark size=1.5][above]{4}{0}{$A$}
-      \LabelPoint[mark=*,mark size=1.5][above]{1}{0}{$B$}
-      \LabelPoint[mark=*,mark size=1.5][below right]{0}{-4/5}{$C$}
-      \LabelPoint[mark=*,mark size=1.5][above]{3}{1}{$m$}
-      \LabelPoint[mark=*,mark size=1.5][below left]{7}{9}{$M$}
-    \end{axis}
-  \end{tikzpicture}
-\end{center}
+    \drawSign{(\x^2-5*\x+4)/(\x-5+0.001)}{-1}{7}{0.25}{5}
+    \end{tikzpicture}
+  \end{center}
+  Vediamo che effettivamente le informazioni degli asintoti e quella del segno combaciano. Prima
+  di $5$ la funzione tende a $-\infty$ quindi è negativa, poi diventa positiva. Vediamo anche che
+  $1$ e $4$ sono punti d'intersezione e quindi che il segno cambia. Disegnamo ciò che sappiamo
+  \begin{center}
+    \begin{tikzpicture}
+      \begin{axis}[xmin=-3,ymin=-5,xmax=10,ymax=20]
+        \coordinate (O) at (0,0);
+        \node[fill=white,circle,inner sep=0pt] (O-label) at ($(O)+(-135:10pt)$) {$O$};
+        \addplot[green,domain=-5:18] {x};
+        \addplot[red,thick,samples=51,unbounded coords=jump,domain=-5:-2.5] {(x^2-5*x+4)/(x-5)};
+        \addplot[red,thick,samples=51,unbounded coords=jump,domain=5.1:5.4] {(x^2-5*x+4)/(x-5)};
+        \addplot[red,thick,samples=51,unbounded coords=jump,domain=15:17.7] {(x^2-5*x+4)/(x-5)};
+        \addplot[red,thick,samples=51,unbounded coords=jump,domain=4.5:4.9] {(x^2-5*x+4)/(x-5)};
+        \addplot+[blue,mark=none] coordinates {(5,-5) (5,20)};
+        \LabelPoint[mark=*,mark size=1.5][above]{4}{0}{$A$}
+        \LabelPoint[mark=*,mark size=1.5][above]{1}{0}{$B$}
+        \LabelPoint[mark=*,mark size=1.5][below right]{0}{-4/5}{$C$}
+      \end{axis}
+    \end{tikzpicture}
+  \end{center}
+  Questo rapido grafico contiene le informazioni che abbiamo già trovato, i due asintoti e il segno.
+  Sono anche riporati i punti di intersezione precedentemente trovati.\\
+  A questo punto vediamo che la funzione è continua in quanto è polinomiale. Andiamo a vedere se
+  è derivabile e qual è la sua derivata prima.
+  \begin{align*}
+    f'(x) &= \frac{\Dif(x^2-5x+4)(x-5)-(x^2-5x+4)\Dif(x-5)}{(x-5)^2} =\\
+          &= \frac{(2x-5)(x-5)-(x^2-5x+4)}{(x-5)^2} = \frac{x^2-10x+21}{(x-5)^2}
+  \end{align*}
+  Trovata la derivata, studiando il segno si vede che
+  \begin{center}
+    \begin{tikzpicture}
+      \drawSign[scale=0.75]{(\x^2-10*\x+21)/(\x+5.001)^2}{0}{10}{0.25}{}
+      \end{tikzpicture}
+    \end{center}
+    Questo significa che in $x=3$ e in $x=7$ cambia segno. La funzione da crescente diventa decrescente
+    e viceversa. Questo significa che se la derivata calcolata in quel punto è pari a $0$, sono
+    un punto di minimo e uno di massimo.
+    \begin{align*}
+      f'(3) &= \frac{9-30+21}{(3-5)^2} = 0\\
+      f'(7) &= \frac{49-70+21}{(7-5)^2} = 0
+    \end{align*}
+    E quindi in $3$ e $7$ si hanno rispettivamente un punto di massimo e uno di minimo. Calcoliamone il
+    valore della $y$ e completiamo lo studio
+    \begin{equation*}
+      m \left( 3,1 \right)\quad M \left( 7,9 \right)
+    \end{equation*}
+    Quindi il disegno ora completo è
+    \begin{center}
+      \begin{tikzpicture}
+        \begin{axis}[xmin=-3,ymin=-5,xmax=10,ymax=20]
+          \coordinate (O) at (0,0);
+          \node[fill=white,circle,inner sep=0pt] (O-label) at ($(O)+(-135:10pt)$) {$O$};
+          \addplot[green,domain=-5:18] {x};
+          \addplot[red,thick,samples=91,smooth,unbounded coords=jump,domain=-5:4.90] 
+            {(x^2-5*x+4)/(x-5)};
+          \addplot[red,thick,samples=91,smooth,unbounded coords=jump,domain=5.10:18] 
+            {(x^2-5*x+4)/(x-5)};
+          \addplot+[blue,mark=none] coordinates {(5,-5) (5,20)};
+          \LabelPoint[mark=*,mark size=1.5][above]{4}{0}{$A$}
+          \LabelPoint[mark=*,mark size=1.5][above]{1}{0}{$B$}
+          \LabelPoint[mark=*,mark size=1.5][below right]{0}{-4/5}{$C$}
+          \LabelPoint[mark=*,mark size=1.5][above]{3}{1}{$m$}
+          \LabelPoint[mark=*,mark size=1.5][below left]{7}{9}{$M$}
+        \end{axis}
+      \end{tikzpicture}
+    \end{center}

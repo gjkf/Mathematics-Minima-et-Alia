@@ -51,7 +51,7 @@ ad esempio un grafico
 
     \coordinate (spypoint) at (6,1);
     \spy [blue, size=2.5cm] on ($(Q)!0.5!(L)$) in node[fill=white] at (spypoint);
-  \end{tikzpicture}
+\end{tikzpicture}
 \end{center}
 Come vediamo dalla figura, possiamo definire un punto $P(x_0,f(x_0))$ appartenente a $f(x)$ e
 un altro punto $Q(x_0+\Delta x, f(x_0+\Delta x))$ appartenente sempre alla curva. $L$ invece si 
@@ -113,13 +113,13 @@ principali funzioni composte
 \begin{center}
   \begin{xtabular}{M{4cm}|M{4cm}}
     $\int {[f(x)]}^\alpha\,\dif x = \frac{{[f(x)]}^{\alpha+1}}{\alpha+1}+c$ & 
-      $\int\frac{f'(x)}{\sin^2 f(x)}\,\dif x = -\cot f(x) +c$\\ 
+    $\int\frac{f'(x)}{\sin^2 f(x)}\,\dif x = -\cot f(x) +c$\\ 
     $\int \frac{f'(x)}{f(x)}\,\dif x = \ln\abs{f(x)}+c$ &
-      $\int f'(x)a^{f(x)}\,\dif x = a^{f(x)}\log_a e + c$\\ 
+    $\int f'(x)a^{f(x)}\,\dif x = a^{f(x)}\log_a e + c$\\ 
     $\int f'(x)\sin f(x)\,\dif x = -\cos f(x)+c$ &
-      $\int f'(x)\cos f(x)\,\dif x = \sin f(x) + c$\\ 
+    $\int f'(x)\cos f(x)\,\dif x = \sin f(x) + c$\\ 
     $\int \frac{f'(x)}{\sqrt{1-{[f(x)]}^2}}\,\dif x = \arcsin f(x) + c$ &
-      $\int \frac{f'(x)}{\cos^2 f(x)}\,\dif x = \tan f(x) + c$\\ 
+    $\int \frac{f'(x)}{\cos^2 f(x)}\,\dif x = \tan f(x) + c$\\ 
     $\int \frac{f'(x)}{1+{[f(x)]}^2}\,\dif x = \arctan f(x) + c$ & \\ 
   \end{xtabular}
 \end{center}
@@ -274,3 +274,208 @@ Torniamo a sostituire per ottenere
 La grossa difficoltà con l'integrazione per sostituzione è la scelta della funzione sostituente.
 In generale se è necessario questo passaggio, la funzione sostitutiva viene indicata in quanto non
 ci sono modi chiari e semplici per identficarla.
+
+\subsection{Integrali definiti}
+Ipotizziamo che si voglia calcolare l'area colorata del seguente grafico
+\begin{center}
+  \begin{tikzpicture}
+    \begin{axis}[xmin=0,ymin=0,xmax=1.5,ymax=2]
+      \coordinate (O) at (0,0);
+      \node[fill=white,circle,inner sep=0pt] (O-label) at ($(O)+(-135:10pt)$) {$O$};
+      \addplot[name path=f,thick,blue,domain=0:2] {x^2};
+      \path[name path = axis] (0,0) -- (1,0);
+
+      \addplot[
+        thick,
+        color=red,
+        fill=red,
+        fill opacity=0.3,
+        domain=0:1
+        ]
+        fill between[
+        of=f and axis,
+        soft clip={domain=0:1}
+        ];
+    \end{axis}
+  \end{tikzpicture}
+\end{center}
+Come faremmo? Questo esatto problema lo aveva anche Archimede che inventò il così detto 
+\textbf{metodo di esaustione} che consiste nel suddividere il grafico in tanti piccoli rettangoli.
+Prendiamo ora un grafico casuale
+\begin{center}
+  \begin{tikzpicture}
+    \begin{axis}[xmin=0,ymin=0,xmax=7,ymax=7]
+      \coordinate (O) at (0,0);
+      \node[fill=white,circle,inner sep=0pt] (O-label) at ($(O)+(-135:10pt)$) {$O$};
+      \addplot[red,thick,domain=1:6,samples=50,smooth] {sin(deg(x-2))*(x-5)+3};
+      \draw[red,thick] (1,6.35) -- (1,0);
+      \draw[red,thick] (6,2.24) -- (6,0);
+    \end{axis}
+  \end{tikzpicture}
+\end{center}
+Questa figura è definita \textbf{trapezoide mistilineo} in quanto è composto dall'asse $x$,
+dai segmenti e dalla funzione. Formalmente è
+\begin{equation*}
+  T = \left\{ (x,y)\suchthat a\leq x\leq b\land0\leq y\leq f(x) \right\}
+\end{equation*}
+dove $a$ e $b$ sono i limiti della funzione. Noi possiamo quindi trovare dei rettangoli che
+approssimano l'area
+\begin{center}
+  \begin{tikzpicture}
+    \begin{axis}[xmin=0,ymin=0,xmax=7,ymax=7]
+      \coordinate (O) at (0,0);
+      \node[fill=white,circle,inner sep=0pt] (O-label) at ($(O)+(-135:10pt)$) {$O$};
+      \addplot[red,thick,domain=1:6,samples=50,smooth] {sin(deg(x-2))*(x-5)+3};
+      \draw[red,thick] (1,6.35) -- (1,0);
+      \draw[red,thick] (6,2.24) -- (6,0);
+      \addplot[fill=yellow,fill opacity=0.5,integral=1:6] {sin(deg(x-2))*(x-5)+3};
+    \end{axis}
+  \end{tikzpicture}
+\end{center}
+E aumentando il numero di rettangoli si aumenta la precisione
+\begin{center}
+  \begin{tikzpicture}
+    \begin{axis}[xmin=0,ymin=0,xmax=7,ymax=7]
+      \coordinate (O) at (0,0);
+      \node[fill=white,circle,inner sep=0pt] (O-label) at ($(O)+(-135:10pt)$) {$O$};
+      \draw[red,thick] (1,6.35) -- (1,0);
+      \draw[red,thick] (6,2.24) -- (6,0);
+      \addplot[fill=yellow,fill opacity=0.5,integral=1:6,integral segments=10] 
+        {sin(deg(x-2))*(x-5)+3};
+      %\addplot [domain=1:6,draw=red,fill=red!10,const plot mark right, samples=6]
+      %  {sin(deg(x-2))*(x-5)+3}\closedcycle;
+      %\addplot [domain=1:6,draw=green, fill=green!05, ybar interval, samples=6]
+      %  {sin(deg(x-2))*(x-5)+3}\closedcycle;
+      \addplot[red,thick,domain=1:6,samples=50,smooth] {sin(deg(x-2))*(x-5)+3};
+    \end{axis}
+  \end{tikzpicture}
+\end{center}
+Abbiamo quindi $n$ possibili rettangoli che hanno coordinate $x_i$. Come si può vedere dal disegno
+ci sono delle parti in difetto e altre in eccesso. Quindi se dividiamo la funzione in tanti piccoli
+sotto-intervalli, essi contengono un massimo e un minimo
+\begin{equation*}
+  m = \min_{x\in[x_1\,\ldots,x_n]}f(x)\quad M = \max_{x\in[x_1,\ldots,x_n]}f(x)
+\end{equation*}
+Se ora andiamo a calcolare l'area dei rettangoli in eccesso ed in difetto otteniamo
+\begin{equation*}
+  s = \sum\limits^{n}_{i=1} m_i(x_i-x_{i-1}) 
+\end{equation*}
+e
+\begin{equation*}
+  S =\sum\limits^{n}_{i=1} M_i(x_i-x_{i-1})
+\end{equation*}
+È palese che $s<S$ e che $s < \mathcal{A}_f < S$. Dato che le somme sono limitate, ammettono limite
+e quindi
+\begin{equation*}
+  \lim\limits_{n \to \infty} s_n = \lim\limits_{n \to \infty} S_n = \mathcal{A}_f
+\end{equation*}
+Si definisce quindi
+\begin{equation*}
+  \int\limits_a^b f(x)\,\dif x=\lim\limits_{n\to\infty}\sum\limits^{n}_{i=1}m_i\Delta x=
+  \mathcal{A}_f
+\end{equation*}
+Si noti che se la funzione è sempre postiva, l'integrale definito calcola l'area della funzione,
+altrimenti calcola la differenza di aree tra la parte positiva della funzione e quella negativa.
+\subsubsection{Proprietà dell'integrale definito}
+Per l'integrale definito valgono le seguenti caratteristiche
+\begin{align*}
+  \int\limits_a^a f(x)\,\dif x &= 0\quad\forall x\\
+  \int\limits_{a}^{b} f(x)\,\dif x &= - \int\limits_{b}^{a} f(x)\,\dif x
+\end{align*}
+Come per gli integrali indefiniti valgono portare fuori la costante e dividere una somma
+\begin{equation*}
+  \int\limits_{a}^{b} [f(x)+g(x)]\,\dif x = \int\limits_{a}^{b} f(x)\,\dif x + 
+  \int\limits_{a}^{b} g(x)\,\dif x
+\end{equation*}
+Per gli integrali definiti esiste anche la \textbf{proprietà additiva} che consiste nel dividere
+l'intervallo $[a,b]$ in altri intervalli $[a,c_1]$, $[c_1,c_2]$, \ldots fino a $[c_n,b]$. Questo
+permette di scrivere
+\begin{equation*}
+  \int\limits_{a}^{b} f(x)\,\dif x = \int\limits_{a}^{c_1} f(x)\,\dif x + 
+  \int\limits_{c_1}^{c_2} f(x)\,\dif x + \dotsb + \int\limits_{c_n}^{b} f(x)\,\dif x
+\end{equation*}
+Vige anche la proprietà che se $f(x)\leq g(x)$, allora
+\begin{equation*}
+  \int\limits_{a}^{b} f(x)\,\dif x \leq \int\limits_{a}^{b} g(x)\,\dif x
+\end{equation*}
+Questo significa che ad esempio
+\begin{center}
+  \begin{tikzpicture}
+    \begin{axis}[xmin=0,ymin=0,xmax=10,ymax=4]
+      \coordinate (O) at (0,0);
+      \node[fill=white,circle,inner sep=0pt] (O-label) at ($(O)+(-135:10pt)$) {$O$};
+      \addplot[name path=f,red,thick,domain=0:15,smooth,samples=500] {sin(deg(x)/3)+2};
+      \addplot[name path=g,blue,thick,domain=0:15,smooth,samples=500] {cos(deg(x)/2)+2};
+      \addplot fill between[
+        of=f and g,
+        split,
+        every odd segment/.style={color=orange,fill opacity=0.3},
+        every even segment/.style={color=white,fill opacity=0}
+        ];
+      \path[name intersections={of=f and g, by={A,B}}];
+      \filldraw (A) circle(0.1);
+      \filldraw (B) circle(0.1);
+      \node[below] at (A){$f(a)$};
+      \node[below] at (B){$f(b)$};
+    \end{axis}
+  \end{tikzpicture}
+\end{center}
+l'area arancione diventa
+\begin{equation*}
+  \mathcal{A} = \int\limits_{a}^{b} [f(x)-g(x)]\,\dif x
+\end{equation*}
+\subsubsection{Teorema della media}
+\begin{media}\hypertarget{teor:media}
+  Sia $f$ continua in $[a,b]$, allora esiste un $c\in[a,b]$ tale che
+  \begin{equation*}
+    f(c)=\frac{1}{b-a} \int\limits_{a}^{b} f(x)\,\dif x
+  \end{equation*}
+\end{media}
+\subsubsection{Funzione integrale}
+La funzione integrale è una funzione definita come
+\begin{equation*}
+  F(x)=\int\limits_{a}^{x} f(x)\,\dif x
+\end{equation*}
+Molto spesso però in ambito liceale, per evitare possibili confusioni, si sfrutta la caratteristica
+che le variabili negli integrali definiti sono mute (ovvero non cambiano il risultato) e quindi
+viene riscritta
+\begin{equation*}
+  F(x)=\int\limits_{a}^{b} f(t)\,\dif t 
+\end{equation*}
+\subsubsection{Teorema fondamentale del calcolo integrale}
+\begin{tfci}\hypertarget{teor:tfci}
+  Sia $f$ continua in $[a,b]$, la funzione integrale
+  \begin{equation*}
+    F(x) = \int\limits_{a}^{x} f(x)\,\dif x
+  \end{equation*}
+  è derivabile per ogni $x\in[a,b]$ e si ha che $F'(x)=f(x)$ in modo che $F(a)=0$.
+\end{tfci}
+Questo teorema può essere esteso ad una funzione
+\begin{equation*}
+  F(\chi(x),\varphi(x)) = \int\limits_{\chi(x)}^{\varphi(x)} f(x)\,\dif x
+\end{equation*}
+che ha come limiti dell'integrali due funzioni. Qual è la derivata di quest'integrale? Considerato
+il fatto che, presa $x$ si ha che viene a crearsi una funzione composta, per derivare si usa la
+solita regola
+\begin{equation*}
+  F'(\chi(x),\varphi(x)) = f(\varphi(x))\varphi'(x) - f(\chi(x))\chi'(x)
+\end{equation*}
+Da questo teorema poi possiamo ottenere un modo estremamente rapido per calcolare l'integrale 
+definito. Se definiamo
+\begin{equation*}
+  \phi(x) = F(x)+k = \int\limits_{a}^{x} f(x)\,\dif x+k\quad\forall x\in[a,b]
+\end{equation*}
+Abbiamo che
+\begin{equation*}
+  \phi(a) = \int\limits_{a}^{a} f(x)\dif x+k
+\end{equation*}
+e quindi
+\begin{equation*}
+  \phi(x)=\int\limits_{a}^{x} f(x)\,\dif x+\phi(a)
+\end{equation*}
+Ponendo $x=b$
+\begin{equation*}
+  \int\limits_{a}^{b} f(x)\,\dif x = \phi(b)-\phi(a) = \left.\phi(x)\right|_a^b
+\end{equation*}
+Ma dato che $\phi(x)$ è una primitiva $f(x)$ per il teorema, il calcolo dell'integrale
+definito diventa immediato.
