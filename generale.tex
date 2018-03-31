@@ -58,8 +58,8 @@ quanto non è possibile dividere un numero per un irrazionale.
   \frac{c}{\sqrt{a}\pm\sqrt{b}}\cdot\frac{\sqrt{a}\mp\sqrt{b}}{\sqrt{a}\mp\sqrt{b}} =
   \frac{c(\sqrt{a}\mp\sqrt{b})}{a-b} \quad \sqrt{a}\pm\sqrt{b} \neq 0
 \end{align*}
-In generale per razionalizzare si deve moltiplicare per un fattore che annulli il radicale stesso, 
-generalmente quel fattore è il radicale o il suo reciproco.
+Per razionalizzare si deve moltiplicare per un fattore che annulli il radicale stesso, 
+spesso quel fattore è il radicale stesso.
 
 \subsubsection{Radicale di un radicale}
 Per risolvere o semplificare espressioni come $\sqrt{a\pm\sqrt{b}}$ si può usare questa formula
@@ -98,14 +98,6 @@ Le equazioni binomie sono nella forma $x^n = a$. Le loro soluzioni sono le segue
   x &= \sqrt[n]{a} &\quad &\text{Se $n$ è dispari}
 \end{align*}
 
-\subsubsection{Equazioni trinomie e biquadratiche}
-Le equazioni trinomie sono nella forma $ax^{2n} + bx^n + c =0$. Se $n=2$ sono definite biquadratiche.\\
-Per risolverle si ponga $t = x^n$ e si risolva l'equazione di secondo grado che ne deriva
-\begin{equation*}
-  at^2 + bt + c = 0
-\end{equation*}
-e poi si risolva $x^n = y_1$ e $x^n = y_2$.
-
 \subsubsection{Equazioni di secondo grado}
 Le equazioni di secondo grado sono tra le più diffuse. Presentano alcune caratteristiche.\\
 Sia $ax^2 + bx + c = 0$ la nostra equazione, allora $x_1$ e $x_2$ sono le sue soluzioni. Per trovarle
@@ -117,10 +109,18 @@ Conoscendo le soluzioni si può semplificare l'equazione in questo modo
 \begin{equation*}
   ax^2+bx+c=a(x-x_1)(x-x_2)
 \end{equation*}
-Vige anche questa particolarità
+È sempre vero che
 \begin{equation*}
   x_1+x_2 = -\frac{b}{a} \qquad x_1\cdot x_2 = \frac{c}{a}
 \end{equation*}
+
+\subsubsection{Equazioni trinomie e biquadratiche}
+Le equazioni trinomie sono nella forma $ax^{2n} + bx^n + c =0$. Se $n=2$ sono definite biquadratiche.\\
+Per risolverle si ponga $t = x^n$ e si risolva l'equazione di secondo grado che ne deriva
+\begin{equation*}
+  at^2 + bt + c = 0
+\end{equation*}
+e poi si risolva $x^n = t_1$ e $x^n = t_2$.
 
 \subsection{Ruffini}\label{ruffini}
 Il metodo di Ruffini permette di ridurre di grado qualsiasi equazione. Prima di usare questo metodo si
@@ -235,10 +235,10 @@ Verranno qui elencate alcune caratteristiche dei valori assoluti.
 
 \subsubsection{Definizione}
 \begin{equation*}
-  \left\lvert x\right\rvert \Leftrightarrow
+  \left\lvert P(x)\right\rvert \Leftrightarrow
   \begin{cases}
-    x &\text{se } x \geq 0\\
-    -x &\text{se } x < 0
+    P(x) &\text{se } x \geq 0\\
+    -P(x) &\text{se } x < 0
   \end{cases}
 \end{equation*}
 
@@ -252,7 +252,7 @@ Dalla definizione ne derivano alcune proprietà
 \end{alignat*}
 
 \subsubsection{Funzioni e valori assoluti}
-Vengono ora riportati i sistemi risolutivi di funzioni con valori assoluti
+Vengono ora riportati i sistemi risolutivi di disequazioni con valori assoluti
 \begin{align*}
   \left\lvert f(x)\right\rvert \geq g(x) &\Leftrightarrow 
   \begin{cases}
@@ -303,7 +303,8 @@ Qui vengono elencate alcune formule particolari che riguardano la geometria eucl
 \end{alignat*}
 
 \subsubsection{Formula di Erone}
-La formula di Erone permette di trovare l'area di un triangolo qualsiasi conoscendo il semi-perimetro.
+La formula di Erone permette di trovare l'area di un triangolo qualsiasi conoscendo i valori dei 
+tre lati
 \begin{center}
   \begin{tikzpicture}[scale=1.5]
     \coordinate (A) at (0.5,1);
@@ -320,6 +321,9 @@ La formula di Erone permette di trovare l'area di un triangolo qualsiasi conosce
 \begin{equation*}
   S = \sqrt{p(p-a)(p-b)(p-c)}
 \end{equation*}
+\begin{equation*}
+  p = \frac{a+b+c}{2}
+\end{equation*}
 
 \subsubsection{Raggio di una circonferenza inscritta di un triangolo}
 \begin{equation*}
@@ -330,3 +334,4 @@ La formula di Erone permette di trovare l'area di un triangolo qualsiasi conosce
 \begin{equation*}
   R = \frac{a}{2\sin\alpha} = \frac{abc}{4\mathscr{A}}
 \end{equation*}
+$\alpha$: angolo opposto al lato $a$

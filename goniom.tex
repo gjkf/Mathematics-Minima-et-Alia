@@ -7,18 +7,18 @@ Per convenzione, gli angoli vengono definiti a partire dall'asse $x$ e si defini
 proseguono in senso antiorario. Si noti che $2\pi = \ang{360}$.
 \begin{center}
   \begin{tikzpicture}		
-    \tkzInit[xmax=2,ymax=2,xmin=-2,ymin=-2]
-    \tkzGrid
-    \tkzAxeXY
-
-    \coordinate (A) at (1,0);
-    \coordinate (O) at (0,0);
-    \coordinate (P) at (0.866,0.5);
-    \markangle[blue]{O}{P}{A}{0.5}{1.5}{$\alpha$}
-    \draw[dashed, blue] (O) -- (P);	
-    \filldraw (0.866,0.5) circle (0.03)
-      node[blue, above right]{$P(\cos\alpha, \sin\alpha)$};
-    \draw (0,0) circle (1);
+    \begin{axis}[xmin=-2,ymin=-2,xmax=2,ymax=2]
+      \coordinate (O) at (0,0);
+      \node[fill=white,circle,inner sep=0pt] (O-label) at ($(O)+(-135:10pt)$) {$O$};
+      \draw (axis cs:0,0) circle[radius=1];
+      \coordinate (A) at (1,0);
+      \coordinate (O) at (0,0);
+      \coordinate (P) at (0.866,0.5);
+      \markangle[blue]{O}{P}{A}{0.5}{1.5}{$\alpha$}
+      \draw[dashed, blue] (O) -- (P);	
+      \filldraw (0.866,0.5) circle (0.03)
+        node[blue, above right]{$P(\cos\alpha, \sin\alpha)$};
+    \end{axis}
   \end{tikzpicture}
 \end{center}
 Già nella figura identifichiamo le due funzioni fondamentali della goniometria: $\cos$ e $\sin$. Esse,
@@ -61,28 +61,43 @@ La relazione fondamentale è quella che permetterà di trovare molte delle formu
 \subsubsection{$\cos\alpha$}
 \begin{center}
   \begin{tikzpicture}
-    \tkzInit[xmin=-3.5,ymin=-1.5,xmax=3.5,ymax=1.5]
-    \tkzGrid
-    \tkzAxeXY
-    \draw[red, thick, domain=-3.5:3.5, samples=500] plot({\x}, {cos(\x r)});
+    \begin{axis}[xmin=-8,ymin=-1,xmax=8,ymax=1,
+      xtick={-6.28318,-4.7123889,-3.14159,-1.5708,0,1.5708,3.14159,4.7123889,6.28318},
+      xticklabels={$-2\pi$,$-\frac{3\pi}{2}$,$-\pi$,$-\frac{\pi}{2}$,
+      $0$,$\frac{\pi}{2}$,$\pi$,$\frac{3\pi}{2}$,$2\pi$},
+      domain=-2*pi:2*pi]
+      \coordinate (O) at (0,0);
+      \node[fill=white,circle,inner sep=0pt] (O-label) at ($(O)+(-135:10pt)$) {$O$};
+      \addplot[red,thick,smooth,samples=500] {cos(deg(x))}; 
+    \end{axis}
   \end{tikzpicture}
 \end{center}
 \subsubsection{$\sin\alpha$}
 \begin{center}
   \begin{tikzpicture}
-    \tkzInit[xmin=-3.5,ymin=-1.5,xmax=3.5,ymax=1.5]
-    \tkzGrid
-    \tkzAxeXY
-    \draw[red, thick, domain=-3.5:3.5, samples=500] plot({\x}, {sin(\x r)});
+    \begin{axis}[xmin=-8,ymin=-1,xmax=8,ymax=1,
+      xtick={-6.28318,-4.7123889,-3.14159,-1.5708,0,1.5708,3.14159,4.7123889,6.28318},
+      xticklabels={$-2\pi$,$-\frac{3\pi}{2}$,$-\pi$,$-\frac{\pi}{2}$,
+      $0$,$\frac{\pi}{2}$,$\pi$,$\frac{3\pi}{2}$,$2\pi$},
+      domain=-2*pi:2*pi]
+      \coordinate (O) at (0,0);
+      \node[fill=white,circle,inner sep=0pt] (O-label) at ($(O)+(-135:10pt)$) {$O$};
+      \addplot[red,thick,smooth,samples=500] {sin(deg(x))}; 
+    \end{axis}
   \end{tikzpicture}
 \end{center}
 \subsubsection{$\tan\alpha$}
 \begin{center}
   \begin{tikzpicture}
-    \tkzInit[xmin=-2,ymin=-2.5,xmax=2,ymax=2.5]
-    \tkzGrid
-    \tkzAxeXY
-    \draw[red, thick, domain=-1.2:1.2, samples=500] plot({\x}, {tan(\x r)});
+    \begin{axis}[xmin=-8,ymin=-1,xmax=8,ymax=1,
+      xtick={-6.28318,-4.7123889,-3.14159,-1.5708,0,1.5708,3.14159,4.7123889,6.28318},
+      xticklabels={$-2\pi$,$-\frac{3\pi}{2}$,$-\pi$,$-\frac{\pi}{2}$,
+      $0$,$\frac{\pi}{2}$,$\pi$,$\frac{3\pi}{2}$,$2\pi$},
+      domain=-2*pi:2*pi]
+      \coordinate (O) at (0,0);
+      \node[fill=white,circle,inner sep=0pt] (O-label) at ($(O)+(-135:10pt)$) {$O$};
+      \addplot[red,thick,smooth,samples=500,restrict y to domain=-6:6] {tan(deg(x))}; 
+    \end{axis}
   \end{tikzpicture}
 \end{center}
 
@@ -105,26 +120,28 @@ però per le funzioni goniometriche questo non accade infatti
 \end{equation*}
 quando però
 \begin{equation*}
-  \arcsin x:\;{[{-1},{1}]}\mapsto{[{-\frac{\pi}{2}},{\frac{\pi}{2}}]} \quad 
+  \arcsin x:\;{[{-1},{1}]}\mapsto{\left[{-\frac{\pi}{2}},{\frac{\pi}{2}}\right]} \quad 
   \arccos:\;{[{-1},{1}]}\mapsto{[0,{\pi}]}
 \end{equation*}
 I grafici sono i seguenti
 \subsubsection{$\arccos x$}
 \begin{center}
   \begin{tikzpicture}
-    \tkzInit[xmin=-2,ymin=-0.5,xmax=2,ymax=3]
-    \tkzGrid
-    \tkzAxeXY
-    \draw[red, thick, domain=-1:1, samples=500] plot({\x}, {rad(acos(\x))});
+    \begin{axis}[xmin=-1,ymin=0,xmax=1,ymax=3,ytick={1.5707},yticklabels={$\frac{\pi}{2}$}]
+      \coordinate (O) at (0,0);
+      \node[fill=white,circle,inner sep=0pt] (O-label) at ($(O)+(-135:10pt)$) {$O$};
+      \addplot[red,thick,domain=-1:1,smooth,samples=500] {rad(acos(x))};
+    \end{axis}
   \end{tikzpicture}
 \end{center}
 \subsubsection{$\arcsin x$}
 \begin{center}
   \begin{tikzpicture}
-    \tkzInit[xmin=-2,ymin=-2,xmax=2,ymax=2]
-    \tkzGrid
-    \tkzAxeXY
-    \draw[red, thick, domain=-1:1, samples=500] plot({\x}, {rad(asin(\x))});
+    \begin{axis}[xmin=-1,ymin=-2,xmax=1,ymax=2]
+      \coordinate (O) at (0,0);
+      \node[fill=white,circle,inner sep=0pt] (O-label) at ($(O)+(-135:10pt)$) {$O$};
+      \addplot[red,thick,domain=-1:1,smooth,samples=500] {rad(asin(x))};
+    \end{axis}
   \end{tikzpicture}
 \end{center}
 

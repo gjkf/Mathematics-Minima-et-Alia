@@ -35,8 +35,11 @@
 
 \usepackage{tikz}
 \usepackage{pgfplots}
-\pgfplotsset{compat=1.11}
+\pgfplotsset{compat=1.14}
 \usepgfplotslibrary{fillbetween}
+\usepgfplotslibrary{external}
+\tikzsetexternalprefix{figures/}
+\tikzexternalize
 \usetikzlibrary{
   arrows,
   decorations,
@@ -275,7 +278,7 @@ bordercolor=Plum,#1]{#2}}
   \fancyhf{}
   %\fancyfoot[C]{\thepage}
   \fancyfoot[L]{
-    Version 1.1.3 \today
+    Version 2.7182818 \today
   }
   \fancyfoot[R]{
     Copyright \copyright 2017--\the\year$\,$Cossu Davide
@@ -316,7 +319,7 @@ bordercolor=Plum,#1]{#2}}
       \captionsetup{justification=centering}
       \includegraphics[scale=1.7]{colophon/octopus}
       \caption{
-        \textit{`Mi piace ["..."] la libertà della matematica. Se studi fisica 
+        \textit{`Mi piace la libertà della matematica. Se studi fisica 
           o chimica devi descrivere il mondo reale. Ma in matematica puoi 
           costruire le tue strutture. Puoi camminare in mondi creati 
           dall'immaginazione delle persone. Non sei legato al 

@@ -40,7 +40,7 @@ un vettore bidimensionale. Ovvero
 
 \subsubsection{Punto su un segmento in un rapporto $\frac{m}{n}$}
 Siano $m$ e $n$ due rapporti a cui sta un punto rispetto al segmento. Ovvero il punto $P(x_P, y_P)$
-divide il segmento in $n$ parti sulla proiezione della $x$, in $m$ parti su quella di $y$.
+divide il segmento in due parti una lunga $\frac{n}{m+n}$ e l'altra $\frac{m}{m+n}$.
 \begin{equation*}
   P\left(\frac{nx_A+mx_B}{m+n},\frac{ny_A+my_B}{m+n}\right)
 \end{equation*}
@@ -62,7 +62,7 @@ divide il segmento in $n$ parti sulla proiezione della $x$, in $m$ parti su quel
 \end{equation*}
 usando la regola di Sarrus. Questa formula è anche chiamata la formula di Gauss per le aree di 
 poligoni.\\
-Il modo di calcolare il determinante (o valore) della matrice è il seguente (in definitiva andare
+Il modo di calcolare il determinante della matrice è il seguente (andare
 in diagonale dall'alto per ogni elemento della prima colonna moltiplicando gli elementi e quando si
 cambia colonna si sommi. Andare poi dal basso sottraendo).\\
 Il determinante della matrice
@@ -97,8 +97,6 @@ Il determinante della matrice
     \draw [bar=red]  (A-5-1.south west) node[minus=red] {$-$} to (A-3-3.north east);
   \end{tikzpicture}
 \end{center}
-che contiene una ripetizione di tutte le righe tranne l'ultima. Volendo si può "saltare" all'inizio
-per evitare di scrivere la ripetizione però in questo modo si è sicuri di non sbagliare.
 
 \subsection{Rette}\label{subsec:geomanal:retta}
 \begin{center}
@@ -117,7 +115,7 @@ Le rette sono definite da un'equazione che ha due forme equivalenti:
 \begin{equation}\label{eq:retta2}
   ax + by + c = 0
 \end{equation}
-La forma \eqref{eq:retta1} è chiamata \emph{esplicita}, la forma \eqref{eq:retta2} è chiamata 
+La forma~\eqref{eq:retta1} è chiamata \emph{esplicita}, la forma~\eqref{eq:retta2} è chiamata 
 \emph{implicita}. Da queste due forme possiamo evincere che
 \begin{equation*}
   m = -\frac{a}{b} \qquad q = -\frac{c}{b}
@@ -154,6 +152,8 @@ ovvero
 \end{equation*}
 
 \subsubsection{Distanza $d$ tra un punto $P(x_P,y_P)$ e una retta}
+Sia $r$ una retta in forma esplicita $ax+by+c$ e $P$ un punto del piano, allora la distanza minima
+tra le due è
 \begin{equation*}
   d = \frac{\abs{ax_P + by_P +c}}{\sqrt{a^2+b^2}}
 \end{equation*}
@@ -234,8 +234,7 @@ La circonferenza è una conica i cui punti sono tutti equidistanti dal centro $C
     \end{axis}
   \end{tikzpicture}
 \end{center}
-
-Anche le equazioni delle circonferenze hanno 2 forme
+Le equazioni delle circonferenze hanno 2 forme
 \begin{equation*}
   \mathscr{C}:\,(x-\mathcolor{blue}{x_C})^2 + (y-\mathcolor{blue}{y_C})^2 = \mathcolor{red}{r}^2
 \end{equation*}
@@ -310,6 +309,16 @@ Si noti che $k=\frac{\alpha}{\beta}$
       \addplot[red,thick,samples=1000] {x^2};
       \addplot[blue,thick,samples=1000] (x*x,x);
     \end{axis}
+
+    \begin{scope}[shift={(2,-4)}]
+      \draw (0,0) -- ++(2,0);
+      \draw[dashed] (1,3) -- ++(0,-4);
+      \draw[red,thick] plot[domain=0:2] (\x, {(\x-1)^2+1});
+      \filldraw[red] (1,1)
+        node[below left]{$V$};
+      \filldraw[red] (1,1.5)
+        node[above right]{$F$};
+    \end{scope}
   \end{tikzpicture}
 \end{center}
 Una parabola può essere descritta con l'asse focale parallelo all'asse $x$ o all'asse $y$.
@@ -328,8 +337,8 @@ sulla direttrice del punto stesso.
 \subsubsection{Elementi di una parabola con asse focale parallelo a $x$}
 \begin{center}
   \begin{tabular}{c | c}
-    \textbf{Vertice} & $\left(-\dfrac{b}{2a}, -\dfrac{\Delta}{4a}\right)$\\\hline
     \textbf{Fuoco} & $\left(-\dfrac{b}{2a},\dfrac{1-\Delta}{4a}\right)$\\\hline
+    \textbf{Vertice} & $\left(-\dfrac{b}{2a}, -\dfrac{\Delta}{4a}\right)$\\\hline
     \textbf{Direttrice} & $y=-\dfrac{1+\Delta}{4a}$\\\hline
     \textbf{Asse di simmetria} & $x=-\dfrac{b}{2a}$\\\hline
     \textbf{Tangente in un punto} & $\dfrac{y+y_0}{2}=axx_0+b\dfrac{x+x_0}{2}+c$
@@ -339,8 +348,8 @@ sulla direttrice del punto stesso.
 \subsubsection{Elementi di una parabola con asse focale parallelo a $y$}
 \begin{center}
   \begin{tabular}{c | c}
-    \textbf{Vertice} & $\left(-\dfrac{\Delta}{4a},-\dfrac{b}{2a}\right)$\\\hline
     \textbf{Fuoco} & $\left(\dfrac{1-\Delta}{4a},-\dfrac{b}{2a}\right)$\\\hline
+    \textbf{Vertice} & $\left(-\dfrac{\Delta}{4a},-\dfrac{b}{2a}\right)$\\\hline
     \textbf{Direttrice} & $x=-\dfrac{1+\Delta}{4a}$\\\hline
     \textbf{Asse di simmetria} & $y=-\dfrac{b}{2a}$\\\hline
     \textbf{Tangente in un punto} & $\dfrac{x+x_0}{2}=ayy_0+b\dfrac{y+y	_0}{2}+c$
@@ -548,18 +557,16 @@ Se $d\|x$
 \subsection{Ellisse}\label{subsec:geomanal:ellisse}
 \begin{center}
   \begin{tikzpicture}
-    \tkzInit[xmin=-2,ymin=-1,xmax=2,ymax=1]
-    \tkzGrid
-    \tkzAxeXY
-
-    \draw[thick, red] ellipse (2 and 1);
-    \filldraw (-1,0) circle (0.05)
-      node[above]{$F_1$};
-    \filldraw (1,0) circle (0.05)
-      node[above]{$F_2$};
+    \begin{axis}[xmin=-2,ymin=-2,xmax=2,ymax=2]
+      \coordinate (O) at (0,0);
+      \node[fill=white,circle,inner sep=0pt] (O-label) at ($(O)+(-135:10pt)$) {$O$};
+      \draw[thick,red] (axis cs:0,0) ellipse[x radius=2, y radius=1];
+      \LabelPoint[mark=*][above]{-1}{0}{$F_1$}
+      \LabelPoint[mark=*][above]{1}{0}{$F_2$}
+    \end{axis}
   \end{tikzpicture}
 \end{center}
-Un'ellissi ha due assi, uno maggiore uno minore. Loro semi-lunghezze (quindi i semi-assi) si 
+Un'ellissi ha due assi, uno maggiore uno minore. Le loro semi-lunghezze (quindi i semi-assi) si 
 denominano $a$ (che contiene i fuochi) e $b$.\\
 I fuochi sono i due punti tali che preso un punto $P\in\mathscr{E}$, 
 $\overline{PF_1}+\overline{PF_2} = 2a$.
@@ -614,17 +621,17 @@ difficile da ricordare.
 \subsection{Iperbole}
 \begin{center}
   \begin{tikzpicture}
-    \tkzInit[xmin=-2,ymin=-2,xmax=2,ymax=2]
-    \tkzGrid
-    \tkzAxeXY
-
-    \draw[thick, red, domain=-2:2] plot ({0.5*cosh(\x)}, {0.5*sinh(\x)});
-    \draw[thick, red, domain=-2:2] plot ({-0.5*cosh(\x)}, {-0.5*sinh(\x)});
+    \begin{axis}[xmin=-5,ymin=-5,xmax=5,ymax=5]
+      \coordinate (O) at (0,0);
+      \node[fill=white,circle,inner sep=0pt] (O-label) at ($(O)+(-135:10pt)$) {$O$};
+      \addplot[red,thick,domain=-2:2] ({cosh(x)}, {sinh(x)});
+      \addplot[red,thick,domain=-2:2] ({-cosh(x)}, {sinh(x)});
+      \addplot[red,dashed] expression {x};
+      \addplot[red,dashed] expression {-x};
+    \end{axis}
   \end{tikzpicture}
 \end{center}
-
-L'iperbole può essere descritta sia anlaliticamente sia in modo parametrico con le funzioni $\cosh$ e
-$\sinh$.\\
+L'iperbole può essere descritta in più modi.\\
 I fuochi sono i due punti tali che per un punto $P\in\mathscr{I}$, 
 $\lvert \overline{PF_1}-\overline{PF_1}\rvert=2a$.\\
 L'equazione dell'iperbole con i fuochi su $x$ è
@@ -635,7 +642,6 @@ Quella con i fuochi su $y$ è
 \begin{equation*}
   \mathscr{I}:\,\frac{x^2}{a^2}-\frac{y^2}{b^2}=-1
 \end{equation*}
-
 Tra i parametri $a$ e $b$ vige che $a < c$ e $c^2 = a^2+b^2$.
 
 \subsubsection{Asintoti}
@@ -666,7 +672,7 @@ se $F\in x$,
 \end{equation*}
 se $F\in y$.\\
 Questo comporta che $c = a\sqrt{2}$ e che $e=\sqrt{2}$.\\\\
-Può anche essere descritta l'iperbole in base agli asintoti e in tal caso diventa
+Può anche essere descritta l'iperbole da
 \begin{equation*}
   xy=k
 \end{equation*}
@@ -680,7 +686,7 @@ Vengono ora riportate le formule di sdoppiamento che cambiano in base all'equazi
     $\dfrac{x^2}{a^2}-\dfrac{y^2}{b^2}=-1$ & $\dfrac{xx_0}{a^2}-\dfrac{yy_0}{b^2}=-1$\\\hline
     $x^2-y^2=a^2$ & $xx_0-yy_0=a^2$\\\hline
     $x^2-y^2=-a^2$ & $xx_0-yy_0=-a^2$\\\hline
-    $xy=k$ & $\dfrac{xy_0+x_0y}{2}-k=0$
+    $xy=k$ & $xx_0\cdot yy_0=k$
   \end{tabular}
 \end{center}
 

@@ -44,6 +44,41 @@ Il teorema di Lagrange contiene al suo interno anche due lemmi (o corollari)
   \end{equation*}
 \end{lagrangeLemma2}
 
+\subsubsection{Teorema di Cauchy}
+\begin{cauchy}
+  Siano $f$ e $g$ due funzioni continue e definite in $[a,b]$ e derivabili in $]a,b[$ con
+  $g'(x)\neq0\,\forall x\in]a,b[$; allora
+  \begin{equation*}
+    \exists\,c\in]a,b[\suchthat \frac{f'(c)}{g'(c)}=\frac{f(b)-f(a)}{b-a}
+  \end{equation*}
+\end{cauchy}
+Da questo teorema, si ricava uno dei principali teoremi per il calcolo di limiti.
+\begin{hopital}
+  Siano $f$ e $g$ continue in $[a,b]$, derivabile in $]a,b[\setminus\{x_0\}$ con 
+  $g'(x)\neq0\forall x\in]a,b[$ e $f(x_0)=0 \land g(x_0)=0$ o $f(x_0)=\infty\land g(x_0)=\infty$.
+  Se esiste finito
+  \begin{equation*}
+    \lim\limits_{x\to x_0} \frac{f'(x)}{g'(x)}
+  \end{equation*}
+  allora esiste
+  \begin{equation*}
+    \lim\limits_{x\to x_0} \frac{f(x)}{g(x)}
+  \end{equation*}
+  e si ha
+  \begin{equation*}
+    \lim\limits_{x\to x_0} \frac{f'(x)}{g'(x)} = \lim\limits_{x\to x_0} \frac{f(x)}{g(x)}
+  \end{equation*}
+\end{hopital}
+Con questo teorema si possono calcolare tutte le forme indeterminate, con opportune modifiche. 
+Infatti se si ha uno $^0\!/_0$ o un $^\infty\!/_\infty$ si risolve direttamente. Se si ha un
+$0\infty$ si può ricondurre facilmente. Se si ha un $\pm\infty\pm\infty$
+si fa il limite di
+\begin{equation*}
+  f \left[ 1-\frac{g}{f} \right]
+\end{equation*}
+o se è uno $^0\!/_0$ si faccia il denominatore comune. Infine tutte le $0^0$, $1^\infty$ e
+$\infty^\infty$ si riconducono alla $0\infty$.
+
 \subsection{Teoremi sulle derivate seconde}
 Il teorema di Lagrange e il suo primo lemma associa la monotonia al segno della derivata prima.
 Ci sono però dei teoremi che associano la derivata seconda alla concavità.
@@ -170,9 +205,9 @@ Prima di disegnare, verifichiamo che i conti siano corretti andando a calcolare 
 funzione
 \begin{center}
   \begin{tikzpicture}
-    \drawSign{(\x^2-5*\x+4)/(\x-5+0.001)}{-1}{7}{0.25}{5}
-    \end{tikzpicture}
-  \end{center}
+    \drawSign{(\x^2-5*\x+4)/(\x-5+0.001)}{-1}{7}{0.25}{5} 
+  \end{tikzpicture}
+\end{center}
   Vediamo che effettivamente le informazioni degli asintoti e quella del segno combaciano. Prima
   di $5$ la funzione tende a $-\infty$ quindi è negativa, poi diventa positiva. Vediamo anche che
   $1$ e $4$ sono punti d'intersezione e quindi che il segno cambia. Disegnamo ciò che sappiamo
