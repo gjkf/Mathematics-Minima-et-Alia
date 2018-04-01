@@ -363,136 +363,167 @@ Qui verranno inserite alcune dimostrazioni di teoremi o formule che vengono usat
   funzione interseca l'asse delle $x$. Essendo crescente significa che il segno è
   \begin{center}
     \begin{tikzpicture}
-      \drawSign{\x}{-1}{1}{0.25}{}
+      \drawSign{\x}{-1}{1}{0.25}{}%
       \end{tikzpicture}
-    \end{center}
-    e che quindi la funzione $f(x)$ di cui è derivata è prima decrescente e poi crescente in modo
-    da avere una tangente orizzontale a $x_0$. Ciò significa che in $x_0$ c'è un minimo relativo. Per
-    il massimo, si dimostra in modo analogo.\\ [\baselineskip]
-    Dimostriamo il punto 2). Se $f''(x_0)=0\land f'''(x_0)>0$ si ha che 
-    $\Dif[f'(x_0)]=0\land\Dif[f''(x_0)]>0$. Da ciò si deduce che in $x_0$, $f'(x)$ ha un punto di
-    minimo relativo. Dato che $f'$ è sempre positivo, significa che $f$ è crescente e in $x_0$ ha
-    una tangente orizzontale. Quindi il punto $x_0$ è un punto di flesso per $f$.
-  \end{proof}
+  \end{center}
+  e che quindi la funzione $f(x)$ di cui è derivata è prima decrescente e poi crescente in modo
+  da avere una tangente orizzontale a $x_0$. Ciò significa che in $x_0$ c'è un minimo relativo. Per
+  il massimo, si dimostra in modo analogo.\\ [\baselineskip]
+  Dimostriamo il punto 2). Se $f''(x_0)=0\land f'''(x_0)>0$ si ha che 
+  $\Dif[f'(x_0)]=0\land\Dif[f''(x_0)]>0$. Da ciò si deduce che in $x_0$, $f'(x)$ ha un punto di
+  minimo relativo. Dato che $f'$ è sempre positivo, significa che $f$ è crescente e in $x_0$ ha
+  una tangente orizzontale. Quindi il punto $x_0$ è un punto di flesso per $f$.
+\end{proof}
 
-  \begin{proof}
-    [\protect\hyperlink{teor:derSec:2}{Concavità con derivata seconda}]
-    \textbf{Ipotesi}:
-    \begin{itemize}
-      \item $f$ sia continua e derivabile in $]a,b[$
-      \item Esiste $f''(x)$
-    \end{itemize}
-    \textbf{Tesi}:
-    \begin{description}
-      \item[Se $f''(x_0)>0$] ha concavità verso l'alto
-      \item[Se $f''(x_0)<0$] ha concavità verso il basso
-      \item[Se $f''(x_0)=0$ e $f'''(x_0)\neq0$] in $x_0$ ha un flesso
-    \end{description}
-    \divisor
+\begin{proof}
+  [\protect\hyperlink{teor:derSec:2}{Concavità con derivata seconda}]
+  \textbf{Ipotesi}:
+  \begin{itemize}
+    \item $f$ sia continua e derivabile in $]a,b[$
+    \item Esiste $f''(x)$
+  \end{itemize}
+  \textbf{Tesi}:
+  \begin{description}
+    \item[Se $f''(x_0)>0$] ha concavità verso l'alto
+    \item[Se $f''(x_0)<0$] ha concavità verso il basso
+    \item[Se $f''(x_0)=0$ e $f'''(x_0)\neq0$] in $x_0$ ha un flesso
+  \end{description}
+  \divisor
 
-    Dimostriamo il primo punto, gli altri due si fanno in modo analogo. Avendo concavità verso l'alto
-    significa che
-    \begin{equation*}
-      \exists\,I(x_0)\suchthat\,\forall x\in I(x_0) \Rightarrow f(x)-t(x)\geq0
-    \end{equation*}
-    Definiamo ora $\varphi(x) = f(x)-t(x)$, ovvero
-    \begin{equation*}
-      \varphi(x) = f(x)-t(x) = f(x)-f(x_0)-f'(x_0)(x-x_0)
-    \end{equation*} 
-    Andando a calcolare le prime derivate vediamo che
-    \begin{equation*}
-      \varphi'(x) = f'(x)-f'(x_0)\quad\varphi''(x)=f''(x)
-    \end{equation*}
-    Ponendo ora $\varphi(x_0) = 0$, vediamo che
-    \begin{equation*}
-      \varphi'(x_0)=0\quad\varphi''(x_0)=f''(x_0)>0
-    \end{equation*}
-    Dato che $\varphi'(x_0)=0$, significa che $x_0$ è un punto di minimo, di massimo o di flesso a
-    tangente orizzontale per $\varphi$. Dato che la derivata seconda è positiva, significa che è
-    un punto di minimo, perciò
-    \begin{equation*}
-      \exists\,I(x_0)\suchthat\varphi(x)\geq\varphi(x_0)\geq0 \Rightarrow f(x)-t(x)\geq 0
-    \end{equation*}
-  \end{proof}
+  Dimostriamo il primo punto, gli altri due si fanno in modo analogo. Avendo concavità verso l'alto
+  significa che
+  \begin{equation*}
+    \exists\,I(x_0)\suchthat\,\forall x\in I(x_0) \Rightarrow f(x)-t(x)\geq0
+  \end{equation*}
+  Definiamo ora $\varphi(x) = f(x)-t(x)$, ovvero
+  \begin{equation*}
+    \varphi(x) = f(x)-t(x) = f(x)-f(x_0)-f'(x_0)(x-x_0)
+  \end{equation*} 
+  Andando a calcolare le prime derivate vediamo che
+  \begin{equation*}
+    \varphi'(x) = f'(x)-f'(x_0)\quad\varphi''(x)=f''(x)
+  \end{equation*}
+  Ponendo ora $\varphi(x_0) = 0$, vediamo che
+  \begin{equation*}
+    \varphi'(x_0)=0\quad\varphi''(x_0)=f''(x_0)>0
+  \end{equation*}
+  Dato che $\varphi'(x_0)=0$, significa che $x_0$ è un punto di minimo, di massimo o di flesso a
+  tangente orizzontale per $\varphi$. Dato che la derivata seconda è positiva, significa che è
+  un punto di minimo, perciò
+  \begin{equation*}
+    \exists\,I(x_0)\suchthat\varphi(x)\geq\varphi(x_0)\geq0 \Rightarrow f(x)-t(x)\geq 0
+  \end{equation*}
+\end{proof}
 
-  \begin{proof}
-    [\protect\hyperlink{teor:media}{Teorema del valor medio}]
-    \textbf{Ipotesi}:
-    \begin{itemize}
-      \item $f$ continua e definita in $[a,b]$
-    \end{itemize}
-    \textbf{Tesi}:
-    \begin{itemize}
-      \item $\exists\,c\in[a,b]\suchthat f(c)=\frac{1}{b-a}\int\limits_{a}^{b} f(x)\,\dif x$
-    \end{itemize}
-    \divisor
+\begin{proof}
+  [\protect\hyperlink{teor:media}{Teorema del valor medio}]
+  \textbf{Ipotesi}:
+  \begin{itemize}
+    \item $f$ continua e definita in $[a,b]$
+  \end{itemize}
+  \textbf{Tesi}:
+  \begin{itemize}
+    \item $\exists\,c\in[a,b]\suchthat f(c)=\frac{1}{b-a}\int\limits_{a}^{b} f(x)\,\dif x$
+  \end{itemize}
+  \divisor
 
-    Se $f$ è continua in $[a,b]$, per il teorema di Weistrass ammette $m=\min f$ e $M=\max f$.
-    \begin{align*}
-      m\leq &f(x) \leq M\\
-      \int\limits_{a}^{b} m\,\dif x\leq
-      &\int\limits_{a}^{b}f(x)\,\dif x\leq\int\limits_{a}^{b}M\,\dif x\\
-      \left.mx\right|_a^b\leq &\int\limits_{a}^{b} f(x)\,\dif x\leq \left.Mx\right|_a^b\\
-          m(b-a)\leq &\int\limits_{a}^{b} f(x)\,\dif x\leq M(b-a)\\
-          m\leq &\frac{1}{b-a}\int\limits_{a}^{b} f(x)\,\dif x\leq M
-        \end{align*}
-        Ora per il teorema dei valori intermedi
-        \begin{equation*}
-          \exists\,c\in[a,b]\suchthat f(c)=\frac{1}{b-a}\int\limits_{a}^{b} f(x)\,\dif x
-        \end{equation*}
-      \end{proof}
+  Se $f$ è continua in $[a,b]$, per il teorema di Weistrass ammette $m=\min f$ e $M=\max f$.
+  \begin{align*}
+    m\leq &f(x) \leq M\\
+    \int\limits_{a}^{b} m\,\dif x\leq
+    &\int\limits_{a}^{b}f(x)\,\dif x\leq\int\limits_{a}^{b}M\,\dif x\\
+    \left.mx\right|_a^b\leq &\int\limits_{a}^{b} f(x)\,\dif x\leq \left.Mx\right|_a^b\\
+    m(b-a)\leq &\int\limits_{a}^{b} f(x)\,\dif x\leq M(b-a)\\
+    m\leq &\frac{1}{b-a}\int\limits_{a}^{b} f(x)\,\dif x\leq M
+  \end{align*}
+  Ora per il teorema dei valori intermedi
+  \begin{equation*}
+    \exists\,c\in[a,b]\suchthat f(c)=\frac{1}{b-a}\int\limits_{a}^{b} f(x)\,\dif x
+  \end{equation*}
+\end{proof}
 
-      \begin{proof}
-        [\protect\hyperlink{teor:tfci}{Teorema fondamentale del calcolo integrale}]
-        \textbf{Ipotesi}:
-        \begin{itemize}
-          \item $f$ continua in $[a,b]$
-        \end{itemize}
-        \textbf{Tesi}:
-        \begin{itemize}
-          \item $F(x)$ derivabile per ogni $x\in[a,b]$
-          \item $F'(x)=f(x)$ e $F(a)=0$
-        \end{itemize}
-        \divisor
+\begin{proof}
+  [\protect\hyperlink{teor:tfci}{Teorema fondamentale del calcolo integrale}]
+  \textbf{Ipotesi}:
+  \begin{itemize}
+    \item $f$ continua in $[a,b]$
+  \end{itemize}
+  \textbf{Tesi}:
+  \begin{itemize}
+    \item $F(x)$ derivabile per ogni $x\in[a,b]$
+    \item $F'(x)=f(x)$ e $F(a)=0$
+  \end{itemize}
+  \divisor
 
-        Se $F(x)$ è derivabile, significa che
-        \begin{equation*}
-          \exists\,\lim\limits_{h\to0} \frac{F(x+h)-F(x)}{h}
-        \end{equation*}
-        Abbiamo quindi che
-        \begin{equation*}
-          F(x) = \int\limits_{a}^{x} f(x)\,\dif x
-        \end{equation*}
-        e
-        \begin{equation*}
-          F(x+h) = \int\limits_{a}^{x+h} f(x)\,\dif x = \int\limits_{a}^{x} f(x)\,\dif x + 
-          \int\limits_{x}^{x+h} f(x)\,\dif x
-        \end{equation*}
-        Il numeratore quindi diventa
-        \begin{equation*}
-          F(x+h)-F(x) = \cancel{\int\limits_{a}^{x} f(x)\,\dif x}+\int\limits_{x}^{x+h} f(x)\,\dif x
-          -\cancel{\int\limits_{a}^{x} f(x)\,\dif x}
-        \end{equation*}
-        Possiamo quindi scrivere
-        \begin{equation*}
-          \frac{1}{h}\int\limits_{x}^{x+h} f(x)\,\dif x
-        \end{equation*}
-        Se è continua in $[a,b]$, deve esserlo anche in $[x,x+h]\subseteq[a,b]$.\\
-        Per il teorema della media
-        \begin{equation*}
-          \exists c\in[x,x+h]\suchthat f(c)=\frac{1}{h}\int\limits_{x}^{x+h} f(x)\,\dif x
-        \end{equation*}
-        e quindi
-        \begin{equation*}
-          \frac{1}{h}\int\limits_{x}^{x+h} f(x)\,\dif x=\frac{1}{h}h f(c) = f(c)
-        \end{equation*}
-        Quindi infine possiamo scrivere
-        \begin{equation*}
-          \overbrace{\lim\limits_{h\to0} \frac{F(x+h)-F(x)}{h}}^{\mathclap{F'(x)}}=
-          \lim\limits_{h\to0}f(x)=\overbrace{\lim\limits_{c\to x}f(c)}^{\mathclap{\text{Continua}}}=f(x)
-        \end{equation*}
-        E quindi
-        \begin{equation*}
-          F'(x) = f(x)
-        \end{equation*}
-      \end{proof}
+  Se $F(x)$ è derivabile, significa che
+  \begin{equation*}
+    \exists\,\lim\limits_{h\to0} \frac{F(x+h)-F(x)}{h}
+  \end{equation*}
+  Abbiamo quindi che
+  \begin{equation*}
+    F(x) = \int\limits_{a}^{x} f(x)\,\dif x
+  \end{equation*}
+  e
+  \begin{equation*}
+    F(x+h) = \int\limits_{a}^{x+h} f(x)\,\dif x = \int\limits_{a}^{x} f(x)\,\dif x + 
+    \int\limits_{x}^{x+h} f(x)\,\dif x
+  \end{equation*}
+  Il numeratore quindi diventa
+  \begin{equation*}
+    F(x+h)-F(x) = \cancel{\int\limits_{a}^{x} f(x)\,\dif x}+\int\limits_{x}^{x+h} f(x)\,\dif x
+    -\cancel{\int\limits_{a}^{x} f(x)\,\dif x}
+  \end{equation*}
+  Possiamo quindi scrivere
+  \begin{equation*}
+    \frac{1}{h}\int\limits_{x}^{x+h} f(x)\,\dif x
+  \end{equation*}
+  Se è continua in $[a,b]$, deve esserlo anche in $[x,x+h]\subseteq[a,b]$.\\
+  Per il teorema della media
+  \begin{equation*}
+    \exists c\in[x,x+h]\suchthat f(c)=\frac{1}{h}\int\limits_{x}^{x+h} f(x)\,\dif x
+  \end{equation*}
+  e quindi
+  \begin{equation*}
+    \frac{1}{h}\int\limits_{x}^{x+h} f(x)\,\dif x=\frac{1}{h}h f(c) = f(c)
+  \end{equation*}
+  Quindi infine possiamo scrivere
+  \begin{equation*}
+    \overbrace{\lim\limits_{h\to0} \frac{F(x+h)-F(x)}{h}}^{\mathclap{F'(x)}}=
+    \lim\limits_{h\to0}f(x)=\overbrace{\lim\limits_{c\to x}f(c)}^{\mathclap{\text{Continua}}}=f(x)
+  \end{equation*}
+  E quindi
+  \begin{equation*}
+    F'(x) = f(x)
+  \end{equation*}
+\end{proof}
+
+\begin{proof}
+  [\protect\hyperlink{teor:deriv}{Teorema del criterio di derivabilità}]
+  \textbf{Ipotesi:}
+  \begin{itemize}
+    \item $f(x)$ continua in $x_0$
+    \item $f(x)$ derivabile in $U\setminus\{x_0\}$
+  \end{itemize}
+  \textbf{Tesi:}
+  \begin{itemize}
+    \item $f'(x_0)=\lim\limits_{x\to x_0} f'(x)$
+  \end{itemize}
+  \divisor
+
+  Per definizione
+  \begin{equation*}
+    f'(x_0) = \lim\limits_{x\to x_0} \frac{f(x)-f(x_0)}{x-x_0}
+  \end{equation*}
+  Dato che $f$ è continua si può dire che
+  \begin{equation*}
+    \lim\limits_{x\to x_0} f(x) = f(x_0)
+  \end{equation*}
+  quindi, risolvendo la forma indeterminata $^0\!/_0$ usando l'Hôpital
+  \begin{equation*}
+    \lim\limits_{x\to x_0} \frac{f(x)-f(x_0)}{x-x_0}\Heq{\frac{0}{0}}\lim\limits_{x\to x_0} f'(x)
+  \end{equation*}
+  Se questo limite esiste ed è finito, si può scrivere l'equivalenza
+  \begin{equation*}
+    f'(x_0)\coloneqq\lim\limits_{x\to x_0} \frac{f(x)-f(x_0)}{x-x_0}=\lim\limits_{x\to x_0} f'(x)
+  \end{equation*}
+\end{proof}

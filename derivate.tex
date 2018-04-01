@@ -278,3 +278,36 @@ e
     \draw[red, thick] (3,-1) to[out=180,in=270] (0,1);
   \end{tikzpicture}
 \end{center}
+
+\subsection{Problemi di ottimizzazione}
+I problemi di ottimizzazione sono problemi come ad esempio trovare l'area massima di un rettangolo
+sotto una curva, il volume minimo di un solido che soddisfi certe condizioni, \ldots. I passi per
+risolvere questi esercizi sono i seguenti
+\begin{enumerate}
+  \item Scegliere una $x$ appropriata
+  \item Trovare una funzione da ottimizzare
+  \item Determinare un intervallo $I(x)$
+  \item Fare la derivata della funzione per ricavarne massimi e minimi
+\end{enumerate}
+Prendiamo per esempio il seguente problema: data la funzione $f(x)=\sqrt{x}$, si trovi il punto 
+$P\in f(x)$ più vicino a $(4,0)$.\\
+Come procedere? Innanzitutto bisogna identificare il punto $P$. Esso, dato che appartiene alla 
+funzione, ha coordinate $P(x,\sqrt{x})$. La distanza è data dalla relazione pitagorica
+\begin{equation*}
+  d = \sqrt{(x-4)^2+(\sqrt{x})^2} = \sqrt{x^2+16-8x+x}= \sqrt{x^2-7x+16} 
+\end{equation*}
+A questo punto, dobbiamo minimizzare questa funzione. Prendiamone la derivata
+\begin{equation*}
+  d' = \frac{2x-7}{2\sqrt{x^2-7x+16}}
+\end{equation*}
+Ora non resta che determinare il segno della derivata
+\begin{center}
+  \begin{tikzpicture}
+    \drawSign{2*\x-7}{2}{5}{0.25}{}
+  \end{tikzpicture}
+\end{center}
+Questo significa che per $x=\frac{7}{2}$ abbiamo un punto di minimo relativo! Ovvero il punto della
+funzione che è più vicino a $(4,0)$. Quindi si ha che
+\begin{equation*}
+  P \left( \frac{7}{2}, \sqrt{\frac{7}{2}}  \right)
+\end{equation*}

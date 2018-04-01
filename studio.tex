@@ -106,6 +106,18 @@ Ci sono però dei teoremi che associano la derivata seconda alla concavità.
   \end{description}
 \end{derivataSeconda2}
 
+\subsection{Teorema del criterio della derivabilità}
+\begin{deriv}\hypertarget{teor:deriv}
+  Sia $f$ continua in $x_0$ e derivabile in $U\setminus\{x_0\}$. Se esiste finito
+  \begin{equation*}
+    \lim\limits_{x\to x_0} f'(x)
+  \end{equation*}
+\end{deriv}
+allora $f$ è derivabile in $x_0$ e si ha che
+\begin{equation*}
+  f'(x_0) = \lim\limits_{x\to x_0} f'(x)
+\end{equation*}
+
 \subsection{Esempio}
 Avendo ora tutte le cose necessarie per farlo, definiamo i passaggi per studiare una funzione
 \begin{enumerate}
@@ -240,37 +252,38 @@ funzione
   \begin{center}
     \begin{tikzpicture}
       \drawSign[scale=0.75]{(\x^2-10*\x+21)/(\x+5.001)^2}{0}{10}{0.25}{}
-      \end{tikzpicture}
-    \end{center}
-    Questo significa che in $x=3$ e in $x=7$ cambia segno. La funzione da crescente diventa decrescente
-    e viceversa. Questo significa che se la derivata calcolata in quel punto è pari a $0$, sono
-    un punto di minimo e uno di massimo.
-    \begin{align*}
-      f'(3) &= \frac{9-30+21}{(3-5)^2} = 0\\
-      f'(7) &= \frac{49-70+21}{(7-5)^2} = 0
-    \end{align*}
-    E quindi in $3$ e $7$ si hanno rispettivamente un punto di massimo e uno di minimo. Calcoliamone il
-    valore della $y$ e completiamo lo studio
-    \begin{equation*}
-      m \left( 3,1 \right)\quad M \left( 7,9 \right)
-    \end{equation*}
-    Quindi il disegno ora completo è
-    \begin{center}
-      \begin{tikzpicture}
-        \begin{axis}[xmin=-3,ymin=-5,xmax=10,ymax=20]
-          \coordinate (O) at (0,0);
-          \node[fill=white,circle,inner sep=0pt] (O-label) at ($(O)+(-135:10pt)$) {$O$};
-          \addplot[green,domain=-5:18] {x};
-          \addplot[red,thick,samples=91,smooth,unbounded coords=jump,domain=-5:4.90] 
-            {(x^2-5*x+4)/(x-5)};
-          \addplot[red,thick,samples=91,smooth,unbounded coords=jump,domain=5.10:18] 
-            {(x^2-5*x+4)/(x-5)};
-          \addplot+[blue,mark=none] coordinates {(5,-5) (5,20)};
-          \LabelPoint[mark=*,mark size=1.5][above]{4}{0}{$A$}
-          \LabelPoint[mark=*,mark size=1.5][above]{1}{0}{$B$}
-          \LabelPoint[mark=*,mark size=1.5][below right]{0}{-4/5}{$C$}
-          \LabelPoint[mark=*,mark size=1.5][above]{3}{1}{$m$}
-          \LabelPoint[mark=*,mark size=1.5][below left]{7}{9}{$M$}
-        \end{axis}
-      \end{tikzpicture}
-    \end{center}
+    \end{tikzpicture}
+  \end{center}
+Questo significa che in $x=3$ e in $x=7$ cambia segno. La funzione da crescente diventa decrescente
+e viceversa. Questo significa che se la derivata calcolata in quel punto è pari a $0$, sono
+un punto di minimo e uno di massimo.
+\begin{align*}
+  f'(3) &= \frac{9-30+21}{(3-5)^2} = 0\\
+  f'(7) &= \frac{49-70+21}{(7-5)^2} = 0
+\end{align*}
+E quindi in $3$ e $7$ si hanno rispettivamente un punto di massimo e uno di minimo. Calcoliamone il
+valore della $y$ e completiamo lo studio
+\begin{equation*}
+  m \left( 3,1 \right)\quad M \left( 7,9 \right)
+\end{equation*}
+Quindi il disegno ora completo è
+\begin{center}
+  \begin{tikzpicture}
+    \begin{axis}[xmin=-3,ymin=-5,xmax=10,ymax=20]
+      \coordinate (O) at (0,0);
+      \node[fill=white,circle,inner sep=0pt] (O-label) at ($(O)+(-135:10pt)$) {$O$};
+      \addplot[green,domain=-5:18] {x};
+      \addplot[red,thick,samples=91,smooth,unbounded coords=jump,domain=-5:4.90] 
+        {(x^2-5*x+4)/(x-5)};
+      \addplot[red,thick,samples=91,smooth,unbounded coords=jump,domain=5.10:18] 
+        {(x^2-5*x+4)/(x-5)};
+      \addplot+[blue,mark=none] coordinates {(5,-5) (5,20)};
+      \LabelPoint[mark=*,mark size=1.5][above]{4}{0}{$A$}
+      \LabelPoint[mark=*,mark size=1.5][above]{1}{0}{$B$}
+      \LabelPoint[mark=*,mark size=1.5][below right]{0}{-4/5}{$C$}
+      \LabelPoint[mark=*,mark size=1.5][above]{3}{1}{$m$}
+      \LabelPoint[mark=*,mark size=1.5][below left]{7}{9}{$M$}
+    \end{axis}
+  \end{tikzpicture}
+\end{center}
+
