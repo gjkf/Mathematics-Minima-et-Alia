@@ -1,10 +1,10 @@
 %!TEX ROOT=formularioMatematica.tex
 
 \section{Goniometria}\label{sec:goniometria}
-La gonioetria si incentra tutta sulla \emph{circonferenza goniometrica} che non è altro che una
-circonferenza di centro $O(0;0)$ e di raggio $r=1$.\\
-Per convenzione, gli angoli vengono definiti a partire dall'asse $x$ e si definiscono positivi quando
-proseguono in senso antiorario. Si noti che $2\pi = \ang{360}$.
+La gonioetria studia la \emph{circonferenza goniometrica} che non è altro che una circonferenza di 
+centro $O(0;0)$ e di raggio $r=1$.\\
+Per convenzione la circonferenza è divisa in $360$ gradi (o $2\pi$ radianti), gli angoli vengono 
+definiti a partire dall'asse $x$ e si definiscono positivi quando proseguono in senso antiorario. 
 \begin{center}
   \begin{tikzpicture}		
     \begin{axis}[xmin=-2,ymin=-2,xmax=2,ymax=2]
@@ -21,9 +21,9 @@ proseguono in senso antiorario. Si noti che $2\pi = \ang{360}$.
     \end{axis}
   \end{tikzpicture}
 \end{center}
-Già nella figura identifichiamo le due funzioni fondamentali della goniometria: $\cos$ e $\sin$. Esse,
-numericamente, rappresentano rispettivamente l'ascissa e l'ordinata del punto $P$ al variare di 
-$\alpha$.\\
+Già nella figura identifichiamo le due funzioni fondamentali della goniometria: coseno ($\cos$) e 
+sendo ($\sin$). Esse, rappresentano rispettivamente l'ascissa e l'ordinata del punto $P$ al variare
+di  $\alpha$.\\
 Seno e coseno non sono le uniche funzioni goniometriche, esistono infatti anche
 \begin{align*}
   \tan\alpha &= \frac{\sin\alpha}{\cos\alpha}\\
@@ -58,7 +58,7 @@ La relazione fondamentale è quella che permetterà di trovare molte delle formu
 \end{equation*}
 
 \subsection{Grafico delle funzioni}
-\subsubsection{$\cos\alpha$}
+\subsubsection{$y=\cos\alpha$}
 \begin{center}
   \begin{tikzpicture}
     \begin{axis}[xmin=-8,ymin=-1,xmax=8,ymax=1,
@@ -72,7 +72,7 @@ La relazione fondamentale è quella che permetterà di trovare molte delle formu
     \end{axis}
   \end{tikzpicture}
 \end{center}
-\subsubsection{$\sin\alpha$}
+\subsubsection{$y=\sin\alpha$}
 \begin{center}
   \begin{tikzpicture}
     \begin{axis}[xmin=-8,ymin=-1,xmax=8,ymax=1,
@@ -86,7 +86,7 @@ La relazione fondamentale è quella che permetterà di trovare molte delle formu
     \end{axis}
   \end{tikzpicture}
 \end{center}
-\subsubsection{$\tan\alpha$}
+\subsubsection{$y=\tan\alpha$}
 \begin{center}
   \begin{tikzpicture}
     \begin{axis}[xmin=-8,ymin=-1,xmax=8,ymax=1,
@@ -106,23 +106,24 @@ Ovviamente se da un angolo possiamo ottenere un numero, possiamo fare anche il c
 le funzioni inverse abbiamo due possibilità
 \begin{enumerate}
   \item Scrivere $f^{-1}(x)$
-  \item Dare un nuovo nome alla funzione
+  \item Dare un nuovo nome alla funzione (arco\ldots)
 \end{enumerate}
-
-Nelle calcolatrici è molto più comune trovare $\sin^{-1}$ e gli altri però non sono precisi e quindi
-sarebbe da preferire $\arcsin$ o $\mathrm{asin}$ per brevità. Il motivo è che se
-\begin{equation*}
-  f:\;A\mapsto B,\,f^{-1}:\;B\mapsto A
-\end{equation*}
-però per le funzioni goniometriche questo non accade infatti
-\begin{equation*}
-  \sin x:\;\mathbb{R}\mapsto{[{-1},{+1}]} \qquad \cos x:\;\mathbb{R}\mapsto{[{-1},{1}]}
-\end{equation*}
-quando però
-\begin{equation*}
-  \arcsin x:\;{[{-1},{1}]}\mapsto{\left[{-\frac{\pi}{2}},{\frac{\pi}{2}}\right]} \quad 
-  \arccos:\;{[{-1},{1}]}\mapsto{[0,{\pi}]}
-\end{equation*}
+Una funzione può essere invertita solo se strettamente crescente/decrescente. Quindi quelle 
+goniometriche sono invertibili solo in uno specifico intorno.
+%Nelle calcolatrici è molto più comune trovare $\sin^{-1}$ e gli altri però non sono precisi e quindi
+%sarebbe da preferire $\arcsin$ o $\mathrm{asin}$ per brevità. Il motivo è che se
+%\begin{equation*}
+%  f:\;A\mapsto B,\,f^{-1}:\;B\mapsto A
+%\end{equation*}
+%però per le funzioni goniometriche questo non accade infatti
+%\begin{equation*}
+%  \sin x:\;\mathbb{R}\mapsto{[{-1},{+1}]} \qquad \cos x:\;\mathbb{R}\mapsto{[{-1},{1}]}
+%\end{equation*}
+%quando però
+%\begin{equation*}
+%  \arcsin x:\;{[{-1},{1}]}\mapsto{\left[{-\frac{\pi}{2}},{\frac{\pi}{2}}\right]} \quad 
+%  \arccos:\;{[{-1},{1}]}\mapsto{[0,{\pi}]}
+%\end{equation*}
 I grafici sono i seguenti
 \subsubsection{$\arccos x$}
 \begin{center}
@@ -146,9 +147,9 @@ I grafici sono i seguenti
 \end{center}
 
 \subsection{Formule goniometriche}
-Le formule goniometriche permettono di pasare da una funzione ad un'altra. Una delle caratteristiche 
+Le formule goniometriche permettono di passare da una funzione ad un'altra. Una delle caratteristiche 
 più importanti è l'esistenza dei così denominati \textbf{angoli associati}. Essi sono angoli 
-particolari che assumono valori facili da scambiare e ricordare. Essi sono
+particolari che assumono valori facili da ricordare. Essi sono
 \begin{alignat*}{2}
   \cos(\pi\pm x) & = -\cos x &\qquad \cos(-x) &= \cos x\\
   \sin(\pi\pm x) &= \mp\sin x & \sin(-x) &= -\sin x\\

@@ -1,0 +1,102 @@
+%!TEX ROOT=formularioMatematica.tex
+
+\section{Equazioni differenziali}
+Se nell'algebra tradizionale si lavora con variabiili come $x$ che rappresentanoun numero, non è
+l'unica possibilità. Se si mettono in relazione una variabile $x$, una funzione $f(x)$ e sue
+derivate successive, si ottiene un'equazione differenziale. Essa è spesso espressa nella forma
+\begin{equation*}
+  F\left(x,y,y',y'',\ldots,y^{(n)}\right)=0
+\end{equation*}
+Si definisce \textbf{ordine} di un'equazione differenziale il massimo ordine di derivazione. Si
+definisce \textbf{grado} il grado della funzione di ordine massimo.\\
+Ci sono due tipi di soluzioni: \textbf{generale} ovvero una funzione che soddisfa la relazione con la
+presenza di una costante (essa sarà nella forma $y=\varphi(x,c_1,c_2,\ldots,c_n)$) e 
+\textbf{particolare} ovvero una funzione che soddisfa la relazione senza costante. Per questo secondo
+tipo, sono necessarie ulteriori condizioni.\\
+Se si riesce a scrivere un'equazione differenziale nella forma
+\begin{equation*}
+  y^{(n)}=G(x,y,y',\ldots,y^{(n-1)})
+\end{equation*}
+si dice che è scritta in \textbf{forma normale}.
+
+\subsection{Equazioni differenziali a variabili separabili}
+Se nell'equazione
+\begin{equation*}
+  y^{(n)}=G(x,y) 
+\end{equation*}
+è possibile scrivere $G(x,y)$ come $M(x)\cdot N(y)$, allora si definisce un'equazione differenziale a
+variabili separabili. Per risolverla quindi si ha che
+\begin{align*}
+  y' &= M(x)\cdot N(y)\\
+  \int \frac{y'}{N(y)}\,\dif x &= \int M(x)\,\dif x
+\end{align*}
+
+\subsection{Problema di Cauchy}
+Dato il sistema
+\begin{equation*}
+  \begin{cases}
+    y' = G(x,y)\\
+    y(x_0) = y_0
+  \end{cases}
+\end{equation*}
+Esiste ed è unica la soluzione. Ovviamente per un maggiore ordine, sono necessarie maggiori 
+condizioni se si vogliono eliminare tutte le costanti.
+
+\subsection{Equazioni differenziali lineari di primo ordine}
+Sia data
+\begin{equation*}
+  y'+a(x)y=b(x)
+\end{equation*}
+Se $b(x)=0$ si definisce lineare \textbf{omogenea}. Per risolvere questo tipo di equazioni si deve
+moltiplicare tutto per un fattore. Esso è
+\begin{equation*}
+  e^{\int a(x)\,\dif x}
+\end{equation*}
+Quindi l'equazione diventa
+\begin{equation*}
+  \underbrace{y'e^{\int a(x)\,\dif x}+a(x)e^{\int a(x)\,dif x}}_
+  {\frac{\dif}{\dif x}\left[ ye^{\int a(x)\,\dif x} \right]}=b(x)e^{\int a(x)\,\dif x}
+\end{equation*}
+E quindi possiamo scrivere semplicemente
+\begin{equation*}
+  \int \frac{\dif}{\dif x}\left[ ye^{\int a(x)\,\dif x} \right]\,\dif x = 
+  \int b(x)e^{\int a(x)\,\dif x}\,\dif x
+\end{equation*}
+e infine, isolando
+\begin{equation*}
+  y = e^{-\int a(x)\,\dif x}\int b(x)e^{\int a(x)\,\dif x}\,\dif x
+\end{equation*}
+
+\subsection{Equazioni differenziali lineari di secondo ordine}
+Sia data
+\begin{equation*}
+  ay''+by'+cy=g(x) 
+\end{equation*}
+Se $g(x)=0$ si definisce lineare \textbf{omogenea}. Dato che $a$, $b$, $c$ sono coefficienti 
+costanti, si può dividere tutto per $a$ e ottenere
+\begin{equation*}
+  y''+\frac{b}{a}y'+\frac{c}{a}y=0
+\end{equation*}
+che si riscrive in
+\begin{equation*}
+  y''+by'+c=0
+\end{equation*}
+Le soluziooni sono del tipo $y=e^{\lambda x}$ e quindi si ha che
+\begin{equation*}
+  y = e^{\lambda x}\quad y'=\lambda e^{\lambda x}\quad y''=\lambda^2 e^{\lambda x}
+\end{equation*}
+E quindi
+\begin{equation*}
+  \lambda^2 e^{\lambda x}+b\lambda e^{\lambda x}+ce^{\lambda x}=0
+\end{equation*}
+e raccogliendo
+\begin{equation*}
+  e^{\lambda x}(\lambda^2+b\lambda+c)=0
+\end{equation*}
+Questo accade solo se $\lambda^2+b\lambda+c=0$ visto che 
+$\forall \lambda\in\mathbb{R}, e^{\lambda x}>\neq 0$. $\lambda^2+b\lambda+c=0$ si definisce
+\textbf{equazione caratteristica}. Per risolvere queste equazioni differenziali, si distingue in base
+al delta dell'equazione caratteristica.
+\subsubsection{$\Delta > 0$}
+Se $\Delta>0$ allora si avranno due soluzioni $e^{\lambda_1 x}\land e^{\lambda_2 x}$. La soluzione
+generale quindi sarà $y=Ae^{\lambda_1 x}+Be^{\lambda_2 x}$ per  qualche $A$ e $B$.
