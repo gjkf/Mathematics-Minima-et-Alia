@@ -54,11 +54,11 @@
 
 % axis style, ticks, etc
 \pgfplotsset{every axis/.append style={
-    axis x line=middle,    % put the x axis in the middle
-    axis y line=middle,    % put the y axis in the middle
+    axis lines=middle,     % put the axis in the middle
     axis line style={<->}, % arrows on the axis
     xlabel={$x$},          % default put x on x-axis
     ylabel={$y$},          % default put y on y-axis
+    zlabel={$z$},          % default put z on z-axis
     axis equal,            % 1:1 ratio
     grid=both,             % coordinate grid
     grid style={line width=.1pt, draw=gray!10},
@@ -68,8 +68,10 @@
     ticklabel style={font=\small,fill=white},
     xlabel style={at={(ticklabel* cs:1)},anchor=north west},
     ylabel style={at={(ticklabel* cs:1)},anchor=south west},
+    zlabel style={at={(ticklabel* cs:1)},anchor= west},
   }
 }
+
 \tikzset{>=stealth}
 % Integral bars
 \pgfplotsset{
