@@ -25,6 +25,9 @@ pdfcreator={pdflatex with hyperref}]{hyperref}
 }
 \usepackage[all]{hypcap} % To fix caption loading of hyperref
 
+%\setcounter{secnumdepth}{0} % sections are level 1
+\setcounter{tocdepth}{3}
+
 % For better visual in tables
 \renewcommand*{\arraystretch}{2.5}
 
@@ -172,6 +175,8 @@ principalmente nelle definizioni formali ma ritorneranno utili anche negli eserc
 \input{studio}
 \input{eqDif}
 \input{geom3d}
+\input{approx}
+\input{distribuzioni}
 
 \include{ex}
 

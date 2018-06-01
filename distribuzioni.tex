@@ -1,0 +1,72 @@
+%!TEX ROOT=formularioMatematica.tex
+
+\section{Distribuzioni}
+Il concetto di fondo che sta alla base delle distribuzioni sono le \textbf{variabili casuali}. Ci 
+sono due tipi di variabili casuali: discrete e continue e con esse due tipi di distribuzioni. Le
+variabili si indicano con una $X$, maiuscola.
+
+\subsection{Distribuizioni discrete}
+Una variabile discreta è una variabile che può assumere un numero finito o numerabile di valori. Ad
+ogni variabile si associa una certa probabilità. Spesso si impostano le variabili sottoforma di 
+tabella in modo da evidenziare ciascuna probabilità
+\begin{center}
+  \begin{tabular}{c c c c c}
+    $X:$ & $X_1$ & $X_2$ & $\cdots$ & $X_n$\\midrule
+    $p:$ & $p_1$ & $p_2$ & $\cdots$ & $p_n$
+  \end{tabular}
+\end{center}
+È ovvio che $\sum p_i = 1$.\\ [\baselineskip]
+Si definiscono due funzioni: \textbf{funzione di distribuzione di probabilità} e di i
+\textbf{ripartizione di probabilità}, rispettivamente
+\begin{equation*}
+  f(x_i) = P(X=x_i)
+\end{equation*}
+e
+\begin{equation*}
+  F(x) = P(X\leq x)\quad\forall x\in\mathbb{R}
+\end{equation*}
+È da notare che per il modo in cui sono definite, si hanno i seguenti due grafici
+\begin{center}
+  \begin{tikzpicture}[scale=0.75]
+    \begin{axis}[xmin=0,ymin=0,xmax=4,ymax=4,ticks=none,ylabel=$f(x)$]
+      \draw[thick] (1,0) -- (1,1);
+      \draw[thick] (2,0) -- (2,3);
+      \draw[thick] (3,0) -- (3,2);
+    \end{axis}
+  \end{tikzpicture}
+\end{center}
+e così via per tutti gli $x_i$.
+\begin{center}
+  \begin{tikzpicture}[scale=0.75]
+    \begin{axis}[xmin=0,ymin=0,xmax=4,ymax=4,ticks=none,ylabel=$F(x)$]
+      \draw[thick] (1,1) circle (0.05);
+      \draw[thick] (1,1) -- (2,1); 
+      \draw[thick] (2,1) circle (0.05);
+      
+      \draw[thick] (2,2) circle (0.05);
+      \draw[thick] (2,2) -- (3,2);
+      \draw[thick] (3,2) circle (0.05);
+
+      \draw[thick] (3,3) circle (0.05);
+      \draw[thick] (3,3) -- (4,3);
+      \draw[thick] (4,3) circle (0.05);
+    \end{axis}
+  \end{tikzpicture}
+\end{center}
+Da questi grafici si evincono alcune cose:
+\begin{enumerate}
+  \item $F(x)=P(X\leq x)=\sum\limits^{n}_{x_i<x} f(x_i)$
+  \item $f(x_i)\geq0\quad\forall x_i$
+  \item $\sum f(x_i)=1$
+  \item $F(x)$ è monotona non decrescente
+  \item $0\leq F(x_i)\leq1$
+\end{enumerate}
+Si definiscono anche altre due funzioni estremamente usate: il valore medio (o indice di media o
+valore aspettato) che è definita come
+\begin{equation*}
+  E(x) = \sum\limits^{n}_{i=1} x_if(x_i)
+\end{equation*}
+e la varianza
+\begin{equation*}
+  \sigma^2(x) = \sum\limits^{n}_{i=1} [x_i-E(x_i)]^2f(x_i) = E(X^2)-E^2(X)
+\end{equation*}
