@@ -11,8 +11,8 @@ ogni variabile si associa una certa probabilità. Spesso si impostano le variabi
 tabella in modo da evidenziare ciascuna probabilità
 \begin{center}
   \begin{tabular}{c c c c c}
-    $X:$ & $X_1$ & $X_2$ & $\cdots$ & $X_n$\\midrule
-    $p:$ & $p_1$ & $p_2$ & $\cdots$ & $p_n$
+    $X$: & $X_1$ & $X_2$ & $\cdots$ & $X_n$\\\midrule
+    $p$: & $p_1$ & $p_2$ & $\cdots$ & $p_n$
   \end{tabular}
 \end{center}
 È ovvio che $\sum p_i = 1$.\\ [\baselineskip]
@@ -64,9 +64,137 @@ Da questi grafici si evincono alcune cose:
 Si definiscono anche altre due funzioni estremamente usate: il valore medio (o indice di media o
 valore aspettato) che è definita come
 \begin{equation*}
-  E(x) = \sum\limits^{n}_{i=1} x_if(x_i)
+  E(X) = \sum\limits^{n}_{i=1} x_if(x_i)
 \end{equation*}
 e la varianza
 \begin{equation*}
-  \sigma^2(x) = \sum\limits^{n}_{i=1} [x_i-E(x_i)]^2f(x_i) = E(X^2)-E^2(X)
+  \sigma^2(X) = \sum\limits^{n}_{i=1} [x_i-E(X_i)]^2f(x_i) = E(X^2)-E^2(X)
 \end{equation*}
+
+\subsubsection{Distribuzione binomiale}
+La più comune distribuzione discreta è forse la binomiale. Il requisito è che l'esperimento, 
+ripetuto in medesime condizioni, ottenga solo 2 risultati: \textbf{successo} e \textbf{insuccesso}.
+La probabilità del successo si definisce $p$, quella dell'insuccesso $q=1-p$.\\
+Spesso si definisce anche $p_{n,k}$ ovvero la probabilità che su $n$ esperimenti, $k$ siano 
+successi. Andando quindi a tabulare $X\sim B(n,p)$, ovvero la variabile $X$ distribuita secondo la
+binomiale di $n$ esperimenti con probabilità $p$, si ottiene
+\begin{center}
+  \begin{tabular}{c c c c}
+    $X$: & $0$ & $k$ & $n$\\\midrule
+    $p$: & $q^n$ & $\binom{n}{k}p^kq^{n-k}$ & $p^n$
+  \end{tabular}
+\end{center}
+Questo perché ovviamente se ci sono $0$ successi, la probabilità è quella di tutti insuccessi. Se 
+ci sono $n$ successi invece la probabilità è quella di tutti successi. Nel mezzo ritroviamo il
+coefficiente binomiale in quanto sono combinazioni (i modi in cui successi ed insuccessi si possono
+distribuire) di probabilità.\\ [\baselineskip]
+Quindi abbiamo che
+\begin{equation*}
+  p_{n,k} = \binom{n}{k} p^kq^{n-k}
+\end{equation*}
+Inoltre si trova anche il valore medio
+\begin{equation*}
+  E(X) = np
+\end{equation*}
+e la varianza
+\begin{equation*}
+  \sigma^2(X) = npq
+\end{equation*}
+
+\subsection{Distribuzioni continue}
+Le distribuzioni continue sono caratterizzate da variabili casuali le cui possibibilità sono molto
+numerose o non numerabili. Infatti si dice che $X\in[a,b]$ e quindi può assumere tutti i valori.
+Andando a disegnare per istogrammi una possibile distribuzione normale, si ottiene
+\begin{center}
+  \begin{tikzpicture}
+    \begin{axis}[xmin=0,ymin=0,xmax=8,ymax=1,ticks=none,ylabel=$f$,axis equal image]
+      \addplot[domain=0:4,smooth,samples=500,integral=0:8,integral segments=20,blue,thick] 
+        {exp(-((x-2)^2)/(2*x))};
+    \end{axis}
+  \end{tikzpicture}
+\end{center}
+Qui rappresentata è la frequenza relativa, ovvero $\sum f_i = 1$. Quella assoluta assume un grafico
+molto simile
+\begin{center}
+  \begin{tikzpicture}
+    \begin{axis}[xmin=0,ymin=0,xmax=8,ymax=4,ticks=none,ylabel=$f$]
+      \addplot[domain=0:4,smooth,samples=500,integral=0:8,integral segments=20,blue,thick] 
+        {4*exp(-((x-2)^2)/(2*x))};
+    \end{axis}
+  \end{tikzpicture}
+\end{center}
+infatti si ha che $\sum f_i = n$. Conoscendo la $f(x)$ che descrive un andamento come quello che
+si vede dagli istogrammi, si può trovare la probabilità che avvenga un evento all'interno di un
+intervallo. Questa probabilità è infatti nient'altro che l'area tra i due punti
+\begin{equation*}
+  p(x_1<X<x_2) = \int\limits_{x_1}^{x_2} f(x)\dif x
+\end{equation*}
+Da questo si evince una cosa molto importante: $P(X=x)=0$. Infatti la probabilità che tra infinite
+possibilità avvenga un determinato evento è $0$.\\ [\baselineskip]
+La funzione di distribuzione di probabilità è definita molto semplicemente
+\begin{equation*}
+  f(x)=\int\limits_{-\infty}^{+\infty}f(x)\dif x 
+\end{equation*}
+Questo anche perché $f(x)>0$ per ogni $x$.\\
+La funzione di ripartizione invece
+\begin{equation*}
+  F(X\leq x) = \int\limits_{-\infty}^{x} f(x)\dif x
+\end{equation*}
+È da notare che in ambito continuo scrivere $F(X<x)$ o $F(X\leq x)$ è assolutamente indifferente 
+per la caratteristica vista sopra.\\
+Si noti anche che $P(x_1\leq X\leq x_2)=F(x_2)-F(x_1)$.
+
+\subsection{Tabella riassuntiva delle formule di distribuzioni discrete e continue}
+\begin{center}
+  \begin{tabular}{c|c|c}
+    & Discreta & Continua\\
+    $E(X)$ & $\sum f(x_i)x$ & $\int\limits_{-\infty}^{+\infty} f(x)\dif x$\\
+    $\sigma^2(X)$ & $\sum[x_i-E(X_i)]^2f(x_i)$ & $\int\limits_{-\infty}^{x} [x-E(X)]^2f(x)\dif x$
+  \end{tabular}
+\end{center}
+
+\subsection{Distribuzione Gaussiana (normale)}
+\begin{center}
+  \begin{tikzpicture}
+    \begin{axis}[xmin=-3,ymin=0,xmax=9,ymax=5,axis equal,ticks=none]
+      \addplot[domain=-3:9,thick,blue,smooth,samples=500] {6*exp((-(x-3)^2)/7)};
+      \draw[thick,dashed] (3,0) -- (3,6) node[pos=0,below]{$\mu$};
+      \draw[thick,dashed] (1.0664,0) -- (1.0664,3.5171)node[pos=0,below]{$\sigma$};
+      \draw[thick,dashed] (4.9464,0) -- (4.9464,3.5171)node[pos=0,below]{$\sigma$};
+    \end{axis}
+  \end{tikzpicture}
+\end{center}
+Qui rappresentata è la funzione gaussiana, la distribuzione normale, una tra le più comuni. È 
+definita tramite due parametri: $\mu=E(X)$ e $\sigma=\sqrt{\sigma^2(x)}$. La funzione quindi è
+\begin{equation*}
+  f(x) = \frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}
+\end{equation*}
+I due punti di flesso si hanno a $x_F = \mu\pm\sigma$.\\
+La peculiarità di questa funzione è che non ha primite note o esprimibili tramite funzioni 
+elementari. Questo significa che per essere utilizzata si deve usufruire di tabelle. Tutte le
+tabelle fanno riferimento alla gaussiana standardizzata o normale che è espressa tramite $N(0,1)$
+ovvero hanno $\mu=0$ e $\sigma=1$ in modo da rendere la funzione nella forma
+\begin{equation*}
+  f(x) = \frac{1}{\sqrt{\pi}} e^{-\frac{x^2}{2}}
+\end{equation*}
+Tutte le gaussiane si possono ricondurre a questa standardizzata facendo la sostituzione
+\begin{equation*}
+  Z = \frac{x-\mu}{\sigma}
+\end{equation*}
+La caratteristica è che anche dopo questa trasformazione la funzione mantiene la stessa area. 
+Quindi ha che se $X\sim N(\mu,\sigma)$ allora $Z\sim N(0,1)$ e quindi $P(x_1\leq X\leq x_2) =
+P(z_1\leq Z\leq z_2)$.\\
+È da notare un'ultima cosa
+\begin{equation*}
+  E(aX+b) = aE(X)+b
+\end{equation*}
+ed
+\begin{equation*}
+  \sigma^2(aX+b) = a^2\sigma^2(X)
+\end{equation*}
+
+\subsubsection{Uso delle tabelle}
+Le tabelle offrono un'approssimazione dell'area. Si ha quindi che nella prima colonna sono
+identificata le prime due cifre della $X$ d'interesse (nelle varie righe). Nelle successive invece
+si trovano le cifre da $0$ e $9$ per completare il numero. In corrispondenza dell'incrocio tra
+le informazioni, si trova l'approssimazione dell'area.
