@@ -125,14 +125,14 @@ Il metodo dei rettangoli va atrovare l'area di rettangoli di base $f(x)$ e altez
 maggiore quantità di questi rettangoli porta ad una maggiore precisione. Infatti andando a prendere
 il limite si ottiene la definizione di integrale definito.
 \begin{equation*}
-  \int\limits_{a}^{b} f(x)\dif x \approx \sum\limits^{n}_{i=1} f(x_i)h = \sum\limits^{n}_{i=1} f(x)
+  \int\limits_{a}^{b} f(x)\dif x \approx \sum\limits^{n}_{i=0} f(a+ih)h = \sum\limits^{n}_{i=1} f(x_i)
   \frac{b-a}{n}
 \end{equation*}
 Questa formula va usata se si vuole prendere come ultimo rettangolo quello più a destra. La 
 seguente invece va usata se si vuole partire dal primo rettangolo più a sinistra
 \begin{equation*}
-  \int\limits_{a}^{b} f(x)\dif x \approx \sum\limits^{n-1}_{i=0} f(x_i)h = \sum\limits^{n-1}_{i=0} 
-  f(x)\frac{b-a}{n}
+  \int\limits_{a}^{b} f(x)\dif x \approx \sum\limits^{n-1}_{i=1} f(a+ih)h = \sum\limits^{n-1}_{i=0} 
+  f(x_i)\frac{b-a}{n}
 \end{equation*}
 
 \subsubsection{Metodo dei trapezi}
