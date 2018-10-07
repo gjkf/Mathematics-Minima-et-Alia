@@ -3,7 +3,7 @@
 \section{Calcolo approssimato}
 Il calcolo approssimato si occupa di approssimare il valore di una funzione o di un integrale. Oltre
 alle ovvie utilità, diventa anche molto comodo quando non si conoscono le primitive dell'integrale
-oppure la soluzione di un'equazione non è risolvibile algebricamente. Tutti i metodi si bastano sul
+oppure la soluzione di un'equazione non è risolvibile algebricamente. Tutti i metodi si basano sul
 \textbf{teorema degli zeri}. C'è una necessità però, che lo zero nell'intervallo sia unico. Ovvero
 \begin{equation*}
   \exists!\,c\in]a,b[\suchthat f(c)=0\quad\text{se}\quad f(a)\cdot f(b) < 0
@@ -94,7 +94,7 @@ iterativo la cui formula generale è
     \end{axis}
   \end{tikzpicture}
 \end{center}
-Il disegno permette di comprendere il sistema che sta alla base di questo metodo. Si scegla $a$ o 
+Il disegno permette di comprendere il sistema che sta alla base di questo metodo. Si scelga $a$ o 
 $b$ come punto cardine e si trovino le secanti alla funzione tra $a$ e $x_n$ o $b$ e $x_n$. Il
 punto di intersezione della secante con l'asse delle $x$ sarà via via un'approssimazione migliore.
 Anche questo metodo è iterativo con formula generale
@@ -121,7 +121,7 @@ Di seguito saranno riportati metodi per approssimare l'integrale definito di una
     \end{axis}
   \end{tikzpicture}
 \end{center}
-Il metodo dei rettangoli va atrovare l'area di rettangoli di base $f(x)$ e altezza $h$. Una 
+Il metodo dei rettangoli va a trovare l'area di rettangoli di base $f(x)$ e altezza $h$. Una 
 maggiore quantità di questi rettangoli porta ad una maggiore precisione. Infatti andando a prendere
 il limite si ottiene la definizione di integrale definito.
 \begin{equation*}
@@ -159,7 +159,7 @@ seguente invece va usata se si vuole partire dal primo rettangolo più a sinistr
   \end{tikzpicture}
 \end{center}
 Il metodo dei trapezi invece di prendere dei triangoli, prende dei trapezi in cui uno dei lati è
-il segmento che va  tra due punti della funzione. L'approssimazione diventa quindi
+il segmento che va tra due punti della funzione. L'approssimazione diventa quindi
 \begin{equation*}
   \int\limits_{a}^{b} f(x)\dif x = \frac{b-a}{n}\left[ \frac{f(x_0)+f(x_n)}{2}+
   \sum\limits^{n-1}_{i=1} f(x_i) \right]
